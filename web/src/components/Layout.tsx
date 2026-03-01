@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   LayoutDashboard, BookOpen, Trophy, Search, Sun, Moon,
-  ChevronDown, ChevronRight, Menu, X, Flame, Bookmark, XCircle,
+  ChevronDown, ChevronRight, Menu, X, Flame, Bookmark, XCircle, Github,
 } from 'lucide-react'
 import type { ContentData } from '../types'
 import type { StudyProgress } from '../types'
@@ -218,7 +218,7 @@ export default function Layout({ children, data, theme, onToggleTheme, progress 
       </div>
 
       {/* Footer */}
-      <div className="p-4 border-t border-ink-200 dark:border-ink-600">
+      <div className="p-4 border-t border-ink-200 dark:border-ink-600 space-y-1">
         <button
           onClick={onToggleTheme}
           className="flex items-center gap-2 w-full px-3 py-2 text-xs font-medium text-ink-500 dark:text-ink-300 hover:bg-ink-100 dark:hover:bg-ink-700 rounded-lg transition-colors"
@@ -226,6 +226,15 @@ export default function Layout({ children, data, theme, onToggleTheme, progress 
           {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
         </button>
+        <a
+          href="https://github.com/itsme-shawn/AWS-SAA-C03-Study-Hub"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 w-full px-3 py-2 text-xs font-medium text-ink-500 dark:text-ink-300 hover:bg-ink-100 dark:hover:bg-ink-700 rounded-lg transition-colors"
+        >
+          <Github className="w-4 h-4" />
+          GitHub
+        </a>
       </div>
     </div>
   )
