@@ -246,7 +246,23 @@ export default function Layout({ children, data, theme, onToggleTheme, progress 
         <button onClick={() => setSidebarOpen(true)} className="p-2 -ml-2 rounded-lg hover:bg-ink-100 dark:hover:bg-ink-700">
           <Menu className="w-5 h-5" />
         </button>
-        <span className="ml-3 font-display font-bold text-sm">AWS SAA-C03</span>
+        <span className="ml-3 font-display font-bold text-sm flex-1">AWS SAA-C03</span>
+        <div className="flex items-center gap-1">
+          <button
+            onClick={onToggleTheme}
+            className="p-2 rounded-lg hover:bg-ink-100 dark:hover:bg-ink-700 text-ink-500 dark:text-ink-300 transition-colors"
+          >
+            {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          </button>
+          <a
+            href="https://github.com/itsme-shawn/AWS-SAA-C03-Study-Hub"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 rounded-lg hover:bg-ink-100 dark:hover:bg-ink-700 text-ink-500 dark:text-ink-300 transition-colors"
+          >
+            <Github className="w-4 h-4" />
+          </a>
+        </div>
       </div>
 
       {/* Mobile sidebar overlay */}
