@@ -1,0 +1,52 @@
+export interface QuestionOption {
+  label: string
+  text: string
+}
+
+export interface Question {
+  id: string
+  number: number
+  text: string
+  options: QuestionOption[]
+  answer: string
+  explanation: string
+  keyConcept: string
+}
+
+export interface Section {
+  id: string
+  number: number
+  title: string
+  noteContent: string
+  questions: Question[]
+}
+
+export interface ContentData {
+  sections: Section[]
+  groups: Record<string, string[]>
+  totalQuestions: number
+  generatedAt: string
+}
+
+export interface QuizResult {
+  sectionId: string
+  score: number
+  total: number
+  answers: Record<string, string>
+  timestamp: string
+}
+
+export interface WrongAnswer {
+  questionId: string   // question.id within the section
+  sectionId: string
+  userAnswer: string   // what the user picked
+  timestamp: string
+}
+
+export interface StudyProgress {
+  completedSections: string[]
+  quizResults: QuizResult[]
+  examResults: QuizResult[]
+  bookmarkedQuestions: string[]
+  wrongAnswers: WrongAnswer[]
+}
