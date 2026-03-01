@@ -71,14 +71,3 @@ cd web
 npm install
 npm run dev
 ```
-
----
-
-## 시험 도메인 가중치 (SAA-C03)
-
-| Domain | Weight |
-|--------|--------|
-| Design Resilient Architectures | 26% |
-| Design High-Performing Architectures | 24% |
-| Design Secure Architectures | 30% |
-| Design Cost-Optimized Architectures | 20% |
