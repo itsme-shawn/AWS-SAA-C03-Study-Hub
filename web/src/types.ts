@@ -8,7 +8,7 @@ export interface Question {
   number: number
   text: string
   options: QuestionOption[]
-  answer: string
+  answer: string // e.g. "A" or "A,C"
   explanation: string
   keyConcept: string
 }
@@ -21,10 +21,19 @@ export interface Section {
   questions: Question[]
 }
 
+export interface DumpSet {
+  id: string
+  title: string
+  source?: string
+  questions: Question[]
+}
+
 export interface ContentData {
   sections: Section[]
+  dumps: DumpSet[]
   groups: Record<string, string[]>
   totalQuestions: number
+  totalDumpQuestions: number
   generatedAt: string
 }
 

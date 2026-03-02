@@ -67,6 +67,12 @@ body {
 .dark .prose pre { background: var(--color-ink-950) !important; color: var(--color-ink-100) !important; }
 .dark .prose pre code { color: var(--color-ink-100) !important; }
 
+/* Inline code should not render typography plugin backticks */
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after {
+  content: "" !important;
+}
+
 /* Code blocks should be monospace and wrapped for ASCII art */
 .prose pre code {
   font-family: var(--font-mono) !important;

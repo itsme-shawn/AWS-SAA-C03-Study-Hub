@@ -7,6 +7,7 @@ import {
 } from 'lucide-react'
 import type { ContentData, StudyProgress } from '../types'
 import MarkdownRenderer from '../components/MarkdownRenderer'
+import { formatAnswerLabels, labelsToText, parseAnswerLabels } from '../utils/answers'
 
 interface Props {
   data: ContentData
@@ -36,15 +37,40 @@ export default function WrongAnswersPage({ data, progress, onRemove, onClearSect
     })
   }
 
-  // Group wrong answers by section, sorted by section number
-  const grouped = data.sections
-    .map(section => {
-      const wrongs = progress.wrongAnswers.filter(w => w.sectionId === section.id)
-      return { section, wrongs }
-    })
-    .filter(({ wrongs }) => wrongs.length > 0)
+  // Group wrong answers by section and dump
+  const grouped = [
+    ...data.sections
+      .map(section => {
+        const wrongs = progress.wrongAnswers.filter(w => w.sectionId === section.id)
+        return {
+          id: section.id,
+          title: section.title,
+          route: `/section/${section.id}?tab=quiz`,
+          badge: String(section.number).padStart(2, '0'),
+          kind: 'section' as const,
+          questions: section.questions,
+          wrongs,
+        }
+      })
+      .filter(group => group.wrongs.length > 0),
+    ...data.dumps
+      .map(dump => {
+        const sectionId = `dump:${dump.id}`
+        const wrongs = progress.wrongAnswers.filter(w => w.sectionId === sectionId)
+        return {
+          id: sectionId,
+          title: `Dump · ${dump.title}`,
+          route: `/dumps/${dump.id}`,
+          badge: 'D',
+          kind: 'dump' as const,
+          questions: dump.questions,
+          wrongs,
+        }
+      })
+      .filter(group => group.wrongs.length > 0),
+  ]
 
-  const totalCount = progress.wrongAnswers.length
+  const totalCount = grouped.reduce((acc, group) => acc + group.wrongs.length, 0)
 
   const handleClearConfirm = () => {
     if (!confirmClear) return
@@ -88,7 +114,7 @@ export default function WrongAnswersPage({ data, progress, onRemove, onClearSect
               <span className="text-rose-500 mr-2">✕</span>틀린 문제
             </h1>
             <p className="text-ink-400 dark:text-ink-300 text-sm mt-1">
-              {grouped.length}개 섹션 · 총 {totalCount}문제
+              {grouped.length}개 세트 · 총 {totalCount}문제
               <span className="ml-2 text-[11px]">— 풀 때마다 자동 갱신</span>
             </p>
           </div>
@@ -121,25 +147,25 @@ export default function WrongAnswersPage({ data, progress, onRemove, onClearSect
 
         {/* Summary bar */}
         <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {grouped.slice(0, 4).map(({ section, wrongs }) => (
+          {grouped.slice(0, 4).map(group => (
             <button
-              key={section.id}
+              key={group.id}
               onClick={() => {
-                setExpandedSections(prev => new Set([...prev, section.id]))
+                setExpandedSections(prev => new Set([...prev, group.id]))
                 setTimeout(() => {
-                  document.getElementById(`section-${section.id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  document.getElementById(`section-${group.id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
                 }, 50)
               }}
               className="bg-white dark:bg-ink-800 border border-ink-200 dark:border-ink-600 hover:border-rose-400 dark:hover:border-rose-400 rounded-xl p-3 text-left transition-all group"
             >
               <div className="flex items-center gap-2 mb-1">
                 <span className="w-6 h-6 rounded-md bg-rose-500/10 text-rose-500 text-[10px] font-bold flex items-center justify-center">
-                  {String(section.number).padStart(2, '0')}
+                  {group.badge}
                 </span>
-                <span className="text-[11px] font-bold text-rose-500">{wrongs.length}문제</span>
+                <span className="text-[11px] font-bold text-rose-500">{group.wrongs.length}문제</span>
               </div>
               <p className="text-xs text-ink-500 dark:text-ink-300 truncate group-hover:text-ink-800 dark:group-hover:text-ink-100 transition-colors">
-                {section.title}
+                {group.title}
               </p>
             </button>
           ))}
@@ -148,10 +174,10 @@ export default function WrongAnswersPage({ data, progress, onRemove, onClearSect
 
       {/* Section groups */}
       <div className="space-y-3">
-        {grouped.map(({ section, wrongs }, groupIdx) => (
+        {grouped.map((group, groupIdx) => (
           <motion.div
-            key={section.id}
-            id={`section-${section.id}`}
+            key={group.id}
+            id={`section-${group.id}`}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: groupIdx * 0.04 }}
@@ -160,24 +186,24 @@ export default function WrongAnswersPage({ data, progress, onRemove, onClearSect
             {/* Section header */}
             <div
               className="flex items-center gap-3 px-5 py-4 cursor-pointer hover:bg-ink-50 dark:hover:bg-ink-700/50 transition-colors select-none"
-              onClick={() => toggleSection(section.id)}
+              onClick={() => toggleSection(group.id)}
             >
               <div className="flex items-center gap-2 flex-1 min-w-0">
                 <span className="w-8 h-8 rounded-lg bg-rose-500/10 text-rose-500 text-xs font-bold flex items-center justify-center shrink-0">
-                  {String(section.number).padStart(2, '0')}
+                  {group.badge}
                 </span>
                 <div className="min-w-0">
                   <h3 className="font-display font-bold text-sm text-ink-900 dark:text-ink-0 truncate">
-                    {section.title}
+                    {group.title}
                   </h3>
                   <p className="text-[11px] text-ink-400 dark:text-ink-300">
-                    {wrongs.length}개의 틀린 문제
+                    {group.wrongs.length}개의 틀린 문제
                   </p>
                 </div>
               </div>
               <div className="flex items-center gap-2 shrink-0">
                 {/* Per-section clear */}
-                {confirmClear === section.id ? (
+                {confirmClear === group.id ? (
                   <div className="flex items-center gap-1.5" onClick={e => e.stopPropagation()}>
                     <button
                       onClick={handleClearConfirm}
@@ -194,22 +220,22 @@ export default function WrongAnswersPage({ data, progress, onRemove, onClearSect
                   </div>
                 ) : (
                   <button
-                    onClick={e => { e.stopPropagation(); setConfirmClear(section.id) }}
+                    onClick={e => { e.stopPropagation(); setConfirmClear(group.id) }}
                     className="p-1.5 rounded-md text-ink-300 hover:text-rose-500 hover:bg-rose-500/10 transition-colors"
-                    title="이 섹션 틀린 문제 전체 삭제"
+                    title={group.kind === 'dump' ? '이 덤프 틀린 문제 전체 삭제' : '이 섹션 틀린 문제 전체 삭제'}
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                   </button>
                 )}
                 <Link
-                  to={`/section/${section.id}?tab=quiz`}
+                  to={group.route}
                   onClick={e => e.stopPropagation()}
                   className="p-1.5 rounded-md text-ink-300 hover:text-amber-500 hover:bg-amber-500/10 transition-colors"
-                  title="이 섹션 퀴즈 다시 풀기"
+                  title={group.kind === 'dump' ? '이 덤프 다시 풀기' : '이 섹션 퀴즈 다시 풀기'}
                 >
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
-                {expandedSections.has(section.id)
+                {expandedSections.has(group.id)
                   ? <ChevronDown className="w-4 h-4 text-ink-400" />
                   : <ChevronRight className="w-4 h-4 text-ink-400" />
                 }
@@ -218,7 +244,7 @@ export default function WrongAnswersPage({ data, progress, onRemove, onClearSect
 
             {/* Questions list */}
             <AnimatePresence>
-              {expandedSections.has(section.id) && (
+              {expandedSections.has(group.id) && (
                 <motion.div
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: 'auto', opacity: 1 }}
@@ -227,13 +253,17 @@ export default function WrongAnswersPage({ data, progress, onRemove, onClearSect
                   className="overflow-hidden"
                 >
                   <div className="border-t border-ink-100 dark:border-ink-700 divide-y divide-ink-100 dark:divide-ink-700">
-                    {wrongs.map(wrong => {
-                      const question = section.questions.find(q => q.id === wrong.questionId)
+                    {group.wrongs.map(wrong => {
+                      const question = group.questions.find(q => q.id === wrong.questionId)
                       if (!question) return null
-                      const qKey = `${section.id}::${wrong.questionId}`
+                      const qKey = `${group.id}::${wrong.questionId}`
                       const isExpanded = expandedQuestions.has(qKey)
-                      const correctOption = question.options.find(o => o.label === question.answer)
-                      const wrongOption = question.options.find(o => o.label === wrong.userAnswer)
+                      const correctLabels = parseAnswerLabels(question.answer)
+                      const wrongLabels = parseAnswerLabels(wrong.userAnswer)
+                      const correctLabelText = formatAnswerLabels(question.answer)
+                      const wrongLabelText = formatAnswerLabels(wrong.userAnswer)
+                      const correctOptionText = labelsToText(question.answer, question.options)
+                      const wrongOptionText = labelsToText(wrong.userAnswer, question.options)
 
                       return (
                         <div key={qKey} className="px-5 py-4">
@@ -255,11 +285,11 @@ export default function WrongAnswersPage({ data, progress, onRemove, onClearSect
                               <div className="mt-2 flex flex-wrap gap-2 text-[11px]">
                                 <span className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-500 font-medium">
                                   <XCircle className="w-3 h-3" />
-                                  내 답: {wrong.userAnswer}) {wrongOption?.text ?? '—'}
+                                  내 답: {wrongLabelText || '—'} {wrongOptionText}
                                 </span>
                                 <span className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 font-medium">
                                   <CheckCircle className="w-3 h-3" />
-                                  정답: {question.answer}) {correctOption?.text ?? '—'}
+                                  정답: {correctLabelText || '—'} {correctOptionText}
                                 </span>
                               </div>
 
@@ -277,8 +307,8 @@ export default function WrongAnswersPage({ data, progress, onRemove, onClearSect
                                       {/* All options */}
                                       <div className="space-y-1.5 mb-3">
                                         {question.options.map(opt => {
-                                          const isCorrect = opt.label === question.answer
-                                          const isWrong = opt.label === wrong.userAnswer
+                                          const isCorrect = correctLabels.includes(opt.label)
+                                          const isWrong = wrongLabels.includes(opt.label)
                                           return (
                                             <div
                                               key={opt.label}
@@ -333,7 +363,7 @@ export default function WrongAnswersPage({ data, progress, onRemove, onClearSect
 
                             {/* Delete button */}
                             <button
-                              onClick={() => onRemove(section.id, wrong.questionId)}
+                              onClick={() => onRemove(group.id, wrong.questionId)}
                               className="shrink-0 p-1.5 rounded-md text-ink-300 hover:text-rose-500 hover:bg-rose-500/10 transition-colors"
                               title="목록에서 삭제"
                             >
@@ -349,10 +379,10 @@ export default function WrongAnswersPage({ data, progress, onRemove, onClearSect
             </AnimatePresence>
 
             {/* Collapsed summary */}
-            {!expandedSections.has(section.id) && (
+            {!expandedSections.has(group.id) && (
               <div className="px-5 pb-4 flex flex-wrap gap-1.5">
-                {wrongs.map(wrong => {
-                  const question = section.questions.find(q => q.id === wrong.questionId)
+                {group.wrongs.map(wrong => {
+                  const question = group.questions.find(q => q.id === wrong.questionId)
                   if (!question) return null
                   return (
                     <span

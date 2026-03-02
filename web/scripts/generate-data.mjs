@@ -1,8 +1,12 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
-const NOTES_DIR = path.resolve(import.meta.dirname, '../../notes');
-const OUTPUT_FILE = path.resolve(import.meta.dirname, '../src/data/content.json');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const NOTES_DIR = path.resolve(__dirname, '../../notes');
+const DUMPS_DIR = path.resolve(__dirname, '../../practice/dumps');
+const OUTPUT_FILE = path.resolve(__dirname, '../src/data/content.json');
 
 const SECTION_TITLES = {
   '01-getting-started': 'Getting Started with AWS',
@@ -38,20 +42,16 @@ const SECTION_TITLES = {
 };
 
 const SECTION_GROUPS = {
-  'Foundations': ['01-getting-started', '02-iam'],
-  'Compute': ['03-ec2-basics', '04-ec2-associate', '05-ec2-instance-storage'],
-  'Load Balancing & Scaling': ['06-high-availability-scalability'],
-  'Databases': ['07-rds-aurora-elasticache', '19-databases'],
-  'DNS & Networking': ['08-route-53', '25-vpc'],
-  'Architecture': ['09-classic-solutions-architecture', '27-more-solutions-architecture'],
-  'Storage': ['10-amazon-s3', '11-s3-advanced', '12-s3-security', '14-storage-extras'],
-  'Content Delivery': ['13-cloudfront-global-accelerator'],
-  'Integration': ['15-integration-messaging'],
-  'Containers & Serverless': ['16-containers', '17-serverless-overview', '18-serverless-architectures'],
-  'Analytics & ML': ['20-data-analytics', '21-machine-learning'],
-  'Monitoring & Security': ['22-monitoring-audit-performance', '23-advanced-identity', '24-security-encryption'],
-  'Migration & DR': ['26-disaster-recovery-migrations'],
-  'Exam Prep': ['28-other-services', '29-white-papers-architectures', '30-exam-preparation'],
+  'Foundations':             ['01-getting-started', '02-iam'],
+  'EC2':                     ['03-ec2-basics', '04-ec2-associate', '05-ec2-instance-storage'],
+  'Scalability & Database':  ['06-high-availability-scalability', '07-rds-aurora-elasticache'],
+  'DNS & Architecture':      ['08-route-53', '09-classic-solutions-architecture'],
+  'Storage':                 ['10-amazon-s3', '11-s3-advanced', '12-s3-security', '13-cloudfront-global-accelerator', '14-storage-extras'],
+  'Integration & Serverless':['15-integration-messaging', '16-containers', '17-serverless-overview', '18-serverless-architectures'],
+  'Databases & Analytics':   ['19-databases', '20-data-analytics', '21-machine-learning'],
+  'Security & Monitoring':   ['22-monitoring-audit-performance', '23-advanced-identity', '24-security-encryption'],
+  'VPC & Migration':         ['25-vpc', '26-disaster-recovery-migrations', '27-more-solutions-architecture'],
+  'Exam Prep':               ['28-other-services', '29-white-papers-architectures', '30-exam-preparation'],
 };
 
 function parseQuestions(text) {
@@ -64,20 +64,33 @@ function parseQuestions(text) {
     const block = match[2].trim();
 
     // Extract question text (before Options)
-    const qTextMatch = block.match(/^([\s\S]*?)(?=\*\*Options:\*\*|\n- [A-D]\))/);
+    const qTextMatch = block.match(/^([\s\S]*?)(?=\*\*Options:\*\*|\n- [A-Z]\))/);
     const questionText = qTextMatch ? qTextMatch[1].trim() : '';
 
     // Extract options
     const options = [];
-    const optRegex = /- ([A-D])\)\s*(.*)/g;
+    const optRegex = /- ([A-Z])\)\s*(.*)/g;
     let optMatch;
     while ((optMatch = optRegex.exec(block)) !== null) {
       options.push({ label: optMatch[1], text: optMatch[2].trim() });
     }
 
     // Extract answer
-    const answerMatch = block.match(/\*\*Answer:\*\*\s*([A-D])/);
-    const answer = answerMatch ? answerMatch[1] : '';
+    const answerMatch = block.match(/\*\*Answer:\*\*\s*([^\n]+)/);
+    let answer = '';
+    if (answerMatch) {
+      const raw = answerMatch[1].trim().toUpperCase();
+      const labels = [];
+      const tokenRegex = /(?:^|[^A-Z])([A-Z])(?=[^A-Z]|$)/g;
+      let token;
+      while ((token = tokenRegex.exec(raw)) !== null) {
+        labels.push(token[1]);
+      }
+      if (labels.length === 0 && /^[A-Z]+$/.test(raw)) {
+        labels.push(...raw.split(''));
+      }
+      answer = [...new Set(labels)].sort().join(',');
+    }
 
     // Extract explanation
     const explMatch = block.match(/\*\*해설:\*\*\s*([\s\S]*?)(?=\*\*핵심 개념:\*\*|$)/);
@@ -133,37 +146,90 @@ function processSection(dirName) {
   };
 }
 
-// Main
-const sections = [];
-const dirs = fs.readdirSync(NOTES_DIR).filter(d => {
-  return fs.statSync(path.join(NOTES_DIR, d)).isDirectory() && /^\d{2}-/.test(d);
-}).sort();
+function processDump(fileName) {
+  const filePath = path.join(DUMPS_DIR, fileName);
+  if (!fs.existsSync(filePath)) return null;
 
-for (const dir of dirs) {
-  const section = processSection(dir);
-  if (section) {
-    sections.push(section);
-  }
+  const content = fs.readFileSync(filePath, 'utf-8');
+  const questions = parseQuestions(content);
+  if (questions.length === 0) return null;
+
+  const id = fileName.replace(/\.md$/i, '');
+  const titleMatch = content.match(/^#\s+(.+)$/m);
+  const sourceMatch = content.match(/^>\s*출처:\s*(.+)$/m);
+  const sourceUrlMatch = content.match(/^>\s*(https?:\/\/\S+)$/m);
+
+  return {
+    id,
+    title: titleMatch ? titleMatch[1].trim() : id,
+    source: sourceUrlMatch ? sourceUrlMatch[1].trim() : (sourceMatch ? sourceMatch[1].trim() : ''),
+    questions,
+  };
 }
 
-const totalQuestions = sections.reduce((sum, s) => sum + s.questions.length, 0);
+function loadSections() {
+  const sections = [];
+  if (!fs.existsSync(NOTES_DIR)) return sections;
 
-const output = {
-  sections,
-  groups: SECTION_GROUPS,
-  totalQuestions,
-  generatedAt: new Date().toISOString(),
-};
+  const dirs = fs.readdirSync(NOTES_DIR).filter(d => {
+    return fs.statSync(path.join(NOTES_DIR, d)).isDirectory() && /^\d{2}-/.test(d);
+  }).sort();
 
-fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
-fs.writeFileSync(OUTPUT_FILE, JSON.stringify(output, null, 2));
+  for (const dir of dirs) {
+    const section = processSection(dir);
+    if (section) sections.push(section);
+  }
 
-console.log(`Generated ${sections.length} sections with ${totalQuestions} questions`);
+  return sections;
+}
+
+function loadDumps() {
+  const dumps = [];
+  if (!fs.existsSync(DUMPS_DIR)) return dumps;
+
+  const files = fs.readdirSync(DUMPS_DIR)
+    .filter(file => file.toLowerCase().endsWith('.md'))
+    .sort();
+
+  for (const fileName of files) {
+    const dump = processDump(fileName);
+    if (dump) dumps.push(dump);
+  }
+
+  return dumps;
+}
+
+function buildOutput() {
+  const sections = loadSections();
+  const dumps = loadDumps();
+  const totalQuestions = sections.reduce((sum, s) => sum + s.questions.length, 0);
+  const totalDumpQuestions = dumps.reduce((sum, d) => sum + d.questions.length, 0);
+
+  return {
+    sections,
+    dumps,
+    groups: SECTION_GROUPS,
+    totalQuestions,
+    totalDumpQuestions,
+    generatedAt: new Date().toISOString(),
+  };
+}
+
+function writeOutput() {
+  const output = buildOutput();
+  fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
+  fs.writeFileSync(OUTPUT_FILE, JSON.stringify(output, null, 2));
+  return output;
+}
+
+const initial = writeOutput();
+console.log(`Generated ${initial.sections.length} sections (${initial.totalQuestions} questions)`);
+console.log(`Generated ${initial.dumps.length} dumps (${initial.totalDumpQuestions} questions)`);
 console.log(`Output: ${OUTPUT_FILE}`);
 
 // Watch mode
 if (process.argv.includes('--watch')) {
-  console.log('\nWatching for changes in notes/...');
+  console.log('\nWatching for changes in notes/ and practice/dumps/ ...');
 
   let debounceTimer = null;
 
@@ -171,36 +237,26 @@ if (process.argv.includes('--watch')) {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(() => {
       try {
-        const newSections = [];
-        const newDirs = fs.readdirSync(NOTES_DIR).filter(d => {
-          return fs.statSync(path.join(NOTES_DIR, d)).isDirectory() && /^\d{2}-/.test(d);
-        }).sort();
-
-        for (const dir of newDirs) {
-          const section = processSection(dir);
-          if (section) newSections.push(section);
-        }
-
-        const newTotal = newSections.reduce((sum, s) => sum + s.questions.length, 0);
-        const newOutput = {
-          sections: newSections,
-          groups: SECTION_GROUPS,
-          totalQuestions: newTotal,
-          generatedAt: new Date().toISOString(),
-        };
-
-        fs.writeFileSync(OUTPUT_FILE, JSON.stringify(newOutput, null, 2));
-        console.log(`[${new Date().toLocaleTimeString()}] Regenerated: ${newSections.length} sections, ${newTotal} questions`);
+        const next = writeOutput();
+        console.log(
+          `[${new Date().toLocaleTimeString()}] Regenerated: `
+          + `${next.sections.length} sections (${next.totalQuestions} questions), `
+          + `${next.dumps.length} dumps (${next.totalDumpQuestions} questions)`
+        );
       } catch (err) {
         console.error('Rebuild error:', err.message);
       }
     }, 300);
   };
 
-  fs.watch(NOTES_DIR, { recursive: true }, (event, filename) => {
-    if (filename && filename.endsWith('.md')) {
-      console.log(`[${new Date().toLocaleTimeString()}] Changed: ${filename}`);
-      rebuild();
-    }
-  });
+  const watchTargets = [NOTES_DIR, DUMPS_DIR].filter(target => fs.existsSync(target));
+
+  for (const target of watchTargets) {
+    fs.watch(target, { recursive: true }, (event, filename) => {
+      if (filename && filename.toLowerCase().endsWith('.md')) {
+        console.log(`[${new Date().toLocaleTimeString()}] Changed: ${filename}`);
+        rebuild();
+      }
+    });
+  }
 }

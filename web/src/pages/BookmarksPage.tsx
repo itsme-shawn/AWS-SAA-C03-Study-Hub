@@ -11,32 +11,46 @@ interface Props {
 
 export default function BookmarksPage({ data, progress }: Props) {
   const bookmarked = useMemo(() => {
-    const items: { sectionId: string; sectionTitle: string; qId: string; questionText: string; questionNumber: number }[] = []
+    const items: { qId: string; title: string; link: string; questionText: string; questionNumber: number }[] = []
 
     for (const bId of progress.bookmarkedQuestions) {
-      // bId format: "sectionId-qN"
+      // bId format: "<scope>-qN", where scope is sectionId or "dump:<dumpId>"
       const lastDash = bId.lastIndexOf('-q')
       if (lastDash < 0) continue
-      const sectionId = bId.substring(0, lastDash)
+      const scopeId = bId.substring(0, lastDash)
       const qIdPart = bId.substring(lastDash + 1) // "qN"
 
-      const section = data.sections.find(s => s.id === sectionId)
-      if (!section) continue
+      if (scopeId.startsWith('dump:')) {
+        const dumpId = scopeId.slice('dump:'.length)
+        const dump = data.dumps.find(d => d.id === dumpId)
+        if (!dump) continue
+        const question = dump.questions.find(q => q.id === qIdPart)
+        if (!question) continue
+        items.push({
+          qId: bId,
+          title: `Dump · ${dump.title}`,
+          link: `/dumps/${dump.id}`,
+          questionText: question.text,
+          questionNumber: question.number,
+        })
+        continue
+      }
 
+      const section = data.sections.find(s => s.id === scopeId)
+      if (!section) continue
       const question = section.questions.find(q => q.id === qIdPart)
       if (!question) continue
-
       items.push({
-        sectionId,
-        sectionTitle: section.title,
         qId: bId,
+        title: section.title,
+        link: `/section/${section.id}?tab=quiz`,
         questionText: question.text,
         questionNumber: question.number,
       })
     }
 
     return items
-  }, [data, progress.bookmarkedQuestions])
+  }, [data.sections, data.dumps, progress.bookmarkedQuestions])
 
   return (
     <div className="space-y-6">
@@ -61,13 +75,13 @@ export default function BookmarksPage({ data, progress }: Props) {
               transition={{ delay: i * 0.03 }}
             >
               <Link
-                to={`/section/${item.sectionId}?tab=quiz`}
+                to={item.link}
                 className="block bg-white dark:bg-ink-800 rounded-lg p-4 border border-ink-200 dark:border-ink-600 hover:border-amber-500/50 transition-all group"
               >
                 <div className="flex items-start gap-3">
                   <BookmarkCheck className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
                   <div>
-                    <div className="text-xs text-ink-400 mb-1">{item.sectionTitle} — Q{item.questionNumber}</div>
+                    <div className="text-xs text-ink-400 mb-1">{item.title} — Q{item.questionNumber}</div>
                     <p className="text-sm text-ink-700 dark:text-ink-200 line-clamp-2">{item.questionText}</p>
                   </div>
                 </div>

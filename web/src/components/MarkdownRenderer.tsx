@@ -1,9 +1,21 @@
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import type { Components } from 'react-markdown'
+import { generateHeadingId } from '../utils/toc'
 
 interface Props {
   content: string
+}
+
+function extractText(node: React.ReactNode): string {
+  if (typeof node === 'string') return node
+  if (typeof node === 'number') return String(node)
+  if (Array.isArray(node)) return node.map(extractText).join('')
+  if (node && typeof node === 'object' && 'props' in (node as object)) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return extractText((node as React.ReactElement<any>).props.children)
+  }
+  return ''
 }
 
 const components: Components = {
@@ -46,13 +58,16 @@ const components: Components = {
     return <td className="px-4 py-2.5 border-t border-ink-100 dark:border-ink-600">{children}</td>
   },
   h1({ children }) {
-    return <h1 className="font-display font-bold text-3xl mt-8 mb-4 text-ink-900 dark:text-ink-0">{children}</h1>
+    const id = generateHeadingId(extractText(children))
+    return <h1 id={id} className="font-display font-bold text-3xl mt-8 mb-4 text-ink-900 dark:text-ink-0 scroll-mt-6">{children}</h1>
   },
   h2({ children }) {
-    return <h2 className="font-display font-bold text-xl mt-8 mb-3 text-ink-900 dark:text-ink-0 pb-2 border-b border-ink-200 dark:border-ink-600">{children}</h2>
+    const id = generateHeadingId(extractText(children))
+    return <h2 id={id} className="font-display font-bold text-xl mt-8 mb-3 text-ink-900 dark:text-ink-0 pb-2 border-b border-ink-200 dark:border-ink-600 scroll-mt-6">{children}</h2>
   },
   h3({ children }) {
-    return <h3 className="font-display font-semibold text-lg mt-6 mb-2 text-ink-800 dark:text-ink-50">{children}</h3>
+    const id = generateHeadingId(extractText(children))
+    return <h3 id={id} className="font-display font-semibold text-lg mt-6 mb-2 text-ink-800 dark:text-ink-50 scroll-mt-6">{children}</h3>
   },
   strong({ children }) {
     return <strong className="font-bold text-ink-900 dark:text-ink-0">{children}</strong>

@@ -7,10 +7,13 @@ import ExamMode from './pages/ExamMode'
 import SearchPage from './pages/SearchPage'
 import BookmarksPage from './pages/BookmarksPage'
 import WrongAnswersPage from './pages/WrongAnswersPage'
+import DumpsPage from './pages/DumpsPage'
+import DumpViewPage from './pages/DumpViewPage'
 import { useTheme } from './hooks/useTheme'
 import { useProgress } from './hooks/useProgress'
 import contentData from './data/content.json'
 import type { ContentData, QuizResult } from './types'
+import { isCorrectAnswer } from './utils/answers'
 
 const data = contentData as ContentData
 
@@ -36,7 +39,7 @@ export default function App() {
     if (!section) return
     const now = result.timestamp
     const wrongs = section.questions
-      .filter(q => result.answers[q.id] && result.answers[q.id] !== q.answer)
+      .filter(q => result.answers[q.id] && !isCorrectAnswer(result.answers[q.id], q.answer))
       .map(q => ({
         questionId: q.id,
         sectionId: result.sectionId,
@@ -45,6 +48,24 @@ export default function App() {
       }))
     if (wrongs.length > 0) addWrongAnswers(wrongs)
   }, [addQuizResult, addWrongAnswers])
+
+  // Dump quiz complete: collect wrong answers (no section-complete tracking)
+  const handleDumpQuizComplete = useCallback((result: QuizResult) => {
+    if (!result.sectionId.startsWith('dump:')) return
+    const dumpId = result.sectionId.slice('dump:'.length)
+    const dump = data.dumps.find(d => d.id === dumpId)
+    if (!dump) return
+    const now = result.timestamp
+    const wrongs = dump.questions
+      .filter(q => result.answers[q.id] && !isCorrectAnswer(result.answers[q.id], q.answer))
+      .map(q => ({
+        questionId: q.id,
+        sectionId: result.sectionId,
+        userAnswer: result.answers[q.id],
+        timestamp: now,
+      }))
+    if (wrongs.length > 0) addWrongAnswers(wrongs)
+  }, [addWrongAnswers])
 
   return (
     <Layout data={data} theme={theme} onToggleTheme={toggleTheme} progress={progress}>
@@ -71,6 +92,19 @@ export default function App() {
               data={data}
               progress={progress}
               onExamComplete={addExamResult}
+              onToggleBookmark={toggleBookmark}
+            />
+          }
+        />
+        <Route path="/dumps" element={<DumpsPage data={data} />} />
+        <Route
+          path="/dumps/:dumpId"
+          element={
+            <DumpViewPage
+              data={data}
+              progress={progress}
+              onDumpQuizComplete={handleDumpQuizComplete}
+              onWrongAnswer={handleWrongAnswer}
               onToggleBookmark={toggleBookmark}
             />
           }
