@@ -288,7 +288,13 @@ S3의 보안 관련 기능을 종합적으로 다루는 섹션이다. 서버 측
 | C | SSE-C |
 | D | Client-Side Encryption |
 
-**상세 풀이:** SSE-KMS는 AWS KMS(Key Management Service)를 사용하여 암호화 키에 대한 사용자 제어(키 생성, 회전, 비활성화 등)를 제공하고, CloudTrail을 통해 키의 모든 사용 내역(누가, 언제, 어떤 객체에 사용했는지)을 감사할 수 있다. 문제에서 요구하는 "키 제어"와 "CloudTrail 감사" 두 가지를 모두 충족하는 유일한 방법이다. SSE-S3(A)는 AWS가 키를 완전히 자동으로 관리하므로 사용자가 키에 대한 제어권이 없으며, CloudTrail에서 개별 키 사용을 감사할 수 없다. SSE-C(C)는 고객이 직접 제공한 키로 암호화하지만, 키가 AWS에 저장되지 않으므로 CloudTrail에서 키 사용을 감사할 수 없다. Client-Side Encryption(D)도 클라이언트에서 암호화를 수행하므로 AWS CloudTrail을 통한 키 사용 감사가 불가능하다.
+**(A)** : SSE-S3는 AWS가 키를 완전히 자동으로 관리하므로 사용자가 키에 대한 제어권이 없다. CloudTrail에서 개별 키 사용을 감사할 수 없다.
+
+**(B) 정답** : SSE-KMS는 AWS KMS를 통해 키에 대한 사용자 제어(키 생성, 회전, 비활성화 등)를 제공하고, CloudTrail을 통해 키의 모든 사용 내역을 감사할 수 있다. "키 제어"와 "CloudTrail 감사" 두 가지를 모두 충족하는 유일한 방법이다.
+
+**(C)** : SSE-C는 고객이 직접 제공한 키로 암호화하지만 키가 AWS에 저장되지 않는다. 따라서 CloudTrail에서 키 사용을 감사할 수 없다.
+
+**(D)** : Client-Side Encryption은 클라이언트에서 암호화를 수행하므로 AWS CloudTrail을 통한 키 사용 감사가 불가능하다.
 
 **핵심 개념:** SSE-KMS
 
@@ -316,7 +322,15 @@ S3의 보안 관련 기능을 종합적으로 다루는 섹션이다. 서버 측
 | D | S3 Byte-Range Fetches를 사용한다 |
 | E | 지수 백오프 및 재시도 로직을 구현한다 |
 
-**상세 풀이:** SSE-KMS는 업로드 시 GenerateDataKey API, 다운로드 시 Decrypt API를 KMS에 호출하므로, 대량의 업로드/다운로드가 발생하면 KMS의 리전별 할당량(5,500/10,000/30,000 요청/초)을 초과하여 스로틀링이 발생할 수 있다. SSE-S3(A)로 전환하면 KMS API 호출이 필요 없어져 스로틀링 문제가 근본적으로 해결된다. 또는 Service Quotas Console(B)에서 KMS 할당량 증가를 요청하면 현재 암호화 방식을 유지하면서 더 높은 처리량을 확보할 수 있다. Transfer Acceleration(C)은 장거리 업로드 속도를 높이는 기능이지 KMS API 호출 제한과는 무관하다. Byte-Range Fetches(D)는 다운로드 병렬화 기능으로 KMS 할당량 문제를 해결하지 않으며, 오히려 더 많은 KMS Decrypt 호출을 유발할 수 있다. 지수 백오프(E)는 일시적 스로틀링에 대한 대응이지만 근본적 해결책은 아니다.
+**(A) 정답** : SSE-S3로 전환하면 KMS API 호출이 필요 없어져 스로틀링 문제가 근본적으로 해결된다. SSE-S3는 KMS 할당량 제한이 없다.
+
+**(B) 정답** : Service Quotas Console에서 KMS 할당량 증가를 요청하면 현재 암호화 방식(SSE-KMS)을 유지하면서 더 높은 처리량을 확보할 수 있다.
+
+**(C)** : Transfer Acceleration은 장거리 업로드 속도를 높이는 기능이다. KMS API 호출 제한과는 전혀 무관하다.
+
+**(D)** : Byte-Range Fetches는 다운로드 병렬화 기능으로 KMS 할당량 문제를 해결하지 않는다. 오히려 더 많은 KMS Decrypt 호출을 유발할 수 있다.
+
+**(E)** : 지수 백오프는 일시적 스로틀링에 대한 임시 대응이다. 근본적인 할당량 문제를 해결하지 못한다.
 
 **핵심 개념:** SSE-KMS Limitation
 
@@ -342,7 +356,13 @@ S3의 보안 관련 기능을 종합적으로 다루는 섹션이다. 서버 측
 | C | 크로스 계정 접근을 허용하는 S3 버킷 정책을 생성한다 |
 | D | 두 버킷 모두에서 S3 Transfer Acceleration을 활성화한다 |
 
-**상세 풀이:** Cross-Origin 에러를 해결하려면 요청을 받는 쪽(두 번째 S3 버킷)에 CORS(Cross-Origin Resource Sharing) 헤더를 설정해야 한다. CORS 설정에서 `Access-Control-Allow-Origin` 헤더에 첫 번째 웹사이트의 Origin(예: `http://website1.s3-website.region.amazonaws.com`)을 지정하거나 `*`로 모든 Origin을 허용할 수 있다. CORS는 웹 브라우저의 보안 메커니즘으로, 다른 Origin에서의 요청을 서버가 명시적으로 허용해야 한다. 버저닝(A)은 객체 버전 관리 기능으로 CORS 에러와 전혀 관련이 없다. 크로스 계정 버킷 정책(C)은 AWS 계정 간 접근 권한 부여이며 브라우저의 CORS 에러와는 다른 문제이다. Transfer Acceleration(D)은 전송 속도 향상 기능으로 CORS와 무관하다.
+**(A)** : 버저닝은 객체 버전 관리 기능이다. CORS 에러와는 전혀 관련이 없다.
+
+**(B) 정답** : Cross-Origin 에러를 해결하려면 요청을 받는 쪽(두 번째 S3 버킷)에 CORS 헤더를 설정해야 한다. `Access-Control-Allow-Origin` 헤더에 첫 번째 웹사이트의 Origin을 지정하거나 `*`로 모든 Origin을 허용하면 된다.
+
+**(C)** : 크로스 계정 버킷 정책은 AWS 계정 간 접근 권한 부여 문제를 해결한다. 같은 계정 내 다른 Origin 간의 브라우저 CORS 에러와는 다른 문제이다.
+
+**(D)** : Transfer Acceleration은 전송 속도 향상 기능이다. CORS와는 전혀 무관하다.
 
 **핵심 개념:** S3 CORS
 
@@ -368,7 +388,13 @@ S3의 보안 관련 기능을 종합적으로 다루는 섹션이다. 서버 측
 | C | S3 Glacier Vault Lock |
 | D | 삭제 작업을 거부하는 S3 버킷 정책 |
 
-**상세 풀이:** S3 Object Lock의 Compliance 모드는 가장 엄격한 보호를 제공하며, root 사용자를 포함하여 누구도 보존 기간 동안 객체를 덮어쓰거나 삭제할 수 없다. 보존 모드도 변경할 수 없고 보존 기간도 단축할 수 없다(연장만 가능). 7년 보존 기간을 설정하면 금융 규제 요구사항을 완벽히 충족한다. Governance 모드(A)는 대부분의 사용자가 삭제할 수 없지만, `s3:BypassGovernanceRetention` 같은 특별 IAM 권한을 가진 사용자는 보존을 우회하여 삭제할 수 있으므로 "어떤 사용자도 삭제 불가"라는 요구사항에 부합하지 않는다. Glacier Vault Lock(C)은 Glacier 전용 WORM 정책이며, S3 Standard나 다른 클래스에 저장된 객체에는 적용되지 않는다. 버킷 정책(D)은 관리자가 언제든 수정하거나 삭제할 수 있으므로 규정 준수 수준의 변경 불가성을 보장하지 않는다.
+**(A)** : Governance 모드는 대부분의 사용자가 삭제할 수 없지만 특별 IAM 권한(`s3:BypassGovernanceRetention`)을 가진 사용자는 보존을 우회하여 삭제할 수 있다. "어떤 사용자도 삭제 불가"라는 요구사항에 부합하지 않는다.
+
+**(B) 정답** : S3 Object Lock의 Compliance 모드는 root 사용자를 포함하여 누구도 보존 기간 동안 객체를 덮어쓰거나 삭제할 수 없다. 보존 모드와 기간을 단축할 수 없으므로 금융 규제 요구사항을 완벽히 충족한다.
+
+**(C)** : Glacier Vault Lock은 Glacier 전용 WORM 정책이다. S3 Standard나 다른 스토리지 클래스에 저장된 객체에는 적용되지 않는다.
+
+**(D)** : 버킷 정책은 관리자가 언제든 수정하거나 삭제할 수 있다. 규정 준수 수준의 변경 불가성을 보장하지 않는다.
 
 **핵심 개념:** S3 Object Lock - Compliance Mode
 
@@ -394,7 +420,13 @@ S3의 보안 관련 기능을 종합적으로 다루는 섹션이다. 서버 측
 | C | S3 버킷을 일시적으로 공개한다 |
 | D | 파트너를 위한 S3 Access Point를 생성한다 |
 
-**상세 풀이:** Pre-Signed URL을 PUT 작업용으로 생성하면 특정 S3 경로에 대한 임시 업로드 권한을 URL 형태로 부여할 수 있다. URL에는 만료 시간이 설정되어 있으며(CLI 최대 7일), URL을 받은 사람은 URL 생성자의 권한을 상속받아 IAM 사용자 없이도 파일을 업로드할 수 있다. 버킷 정책(A)은 파트너의 AWS 계정에 대한 영구적인 접근 권한을 부여하는 것으로 "임시" 접근이라는 요구사항에 맞지 않으며, 파트너가 AWS 계정이 없을 수도 있다. 버킷을 일시적으로 공개(C)하는 것은 심각한 보안 위험으로 모든 사람이 접근할 수 있게 되며 절대 권장되지 않는 방법이다. S3 Access Point(D)는 계정/부서 수준의 지속적인 접근 관리를 위한 기능이지 일회성 임시 접근에는 과도하다.
+**(A)** : 버킷 정책은 파트너의 AWS 계정에 대한 영구적인 접근 권한을 부여한다. "임시" 접근 요구사항에 맞지 않으며 파트너가 AWS 계정이 없을 수도 있다.
+
+**(B) 정답** : Pre-Signed URL을 PUT 작업용으로 생성하면 특정 S3 경로에 대한 임시 업로드 권한을 URL 형태로 부여할 수 있다. URL에는 만료 시간이 설정되어 있으며(CLI 최대 7일), 받은 사람은 IAM 사용자 없이도 파일을 업로드할 수 있다.
+
+**(C)** : 버킷을 일시적으로 공개하는 것은 모든 사람이 접근할 수 있게 하는 심각한 보안 위험이다. 절대 권장되지 않는 방법이다.
+
+**(D)** : S3 Access Point는 계정/부서 수준의 지속적인 접근 관리를 위한 기능이다. 일회성 임시 접근에는 과도하며 파트너가 AWS 계정 없이는 사용할 수 없다.
 
 **핵심 개념:** S3 Pre-Signed URLs
 
@@ -420,7 +452,13 @@ S3의 보안 관련 기능을 종합적으로 다루는 섹션이다. 서버 측
 | C | S3 Transfer Acceleration을 활성화한다 |
 | D | S3 버킷이 HTTPS 엔드포인트만 노출하도록 구성한다 |
 
-**상세 풀이:** 버킷 정책에서 `aws:SecureTransport` 조건 키를 사용하여 값이 `false`인(즉, HTTP를 사용하는) 요청을 Deny하면 HTTPS를 강제할 수 있다. 이렇게 하면 암호화되지 않은 HTTP 요청은 모두 거부되고 HTTPS 요청만 허용된다. SSE-S3(A)는 서버에 저장된 데이터의 저장 시 암호화(encryption at rest)를 제공하는 것이지, 클라이언트와 S3 간 네트워크 전송의 암호화(encryption in transit)와는 완전히 다른 개념이다. Transfer Acceleration(C)은 Edge Location을 통한 전송 속도 향상 기능이며 HTTPS 강제와는 무관하다. S3는 HTTP와 HTTPS 엔드포인트를 모두 제공하며 HTTP 엔드포인트만 개별적으로 비활성화하는 설정이 없으므로(D) 버킷 정책을 통해 HTTP 요청을 거부하는 것이 올바른 방법이다.
+**(A)** : SSE-S3는 서버에 저장된 데이터의 저장 시 암호화(encryption at rest)를 제공한다. 클라이언트와 S3 간 네트워크 전송 암호화(encryption in transit)와는 완전히 다른 개념이다.
+
+**(B) 정답** : 버킷 정책에서 `aws:SecureTransport` 조건 키를 사용하여 값이 `false`인(HTTP를 사용하는) 요청을 Deny하면 HTTPS를 강제할 수 있다. 암호화되지 않은 HTTP 요청은 모두 거부되고 HTTPS 요청만 허용된다.
+
+**(C)** : Transfer Acceleration은 Edge Location을 통한 전송 속도 향상 기능이다. HTTPS 강제와는 전혀 무관하다.
+
+**(D)** : S3는 HTTP와 HTTPS 엔드포인트를 모두 제공하며 HTTP 엔드포인트만 개별적으로 비활성화하는 설정이 없다. 버킷 정책을 통해 HTTP 요청을 거부하는 것이 올바른 방법이다.
 
 **핵심 개념:** S3 Encryption in Transit
 
@@ -446,7 +484,13 @@ S3의 보안 관련 기능을 종합적으로 다루는 섹션이다. 서버 측
 | C | 서로 다른 S3 권한을 가진 IAM 그룹 |
 | D | S3 Object Lambda Access Points |
 
-**상세 풀이:** S3 Access Points는 각 부서별로 별도의 DNS 이름과 접근 정책(Access Point Policy)을 가진 독립적인 진입점을 제공하여 권한 관리를 대폭 단순화한다. Finance는 `/finance/` 접두사에 접근하는 Access Point, Sales는 `/sales/` 접두사에 접근하는 Access Point를 각각 생성하고, 각 Access Point에 해당 부서만을 위한 간단한 정책을 설정하면 된다. 복잡한 단일 버킷 정책(A)에 여러 부서의 권한을 모두 담으면 정책이 커지고 관리가 어려워지며 실수의 가능성도 높아진다. IAM 그룹(C)으로도 가능하지만 S3 리소스 측면의 관리가 아닌 사용자 측면의 관리이므로, 접두사별 세밀한 접근 제어에는 Access Points가 더 직관적이고 관리가 쉽다. Object Lambda Access Points(D)는 객체를 검색할 때 Lambda 함수로 실시간 변환하는 기능이며 권한 관리 단순화와는 용도가 다르다.
+**(A)** : 단일 버킷 정책에 여러 부서의 권한을 모두 담으면 정책이 커지고 관리가 어려워지며 실수의 가능성도 높아진다. 권한 관리가 단순화되지 않는다.
+
+**(B) 정답** : S3 Access Points는 각 부서별로 별도의 DNS 이름과 Access Point Policy를 가진 독립적인 진입점을 제공하여 권한 관리를 대폭 단순화한다. Finance, Sales, Analytics 각각의 Access Point에 해당 부서만을 위한 간단한 정책을 설정하면 된다.
+
+**(C)** : IAM 그룹으로도 가능하지만 사용자 측면의 관리이므로 S3 리소스(접두사)별 세밀한 접근 제어에는 Access Points가 더 직관적이고 관리가 쉽다.
+
+**(D)** : Object Lambda Access Points는 객체를 검색할 때 Lambda 함수로 실시간 변환하는 기능이다. 권한 관리 단순화와는 용도가 다르다.
 
 **핵심 개념:** S3 Access Points
 
@@ -472,6 +516,12 @@ S3의 보안 관련 기능을 종합적으로 다루는 섹션이다. 서버 측
 | C | S3 복제를 사용하여 수정된 복사본을 생성한다 |
 | D | S3 Batch Operations를 사용하여 다른 버전을 생성한다 |
 
-**상세 풀이:** S3 Object Lambda를 사용하면 단일 S3 버킷 위에 여러 S3 Object Lambda Access Point를 생성하여 각 애플리케이션이 다른 Lambda 함수를 통해 실시간으로 변환된 객체를 받을 수 있다. 분석용 Access Point에는 PII 삭제 Lambda 함수를, 마케팅용 Access Point에는 외부 데이터베이스에서 데이터를 보강하는 Lambda 함수를 연결하면 된다. 원본 데이터는 하나의 버킷에만 저장되므로 데이터 중복이 없고 저장 비용이 절감된다. 별도 버킷(A)을 생성하면 데이터가 중복 저장되어 비용이 증가하고, 각 버킷의 데이터를 동기화해야 하는 관리 부담이 발생한다. S3 복제(C)도 별도 버킷에 복사본을 만드므로 하나의 버킷만 사용하라는 조건에 부합하지 않는다. Batch Operations(D)는 일괄 처리로 다른 버전을 생성할 수 있지만 실시간 변환이 아니며 변환된 복사본을 별도로 저장해야 한다.
+**(A)** : 별도 버킷을 생성하면 데이터가 중복 저장되어 비용이 증가하고 각 버킷의 데이터를 동기화해야 하는 관리 부담이 발생한다. "하나의 버킷만" 조건에도 부합하지 않는다.
+
+**(B) 정답** : S3 Object Lambda를 사용하면 단일 S3 버킷 위에 여러 Object Lambda Access Point를 생성하여 각 애플리케이션이 다른 Lambda 함수를 통해 실시간으로 변환된 객체를 받을 수 있다. PII 삭제, 데이터 보강 등을 애플리케이션별로 적용하면서 원본은 하나의 버킷에만 저장된다.
+
+**(C)** : S3 복제는 별도 버킷에 복사본을 만든다. 하나의 버킷만 사용하라는 조건에 부합하지 않는다.
+
+**(D)** : Batch Operations은 일괄 처리로 다른 버전을 생성할 수 있지만 실시간 변환이 아니다. 변환된 복사본을 별도로 저장해야 하므로 추가 스토리지 비용이 발생한다.
 
 **핵심 개념:** S3 Object Lambda

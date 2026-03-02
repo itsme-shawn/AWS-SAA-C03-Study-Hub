@@ -268,7 +268,13 @@
 | C | Warm Standby |
 | D | Multi Site / Hot Site |
 
-**상세 풀이:** 1분 미만의 RTO와 전체 프로덕션 환경 유지 비용을 감수할 수 있다는 조건에서 정답은 D의 Multi Site/Hot Site이다. 이 전략은 AWS와 온프레미스 양쪽에서 전체 프로덕션 규모가 active-active로 실행되어 가장 낮은 RTO(초~분)를 제공한다. C의 Warm Standby는 전체 시스템이 최소 크기로 실행되어 재해 시 스케일 업이 필요하므로 RTO가 분 단위이다. B의 Pilot Light는 핵심 시스템만 실행하고 나머지는 중지 상태이므로 EC2 시작 등의 시간이 필요하여 RTO가 분~시간이다. A의 Backup and Restore는 전체를 복원해야 하므로 RTO가 시간~일로 가장 높다.
+**(A)** : Backup and Restore는 전체를 복원해야 한다. RTO가 시간~일로 가장 높아 1분 미만 요구사항을 충족하지 못한다.
+
+**(B)** : Pilot Light는 핵심 시스템만 실행하고 나머지는 중지 상태이다. EC2 시작 등의 시간이 필요하여 RTO가 분~시간이다.
+
+**(C)** : Warm Standby는 전체 시스템이 최소 크기로 실행된다. 재해 시 스케일 업이 필요하므로 RTO가 분 단위이다.
+
+**(D) 정답** : Multi Site/Hot Site는 AWS와 온프레미스 양쪽에서 전체 프로덕션 규모가 active-active로 실행된다. 가장 낮은 RTO(초~분)를 제공하며 전체 프로덕션 환경 유지 비용을 감수해야 한다.
 
 **핵심 개념:** DR Strategy - Multi Site/Hot Site
 
@@ -294,7 +300,13 @@
 | C | AWS SCT만 사용 |
 | D | AWS Application Migration Service |
 
-**상세 풀이:** Oracle에서 Aurora PostgreSQL로의 마이그레이션은 서로 다른 DB 엔진 간의 이종(heterogeneous) 마이그레이션이므로 스키마 변환을 위한 SCT와 실제 데이터 마이그레이션을 위한 DMS가 모두 필요하여 정답은 B이다. A의 DMS만 사용하면 데이터는 이동할 수 있지만 Oracle 스키마를 PostgreSQL 형식으로 변환하는 과정이 빠지게 된다. C의 SCT만 사용하면 스키마 변환만 가능하고 실제 데이터 이동은 수행할 수 없다. D의 Application Migration Service(MGN)는 서버 전체를 리프트-앤-시프트 방식으로 마이그레이션하는 서비스이며, 데이터베이스 마이그레이션 전용 도구가 아니다.
+**(A)** : DMS만 사용하면 데이터는 이동할 수 있다. 그러나 Oracle 스키마를 PostgreSQL 형식으로 변환하는 과정이 빠지게 된다.
+
+**(B) 정답** : Oracle에서 Aurora PostgreSQL로의 마이그레이션은 이종(heterogeneous) 마이그레이션이다. 스키마 변환을 위한 SCT와 실제 데이터 마이그레이션을 위한 DMS가 모두 필요하다.
+
+**(C)** : SCT만 사용하면 스키마 변환만 가능하다. 실제 데이터 이동은 수행할 수 없다.
+
+**(D)** : Application Migration Service(MGN)는 서버 전체를 리프트-앤-시프트 방식으로 마이그레이션하는 서비스이다. 데이터베이스 마이그레이션 전용 도구가 아니다.
 
 **핵심 개념:** DMS + SCT (Heterogeneous Migration)
 
@@ -320,7 +332,13 @@
 | C | AWS KMS 키 순환 |
 | D | 백업 삭제에 대한 IAM deny 정책 |
 
-**상세 풀이:** root 사용자를 포함한 누구도 백업을 삭제할 수 없도록 하려면 AWS Backup Vault Lock이 필요하므로 정답은 B이다. Backup Vault Lock은 WORM(Write Once Read Many) 정책을 적용하여 백업 삭제와 보존 기간 변경을 완전히 방지하며, root 사용자도 이를 우회할 수 없다. A의 S3 Object Lock은 S3 객체에만 적용되며 AWS Backup 전체를 보호하는 것이 아니다. C의 KMS 키 순환은 암호화 키를 주기적으로 교체하는 보안 기능이지 백업 삭제 방지와는 관련이 없다. D의 IAM deny 정책은 IAM 사용자와 역할에 적용되지만, root 사용자에게는 적용되지 않으므로 요구사항을 충족하지 못한다.
+**(A)** : S3 Object Lock은 S3 객체에만 적용된다. AWS Backup 전체를 보호하는 것이 아니다.
+
+**(B) 정답** : AWS Backup Vault Lock은 WORM(Write Once Read Many) 정책을 적용하여 백업 삭제와 보존 기간 변경을 완전히 방지한다. root 사용자도 이를 우회할 수 없다.
+
+**(C)** : KMS 키 순환은 암호화 키를 주기적으로 교체하는 보안 기능이다. 백업 삭제 방지와 무관하다.
+
+**(D)** : IAM deny 정책은 IAM 사용자와 역할에 적용된다. root 사용자에게는 적용되지 않으므로 요구사항을 충족하지 못한다.
 
 **핵심 개념:** AWS Backup Vault Lock - WORM
 
@@ -346,7 +364,13 @@
 | C | AWS DMS를 연속 데이터 복제와 함께 사용한다 |
 | D | RDS MySQL Read Replica를 생성하고 승격한다 |
 
-**상세 풀이:** 양쪽 데이터베이스가 동시에 실행 중이며 최소 다운타임이 요구되는 시나리오에서는 DMS의 CDC(Change Data Capture)를 사용한 연속 데이터 복제가 가장 적합하므로 정답은 C이다. A의 Percona XtraBackup은 초기 데이터 로드에 사용할 수 있지만 마이그레이션 중 소스 DB에서 발생하는 변경사항을 연속으로 복제하지 못한다. B의 mysqldump는 데이터 내보내기/가져오기 방식으로 속도가 느리고 연속 복제를 지원하지 않아 다운타임이 길어진다. D의 Read Replica 생성 후 승격은 RDS MySQL에서 Aurora MySQL로 마이그레이션하는 방법이며, 온프레미스 MySQL에는 적용할 수 없다.
+**(A)** : Percona XtraBackup은 초기 데이터 로드에 사용할 수 있다. 그러나 마이그레이션 중 소스 DB에서 발생하는 변경사항을 연속으로 복제하지 못한다.
+
+**(B)** : mysqldump는 데이터 내보내기/가져오기 방식으로 속도가 느리다. 연속 복제를 지원하지 않아 다운타임이 길어진다.
+
+**(C) 정답** : AWS DMS의 CDC(Change Data Capture)를 사용한 연속 데이터 복제는 두 데이터베이스를 동시에 실행하면서 최소 다운타임으로 마이그레이션할 수 있는 가장 적합한 방법이다.
+
+**(D)** : Read Replica 생성 후 승격은 RDS MySQL에서 Aurora MySQL로 마이그레이션하는 방법이다. 온프레미스 MySQL에는 적용할 수 없다.
 
 **핵심 개념:** DMS - Continuous Data Replication (CDC)
 
@@ -372,7 +396,13 @@
 | C | AWS Snowball 사용 |
 | D | S3 Transfer Acceleration 사용 |
 
-**상세 풀이:** 100 Mbps 인터넷으로 200TB를 전송하는 경우 인터넷 경유 시 약 185일이 소요되며, Snowball을 사용하면 약 1주일(end-to-end)로 가장 빠르므로 정답은 C이다. A의 Direct Connect 1Gbps는 전송 자체에 약 18.5일이 걸리지만, 물리적 회선 설정에 1개월 이상의 리드타임이 필요하여 총 소요 시간이 더 길어진다. B의 Site-to-Site VPN은 100 Mbps 인터넷 대역폭에 제한되므로 약 185일이 소요된다. D의 S3 Transfer Acceleration도 인터넷 대역폭의 제한을 받아 근본적인 전송 속도 향상이 어렵다.
+**(A)** : Direct Connect 1Gbps는 전송 자체에 약 18.5일이 걸린다. 물리적 회선 설정에 1개월 이상의 리드타임이 필요하여 총 소요 시간이 더 길어진다.
+
+**(B)** : Site-to-Site VPN은 100 Mbps 인터넷 대역폭에 제한된다. 약 185일이 소요된다.
+
+**(C) 정답** : 100 Mbps 인터넷으로 200TB를 전송하면 인터넷 경유 시 약 185일이 소요된다. Snowball을 사용하면 약 1주일(end-to-end)로 가장 빠르다.
+
+**(D)** : S3 Transfer Acceleration도 인터넷 대역폭의 제한을 받는다. 200TB 대용량 전송에서 근본적인 속도 향상이 어렵다.
 
 **핵심 개념:** Large Data Transfer - Snowball
 
@@ -398,7 +428,13 @@
 | C | DMS Auto Scaling |
 | D | DMS Cross-Region 복제 |
 
-**상세 풀이:** DMS 복제 인스턴스의 고가용성을 위해서는 Multi-AZ 배포를 활성화해야 하므로 정답은 B이다. DMS Multi-AZ 배포는 다른 AZ에 동기식 대기 복제본을 프로비저닝하여 데이터 이중화, I/O 프리즈 제거, 레이턴시 스파이크 최소화를 제공한다. A의 DMS Read Replicas, C의 DMS Auto Scaling, D의 DMS Cross-Region replication은 DMS에 존재하지 않는 기능들이다.
+**(A)** : DMS Read Replicas는 DMS에 존재하지 않는 기능이다.
+
+**(B) 정답** : DMS Multi-AZ 배포는 다른 AZ에 동기식 대기 복제본을 프로비저닝한다. 데이터 이중화, I/O 프리즈 제거, 레이턴시 스파이크 최소화를 제공한다.
+
+**(C)** : DMS Auto Scaling은 DMS에 존재하지 않는 기능이다.
+
+**(D)** : DMS Cross-Region replication은 DMS에 존재하지 않는 기능이다.
 
 **핵심 개념:** DMS Multi-AZ Deployment
 
@@ -424,6 +460,12 @@
 | C | AWS Migration Hub |
 | D | AWS Application Migration Service |
 
-**상세 풀이:** 실행 중인 프로세스와 시스템 간 네트워크 연결 상세 정보가 필요하므로 Agent-based Discovery가 정답인 B이다. Agent-based Discovery는 서버에 에이전트를 설치하여 시스템 설정, 성능, 실행 중인 프로세스, 시스템 간 네트워크 연결 상세 정보를 수집할 수 있다. A의 Agentless Discovery(Connector)는 VM 인벤토리, 설정, 성능 이력만 제공하며 프로세스와 네트워크 연결 정보는 포함하지 않는다. C의 Migration Hub는 Discovery 결과를 시각화하고 마이그레이션 진행 상황을 추적하는 대시보드 도구이다. D의 Application Migration Service(MGN)는 실제 리프트-앤-시프트 마이그레이션을 수행하는 도구이며 정보 수집 도구가 아니다.
+**(A)** : Agentless Discovery(Connector)는 VM 인벤토리, 설정, 성능 이력만 제공한다. 실행 중인 프로세스와 네트워크 연결 정보는 포함하지 않는다.
+
+**(B) 정답** : Agent-based Discovery는 서버에 에이전트를 설치하여 시스템 설정, 성능, 실행 중인 프로세스, 시스템 간 네트워크 연결 상세 정보를 수집할 수 있다.
+
+**(C)** : Migration Hub는 Discovery 결과를 시각화하고 마이그레이션 진행 상황을 추적하는 대시보드 도구이다. 정보 수집 도구가 아니다.
+
+**(D)** : Application Migration Service(MGN)는 실제 리프트-앤-시프트 마이그레이션을 수행하는 도구이다. 정보 수집 도구가 아니다.
 
 **핵심 개념:** Application Discovery Service - Agent-based vs Agentless

@@ -158,7 +158,13 @@ AWS Well-Architected Framework, Trusted Advisor, 참조 아키텍처 등 SAA-C03
 | C | AWS Config |
 | D | AWS CloudFormation |
 
-**상세 풀이:** 6개 Pillar에 대한 아키텍처 검토가 필요하므로 정답은 B의 AWS Well-Architected Tool이다. 이 도구는 무료이며, 워크로드를 선택하고 질문에 답변하면 6개 Pillar(Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization, Sustainability) 각각에 대한 조언과 보고서를 받을 수 있다. A의 Trusted Advisor는 계정 수준의 권장사항(비용, 보안, 서비스 한도 등)을 제공하지만 Well-Architected Framework의 구조화된 워크로드별 검토는 제공하지 않는다. C의 AWS Config는 AWS 리소스 구성의 규정 준수 여부를 추적하는 서비스이다. D의 CloudFormation은 IaC(Infrastructure as Code) 도구로 인프라를 선언적으로 정의하는 용도이다.
+**(A)** : Trusted Advisor는 계정 수준의 권장사항(비용, 보안, 서비스 한도 등)을 제공한다. Well-Architected Framework의 구조화된 워크로드별 검토는 제공하지 않는다.
+
+**(B) 정답** : AWS Well-Architected Tool은 무료이며 6개 Pillar(Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization, Sustainability) 각각에 대한 조언과 보고서를 받을 수 있다.
+
+**(C)** : AWS Config는 AWS 리소스 구성의 규정 준수 여부를 추적하는 서비스이다. 아키텍처 검토 도구가 아니다.
+
+**(D)** : CloudFormation은 IaC(Infrastructure as Code) 도구이다. 인프라를 선언적으로 정의하는 용도이며 아키텍처 검토 도구가 아니다.
 
 **핵심 개념:** AWS Well-Architected Tool
 
@@ -184,7 +190,13 @@ AWS Well-Architected Framework, Trusted Advisor, 참조 아키텍처 등 SAA-C03
 | C | Sustainability (지속 가능성) |
 | D | Cost Optimization (비용 최적화) |
 
-**상세 풀이:** Well-Architected Framework의 6 Pillars는 Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization, Sustainability이므로 Scalability는 포함되지 않아 정답은 B이다. Scalability(확장성)는 독립적인 Pillar가 아니라 Performance Efficiency(수요에 맞는 리소스 자동 조정)와 Reliability(수요 충족, 분산 설계) Pillar의 하위 개념에 해당한다. A의 Operational Excellence, C의 Sustainability, D의 Cost Optimization은 모두 정식 Pillar이다.
+**(A)** : Operational Excellence(운영 우수성)는 Well-Architected Framework의 정식 Pillar이다.
+
+**(B) 정답** : Scalability(확장성)는 독립적인 Pillar가 아니다. Performance Efficiency와 Reliability Pillar의 하위 개념에 해당한다. 6 Pillars는 Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization, Sustainability이다.
+
+**(C)** : Sustainability(지속 가능성)는 Well-Architected Framework의 정식 Pillar이다.
+
+**(D)** : Cost Optimization(비용 최적화)는 Well-Architected Framework의 정식 Pillar이다.
 
 **핵심 개념:** Well-Architected Framework 6 Pillars
 
@@ -210,7 +222,13 @@ AWS Well-Architected Framework, Trusted Advisor, 참조 아키텍처 등 SAA-C03
 | C | AWS Cost Explorer |
 | D | AWS Config |
 
-**상세 풀이:** 계정 수준의 권장사항에 프로그래밍 방식으로 접근하려면 Business/Enterprise Support Plan에서 AWS Support API를 통한 Trusted Advisor가 필요하므로 정답은 B이다. Trusted Advisor는 비용 최적화, 성능, 보안, 내결함성, 서비스 한도, 운영 우수성 등 6가지 카테고리의 권장사항을 제공하며, Business/Enterprise Support Plan에서만 전체 체크와 AWS Support API를 통한 프로그래밍 접근이 가능하다. A의 Well-Architected Tool은 워크로드별로 6 Pillar에 대한 구조화된 검토를 수행하는 도구이지 계정 수준의 자동 권장사항은 아니다. C의 Cost Explorer는 비용 시각화와 분석만 다루며 보안이나 서비스 한도는 포함하지 않는다. D의 Config는 AWS 리소스 구성의 변경 추적 및 규정 준수 평가용이다.
+**(A)** : Well-Architected Tool은 워크로드별로 6 Pillar에 대한 구조화된 검토를 수행하는 도구이다. 계정 수준의 자동 권장사항이 아니다.
+
+**(B) 정답** : Trusted Advisor는 비용 최적화, 성능, 보안, 내결함성, 서비스 한도, 운영 우수성 등 6가지 카테고리의 권장사항을 제공한다. Business/Enterprise Support Plan에서 전체 체크와 AWS Support API를 통한 프로그래밍 접근이 가능하다.
+
+**(C)** : Cost Explorer는 비용 시각화와 분석만 다룬다. 보안이나 서비스 한도는 포함하지 않는다.
+
+**(D)** : Config는 AWS 리소스 구성의 변경 추적 및 규정 준수 평가용이다. 비용, 성능, 서비스 한도 등 종합적인 권장사항을 제공하지 않는다.
 
 **핵심 개념:** Trusted Advisor - Business/Enterprise Support Plan
 
@@ -236,7 +254,13 @@ AWS Well-Architected Framework, Trusted Advisor, 참조 아키텍처 등 SAA-C03
 | C | 용량 추측을 중단하고 Auto Scaling을 사용한다 |
 | D | 성능을 보장하기 위해 가장 큰 인스턴스 타입을 사용한다 |
 
-**상세 풀이:** Well-Architected Framework의 일반 원칙 중 핵심은 "Stop guessing your capacity needs"이므로 정답은 C이다. Auto Scaling을 활용하여 실제 수요에 따라 리소스를 자동으로 조정함으로써 비용 효율성과 성능을 동시에 달성해야 한다. A의 과도한 프로비저닝은 피크 시에만 필요한 리소스를 항상 유지하므로 비용 낭비이며 Cost Optimization 원칙에 반한다. B의 수동 스케일링은 트래픽 변화에 대한 대응이 느리고 운영 부담이 크며 Operational Excellence 원칙에 반한다. D의 가장 큰 인스턴스 사용은 불필요한 비용 낭비이며 실제 워크로드 특성에 맞는 적절한 리소스를 선택해야 한다는 Performance Efficiency 원칙에도 반한다.
+**(A)** : 과도한 프로비저닝은 피크 시에만 필요한 리소스를 항상 유지한다. 비용 낭비이며 Cost Optimization 원칙에 반한다.
+
+**(B)** : 수동 스케일링은 트래픽 변화에 대한 대응이 느리고 운영 부담이 크다. Operational Excellence 원칙에 반한다.
+
+**(C) 정답** : Well-Architected Framework의 일반 원칙 중 핵심은 "Stop guessing your capacity needs"이다. Auto Scaling을 활용하여 실제 수요에 따라 리소스를 자동으로 조정해야 한다.
+
+**(D)** : 가장 큰 인스턴스 사용은 불필요한 비용 낭비이다. 실제 워크로드 특성에 맞는 적절한 리소스를 선택해야 한다는 Performance Efficiency 원칙에 반한다.
 
 **핵심 개념:** Well-Architected Framework - General Principles
 
@@ -262,6 +286,12 @@ AWS Well-Architected Framework, Trusted Advisor, 참조 아키텍처 등 SAA-C03
 | C | AWS GuardDuty |
 | D | AWS Well-Architected Tool |
 
-**상세 풀이:** 설치 불필요하며 6가지 카테고리(비용 최적화, 성능, 보안, 내결함성, 서비스 한도, 운영 우수성)에 대한 계정 수준 권장사항을 제공하는 서비스는 Trusted Advisor이므로 정답은 B이다. Trusted Advisor는 별도의 에이전트나 소프트웨어 설치 없이 AWS 계정을 자동으로 분석한다. A의 Inspector는 EC2 인스턴스와 컨테이너의 소프트웨어 취약성 및 네트워크 노출을 자동 스캔하는 보안 서비스이다. C의 GuardDuty는 AWS 계정과 워크로드에 대한 지능형 위협 탐지 서비스로, 보안 영역에만 초점을 맞춘다. D의 Well-Architected Tool은 특정 워크로드에 대해 6 Pillar를 기반으로 구조화된 검토를 수행하는 도구이며, 계정 수준의 자동 권장사항과는 다르다.
+**(A)** : Inspector는 EC2 인스턴스와 컨테이너의 소프트웨어 취약성 및 네트워크 노출을 자동 스캔하는 보안 서비스이다. 6가지 카테고리의 종합적인 권장사항이 아니다.
+
+**(B) 정답** : Trusted Advisor는 별도의 에이전트나 소프트웨어 설치 없이 AWS 계정을 자동으로 분석한다. 비용 최적화, 성능, 보안, 내결함성, 서비스 한도, 운영 우수성 등 6가지 카테고리의 권장사항을 제공한다.
+
+**(C)** : GuardDuty는 AWS 계정과 워크로드에 대한 지능형 위협 탐지 서비스이다. 보안 영역에만 초점을 맞춘다.
+
+**(D)** : Well-Architected Tool은 특정 워크로드에 대해 6 Pillar를 기반으로 구조화된 검토를 수행하는 도구이다. 계정 수준의 자동 권장사항과는 다르다.
 
 **핵심 개념:** AWS Trusted Advisor

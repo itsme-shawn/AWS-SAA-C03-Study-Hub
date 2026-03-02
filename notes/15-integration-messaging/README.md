@@ -270,7 +270,13 @@
 | C | 3개의 Consumer가 있는 Amazon Kinesis Data Streams 사용 |
 | D | 3개의 큐 Consumer가 있는 Amazon MQ 사용 |
 
-**상세 풀이:** SNS + SQS Fan Out 패턴을 사용하면 SNS 토픽에 한 번 publish하고 구독된 3개의 SQS 큐 모두 메시지를 수신하므로 정답은 B이다. A의 SQS 하나에 3개 Consumer를 두면 각 메시지가 하나의 Consumer에만 전달되므로 "각 서비스가 모든 주문을 수신"하는 요구사항을 충족하지 못한다. C의 Kinesis도 가능하지만 이 단순한 메시지 전달 시나리오에서는 SNS+SQS가 더 적합하고 비용 효율적이다. D의 Amazon MQ는 확장성이 SQS/SNS보다 낮으며 레거시 프로토콜 마이그레이션용이다.
+**(A)** : SQS 하나에 3개 Consumer를 두면 각 메시지가 하나의 Consumer에만 전달된다. "각 서비스가 모든 주문을 수신"하는 요구사항을 충족하지 못한다.
+
+**(B) 정답** : SNS + SQS Fan Out 패턴을 사용하면 SNS 토픽에 한 번 publish하고 구독된 3개의 SQS 큐 모두 메시지를 수신한다. 각 서비스가 독립적으로 모든 주문을 처리할 수 있다.
+
+**(C)** : Kinesis도 가능하지만 이 단순한 메시지 전달 시나리오에서는 SNS+SQS가 더 적합하고 비용 효율적이다.
+
+**(D)** : Amazon MQ는 확장성이 SQS/SNS보다 낮으며 레거시 프로토콜 마이그레이션용이다. 새 아키텍처에서 굳이 선택할 이유가 없다.
 
 **핵심 개념:** SNS + SQS Fan Out 패턴
 
@@ -294,7 +300,13 @@
 | C | Amazon Kinesis Data Streams |
 | D | Amazon Data Firehose |
 
-**상세 풀이:** Kinesis Data Streams는 최대 365일 데이터 보존, 실시간 처리, 데이터 재처리(replay) 기능을 제공하므로 정답은 C이다. A의 SQS는 메시지가 소비 후 삭제되어 replay가 불가능하다. B의 SNS는 데이터를 저장하지 않으므로 7일 보존과 replay 요구사항을 충족하지 못한다. D의 Data Firehose는 데이터를 저장하지 않으며 replay를 지원하지 않는 Near real-time 로드 서비스이다.
+**(A)** : SQS는 메시지가 소비 후 삭제된다. replay가 불가능하며 7일 보존 요구사항도 충족하지 못한다.
+
+**(B)** : SNS는 데이터를 저장하지 않는 Pub/Sub 서비스이다. 7일 보존과 replay 요구사항을 충족하지 못한다.
+
+**(C) 정답** : Kinesis Data Streams는 최대 365일 데이터 보존, 실시간 처리, 데이터 재처리(replay) 기능을 제공한다. 여러 Consumer가 독립적으로 같은 데이터를 소비하고 재처리할 수 있다.
+
+**(D)** : Data Firehose는 데이터를 저장하지 않으며 replay를 지원하지 않는 Near real-time 로드 서비스이다.
 
 **핵심 개념:** Kinesis Data Streams, 데이터 보존, Replay
 
@@ -318,7 +330,13 @@
 | C | Amazon Kinesis |
 | D | Amazon MQ |
 
-**상세 풀이:** Amazon MQ는 AMQP, MQTT, STOMP 등 오픈 프로토콜을 지원하는 관리형 메시지 브로커로, 기존 온프레미스 RabbitMQ 애플리케이션을 코드 변경 없이 마이그레이션할 수 있으므로 정답은 D이다. A의 SQS와 B의 SNS는 AWS 고유 프로토콜/API를 사용하므로 AMQP를 지원하지 않아 코드 재작성이 필요하다. C의 Kinesis는 실시간 스트리밍 서비스로 메시지 큐 대체 용도가 아니며 AMQP를 지원하지 않는다.
+**(A)** : SQS는 AWS 고유 API를 사용하므로 AMQP를 지원하지 않는다. 코드 재작성이 필요하다.
+
+**(B)** : SNS도 AWS 고유 프로토콜을 사용하므로 AMQP를 지원하지 않는다. 코드 재작성이 필요하다.
+
+**(C)** : Kinesis는 실시간 스트리밍 서비스이다. 메시지 큐 대체 용도가 아니며 AMQP를 지원하지 않는다.
+
+**(D) 정답** : Amazon MQ는 AMQP, MQTT, STOMP 등 오픈 프로토콜을 지원하는 관리형 메시지 브로커이다. 기존 온프레미스 RabbitMQ 애플리케이션을 코드 변경 없이 마이그레이션할 수 있다.
 
 **핵심 개념:** Amazon MQ, 오픈 프로토콜 마이그레이션
 
@@ -342,7 +360,13 @@
 | C | EC2 기반 Consumer 애플리케이션이 있는 Amazon SQS |
 | D | S3 구독이 있는 Amazon SNS |
 
-**상세 풀이:** Amazon Data Firehose는 완전 관리형으로 S3, Redshift, OpenSearch 등에 스트리밍 데이터를 로드할 수 있으며, Lambda를 사용한 커스텀 데이터 변환(CSV->JSON)을 지원하고, 자동 스케일링과 서버리스이므로 정답은 B이다. A의 Kinesis Data Streams + Lambda는 Consumer 코드를 직접 관리해야 하므로 "완전 관리형" 요구사항에 부합하지 않는다. C의 SQS + EC2는 서버 관리가 필요하다. D의 SNS는 S3에 직접 스트리밍 데이터를 로드하는 기능이 없다.
+**(A)** : Kinesis Data Streams + Lambda는 Consumer 코드를 직접 관리해야 한다. "완전 관리형" 요구사항에 부합하지 않는다.
+
+**(B) 정답** : Amazon Data Firehose는 완전 관리형으로 S3, Redshift, OpenSearch 등에 스트리밍 데이터를 로드할 수 있다. Lambda를 사용한 커스텀 데이터 변환(CSV->JSON)을 지원하고 자동 스케일링이 가능한 서버리스 서비스이다.
+
+**(C)** : SQS + EC2는 서버 관리가 필요하다. "자동 스케일링 완전 관리형" 요구사항에 부합하지 않는다.
+
+**(D)** : SNS는 S3에 직접 스트리밍 데이터를 로드하는 기능이 없다. 스트리밍 데이터 수집 파이프라인에 적합하지 않다.
 
 **핵심 개념:** Amazon Data Firehose, Lambda 변환, 서버리스
 
@@ -366,7 +390,13 @@
 | C | SQS FIFO Queue로 마이그레이션 |
 | D | SQS 대신 SNS 사용 |
 
-**상세 풀이:** SQS FIFO 큐는 exactly-once 전송(Deduplication ID로 중복 제거)과 순서 보장을 제공하므로 정답은 C이다. A의 Long Polling은 빈 응답의 API 호출을 줄이는 기능으로 중복 처리나 순서 보장과는 무관하다. B의 Visibility Timeout 증가는 중복 가능성을 줄일 수 있지만 완전히 제거하지 못하며 순서도 보장하지 않는다. D의 SNS는 Pub/Sub 모델로 큐 기능이 아니며 exactly-once 처리를 보장하지 않는다.
+**(A)** : Long Polling은 빈 응답의 API 호출을 줄이는 기능이다. 중복 처리나 순서 보장과는 전혀 무관하다.
+
+**(B)** : Visibility Timeout 증가는 중복 가능성을 줄일 수 있지만 완전히 제거하지 못한다. 순서도 보장하지 않는다.
+
+**(C) 정답** : SQS FIFO 큐는 exactly-once 전송(Deduplication ID로 중복 제거)과 선입선출 순서 보장을 제공한다. 두 요구사항을 모두 충족하는 유일한 방법이다.
+
+**(D)** : SNS는 Pub/Sub 모델로 큐 기능이 아니다. exactly-once 처리나 순서 보장을 제공하지 않는다.
 
 **핵심 개념:** SQS FIFO, Exactly-once, 순서 보장
 
@@ -390,7 +420,13 @@
 | C | SQS FIFO Queue로 전환 |
 | D | 배치 크기를 1개 메시지로 줄이기 |
 
-**상세 풀이:** Long Polling은 큐에 메시지가 없을 때 메시지 도착을 대기(1-20초)하므로 빈 응답(empty receive)에 대한 API 호출 수를 크게 줄여 정답은 B이다. 20초가 권장값이다. A의 Visibility Timeout은 메시지가 다른 Consumer에게 보이지 않는 시간 설정으로 API 호출 수와는 무관하다. C의 FIFO Queue 전환은 순서 보장/중복 제거를 위한 것이며 빈 API 호출 문제를 해결하지 않는다. D의 배치 크기를 1로 줄이면 오히려 API 호출이 증가한다.
+**(A)** : Visibility Timeout은 메시지가 다른 Consumer에게 보이지 않는 시간 설정이다. API 호출 수와는 무관하다.
+
+**(B) 정답** : Long Polling은 큐에 메시지가 없을 때 메시지 도착을 대기(1-20초)하므로 빈 응답에 대한 API 호출 수를 크게 줄인다. WaitTimeSeconds를 20초로 설정하는 것이 권장값이다.
+
+**(C)** : FIFO Queue 전환은 순서 보장/중복 제거를 위한 것이다. 빈 API 호출 문제를 해결하지 않는다.
+
+**(D)** : 배치 크기를 1로 줄이면 오히려 API 호출이 증가한다. 빈 API 호출 문제와 반대 방향이다.
 
 **핵심 개념:** SQS Long Polling, WaitTimeSeconds
 
@@ -414,6 +450,12 @@
 | C | S3에 의해 트리거되는 Lambda 함수를 사용하여 3개의 큐에 메시지 전송 |
 | D | Amazon EventBridge를 사용하여 S3 이벤트를 3개의 큐로 라우팅 |
 
-**상세 풀이:** 동일 이벤트 타입+프리픽스 조합에 S3 이벤트 규칙은 하나만 가능하므로, SNS 토픽으로 보낸 후 3개의 SQS 큐를 구독시키는 Fan Out 패턴이 가장 적합하여 정답은 B이다. A는 동일 이벤트 타입+프리픽스 조합에 3개 규칙을 만들 수 없으므로 기술적으로 불가능하다. C의 Lambda 방식도 가능하지만 Lambda 코드를 관리해야 하는 추가 복잡성이 있다. D의 EventBridge도 가능하지만 SNS Fan Out이 이 패턴에서 가장 일반적이고 단순한 솔루션이다.
+**(A)** : 동일 이벤트 타입+프리픽스 조합에는 S3 이벤트 규칙을 하나만 만들 수 있다. 3개 규칙 생성은 기술적으로 불가능하다.
+
+**(B) 정답** : S3 이벤트를 SNS 토픽으로 보내고 3개의 SQS 큐를 구독시키는 Fan Out 패턴이 가장 적합하다. S3의 단일 이벤트 규칙 제한을 우회하면서 3개 서비스 모두에 이벤트를 전달할 수 있다.
+
+**(C)** : Lambda 방식도 가능하지만 Lambda 코드를 관리해야 하는 추가 복잡성이 있다. SNS Fan Out이 더 단순하다.
+
+**(D)** : EventBridge도 가능하지만 이 단순한 Fan Out 패턴에서는 SNS Fan Out이 가장 일반적이고 단순한 솔루션이다.
 
 **핵심 개념:** S3 Events + SNS Fan Out

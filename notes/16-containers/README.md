@@ -235,7 +235,13 @@ AWS에서 컨테이너를 실행하기 위한 서비스들(ECS, EKS, Fargate, EC
 | C | 컨테이너의 환경 변수에 AWS 자격증명 저장 |
 | D | AWS Secrets Manager를 사용하여 액세스 키 저장 |
 
-**상세 풀이:** ECS Task Role은 태스크 정의에서 설정되며, 각 태스크에 필요한 최소 권한을 부여할 수 있으므로 정답은 B이다. A의 EC2 Instance Profile은 ECS Agent용으로 설계된 것이며, 모든 태스크에 동일한 권한이 적용되어 최소 권한 원칙에 위배된다. C의 환경변수에 자격증명을 저장하는 것은 보안 모범 사례에 위배되며 자격증명 유출 위험이 있다. D의 Secrets Manager에 액세스 키를 저장하는 것도 IAM 역할 대신 장기 자격증명을 사용하는 것이므로 비권장된다.
+**(A)** : EC2 Instance Profile은 ECS Agent용으로 설계된 것이다. 모든 태스크에 동일한 권한이 적용되어 최소 권한 원칙에 위배된다.
+
+**(B) 정답** : ECS Task Role은 태스크 정의에서 설정되며 각 태스크에 필요한 최소 권한만 부여할 수 있다. 태스크별로 다른 권한을 설정할 수 있어 최소 권한 원칙을 준수하는 가장 좋은 방법이다.
+
+**(C)** : 환경변수에 자격증명을 저장하는 것은 보안 모범 사례에 위배된다. 자격증명 유출 위험이 있다.
+
+**(D)** : Secrets Manager에 액세스 키를 저장하는 것도 IAM 역할 대신 장기 자격증명을 사용하는 것이다. 임시 자격증명을 자동 발급하는 IAM Role이 더 안전하다.
 
 **핵심 개념:** ECS Task Role vs EC2 Instance Profile
 
@@ -259,7 +265,13 @@ AWS에서 컨테이너를 실행하기 위한 서비스들(ECS, EKS, Fargate, EC
 | C | EC2 시작 유형의 Amazon EKS와 Amazon S3 |
 | D | EC2 시작 유형의 Amazon ECS와 인스턴스 스토어 |
 
-**상세 풀이:** Fargate는 서버리스 컨테이너이며, EFS는 Multi-AZ 공유 스토리지를 제공하여 Fargate + EFS = 서버리스 + 영속 스토리지 조합이므로 정답은 B이다. A의 EBS는 단일 AZ에 종속되므로 다른 가용 영역에서의 공유가 불가능하다. C의 S3는 파일 시스템으로 마운트할 수 없으며, EC2 시작 유형은 서버 관리가 필요하다. D의 Instance Store는 임시 스토리지이고, EC2 시작 유형은 서버 관리가 필요하므로 서버리스 요구사항을 충족하지 못한다.
+**(A)** : EBS는 단일 AZ에 종속된다. 서로 다른 가용 영역의 여러 컨테이너 간 공유가 불가능하다.
+
+**(B) 정답** : Fargate는 서버리스 컨테이너이며 EFS는 Multi-AZ 공유 스토리지를 제공한다. Fargate + EFS = 서버리스 + 영속 공유 스토리지 조합으로 두 요구사항을 모두 충족한다.
+
+**(C)** : S3는 파일 시스템으로 마운트할 수 없다. 또한 EC2 시작 유형은 서버 관리가 필요하다.
+
+**(D)** : Instance Store는 임시 스토리지로 영속적이지 않다. EC2 시작 유형도 서버 관리가 필요하여 서버리스 요구사항을 충족하지 못한다.
 
 **핵심 개념:** Fargate + EFS = 서버리스 영속 스토리지
 
@@ -283,7 +295,13 @@ AWS에서 컨테이너를 실행하기 위한 서비스들(ECS, EKS, Fargate, EC
 | C | Amazon EKS |
 | D | AWS App Runner |
 
-**상세 풀이:** Amazon EKS는 관리형 Kubernetes 서비스로, 기존 Kubernetes 설정과 도구를 최소한의 변경으로 AWS에서 사용할 수 있으므로 정답은 C이다. A와 B의 ECS는 AWS 고유 API를 사용하므로 기존 Kubernetes 워크로드(YAML 매니페스트, kubectl, Helm 등)를 재작성해야 한다. D의 App Runner는 단순한 웹 앱/API 배포용 서비스로 Kubernetes 호환 기능이 없다.
+**(A)** : ECS(EC2 시작 유형)는 AWS 고유 API를 사용한다. 기존 Kubernetes 워크로드(YAML 매니페스트, kubectl, Helm 등)를 재작성해야 한다.
+
+**(B)** : ECS(Fargate 시작 유형)도 AWS 고유 API를 사용한다. Kubernetes 설정과 도구를 그대로 활용할 수 없다.
+
+**(C) 정답** : Amazon EKS는 관리형 Kubernetes 서비스이다. 기존 Kubernetes 설정과 도구를 최소한의 변경으로 AWS에서 사용할 수 있어 마이그레이션에 가장 적합하다.
+
+**(D)** : App Runner는 단순한 웹 앱/API 배포용 서비스이다. Kubernetes 호환 기능이 없다.
 
 **핵심 개념:** Amazon EKS, Kubernetes 마이그레이션
 
@@ -307,7 +325,13 @@ AWS에서 컨테이너를 실행하기 위한 서비스들(ECS, EKS, Fargate, EC
 | C | Fargate 시작 유형으로 전환 |
 | D | ECS 서비스의 원하는 태스크 수 증가 |
 
-**상세 풀이:** ECS Cluster Capacity Provider는 ASG와 연동하여 ECS 태스크에 필요한 CPU/RAM이 부족할 때 자동으로 EC2 인스턴스를 추가하므로 정답은 B이다. A의 수동 추가는 자동화되지 않아 운영 오버헤드가 크다. C의 Fargate 전환도 해결책이 될 수 있지만 "EC2 Launch Type을 유지"하는 맥락에서 Capacity Provider가 가장 적합하다. D의 태스크 수 증가는 태스크만 늘리고 실제 EC2 인스턴스를 추가하지 않아 대기 문제가 해결되지 않는다.
+**(A)** : 수동으로 EC2 인스턴스를 추가하는 것은 자동화되지 않는다. 운영 오버헤드가 크고 피크 시간에 즉각적인 대응이 불가능하다.
+
+**(B) 정답** : ECS Cluster Capacity Provider는 ASG와 연동하여 ECS 태스크에 필요한 CPU/RAM이 부족할 때 자동으로 EC2 인스턴스를 추가한다. EC2 Launch Type을 유지하면서 자동 확장이 가능한 권장 솔루션이다.
+
+**(C)** : Fargate 전환도 해결책이 될 수 있지만 기존 EC2 Launch Type 설정과 비용 구조가 바뀐다. Capacity Provider가 더 직접적인 해결책이다.
+
+**(D)** : 태스크 수 증가는 태스크만 늘리고 실제 EC2 인스턴스를 추가하지 않는다. 인스턴스 부족으로 인한 대기 문제가 해결되지 않는다.
 
 **핵심 개념:** ECS Cluster Capacity Provider
 
@@ -331,7 +355,13 @@ AWS에서 컨테이너를 실행하기 위한 서비스들(ECS, EKS, Fargate, EC
 | C | AWS App Runner |
 | D | Docker가 설치된 Amazon EC2 |
 
-**상세 풀이:** AWS App Runner는 인프라 경험 없이도 소스 코드나 컨테이너 이미지에서 웹 앱/API를 가장 간단하게 배포할 수 있는 서비스이므로 정답은 C이다. 자동 빌드, 배포, 스케일링, 로드 밸런서, 암호화를 모두 자동으로 제공한다. A의 Fargate도 서버리스이지만 ECS 클러스터, 태스크 정의, 서비스 구성 등 더 많은 설정이 필요하다. B의 EKS는 Kubernetes 지식이 필요하여 인프라 경험이 없는 팀에 적합하지 않다. D의 EC2에 Docker를 설치하는 것은 가장 많은 관리가 필요하다.
+**(A)** : Fargate도 서버리스이지만 ECS 클러스터, 태스크 정의, 서비스 구성 등 더 많은 설정이 필요하다. 인프라 경험이 없는 팀에는 복잡하다.
+
+**(B)** : EKS는 Kubernetes 지식이 필요하다. 인프라 경험이 없는 팀에 적합하지 않다.
+
+**(C) 정답** : AWS App Runner는 인프라 경험 없이도 소스 코드나 컨테이너 이미지에서 웹 앱/API를 가장 간단하게 배포할 수 있다. 자동 빌드, 배포, 스케일링, 로드 밸런서, 암호화를 모두 자동으로 제공한다.
+
+**(D)** : EC2에 Docker를 설치하는 것은 가장 많은 관리가 필요하다. 서버 관리, 스케일링, 패치 등을 모두 직접 해야 한다.
 
 **핵심 개념:** AWS App Runner, 간단한 컨테이너 배포
 
@@ -355,7 +385,13 @@ AWS에서 컨테이너를 실행하기 위한 서비스들(ECS, EKS, Fargate, EC
 | C | VPC 보안 그룹 규칙 |
 | D | ECR 이미지 스캐닝 구성 |
 
-**상세 풀이:** ECR 접근은 IAM으로 제어되므로, 권한 오류(authorization error)가 발생하면 EC2 Instance Profile 또는 ECS Task Role에 ECR 관련 IAM 정책(ecr:GetAuthorizationToken, ecr:BatchGetImage 등)이 올바르게 설정되어 있는지 확인해야 하므로 정답은 B이다. A의 암호화 설정은 인가 오류와 무관하다. C의 보안 그룹 규칙은 네트워크 레벨 접근 제어이며 인가 오류가 아닌 연결 타임아웃을 유발한다. D의 이미지 스캐닝 구성도 이미지 Pull 인가와는 무관하다.
+**(A)** : 암호화 설정은 인가 오류와 무관하다. 이미지가 암호화되어 있어도 적절한 권한이 있으면 Pull할 수 있다.
+
+**(B) 정답** : ECR 접근은 IAM으로 제어된다. 권한 오류가 발생하면 EC2 Instance Profile 또는 ECS Task Role에 ECR 관련 IAM 정책(ecr:GetAuthorizationToken, ecr:BatchGetImage 등)이 올바르게 설정되어 있는지 확인해야 한다.
+
+**(C)** : 보안 그룹 규칙은 네트워크 레벨 접근 제어이다. 인가 오류가 아닌 연결 타임아웃을 유발한다.
+
+**(D)** : 이미지 스캐닝 구성은 이미지의 취약점을 검사하는 기능이다. 이미지 Pull 인가와는 무관하다.
 
 **핵심 개념:** ECR IAM 접근 제어
 
@@ -379,6 +415,12 @@ AWS에서 컨테이너를 실행하기 위한 서비스들(ECS, EKS, Fargate, EC
 | C | AWS App2Container (A2C) |
 | D | AWS Migration Hub |
 
-**상세 풀이:** AWS App2Container(A2C)는 Java/.NET 웹 앱을 Docker 컨테이너로 마이그레이션하는 CLI 도구로, 코드 변경 없이 앱 분석, 컨테이너화, CloudFormation 템플릿 생성, CI/CD 파이프라인 설정, ECR/ECS/EKS/App Runner 배포를 지원하므로 정답은 C이다. A의 App Runner는 이미 컨테이너화된 앱이나 소스 코드를 배포하는 서비스로 레거시 앱 마이그레이션 도구가 아니다. B의 Copilot CLI는 ECS 기반 앱 빌드/배포를 돕지만 기존 레거시 앱의 컨테이너화 분석 기능이 없다. D의 Migration Hub는 마이그레이션 진행 상황을 추적하는 대시보드이지 컨테이너화 도구가 아니다.
+**(A)** : App Runner는 이미 컨테이너화된 앱이나 소스 코드를 배포하는 서비스이다. 레거시 앱을 컨테이너로 변환하는 마이그레이션 도구가 아니다.
+
+**(B)** : Copilot CLI는 ECS 기반 앱 빌드/배포를 돕는 도구이다. 기존 레거시 앱의 컨테이너화 분석 기능이 없다.
+
+**(C) 정답** : AWS App2Container(A2C)는 Java/.NET 웹 앱을 Docker 컨테이너로 마이그레이션하는 CLI 도구이다. 코드 변경 없이 앱 분석, 컨테이너화, CloudFormation 템플릿 생성, CI/CD 파이프라인 설정, ECR/ECS/EKS/App Runner 배포를 지원한다.
+
+**(D)** : Migration Hub는 마이그레이션 진행 상황을 추적하는 대시보드이다. 컨테이너화 도구가 아니다.
 
 **핵심 개념:** AWS App2Container, 레거시 앱 컨테이너화

@@ -387,7 +387,13 @@ AWS의 모니터링, 감사, 성능 관리 서비스를 다룬다. CloudWatch, C
 | C | CloudWatch Logs Insights로 메모리 데이터 쿼리 |
 | D | CloudWatch Container Insights 활성화 |
 
-**상세 풀이:** 기본 EC2 CloudWatch 메트릭에는 RAM/메모리가 포함되지 않으며, CloudWatch Unified Agent를 설치하면 RAM, Disk, Processes, Swap Space 등 추가 시스템 메트릭을 수집할 수 있다. A) Detailed monitoring은 기본 메트릭(CPU, Network 등)의 수집 간격을 5분에서 1분으로 높일 뿐 새로운 메트릭(RAM)을 추가하지 않는다. C) Logs Insights는 로그 데이터를 쿼리하는 엔진이지 메트릭을 수집하는 도구가 아니다. D) Container Insights는 ECS/EKS/Fargate 컨테이너 모니터링용으로 일반 EC2 인스턴스의 메모리 수집과 관련이 없다.
+**(A)** : Detailed monitoring은 기본 메트릭(CPU, Network 등)의 수집 간격을 5분에서 1분으로 높일 뿐이다. 새로운 메트릭(RAM)을 추가하지 않는다.
+
+**(B) 정답** : 기본 EC2 CloudWatch 메트릭에는 RAM/메모리가 포함되지 않는다. CloudWatch Unified Agent를 설치하면 RAM, Disk, Processes, Swap Space 등 추가 시스템 메트릭을 수집할 수 있다.
+
+**(C)** : Logs Insights는 로그 데이터를 쿼리하는 엔진이다. 메트릭을 수집하는 도구가 아니다.
+
+**(D)** : Container Insights는 ECS/EKS/Fargate 컨테이너 모니터링용이다. 일반 EC2 인스턴스의 메모리 수집과 관련이 없다.
 
 **핵심 개념:** CloudWatch Unified Agent
 
@@ -411,7 +417,13 @@ AWS의 모니터링, 감사, 성능 관리 서비스를 다룬다. CloudWatch, C
 | C | Amazon EventBridge 규칙과 함께 CloudTrail |
 | D | VPC Flow Logs 분석 |
 
-**상세 풀이:** 보안 그룹 수정은 API 호출(AuthorizeSecurityGroupIngress 등)이므로 CloudTrail이 기록하고, EventBridge 규칙을 설정하면 해당 API 호출 이벤트 발생 시 즉시 SNS 등으로 알림을 보낼 수 있다. A) Config도 구성 변경을 추적하지만 변경 기록/규정 준수 평가에 초점이 있으며, 즉각적인 API 호출 알림에는 CloudTrail + EventBridge가 더 적합하다. B) CloudWatch는 성능 메트릭 모니터링용이며 보안 그룹 수정은 메트릭이 아니라 API 호출이다. D) VPC Flow Logs는 네트워크 트래픽을 기록하는 것이지 보안 그룹 구성 변경을 추적하지 않는다.
+**(A)** : Config도 구성 변경을 추적하지만 변경 기록/규정 준수 평가에 초점이 있다. 즉각적인 API 호출 알림에는 CloudTrail + EventBridge가 더 적합하다.
+
+**(B)** : CloudWatch는 성능 메트릭 모니터링용이다. 보안 그룹 수정은 메트릭이 아니라 API 호출이므로 CloudWatch Alarms로 감지할 수 없다.
+
+**(C) 정답** : 보안 그룹 수정은 API 호출(AuthorizeSecurityGroupIngress 등)이므로 CloudTrail이 기록한다. EventBridge 규칙을 설정하면 해당 API 호출 이벤트 발생 시 즉시 SNS 등으로 알림을 보낼 수 있다.
+
+**(D)** : VPC Flow Logs는 네트워크 트래픽을 기록하는 것이다. 보안 그룹 구성 변경 추적과 무관하다.
 
 **핵심 개념:** CloudTrail + EventBridge
 
@@ -435,7 +447,13 @@ AWS의 모니터링, 감사, 성능 관리 서비스를 다룬다. CloudWatch, C
 | C | CloudWatch Logs Insights 쿼리를 S3로 전송 |
 | D | CloudWatch Metric Streams |
 
-**상세 풀이:** Subscription Filter를 Kinesis Data Firehose와 함께 사용하면 근실시간(약 1분)으로 로그를 S3에 전송할 수 있어 수분 내 데이터 사용이 가능하다. A) CreateExportTask는 로그를 S3로 내보내는 데 최대 12시간이 소요되므로 실시간/근실시간 요구사항을 충족하지 못한다. C) Logs Insights는 로그 데이터를 검색/분석하는 쿼리 엔진이지 S3로 전송하는 도구가 아니다. D) Metric Streams는 CloudWatch 메트릭을 스트리밍하는 것이지 로그를 전송하는 것이 아니다.
+**(A)** : CreateExportTask는 로그를 S3로 내보내는 데 최대 12시간이 소요된다. 수분 내 데이터 사용 요구사항을 충족하지 못한다.
+
+**(B) 정답** : Subscription Filter를 Kinesis Data Firehose와 함께 사용하면 근실시간(약 1분)으로 로그를 S3에 전송할 수 있다. 수분 내 데이터 사용이 가능하다.
+
+**(C)** : Logs Insights는 로그 데이터를 검색/분석하는 쿼리 엔진이다. 로그를 S3로 전송하는 도구가 아니다.
+
+**(D)** : Metric Streams는 CloudWatch 메트릭을 스트리밍하는 것이다. 로그를 전송하는 것이 아니다.
 
 **핵심 개념:** CloudWatch Logs Subscriptions / S3 Export
 
@@ -459,7 +477,13 @@ AWS의 모니터링, 감사, 성능 관리 서비스를 다룬다. CloudWatch, C
 | C | 교정을 위해 CloudWatch Alarms로 Lambda 트리거 |
 | D | CloudTrail을 사용하여 변경 탐지 및 되돌리기 |
 
-**상세 풀이:** AWS Config Rules는 비준수 리소스를 탐지하지만 작업을 차단(deny)하지 않으며, 대신 SSM Automation Documents를 사용하여 비준수 리소스를 자동 교정(remediation)할 수 있고 교정 재시도(Remediation Retries)도 설정 가능하다. A) Config Rules는 deny 기능이 없다. Config은 사후 평가 도구이며 리소스 생성/변경을 차단하지 않는다. C) CloudWatch Alarms로 Lambda를 트리거하는 것은 가능하지만 Config의 내장 교정 기능(SSM Automation)에 비해 최적화되지 않은 방법이다. D) CloudTrail은 API 호출 감사 서비스이지 변경을 자동 되돌리는 기능이 없다.
+**(A)** : Config Rules는 deny 기능이 없다. Config은 사후 평가 도구이며 리소스 생성/변경을 차단하지 않는다.
+
+**(B) 정답** : AWS Config Rules는 비준수 리소스를 탐지하지만 작업을 차단(deny)하지 않는다. 대신 SSM Automation Documents를 사용하여 비준수 리소스를 자동 교정할 수 있으며 교정 재시도(Remediation Retries)도 설정 가능하다.
+
+**(C)** : CloudWatch Alarms로 Lambda를 트리거하는 것은 가능하지만 Config의 내장 교정 기능(SSM Automation)에 비해 최적화되지 않은 방법이다.
+
+**(D)** : CloudTrail은 API 호출 감사 서비스이다. 변경을 자동으로 되돌리는 기능이 없다.
 
 **핵심 개념:** AWS Config Rules / Remediations
 
@@ -483,7 +507,13 @@ AWS의 모니터링, 감사, 성능 관리 서비스를 다룬다. CloudWatch, C
 | C | AWS Config Rules |
 | D | CloudWatch Contributor Insights |
 
-**상세 풀이:** CloudTrail Insights는 정상적인 Management Events 패턴을 학습하여 베이스라인을 만들고, Write Events에서 비정상적 활동(IAM 작업 급증, 리소스 프로비저닝 오류, 서비스 한도 초과 등)을 탐지하며, 이상 징후는 CloudTrail 콘솔, S3, EventBridge로 전송된다. A) CloudWatch Application Insights는 애플리케이션(Java, .NET 등)의 자동 대시보드와 트러블슈팅 서비스로 API 활동 분석이 아니다. C) AWS Config Rules는 리소스 구성 규정 준수 평가 도구로 비정상 API 패턴 탐지와 무관하다. D) CloudWatch Contributor Insights는 로그 데이터에서 Top-N 기여자를 식별하는 것이지 비정상 API 활동 탐지가 아니다.
+**(A)** : CloudWatch Application Insights는 애플리케이션(Java, .NET 등)의 자동 대시보드와 트러블슈팅 서비스이다. API 활동 분석과 무관하다.
+
+**(B) 정답** : CloudTrail Insights는 정상적인 Management Events 패턴을 학습하여 베이스라인을 만들고 Write Events에서 비정상적 활동(IAM 작업 급증, 리소스 프로비저닝 오류, 서비스 한도 초과 등)을 탐지한다. 이상 징후는 CloudTrail 콘솔, S3, EventBridge로 전송된다.
+
+**(C)** : AWS Config Rules는 리소스 구성 규정 준수 평가 도구이다. 비정상 API 패턴 탐지와 무관하다.
+
+**(D)** : CloudWatch Contributor Insights는 로그 데이터에서 Top-N 기여자를 식별하는 분석 도구이다. 비정상 API 활동 탐지가 아니다.
 
 **핵심 개념:** CloudTrail Insights
 
@@ -507,7 +537,13 @@ AWS의 모니터링, 감사, 성능 관리 서비스를 다룬다. CloudWatch, C
 | C | 각 계정에서 공유 S3 버킷으로 로그 내보내기 |
 | D | AWS Config aggregator 사용 |
 
-**상세 풀이:** CloudWatch Logs Subscription Filter를 사용하면 여러 계정과 리전의 로그를 근실시간으로 Kinesis Data Streams 또는 Kinesis Data Firehose로 집계할 수 있으며, Cross-Account Subscription으로 다른 계정의 리소스에 로그를 전송하고 최종적으로 S3에 저장할 수 있다. A) 크로스 계정 대시보드는 시각화를 위한 것이지 로그 데이터를 물리적으로 집계하지 않는다. C) S3 Export(CreateExportTask)는 최대 12시간이 소요되어 비실시간이며 중앙 집중식 분석에 비효율적이다. D) AWS Config aggregator는 리소스 구성 변경을 집계하는 것이지 CloudWatch 로그를 집계하는 것이 아니다.
+**(A)** : 크로스 계정 대시보드는 시각화를 위한 것이다. 로그 데이터를 물리적으로 집계하지 않는다.
+
+**(B) 정답** : CloudWatch Logs Subscription Filter를 사용하면 여러 계정과 리전의 로그를 근실시간으로 Kinesis Data Streams 또는 Kinesis Data Firehose로 집계할 수 있다. Cross-Account Subscription으로 다른 계정의 리소스에 로그를 전송하고 최종적으로 S3에 저장할 수 있다.
+
+**(C)** : S3 Export(CreateExportTask)는 최대 12시간이 소요되어 비실시간이다. 중앙 집중식 분석에 비효율적이다.
+
+**(D)** : AWS Config aggregator는 리소스 구성 변경을 집계하는 것이다. CloudWatch 로그를 집계하는 것이 아니다.
 
 **핵심 개념:** CloudWatch Logs Subscriptions / Multi-Account Aggregation
 
@@ -531,7 +567,13 @@ AWS의 모니터링, 감사, 성능 관리 서비스를 다룬다. CloudWatch, C
 | C | AWS Config |
 | D | Amazon EventBridge |
 
-**상세 풀이:** AWS Config은 리소스의 구성 변경을 추적하고 규정 준수 규칙을 평가하는 데 사용되며, SSL 인증서가 항상 할당되어 있는지 확인하는 것은 규정 준수(compliance) 검사로 Config Rules의 영역이다. A) CloudWatch는 성능 메트릭 모니터링(연결 수, 에러율 등)용이지 구성 변경 추적이 아니다. B) CloudTrail은 "누가" API를 호출하여 LB를 변경했는지 감사하는 것이지 구성이 올바른지 평가하는 것이 아니다. D) EventBridge는 이벤트 기반 자동화 서비스로 구성 규정 준수 평가 기능이 아니다.
+**(A)** : CloudWatch는 성능 메트릭 모니터링(연결 수, 에러율 등)용이다. 구성 변경 추적과 규정 준수 평가가 아니다.
+
+**(B)** : CloudTrail은 "누가" API를 호출하여 LB를 변경했는지 감사하는 것이다. 구성이 올바른지(SSL 인증서 존재 여부) 평가하는 것이 아니다.
+
+**(C) 정답** : AWS Config은 리소스의 구성 변경을 추적하고 규정 준수 규칙을 평가한다. SSL 인증서가 항상 할당되어 있는지 확인하는 것은 규정 준수(compliance) 검사로 Config Rules의 영역이다.
+
+**(D)** : EventBridge는 이벤트 기반 자동화 서비스이다. 구성 규정 준수 평가 기능이 아니다.
 
 **핵심 개념:** CloudWatch vs CloudTrail vs Config
 
@@ -555,6 +597,12 @@ AWS의 모니터링, 감사, 성능 관리 서비스를 다룬다. CloudWatch, C
 | C | CloudWatch Contributor Insights |
 | D | CloudWatch Anomaly Detection |
 
-**상세 풀이:** CloudWatch Composite Alarms는 여러 개별 알람의 상태를 AND/OR 조건으로 모니터링하는 복합 알람을 생성하며, CPU 알람과 IOPS 알람을 AND 조건으로 묶으면 둘 다 ALARM 상태일 때만 알림이 트리거되어 알람 노이즈를 줄일 수 있다. A) Metrics Math는 여러 메트릭을 수학적으로 결합하여 새 메트릭을 만드는 기능이지 알람 조건을 조합하는 것이 아니다. C) Contributor Insights는 로그 데이터에서 Top-N 기여자를 식별하는 분석 도구로 알람과 무관하다. D) Anomaly Detection은 메트릭의 비정상 패턴을 자동 탐지하는 기능이지 여러 알람을 조합하는 것이 아니다.
+**(A)** : Metrics Math는 여러 메트릭을 수학적으로 결합하여 새 메트릭을 만드는 기능이다. 알람 조건을 AND/OR로 조합하는 것이 아니다.
+
+**(B) 정답** : CloudWatch Composite Alarms는 여러 개별 알람의 상태를 AND/OR 조건으로 모니터링하는 복합 알람을 생성한다. CPU 알람과 IOPS 알람을 AND 조건으로 묶으면 둘 다 ALARM 상태일 때만 알림이 트리거되어 알람 노이즈를 줄일 수 있다.
+
+**(C)** : Contributor Insights는 로그 데이터에서 Top-N 기여자를 식별하는 분석 도구이다. 알람 조합과 무관하다.
+
+**(D)** : Anomaly Detection은 메트릭의 비정상 패턴을 자동 탐지하는 기능이다. 여러 알람을 AND/OR로 조합하는 것이 아니다.
 
 **핵심 개념:** CloudWatch Composite Alarms

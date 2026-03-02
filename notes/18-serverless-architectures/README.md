@@ -213,7 +213,13 @@ S3 -> trigger -> Lambda (썸네일 생성) -> S3 (썸네일 저장)
 | C | 모든 S3 업로드를 프록시하는 API Gateway와 Lambda |
 | D | S3 접근을 위한 CloudFront 서명된 URL |
 
-**상세 풀이:** Cognito User Pools로 사용자 인증 후, Cognito Identity Pools에서 임시 AWS 자격증명을 발급받아 user_id 기반으로 S3 폴더 접근 권한을 제한할 수 있으며, 이것이 AWS의 권장 서버리스 패턴이므로 정답은 B이다. A의 IAM 사용자는 모바일 앱에서 수많은 사용자에 대해 확장이 불가능하고 장기 자격증명 관리 부담이 크다. C의 Lambda 프록시는 불필요한 복잡성을 추가하고 모든 업로드 트래픽이 Lambda를 거쳐야 하므로 비효율적이다. D의 CloudFront 서명된 URL은 S3 직접 업로드가 아닌 콘텐츠 다운로드 접근 제어에 사용된다.
+**(A)** : IAM 사용자는 모바일 앱에서 수많은 사용자에 대해 확장이 불가능하다. 장기 자격증명 관리 부담도 크다.
+
+**(B) 정답** : Cognito User Pools로 사용자 인증 후 Cognito Identity Pools에서 임시 AWS 자격증명을 발급받아 user_id 기반으로 S3 폴더 접근 권한을 제한할 수 있다. AWS의 권장 서버리스 패턴이다.
+
+**(C)** : Lambda 프록시는 불필요한 복잡성을 추가한다. 모든 업로드 트래픽이 Lambda를 거쳐야 하므로 비효율적이다.
+
+**(D)** : CloudFront 서명된 URL은 S3 직접 업로드가 아닌 콘텐츠 다운로드 접근 제어에 사용된다. 업로드 요구사항에 맞지 않는다.
 
 **핵심 개념:** Cognito User Pools + Identity Pools, S3 직접 접근
 
@@ -239,7 +245,15 @@ S3 -> trigger -> Lambda (썸네일 생성) -> S3 (썸네일 저장)
 | D | S3를 캐싱 레이어로 사용 |
 | E | DynamoDB 읽기 용량 단위 증가 |
 
-**상세 풀이:** DAX(B)는 DynamoDB 전용 인메모리 캐시로 마이크로초 지연을 제공하여 DB 읽기 부하를 줄이고, API Gateway 응답 캐싱(C)은 API 레벨에서 반복 요청을 캐싱하므로 정답은 B와 C이다. 두 레이어의 캐싱을 함께 사용하면 최적의 읽기 성능을 얻을 수 있다. A의 ElastiCache Redis도 캐싱을 제공하지만 DAX가 DynamoDB와 직접 통합되어 코드 변경 없이 사용 가능하므로 더 적합하다. D의 S3는 객체 스토리지이지 캐싱 레이어가 아니다. E의 RCU 증가는 캐싱보다 비용이 높고 지연 시간을 근본적으로 줄이지 못한다.
+**(A)** : ElastiCache Redis도 캐싱을 제공하지만 DynamoDB API와 직접 통합되지 않아 코드 변경이 필요하다. DAX가 더 적합하다.
+
+**(B) 정답** : DAX는 DynamoDB 전용 인메모리 캐시로 마이크로초 지연을 제공한다. DB 읽기 부하를 줄이고 기존 DynamoDB API와 호환되어 코드 변경이 불필요하다.
+
+**(C) 정답** : API Gateway 응답 캐싱은 API 레벨에서 반복 요청을 캐싱한다. DB까지 도달하는 요청 수 자체를 줄여준다.
+
+**(D)** : S3는 객체 스토리지이지 캐싱 레이어가 아니다. API 응답 캐싱에 적합하지 않다.
+
+**(E)** : RCU 증가는 캐싱보다 비용이 높고 지연 시간을 근본적으로 줄이지 못한다.
 
 **핵심 개념:** DAX + API Gateway 캐싱 (이중 캐싱)
 
@@ -263,7 +277,13 @@ S3 -> trigger -> Lambda (썸네일 생성) -> S3 (썸네일 저장)
 | C | 여러 리전으로의 S3 Cross-Region Replication |
 | D | 여러 리전의 S3 버킷을 가리키는 Global Accelerator |
 
-**상세 풀이:** CloudFront + S3 + OAC 조합은 서버리스 정적 웹사이트의 표준 패턴이므로 정답은 B이다. OAC를 설정하고 S3 버킷 정책에서 CloudFront 배포에서만 접근을 허용하면, S3 버킷은 퍼블릭이 아니면서 전 세계 Edge Location에서 저지연으로 콘텐츠를 제공할 수 있다. A는 S3 버킷이 퍼블릭이 되므로 "공개 접근 불가" 요구사항에 위배된다. C의 Cross-Region Replication은 리전별로 S3 접근을 분산할 수 있지만 글로벌 저지연 제공과 CDN 기능이 없다. D의 Global Accelerator는 S3 정적 웹사이트 배포용이 아니다.
+**(A)** : S3 퍼블릭 접근을 허용하면 S3 버킷이 퍼블릭이 된다. "공개 접근 불가" 요구사항에 위배된다.
+
+**(B) 정답** : CloudFront + S3 + OAC 조합은 서버리스 정적 웹사이트의 표준 패턴이다. OAC를 설정하면 S3 버킷은 퍼블릭이 아니면서 전 세계 Edge Location에서 저지연으로 콘텐츠를 제공할 수 있다.
+
+**(C)** : Cross-Region Replication은 리전별로 S3 접근을 분산할 수 있지만 글로벌 저지연 CDN 기능이 없다.
+
+**(D)** : Global Accelerator는 S3 정적 웹사이트 배포용이 아니다. HTTP/비HTTP 애플리케이션 가속화용이다.
 
 **핵심 개념:** CloudFront + S3 + OAC, 정적 웹사이트
 
@@ -287,7 +307,13 @@ S3 -> trigger -> Lambda (썸네일 생성) -> S3 (썸네일 저장)
 | C | 더 빠른 다운로드를 위해 S3 Transfer Acceleration 사용 |
 | D | 릴리스 시 더 큰 EC2 인스턴스로 스케일 업 |
 
-**상세 풀이:** CloudFront를 기존 앱 앞에 배치하면 정적 소프트웨어 업데이트 파일을 Edge에서 캐싱하여 EC2 부하를 크게 줄일 수 있으므로 정답은 B이다. 앱 변경이 필요 없으며, ASG 스케일링 감소로 EC2 비용이 절감되고 네트워크 대역폭 비용도 절약된다. A의 Lambda로 마이그레이션은 앱 재작성이 필요하므로 "앱 수정 없이" 요구사항에 위배된다. C의 S3 Transfer Acceleration은 S3 업로드 가속화 기능이며 EC2 기반 앱에는 적용되지 않는다. D의 스케일 업은 비용을 절감하는 것이 아니라 오히려 증가시킨다.
+**(A)** : Lambda로 마이그레이션은 앱 재작성이 필요하다. "앱 수정 없이" 요구사항에 위배된다.
+
+**(B) 정답** : CloudFront를 기존 앱 앞에 배치하면 정적 소프트웨어 업데이트 파일을 Edge에서 캐싱하여 EC2 부하를 크게 줄인다. 앱 변경이 필요 없으며 ASG 스케일링 감소로 비용이 절감된다.
+
+**(C)** : S3 Transfer Acceleration은 S3 업로드 가속화 기능이다. EC2 기반 앱에는 적용되지 않는다.
+
+**(D)** : 스케일 업은 비용을 절감하는 것이 아니라 오히려 증가시킨다. 문제의 방향과 반대이다.
 
 **핵심 개념:** CloudFront 오프로딩, 기존 앱 변경 없이 비용 최적화
 
@@ -311,7 +337,13 @@ S3 -> trigger -> Lambda (썸네일 생성) -> S3 (썸네일 저장)
 | C | 사용자 등록 후 SNS 알림을 트리거하는 API Gateway 사용 |
 | D | 새 사용자를 찾기 위해 DynamoDB 테이블을 주기적으로 스캔하는 Lambda 함수 예약 |
 
-**상세 풀이:** DynamoDB Streams는 테이블의 아이템 변경(생성/수정/삭제)을 순서대로 캡처하며, 새 사용자 등록(INSERT) 이벤트가 Stream에 기록되면 Lambda 함수가 트리거되어 Amazon SES를 통해 환영 이메일을 보낼 수 있으므로 정답은 B이다. 이것이 완전 서버리스 이벤트 기반 패턴이다. A의 CloudWatch Event는 DynamoDB 테이블의 데이터 변경을 직접 감지하지 못한다(관리 이벤트만 감지). C의 API Gateway 방식은 등록 로직과 이메일 전송이 결합되어 디커플링 원칙에 위배된다. D의 주기적 스캔은 비효율적이고 실시간이 아니며 RCU를 소비한다.
+**(A)** : CloudWatch Event는 DynamoDB 테이블의 데이터 변경을 직접 감지하지 못한다. 관리 이벤트(API 호출 등)만 감지할 수 있다.
+
+**(B) 정답** : DynamoDB Streams는 테이블의 아이템 변경(생성/수정/삭제)을 순서대로 캡처한다. 새 사용자 등록(INSERT) 이벤트가 Stream에 기록되면 Lambda 함수가 트리거되어 Amazon SES를 통해 환영 이메일을 보낼 수 있다. 완전 서버리스 이벤트 기반 패턴이다.
+
+**(C)** : API Gateway 방식은 등록 로직과 이메일 전송이 결합되어 디커플링 원칙에 위배된다. DynamoDB Streams가 더 느슨한 결합을 제공한다.
+
+**(D)** : 주기적 스캔은 비효율적이고 실시간이 아니다. 불필요하게 RCU를 소비한다.
 
 **핵심 개념:** DynamoDB Streams -> Lambda -> SES
 
@@ -335,7 +367,13 @@ S3 -> trigger -> Lambda (썸네일 생성) -> S3 (썸네일 저장)
 | C | Service A가 Kinesis Data Stream에 쓰고 Service B와 Service C가 소비 |
 | D | Service A가 S3에 데이터 저장, Service B와 Service C가 S3에서 새 파일 폴링 |
 
-**상세 풀이:** SNS + SQS Fan Out 패턴을 사용하면 Service A가 SNS에 한 번 publish하고, Service B와 C가 각각의 SQS 큐를 통해 독립적으로 메시지를 처리할 수 있으므로 정답은 B이다. 완전 디커플링되어 서비스 추가/제거가 용이하고, SQS의 재시도/영속성도 활용 가능하다. A의 직접 연결은 서비스 간 결합도가 높아 하나의 서비스 장애가 전체에 영향을 미친다. C의 Kinesis는 실시간 스트리밍에 더 적합하며 이 단순한 메시지 전달 시나리오에는 과도하다. D의 S3 폴링은 실시간이 아니고 비효율적이다.
+**(A)** : Service A가 직접 연결하면 서비스 간 결합도가 높아진다. 하나의 서비스 장애가 전체에 영향을 미친다.
+
+**(B) 정답** : SNS + SQS Fan Out 패턴을 사용하면 Service A가 SNS에 한 번 publish하고 Service B와 C가 각각의 SQS 큐를 통해 독립적으로 처리한다. 완전 디커플링으로 서비스 추가/제거가 용이하고 SQS의 재시도/영속성도 활용할 수 있다.
+
+**(C)** : Kinesis는 실시간 스트리밍에 더 적합하다. 이 단순한 메시지 전달 시나리오에는 과도한 솔루션이다.
+
+**(D)** : S3 폴링은 실시간이 아니고 비효율적이다. 이벤트 기반 아키텍처와 맞지 않는다.
 
 **핵심 개념:** 마이크로서비스, SNS + SQS Fan Out
 
@@ -359,6 +397,12 @@ S3 -> trigger -> Lambda (썸네일 생성) -> S3 (썸네일 저장)
 | C | CloudWatch Events -> Step Functions -> Lambda |
 | D | S3 이벤트 알림 -> SNS -> 이메일 알림 |
 
-**상세 풀이:** S3 이벤트로 Lambda 함수를 트리거하여 썸네일을 생성하는 것이 표준 서버리스 패턴이므로 정답은 A이다. 30초 실행 시간은 Lambda의 15분 제한 내이며, Lambda는 자동으로 수천 개의 동시 호출로 스케일링된다. 생성된 썸네일은 다시 S3에 저장하고, 필요 시 SQS/SNS로 알림을 보낼 수 있다. B의 SQS + EC2는 서버리스가 아니며 EC2 인스턴스 관리가 필요하다. C의 CloudWatch Events + Step Functions는 단순 이미지 처리에 불필요한 복잡성을 추가한다. D의 SNS + 이메일은 알림 전송만 하며 실제 썸네일 생성 처리가 없다.
+**(A) 정답** : S3 이벤트로 Lambda 함수를 트리거하여 썸네일을 생성하는 것이 표준 서버리스 패턴이다. 30초 실행 시간은 Lambda의 15분 제한 내이며 Lambda는 자동으로 수천 개의 동시 호출로 스케일링된다.
+
+**(B)** : SQS + EC2는 서버리스가 아니다. EC2 인스턴스 관리가 필요하여 서버리스 요구사항을 충족하지 못한다.
+
+**(C)** : CloudWatch Events + Step Functions는 단순 이미지 처리에 불필요한 복잡성을 추가한다. 오버엔지니어링이다.
+
+**(D)** : SNS + 이메일은 알림 전송만 한다. 실제 썸네일 생성 처리가 없어 요구사항을 충족하지 못한다.
 
 **핵심 개념:** S3 이벤트 -> Lambda, 이미지 처리

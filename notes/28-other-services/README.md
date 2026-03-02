@@ -273,7 +273,13 @@
 | C | AWS Organizations Service Control Policies를 사용하여 CloudFormation이 S3 버킷을 생성하도록 허용한다 |
 | D | CloudFormation을 통해서만 S3 버킷 생성을 허용하는 IAM 정책을 생성한다 |
 
-**상세 풀이:** 개발자에게 직접 S3 권한 없이 CloudFormation을 통해 S3 버킷을 생성하게 하려면 CloudFormation Service Role을 사용해야 하므로 정답은 B이다. Service Role에 S3 생성 권한을 부여하고, 개발자에게는 `iam:PassRole`(Service Role을 CloudFormation에 전달하는 권한)과 `cloudformation:*`(스택 생성/관리 권한)만 주면 최소 권한 원칙을 구현할 수 있다. A는 개발자에게 S3 전체 권한을 직접 부여하므로 요구사항에 반한다. C의 SCP는 조직 수준의 권한 경계를 설정하는 것이며 이 시나리오의 세밀한 권한 위임에 적합하지 않다. D의 조건부 IAM 정책은 CloudFormation 서비스를 통한 호출만 허용하는 것이 복잡하며 Service Role이 이미 이 목적으로 설계되어 있다.
+**(A)** : 개발자에게 S3 전체 권한을 직접 부여하는 것은 요구사항에 반한다. 개발자가 CloudFormation 없이도 직접 S3 버킷을 생성할 수 있게 된다.
+
+**(B) 정답** : CloudFormation Service Role에 S3 생성 권한을 부여하고 개발자에게는 `iam:PassRole`과 `cloudformation:*`만 주면 최소 권한 원칙을 구현할 수 있다. 개발자는 S3 직접 접근 없이 CloudFormation을 통해 S3 버킷을 생성할 수 있다.
+
+**(C)** : SCP는 조직 수준의 권한 경계를 설정하는 것이다. 이 시나리오의 세밀한 권한 위임에 적합하지 않다.
+
+**(D)** : 조건부 IAM 정책으로 CloudFormation을 통한 호출만 허용하는 것은 복잡하다. Service Role이 이미 이 목적으로 설계되어 있다.
 
 **핵심 개념:** CloudFormation Service Role
 
@@ -299,7 +305,13 @@
 | C | EC2 Instance Connect를 사용한다 |
 | D | AWS Direct Connect를 사용한다 |
 
-**상세 풀이:** SSH 키 없이, 포트 22를 열지 않으면서 보안 셸 접속과 세션 로그 저장이 필요하므로 정답은 B의 SSM Session Manager이다. Session Manager는 SSH, Bastion Host, SSH 키, 포트 22 없이 EC2 인스턴스에 보안 셸 접속을 제공하며, 세션 로그를 S3 또는 CloudWatch Logs에 저장하여 감사 요구사항을 충족한다. A의 Bastion Host는 퍼블릭 서브넷에 배치하여 SSH 키와 포트 22를 사용해야 하므로 요구사항에 반한다. C의 EC2 Instance Connect는 SSH 키 관리를 간소화하지만 여전히 포트 22가 필요하다. D의 Direct Connect는 온프레미스와 AWS 간의 전용 네트워크 연결 서비스이며 인스턴스 접속 솔루션이 아니다.
+**(A)** : Bastion Host는 퍼블릭 서브넷에 배치하여 SSH 키와 포트 22를 사용해야 한다. 요구사항에 반한다.
+
+**(B) 정답** : SSM Session Manager는 SSH 키, Bastion Host, 포트 22 없이 EC2 인스턴스에 보안 셸 접속을 제공한다. 세션 로그를 S3 또는 CloudWatch Logs에 저장하여 감사 요구사항을 충족한다.
+
+**(C)** : EC2 Instance Connect는 SSH 키 관리를 간소화하지만 여전히 포트 22가 필요하다.
+
+**(D)** : Direct Connect는 온프레미스와 AWS 간의 전용 네트워크 연결 서비스이다. 인스턴스 접속 솔루션이 아니다.
 
 **핵심 개념:** SSM Session Manager
 
@@ -325,7 +337,13 @@
 | C | Spot Instances가 있는 AWS Batch |
 | D | Amazon EC2 On-Demand 인스턴스 |
 
-**상세 풀이:** 3시간 소요되는 Docker 기반 배치 작업을 비용 효율적으로 실행하려면 AWS Batch와 Spot Instances의 조합이 최적이므로 정답은 C이다. A의 Lambda는 15분 시간 제한이 있어 3시간 작업을 실행할 수 없다. B의 ECS Fargate도 기술적으로 가능하지만, AWS Batch가 배치 작업 관리(작업 큐, 스케줄링, 리소스 최적화)에 더 특화되어 있고 Spot Instance를 효율적으로 활용한다. D의 EC2 On-Demand 인스턴스는 항상 정가로 과금되어 비용이 가장 높으며, Spot Instance 대비 최대 90% 더 비싸다.
+**(A)** : Lambda는 15분 시간 제한이 있다. 3시간 작업을 실행할 수 없다.
+
+**(B)** : ECS Fargate도 기술적으로 가능하지만 AWS Batch가 배치 작업 관리(작업 큐, 스케줄링, 리소스 최적화)에 더 특화되어 있다. Spot Instance를 더 효율적으로 활용한다.
+
+**(C) 정답** : AWS Batch와 Spot Instances의 조합은 3시간 소요되는 Docker 기반 배치 작업을 비용 효율적으로 실행하는 최적의 방법이다.
+
+**(D)** : EC2 On-Demand 인스턴스는 항상 정가로 과금되어 비용이 가장 높다. Spot Instance 대비 최대 90% 더 비싸다.
 
 **핵심 개념:** AWS Batch vs Lambda
 
@@ -351,7 +369,13 @@
 | C | Amazon Pinpoint |
 | D | Amazon SQS |
 
-**상세 풀이:** 다채널(이메일, SMS, 푸시) 마케팅 캠페인을 고객 세그먼트와 메시지 템플릿으로 관리하려면 정답은 C의 Amazon Pinpoint이다. Pinpoint는 이메일, SMS, 푸시, 음성, 인앱 메시징을 지원하며, 메시지 템플릿, 타겟 세그먼트, 전체 캠페인 생성 및 관리 기능을 제공한다. A의 SES는 이메일 전용 서비스로 SMS나 푸시 알림을 지원하지 않으며 캠페인 관리 기능이 없다. B의 SNS는 개별 메시지 전송에 사용되며, 각 메시지의 대상/콘텐츠/전달 일정을 개별적으로 관리해야 하므로 캠페인 수준의 관리가 불가능하다. D의 SQS는 메시지 큐 서비스로 최종 사용자에게 알림을 보내는 서비스가 아니다.
+**(A)** : SES는 이메일 전용 서비스이다. SMS나 푸시 알림을 지원하지 않으며 캠페인 관리 기능이 없다.
+
+**(B)** : SNS는 개별 메시지 전송에 사용된다. 각 메시지의 대상/콘텐츠/전달 일정을 개별적으로 관리해야 하므로 캠페인 수준의 관리가 불가능하다.
+
+**(C) 정답** : Amazon Pinpoint는 이메일, SMS, 푸시, 음성, 인앱 메시징을 지원하며 메시지 템플릿, 타겟 세그먼트, 전체 캠페인 생성 및 관리 기능을 제공한다.
+
+**(D)** : SQS는 메시지 큐 서비스이다. 최종 사용자에게 알림을 보내는 서비스가 아니다.
 
 **핵심 개념:** Amazon Pinpoint vs SES vs SNS
 
@@ -377,7 +401,13 @@
 | C | AWS DataSync |
 | D | AWS DMS |
 
-**상세 풀이:** Salesforce에서 S3로의 스케줄 기반 데이터 전송과 필터링/유효성 검사가 필요하므로 정답은 B의 Amazon AppFlow이다. AppFlow는 Salesforce, SAP, Zendesk, Slack 등 SaaS 앱에서 AWS 서비스(S3, Redshift 등)로 데이터를 스케줄, 이벤트 기반, 온디맨드로 전송하며, 필터링과 유효성 검사 같은 데이터 변환 기능을 기본 제공한다. A의 AWS Glue는 데이터 레이크와 ETL 작업에 사용되며 Salesforce 같은 SaaS 앱과의 네이티브 통합이 목적이 아니다. C의 DataSync는 온프레미스 스토리지와 AWS 스토리지 서비스 간의 데이터 마이그레이션/동기화용이다. D의 DMS는 데이터베이스 간 마이그레이션 전용 서비스이다.
+**(A)** : AWS Glue는 데이터 레이크와 ETL 작업에 사용된다. Salesforce 같은 SaaS 앱과의 네이티브 통합이 목적이 아니다.
+
+**(B) 정답** : Amazon AppFlow는 Salesforce, SAP, Zendesk, Slack 등 SaaS 앱에서 AWS 서비스(S3, Redshift 등)로 데이터를 스케줄, 이벤트 기반, 온디맨드로 전송한다. 필터링과 유효성 검사 같은 데이터 변환 기능을 기본 제공한다.
+
+**(C)** : DataSync는 온프레미스 스토리지와 AWS 스토리지 서비스 간의 데이터 마이그레이션/동기화용이다. SaaS 앱 통합이 아니다.
+
+**(D)** : DMS는 데이터베이스 간 마이그레이션 전용 서비스이다. SaaS 앱 통합이 아니다.
 
 **핵심 개념:** Amazon AppFlow
 
@@ -403,6 +433,12 @@
 | C | EC2 Auto Scaling 예약 작업만 사용한다 |
 | D | 매일 수동으로 인스턴스를 중지하고 시작한다 |
 
-**상세 풀이:** EC2와 RDS를 모두 자동 시작/중지하면서 운영 오버헤드를 최소화하려면 정답은 B의 AWS Instance Scheduler이다. Instance Scheduler는 CloudFormation으로 배포되는 사전 구축된 AWS 솔루션으로, EC2와 RDS 인스턴스를 DynamoDB 기반 스케줄에 따라 자동으로 시작/중지하며 최대 70%의 비용 절감이 가능하다. A의 Lambda 함수 작성은 직접 개발, 테스트, 유지 관리가 필요하여 운영 오버헤드가 더 크다. C의 EC2 Auto Scaling 예약 작업은 EC2 인스턴스만 관리하며 RDS는 포함하지 않으므로 요구사항을 완전히 충족하지 못한다. D의 수동 관리는 운영 부담이 가장 크고 인적 오류가 발생할 수 있다.
+**(A)** : Lambda 함수 작성은 직접 개발, 테스트, 유지 관리가 필요하다. 운영 오버헤드가 더 크다.
+
+**(B) 정답** : AWS Instance Scheduler는 CloudFormation으로 배포되는 사전 구축된 솔루션으로 EC2와 RDS 인스턴스를 DynamoDB 기반 스케줄에 따라 자동으로 시작/중지한다. 최대 70%의 비용 절감이 가능하다.
+
+**(C)** : EC2 Auto Scaling 예약 작업은 EC2 인스턴스만 관리한다. RDS는 포함하지 않으므로 요구사항을 완전히 충족하지 못한다.
+
+**(D)** : 수동 관리는 운영 부담이 가장 크고 인적 오류가 발생할 수 있다.
 
 **핵심 개념:** Instance Scheduler on AWS

@@ -259,7 +259,13 @@ Spot Fleet 할당 전략 비교
 | C | Spot 인스턴스 |
 | D | Dedicated Hosts |
 
-**상세 풀이:** 배치 처리 작업은 중단 후 재시작이 가능하므로(resilient to failure) Spot 인스턴스가 가장 적합하며, 최대 90% 할인으로 가장 비용 효율적이다. A의 On-Demand는 약정 없이 사용할 수 있지만 할인이 없어 비용이 높고, B의 Reserved 인스턴스는 1~3년 장기 약정이 필요하며 배치 작업처럼 간헐적인 워크로드에는 비효율적이고, D의 Dedicated Host는 물리 서버 전체를 예약하는 가장 비싼 옵션으로 라이선스 규제가 있을 때만 적합하다.
+**(A)** : On-Demand는 약정 없이 사용할 수 있지만 할인이 없어 비용이 높다. 비용 최적화 요구사항에 부적합하다.
+
+**(B)** : Reserved 인스턴스는 1~3년 장기 약정이 필요하며 배치 작업처럼 간헐적인 워크로드에는 비효율적이다. 안정적으로 지속 실행되는 워크로드에 적합하다.
+
+**(C) 정답** : Spot 인스턴스는 최대 90% 할인으로 가장 비용 효율적이며, 배치 처리 작업처럼 중단 후 재시작이 가능한(fault-tolerant) 워크로드에 가장 적합하다.
+
+**(D)** : Dedicated Host는 물리 서버 전체를 예약하는 가장 비싼 옵션이다. BYOL 라이선스 규제가 있을 때만 적합하며 배치 처리에는 과도한 선택이다.
 
 **핵심 개념:** EC2 Spot Instances
 
@@ -283,7 +289,13 @@ Spot Fleet 할당 전략 비교
 | C | 보안 그룹이 인바운드 SSH 트래픽을 허용하지 않음 |
 | D | IAM 사용자에게 권한이 없음 |
 
-**상세 풀이:** Connection Timeout은 보안 그룹 문제를 의미한다. 보안 그룹의 인바운드 규칙에서 포트 22(SSH)가 허용되지 않으면 트래픽이 인스턴스에 도달하지 못해 시간 초과가 발생한다. A의 인스턴스 중지 상태에서는 DNS 해석 실패나 다른 오류가 발생하지 Timeout이 나타나지 않으며, B의 애플리케이션 미실행은 "Connection Refused" 오류를 발생시키고, D의 IAM 권한은 SSH 연결 자체가 아닌 AWS API 작업에 관련된 것이다.
+**(A)** : 인스턴스가 중지된 경우에는 DNS 해석 실패나 "Host unreachable" 오류가 발생하며, Timeout이 나타나지 않는다.
+
+**(B)** : 인스턴스의 애플리케이션이 실행 중이 아닐 경우 "Connection Refused" 오류가 발생한다. Connection Timeout과는 다른 오류이다.
+
+**(C) 정답** : Connection Timeout은 보안 그룹 문제를 의미한다. 인바운드 규칙에서 포트 22(SSH)가 허용되지 않으면 트래픽이 인스턴스에 도달하지 못해 시간 초과가 발생한다.
+
+**(D)** : IAM 권한은 SSH 연결 자체가 아닌 AWS API 작업에 관련된 것이다. SSH 연결은 IAM 권한과 무관하게 OS 레벨 인증(키 페어)으로 이루어진다.
 
 **핵심 개념:** Security Groups 트러블슈팅
 
@@ -307,7 +319,13 @@ Spot Fleet 할당 전략 비교
 | C | Dedicated Hosts |
 | D | Reserved 인스턴스 |
 
-**상세 풀이:** Dedicated Host는 물리 서버 전체를 예약하여 소켓/코어 기반 라이선스(BYOL)를 사용할 수 있으며, 물리 서버의 소켓과 코어 수에 대한 가시성을 제공한다. A의 Spot 인스턴스는 언제든 중단될 수 있어 라이선스 관리에 부적합하고, B의 Dedicated Instance는 전용 하드웨어를 사용하지만 물리 서버 수준의 가시성과 제어(소켓/코어 정보)가 없어 소프트웨어 라이선스 요건을 충족하지 못하며, D의 Reserved Instance는 할인 구매 옵션일 뿐 물리 서버 수준의 제어를 제공하지 않는다.
+**(A)** : Spot 인스턴스는 언제든 중단될 수 있어 라이선스 관리와 안정적인 서비스 운영에 부적합하다.
+
+**(B)** : Dedicated Instance는 전용 하드웨어를 사용하지만, 물리 서버 수준의 소켓/코어 가시성과 제어 기능이 없어 소켓·코어 기반 소프트웨어 라이선스 요건을 충족하지 못한다.
+
+**(C) 정답** : Dedicated Host는 물리 서버 전체를 예약하여 소켓/코어 수에 대한 가시성을 제공하고, 기존 소프트웨어 라이선스(BYOL)를 적용할 수 있다. 소켓·코어 기반 라이선스 요건에 유일하게 적합하다.
+
+**(D)** : Reserved Instance는 할인 구매 옵션일 뿐, 물리 서버 수준의 제어나 소켓/코어 가시성을 제공하지 않는다.
 
 **핵심 개념:** Dedicated Host vs Dedicated Instance
 
@@ -331,7 +349,13 @@ Spot Fleet 할당 전략 비교
 | C | Memory Optimized (r 패밀리) |
 | D | Storage Optimized (i 패밀리) |
 
-**상세 풀이:** Memory Optimized(R 패밀리)는 대용량 데이터셋을 메모리에서 처리하는 워크로드에 최적화되어 있으며, 인메모리 데이터베이스, 고성능 관계형/비관계형 DB, BI 애플리케이션 등에 적합하다. A의 General Purpose(t 패밀리)는 컴퓨팅, 메모리, 네트워크 자원이 균형 잡혀 있어 범용 워크로드에 적합하지만 메모리 집약적 작업에는 최적이 아니고, B의 Compute Optimized(c 패밀리)는 CPU 집약적 작업(배치 처리, HPC 등)에 최적화되어 있으며, D의 Storage Optimized(i 패밀리)는 로컬 스토리지의 높은 I/O 성능이 필요한 워크로드(OLTP, 데이터 웨어하우스)에 적합하다.
+**(A)** : General Purpose(t 패밀리)는 컴퓨팅, 메모리, 네트워크 자원이 균형 잡혀 있어 범용 워크로드에 적합하다. 메모리 집약적 작업에는 최적화되어 있지 않다.
+
+**(B)** : Compute Optimized(c 패밀리)는 고성능 CPU 집약적 작업(배치 처리, HPC, 게임 서버 등)에 최적화되어 있다. 메모리 위주의 워크로드에는 부적합하다.
+
+**(C) 정답** : Memory Optimized(r 패밀리)는 대용량 데이터셋을 메모리에서 처리하는 워크로드에 최적화되어 있다. 인메모리 데이터베이스, 고성능 관계형/비관계형 DB, BI 애플리케이션에 적합하다.
+
+**(D)** : Storage Optimized(i 패밀리)는 로컬 스토리지의 높은 I/O 성능이 필요한 워크로드(OLTP, NoSQL, 데이터 웨어하우스)에 적합하다. 메모리 최적화와는 다른 용도이다.
 
 **핵심 개념:** EC2 Instance Types - Memory Optimized
 
@@ -355,7 +379,13 @@ Spot Fleet 할당 전략 비교
 | C | Spot 인스턴스 |
 | D | 1년 Savings Plan, No Upfront 결제 |
 
-**상세 풀이:** 3년 Reserved Instance에 All Upfront 결제를 하면 최대 72%의 할인을 받을 수 있으며, 안정적인 DB 워크로드에 가장 적합하다. A의 On-Demand는 할인이 전혀 없어 비용이 가장 높고, C의 Spot 인스턴스는 최대 90% 할인이 가능하지만 언제든 중단될 수 있어 데이터베이스처럼 중단되면 안 되는 워크로드에는 절대 부적합하며, D의 1년 Savings Plan No Upfront는 기간이 짧고 선불 결제가 없어 3년 RI All Upfront보다 할인율이 낮다.
+**(A)** : On-Demand는 할인이 전혀 없어 비용이 가장 높다. 장기 안정적 워크로드에는 매우 비효율적이다.
+
+**(B) 정답** : 3년 Reserved Instance에 All Upfront 결제를 하면 최대 72%의 할인을 받을 수 있다. 3년간 안정적인 DB 워크로드에 가장 큰 할인을 제공하는 옵션이다.
+
+**(C)** : Spot 인스턴스는 최대 90% 할인이 가능하지만 언제든 중단될 수 있어 데이터베이스처럼 중단되어서는 안 되는 워크로드에는 절대 부적합하다.
+
+**(D)** : 1년 Savings Plan No Upfront는 기간이 짧고 선불 결제가 없어 3년 RI All Upfront보다 할인율이 낮다. 유연성은 높지만 비용 절감 효과가 적다.
 
 **핵심 개념:** EC2 Reserved Instances
 
@@ -379,7 +409,13 @@ Spot Fleet 할당 전략 비교
 | C | capacityOptimized |
 | D | priceCapacityOptimized |
 
-**상세 풀이:** `priceCapacityOptimized`는 최고 용량이 가용한 풀을 먼저 선택한 후, 그 중 가장 저렴한 풀을 선택하는 전략으로, 비용과 가용성의 균형을 맞추어 대부분의 워크로드에 권장된다. A의 `lowestPrice`는 가장 저렴한 풀에 집중하여 비용은 최적화하지만 중단 위험이 높고, B의 `diversified`는 모든 풀에 균등 분산하여 가용성을 높이지만 비용 최적화가 부족하며, C의 `capacityOptimized`는 용량이 가장 큰 풀만 선택하여 가격을 고려하지 않는다.
+**(A)** : `lowestPrice`는 가장 저렴한 풀에 집중하여 비용은 최적화하지만 중단 위험이 높다. 단기 워크로드에는 적합하지만 일반 권장 전략이 아니다.
+
+**(B)** : `diversified`는 모든 풀에 균등 분산하여 가용성을 높이지만 비용 최적화가 부족하다. 장기 워크로드에 안정성을 중시할 때 사용한다.
+
+**(C)** : `capacityOptimized`는 용량이 가장 큰 풀을 선택하여 가격을 고려하지 않는다. 비용과 가용성의 균형을 맞추지 못하는 전략이다.
+
+**(D) 정답** : `priceCapacityOptimized`는 최고 용량이 가용한 풀 중 가장 저렴한 풀을 선택하는 전략으로, 비용과 가용성의 균형을 맞추어 대부분의 워크로드에 권장된다.
 
 **핵심 개념:** Spot Fleet 할당 전략
 
@@ -403,7 +439,13 @@ Spot Fleet 할당 전략 비교
 | C | Security Group은 stateless 방화벽이다 |
 | D | Security Group은 여러 EC2 인스턴스에 연결할 수 있다 |
 
-**상세 풀이:** 보안 그룹은 여러 인스턴스에 연결할 수 있으며, 하나의 인스턴스에도 여러 보안 그룹을 연결할 수 있다. A는 보안 그룹에 Allow 규칙만 있고 Deny 규칙은 없으므로 틀렸으며(Deny는 NACL에서 가능), B는 기본적으로 모든 인바운드 트래픽이 차단되므로 틀렸고, C는 보안 그룹이 stateful 방화벽이므로 틀렸다(인바운드 허용 시 해당 응답의 아웃바운드는 자동으로 허용됨, stateless는 NACL의 특성).
+**(A)** : 보안 그룹은 Allow 규칙만 가질 수 있고 Deny 규칙은 없다. Deny 규칙은 NACL(Network ACL)에서만 설정 가능하다.
+
+**(B)** : 기본적으로 모든 인바운드 트래픽이 차단된다. 명시적으로 Allow 규칙을 추가해야만 인바운드 트래픽이 허용된다.
+
+**(C)** : 보안 그룹은 stateful 방화벽이다. 인바운드를 한 번 허용하면 해당 응답의 아웃바운드는 자동으로 허용된다. Stateless는 NACL의 특성이다.
+
+**(D) 정답** : 보안 그룹은 여러 EC2 인스턴스에 연결할 수 있으며, 하나의 인스턴스에도 여러 보안 그룹을 연결할 수 있다. 이것이 올바른 설명이다.
 
 **핵심 개념:** Security Groups
 
@@ -427,6 +469,12 @@ Spot Fleet 할당 전략 비교
 | C | On-Demand Capacity Reservations |
 | D | Savings Plans |
 
-**상세 풀이:** On-Demand Capacity Reservation은 특정 AZ에 용량을 예약하며, 시간 약정이 없어 언제든 생성하고 취소할 수 있다. 할인은 없지만(On-Demand 가격) 용량을 보장한다. A의 Reserved Instance는 1~3년 장기 약정이 필요하여 2일 이벤트에는 과도하고, B의 Spot Instance는 언제든 중단될 수 있어 용량을 보장하지 않으며, D의 Savings Plans도 1~3년 사용량 약정이 필요하여 단기 이벤트에는 부적합하다.
+**(A)** : Reserved Instance는 1~3년 장기 약정이 필요하다. 2일간의 단기 이벤트에는 과도한 약정으로 부적합하다.
+
+**(B)** : Spot Instance는 언제든 중단될 수 있어 용량을 보장하지 않는다. 이벤트처럼 용량이 반드시 보장되어야 하는 상황에는 부적합하다.
+
+**(C) 정답** : On-Demand Capacity Reservation은 특정 AZ에 용량을 예약하며 시간 약정이 없어 언제든 생성·취소할 수 있다. 할인은 없지만(On-Demand 가격) 용량을 보장하며 단기 이벤트에 적합하다.
+
+**(D)** : Savings Plans도 1~3년 사용량 약정이 필요하다. 단기 이벤트에는 과도한 약정으로 부적합하다.
 
 **핵심 개념:** EC2 Capacity Reservations

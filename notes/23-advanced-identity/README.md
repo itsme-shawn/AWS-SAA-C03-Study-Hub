@@ -315,7 +315,13 @@ AWS의 고급 자격 증명 및 접근 관리를 다룬다. AWS Organizations, S
 | C | us-west-1의 EC2 인스턴스를 탐지하는 AWS Config 규칙 사용 |
 | D | 개발 계정의 모든 사용자에 대해 Permission Boundary 생성 |
 
-**상세 풀이:** SCP를 Development OU에 적용하면 해당 OU 내 모든 계정의 모든 사용자/역할에게 us-west-1에서의 EC2 작업을 일괄 차단할 수 있다. A) 개별 IAM 정책은 모든 개발 계정에서 각각 관리해야 하므로 확장성이 떨어진다. C) AWS Config은 사후 탐지만 가능하며 리소스 생성을 차단하지 않는다. D) Permission Boundary는 개별 사용자/역할에 하나씩 적용해야 하므로 OU 수준의 일괄 제한에 비해 관리가 복잡하다.
+**(A)** : 개별 IAM 정책은 모든 개발 계정에서 각각 관리해야 한다. 확장성이 떨어지고 누락될 위험이 있다.
+
+**(B) 정답** : SCP를 Development OU에 적용하면 해당 OU 내 모든 계정의 모든 사용자/역할에게 us-west-1에서의 EC2 작업을 일괄 차단할 수 있다.
+
+**(C)** : AWS Config은 사후 탐지만 가능하다. 리소스 생성을 차단하지 않는다.
+
+**(D)** : Permission Boundary는 개별 사용자/역할에 하나씩 적용해야 한다. OU 수준의 일괄 제한에 비해 관리가 복잡하다.
 
 **핵심 개념:** Service Control Policies (SCP)
 
@@ -339,7 +345,13 @@ AWS의 고급 자격 증명 및 접근 관리를 다룬다. AWS Organizations, S
 | C | Account B에 크로스 계정 IAM 사용자 생성 |
 | D | AWS Organizations 통합 접근 사용 |
 
-**상세 풀이:** S3 버킷의 resource-based policy(버킷 정책)를 사용하여 Account A 사용자에게 접근을 허용하면, 사용자가 원래 권한(Account A DynamoDB 접근)을 유지하면서 Account B의 S3에 접근할 수 있다. A) IAM Role을 assume하면 원래 권한을 포기하게 되므로 Account A의 DynamoDB에 동시에 접근할 수 없다. C) 크로스 계정 IAM 사용자라는 개념은 존재하지 않으며, IAM 사용자는 계정 내에서만 생성된다. D) AWS Organizations의 통합 접근(consolidated access)이라는 기능은 존재하지 않는다.
+**(A)** : IAM Role을 assume하면 원래 권한을 포기하게 된다. Account A의 DynamoDB에 동시에 접근할 수 없어 요구사항을 충족하지 못한다.
+
+**(B) 정답** : S3 버킷의 resource-based policy(버킷 정책)를 사용하여 Account A 사용자에게 접근을 허용하면 사용자가 원래 권한(Account A DynamoDB 접근)을 유지하면서 Account B의 S3에 접근할 수 있다.
+
+**(C)** : 크로스 계정 IAM 사용자라는 개념은 존재하지 않는다. IAM 사용자는 해당 계정 내에서만 생성된다.
+
+**(D)** : AWS Organizations의 통합 접근(consolidated access)이라는 기능은 존재하지 않는다.
 
 **핵심 개념:** IAM Roles vs Resource-Based Policies
 
@@ -363,7 +375,13 @@ AWS의 고급 자격 증명 및 접근 관리를 다룬다. AWS Organizations, S
 | C | AWS IAM Identity Center |
 | D | AWS Directory Service |
 
-**상세 풀이:** AWS IAM Identity Center(AWS SSO 후속)는 AWS Organizations의 여러 계정과 Salesforce 같은 SAML 2.0 비즈니스 앱에 대한 단일 로그인을 제공하며, Permission Sets로 각 계정에 대한 접근 권한을 중앙에서 관리할 수 있다. A) Cognito는 외부 사용자(모바일/웹 앱 사용자) 인증용으로 직원 SSO에 적합하지 않다. B) 크로스 계정 IAM 역할은 개별 역할 전환이 필요하며 SSO 경험을 제공하지 않는다. D) Directory Service는 Active Directory 관리용으로 SSO 서비스가 아니다.
+**(A)** : Cognito는 외부 사용자(모바일/웹 앱 사용자) 인증용이다. 기업 직원 SSO에 적합하지 않다.
+
+**(B)** : 크로스 계정 IAM 역할은 개별 역할 전환이 필요하다. SSO 경험을 제공하지 않는다.
+
+**(C) 정답** : AWS IAM Identity Center(AWS SSO 후속)는 AWS Organizations의 여러 계정과 Salesforce 같은 SAML 2.0 비즈니스 앱에 대한 단일 로그인을 제공한다. Permission Sets로 각 계정에 대한 접근 권한을 중앙에서 관리할 수 있다.
+
+**(D)** : Directory Service는 Active Directory 관리용이다. SSO 서비스가 아니다.
 
 **핵심 개념:** AWS IAM Identity Center
 
@@ -387,7 +405,13 @@ AWS의 고급 자격 증명 및 접근 관리를 다룬다. AWS Organizations, S
 | C | Simple AD |
 | D | Amazon Cognito User Pool |
 
-**상세 풀이:** AD Connector는 온프레미스 AD로의 프록시(게이트웨이)로, AWS에 AD 인프라를 생성하지 않고 온프레미스 AD로 인증 요청을 리다이렉트하므로 AWS에서 AD 관리가 불필요하다. A) AWS Managed Microsoft AD는 AWS에 완전한 AD를 생성하므로 AD 인프라 관리가 필요하다. C) Simple AD는 독립형 AD 호환 디렉터리로 온프레미스 AD와 연결이 불가하다. D) Cognito User Pool은 모바일/웹 앱 사용자 인증용으로 기업 AD 통합에 적합하지 않다.
+**(A)** : AWS Managed Microsoft AD는 AWS에 완전한 AD를 생성한다. AWS에서 AD 인프라를 관리해야 한다.
+
+**(B) 정답** : AD Connector는 온프레미스 AD로의 프록시(게이트웨이)이다. AWS에 AD 인프라를 생성하지 않고 온프레미스 AD로 인증 요청을 리다이렉트하므로 AWS에서 AD 관리가 불필요하다.
+
+**(C)** : Simple AD는 독립형 AD 호환 디렉터리이다. 온프레미스 AD와 연결이 불가하다.
+
+**(D)** : Cognito User Pool은 모바일/웹 앱 사용자 인증용이다. 기업 AD 통합에 적합하지 않다.
 
 **핵심 개념:** AWS Directory Services / AD Connector
 
@@ -411,7 +435,13 @@ AWS의 고급 자격 증명 및 접근 관리를 다룬다. AWS Organizations, S
 | C | AWS Config Rules |
 | D | IAM Access Analyzer |
 
-**상세 풀이:** IAM Permission Boundaries는 IAM 엔티티(사용자/역할)의 최대 권한을 설정하여, 개발자가 자체 정책을 관리하더라도 경계를 넘는 권한을 획득할 수 없게 하며, 유효 권한은 IAM Policy와 Permission Boundary의 교집합만 적용된다. A) SCP는 전체 계정/OU 수준의 제한으로 개별 사용자의 권한 상승 방지에는 세밀하지 않다. C) AWS Config Rules는 리소스 구성 규정 준수 평가 도구로 IAM 권한 관리와 직접적으로 무관하다. D) IAM Access Analyzer는 외부 접근 분석 도구이지 권한 상승을 방지하는 제어 수단이 아니다.
+**(A)** : SCP는 전체 계정/OU 수준의 제한이다. 개별 사용자의 권한 상승 방지에는 세밀하지 않다.
+
+**(B) 정답** : IAM Permission Boundaries는 IAM 엔티티(사용자/역할)의 최대 권한을 설정한다. 개발자가 자체 정책을 관리하더라도 경계를 넘는 권한을 획득할 수 없게 하며, 유효 권한은 IAM Policy와 Permission Boundary의 교집합만 적용된다.
+
+**(C)** : AWS Config Rules는 리소스 구성 규정 준수 평가 도구이다. IAM 권한 상승 방지와 직접적으로 무관하다.
+
+**(D)** : IAM Access Analyzer는 외부 접근 분석 도구이다. 권한 상승을 방지하는 제어 수단이 아니다.
 
 **핵심 개념:** IAM Permission Boundaries
 
@@ -435,7 +465,13 @@ AWS의 고급 자격 증명 및 접근 관리를 다룬다. AWS Organizations, S
 | C | aws:PrincipalOrgID |
 | D | aws:MultiFactorAuthPresent |
 
-**상세 풀이:** aws:PrincipalOrgID 조건 키를 리소스 정책(S3 버킷 정책)에 사용하면 AWS Organization의 멤버 계정에서만 접근을 허용할 수 있으며, 새로운 계정이 Organization에 추가되어도 자동으로 접근이 허용된다. A) aws:SourceIp는 클라이언트 IP 주소 기반 제한으로 Organization 멤버십과 무관하다. B) aws:RequestedRegion은 API 호출이 수행되는 리전을 제한하는 것으로 계정 제한이 아니다. D) aws:MultiFactorAuthPresent는 MFA 인증 여부 확인 조건으로 Organization 소속 여부와 무관하다.
+**(A)** : aws:SourceIp는 클라이언트 IP 주소 기반 제한이다. Organization 멤버십과 무관하다.
+
+**(B)** : aws:RequestedRegion은 API 호출이 수행되는 리전을 제한하는 것이다. 계정 소속 여부 제한이 아니다.
+
+**(C) 정답** : aws:PrincipalOrgID 조건 키를 리소스 정책(S3 버킷 정책)에 사용하면 AWS Organization의 멤버 계정에서만 접근을 허용할 수 있다. 새로운 계정이 Organization에 추가되어도 자동으로 접근이 허용된다.
+
+**(D)** : aws:MultiFactorAuthPresent는 MFA 인증 여부 확인 조건이다. Organization 소속 여부와 무관하다.
 
 **핵심 개념:** aws:PrincipalOrgID
 
@@ -459,6 +495,12 @@ AWS의 고급 자격 증명 및 접근 관리를 다룬다. AWS Organizations, S
 | C | AWS CloudFormation과 함께 AWS Config |
 | D | AWS IAM Identity Center |
 
-**상세 풀이:** AWS Control Tower는 다중 계정 AWS 환경을 자동 구축하고 Preventive Guardrails(SCP 기반 차단)와 Detective Guardrails(AWS Config 기반 탐지)를 모두 제공하며, 규정 준수 대시보드로 전체 환경을 모니터링할 수 있다. A) AWS Organizations에 SCP만 사용하면 예방적 제어는 가능하지만 탐지적 제어(비준수 리소스 식별)가 부족하다. C) AWS Config + CloudFormation 조합으로 유사한 기능을 구현할 수 있지만 Control Tower보다 설정과 관리가 훨씬 복잡하다. D) IAM Identity Center는 SSO(단일 로그인) 서비스로 계정 프로비저닝이나 가드레일과 무관하다.
+**(A)** : AWS Organizations에 SCP만 사용하면 예방적 제어는 가능하다. 그러나 탐지적 제어(비준수 리소스 식별)가 부족하다.
+
+**(B) 정답** : AWS Control Tower는 다중 계정 AWS 환경을 자동 구축하고 Preventive Guardrails(SCP 기반 차단)와 Detective Guardrails(AWS Config 기반 탐지)를 모두 제공한다. 규정 준수 대시보드로 전체 환경을 모니터링할 수 있다.
+
+**(C)** : AWS Config + CloudFormation 조합으로 유사한 기능을 구현할 수 있지만 Control Tower보다 설정과 관리가 훨씬 복잡하다.
+
+**(D)** : IAM Identity Center는 SSO(단일 로그인) 서비스이다. 계정 프로비저닝이나 가드레일과 무관하다.
 
 **핵심 개념:** AWS Control Tower / Guardrails
