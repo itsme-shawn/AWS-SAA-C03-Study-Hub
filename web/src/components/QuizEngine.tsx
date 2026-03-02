@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { CheckCircle, XCircle, ChevronRight, ChevronLeft, RotateCcw, Trophy, Bookmark, BookmarkCheck } from 'lucide-react'
 import type { Question, QuizResult } from '../types'
 import MarkdownRenderer from './MarkdownRenderer'
+import { useNotePopup } from '../contexts/notePopup'
 import { loadDraftSession, saveDraftSession, clearDraftSession } from '../utils/storage'
 import {
   formatAnswerLabels,
@@ -652,6 +653,7 @@ function QuestionCard({
   onConfirmRetry?: () => void
   showBookmark?: boolean
 }) {
+  const notePopup = useNotePopup()
   const selectedLabels = parseAnswerLabels(selected)
   const answerLabels = parseAnswerLabels(q.answer)
   const isCorrect = isCorrectAnswer(selected, q.answer)
@@ -659,6 +661,7 @@ function QuestionCard({
   return (
     <motion.div
       layout
+      data-question-card
       className={`rounded-xl border-2 p-6 transition-all ${
         submitted
           ? isCorrect
@@ -769,6 +772,25 @@ function QuestionCard({
                 <span className="inline-block text-[10px] font-bold px-2 py-1 rounded-full bg-sky-500/10 text-sky-500 uppercase tracking-wider">
                   {q.keyConcept}
                 </span>
+              )}
+              {q.noteLinks && q.noteLinks.length > 0 && (
+                <div className="flex flex-wrap items-center gap-2 pt-1">
+                  <span className="text-[10px] font-bold text-ink-400 dark:text-ink-400 uppercase tracking-wider shrink-0">관련 노트</span>
+                  {q.noteLinks.map(link => {
+                    const urlMatch = link.url.match(/^\/section\/([^#]+)#?(.*)$/)
+                    const sectionId = urlMatch?.[1] ?? ''
+                    const headingId = urlMatch?.[2] ?? ''
+                    return (
+                      <button
+                        key={link.url}
+                        onClick={(e) => notePopup?.open(sectionId, headingId, e.currentTarget.getBoundingClientRect())}
+                        className="flex items-center gap-1 text-[11px] font-medium px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500/20 transition-colors border border-amber-500/20"
+                      >
+                        <span>📖</span> {link.label}
+                      </button>
+                    )
+                  })}
+                </div>
               )}
             </div>
           </motion.div>

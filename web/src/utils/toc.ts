@@ -15,6 +15,34 @@ export function generateHeadingId(text: string): string {
     .trim()
 }
 
+// Extract the markdown content of a single heading section (heading + body until next same-or-higher heading)
+export function extractSection(content: string, headingId: string): string {
+  const lines = content.split('\n')
+  let inSection = false
+  let sectionLevel = 0
+  const result: string[] = []
+
+  for (const line of lines) {
+    const match = line.match(/^(#{1,6})\s+(.+)$/)
+    if (match) {
+      const level = match[1].length
+      const id = generateHeadingId(match[2])
+      if (!inSection && id === headingId) {
+        inSection = true
+        sectionLevel = level
+        result.push(line)
+      } else if (inSection) {
+        if (level <= sectionLevel) break
+        result.push(line)
+      }
+    } else if (inSection) {
+      result.push(line)
+    }
+  }
+
+  return result.join('\n').trim()
+}
+
 export function parseHeadings(content: string): TocItem[] {
   const lines = content.split('\n')
   const items: TocItem[] = []

@@ -1,7 +1,9 @@
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import type { Components } from 'react-markdown'
+import { Link } from 'react-router-dom'
 import { generateHeadingId } from '../utils/toc'
+import { useNotePopup } from '../contexts/notePopup'
 
 interface Props {
   content: string
@@ -18,7 +20,10 @@ function extractText(node: React.ReactNode): string {
   return ''
 }
 
-const components: Components = {
+function useComponents(): Components {
+  const notePopup = useNotePopup()
+
+  return {
   pre({ children }) {
     return (
       <pre className="overflow-x-auto rounded-lg border border-ink-200 dark:border-ink-600 p-4 text-sm leading-relaxed bg-ink-50 dark:bg-ink-950 text-ink-800 dark:text-ink-100">
@@ -82,9 +87,51 @@ const components: Components = {
   hr() {
     return <hr className="my-8 border-ink-200 dark:border-ink-600" />
   },
+  a({ href, children }) {
+    // /section/:id#heading → open popup if context available, else navigate
+    if (href && href.startsWith('/section/') && href.includes('#')) {
+      const [path, rawHeadingId] = href.split('#')
+      const headingId = decodeURIComponent(rawHeadingId)
+      const sectionId = path.replace('/section/', '')
+      if (notePopup) {
+        return (
+          <button
+            onClick={(e) => {
+              const anchor = e.currentTarget.getBoundingClientRect()
+              const containerEl = e.currentTarget.closest('[data-question-card]')
+              const containerRect = containerEl?.getBoundingClientRect()
+              notePopup.open(sectionId, headingId, anchor, containerRect)
+            }}
+            className="text-amber-500 hover:text-amber-400 underline underline-offset-2 transition-colors cursor-pointer"
+          >
+            {children}
+          </button>
+        )
+      }
+      return (
+        <Link to={href} className="text-amber-500 hover:text-amber-400 underline underline-offset-2 transition-colors">
+          {children}
+        </Link>
+      )
+    }
+    if (href && href.startsWith('/')) {
+      return (
+        <Link to={href} className="text-amber-500 hover:text-amber-400 underline underline-offset-2 transition-colors">
+          {children}
+        </Link>
+      )
+    }
+    return (
+      <a href={href} target="_blank" rel="noreferrer" className="text-sky-500 hover:text-sky-400 underline underline-offset-2 transition-colors">
+        {children}
+      </a>
+    )
+  },
+  }
 }
 
 export default function MarkdownRenderer({ content }: Props) {
+  const components = useComponents()
   return (
     <div className="prose prose-sm dark:prose-invert max-w-none">
       <ReactMarkdown remarkPlugins={[[remarkGfm, { singleTilde: false }]]} components={components}>

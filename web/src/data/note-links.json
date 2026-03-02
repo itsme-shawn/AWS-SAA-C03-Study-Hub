@@ -1,0 +1,6202 @@
+{
+  "aws-official-sample": {
+    "q1": [
+      {
+        "label": "NAT Gateway",
+        "url": "/section/25-vpc#nat-gateway"
+      },
+      {
+        "label": "서브넷 Subnet",
+        "url": "/section/25-vpc#서브넷-subnet"
+      },
+      {
+        "label": "Internet Gateway IGW",
+        "url": "/section/25-vpc#internet-gateway-igw"
+      }
+    ],
+    "q2": [
+      {
+        "label": "EC2 Hibernate 최대 절전 모드",
+        "url": "/section/04-ec2-associate#ec2-hibernate-최대-절전-모드"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q3": [
+      {
+        "label": "Elastic Network Interface ENI",
+        "url": "/section/04-ec2-associate#elastic-network-interface-eni"
+      }
+    ],
+    "q4": [
+      {
+        "label": "CORS Cross-Origin Resource Sharing, 교차 출처 리소스 공유",
+        "url": "/section/12-s3-security#cors-crossorigin-resource-sharing-교차-출처-리소스-공유"
+      },
+      {
+        "label": "S3 보안",
+        "url": "/section/10-amazon-s3#s3-보안"
+      }
+    ],
+    "q5": [
+      {
+        "label": "S3 객체 암호화 - 4가지 방법",
+        "url": "/section/12-s3-security#s3-객체-암호화-4가지-방법"
+      },
+      {
+        "label": "S3 암호화 방식 비교 SSE-S3 / SSE-KMS / SSE-C / Client-Side",
+        "url": "/section/12-s3-security#s3-암호화-방식-비교-sses3-ssekms-ssec-clientside"
+      }
+    ],
+    "q6": [
+      {
+        "label": "EC2 구매 옵션 시험 핵심!",
+        "url": "/section/03-ec2-basics#ec2-구매-옵션-시험-핵심"
+      },
+      {
+        "label": "Spot Instance 상세",
+        "url": "/section/03-ec2-basics#spot-instance-상세"
+      }
+    ],
+    "q7": [
+      {
+        "label": "Amazon SQS Simple Queue Service",
+        "url": "/section/15-integration-messaging#amazon-sqs-simple-queue-service"
+      },
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q8": [
+      {
+        "label": "ALB Application Load Balancer 상세",
+        "url": "/section/06-high-availability-scalability#alb-application-load-balancer-상세"
+      },
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      },
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      }
+    ],
+    "q9": [
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      },
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      }
+    ],
+    "q10": [
+      {
+        "label": "Aurora 엔드포인트",
+        "url": "/section/07-rds-aurora-elasticache#aurora-엔드포인트"
+      },
+      {
+        "label": "Amazon Aurora",
+        "url": "/section/07-rds-aurora-elasticache#amazon-aurora"
+      },
+      {
+        "label": "RDS Read Replicas",
+        "url": "/section/07-rds-aurora-elasticache#rds-read-replicas"
+      }
+    ]
+  },
+  "ditectrev-batch-01": {
+    "q1": [
+      {
+        "label": "Amazon CloudWatch Metrics",
+        "url": "/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics"
+      }
+    ],
+    "q2": [
+      {
+        "label": "EC2 구성 요소",
+        "url": "/section/03-ec2-basics#ec2-구성-요소"
+      },
+      {
+        "label": "AMI Amazon Machine Image",
+        "url": "/section/05-ec2-instance-storage#ami-amazon-machine-image"
+      }
+    ],
+    "q3": [
+      {
+        "label": "CloudFront 기본 개념",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-기본-개념"
+      },
+      {
+        "label": "S3 Lifecycle Rules 수명주기 규칙",
+        "url": "/section/11-s3-advanced#s3-lifecycle-rules-수명주기-규칙"
+      }
+    ],
+    "q4": [
+      {
+        "label": "AWS Network Firewall",
+        "url": "/section/25-vpc#aws-network-firewall"
+      },
+      {
+        "label": "Security Group vs NACL",
+        "url": "/section/25-vpc#security-group-vs-nacl"
+      }
+    ],
+    "q5": [
+      {
+        "label": "S3 객체 Object",
+        "url": "/section/10-amazon-s3#s3-객체-object"
+      }
+    ],
+    "q6": [
+      {
+        "label": "CNAME vs Alias",
+        "url": "/section/08-route-53#cname-vs-alias"
+      },
+      {
+        "label": "Alias Record 대상",
+        "url": "/section/08-route-53#alias-record-대상"
+      }
+    ],
+    "q7": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      },
+      {
+        "label": "RDS Storage Auto Scaling",
+        "url": "/section/07-rds-aurora-elasticache#rds-storage-auto-scaling"
+      }
+    ],
+    "q8": [
+      {
+        "label": "S3 Storage Classes 스토리지 클래스",
+        "url": "/section/10-amazon-s3#s3-storage-classes-스토리지-클래스"
+      },
+      {
+        "label": "EC2 구매 옵션 시험 핵심!",
+        "url": "/section/03-ec2-basics#ec2-구매-옵션-시험-핵심"
+      },
+      {
+        "label": "Amazon Redshift",
+        "url": "/section/20-data-analytics#amazon-redshift"
+      }
+    ],
+    "q9": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q10": [
+      {
+        "label": "Users & Groups",
+        "url": "/section/02-iam#users-groups"
+      },
+      {
+        "label": "IAM Security Tools",
+        "url": "/section/02-iam#iam-security-tools"
+      }
+    ],
+    "q11": [
+      {
+        "label": "Amazon ECS Elastic Container Service",
+        "url": "/section/16-containers#amazon-ecs-elastic-container-service"
+      },
+      {
+        "label": "Docker 기본 개념",
+        "url": "/section/16-containers#docker-기본-개념"
+      }
+    ],
+    "q12": [
+      {
+        "label": "CloudFront Origins 원본 소스",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-origins-원본-소스"
+      },
+      {
+        "label": "S3 사용 사례",
+        "url": "/section/10-amazon-s3#s3-사용-사례"
+      }
+    ],
+    "q13": [
+      {
+        "label": "EC2 Instance Store",
+        "url": "/section/05-ec2-instance-storage#ec2-instance-store"
+      },
+      {
+        "label": "EBS vs EFS vs Instance Store 비교 시험 핵심!",
+        "url": "/section/05-ec2-instance-storage#ebs-vs-efs-vs-instance-store-비교-시험-핵심"
+      }
+    ],
+    "q14": [
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      },
+      {
+        "label": "Security Group vs NACL",
+        "url": "/section/25-vpc#security-group-vs-nacl"
+      }
+    ],
+    "q15": [
+      {
+        "label": "Elastic IP",
+        "url": "/section/04-ec2-associate#elastic-ip"
+      },
+      {
+        "label": "IP 주소 IPv4",
+        "url": "/section/04-ec2-associate#ip-주소-ipv4"
+      }
+    ],
+    "q16": [
+      {
+        "label": "RDS & Aurora 보안",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-보안"
+      }
+    ],
+    "q17": [
+      {
+        "label": "AWS Storage Gateway",
+        "url": "/section/14-storage-extras#aws-storage-gateway"
+      },
+      {
+        "label": "암호화 기본 개념",
+        "url": "/section/24-security-encryption#암호화-기본-개념"
+      }
+    ],
+    "q18": [
+      {
+        "label": "CloudFront Origins 원본 소스",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-origins-원본-소스"
+      },
+      {
+        "label": "CloudFront 기본 개념",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-기본-개념"
+      }
+    ],
+    "q19": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      },
+      {
+        "label": "EC2 Instance Store",
+        "url": "/section/05-ec2-instance-storage#ec2-instance-store"
+      }
+    ],
+    "q20": [
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      },
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q21": [
+      {
+        "label": "라우팅 정책 Routing Policies",
+        "url": "/section/08-route-53#라우팅-정책-routing-policies"
+      }
+    ],
+    "q22": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q23": [
+      {
+        "label": "CloudFront 기본 개념",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-기본-개념"
+      },
+      {
+        "label": "SSL/TLS 인증서",
+        "url": "/section/06-high-availability-scalability#ssltls-인증서"
+      }
+    ],
+    "q24": [
+      {
+        "label": "S3 Storage Classes 스토리지 클래스",
+        "url": "/section/10-amazon-s3#s3-storage-classes-스토리지-클래스"
+      },
+      {
+        "label": "스토리지 클래스 비교표",
+        "url": "/section/10-amazon-s3#스토리지-클래스-비교표"
+      }
+    ],
+    "q25": [
+      {
+        "label": "AWS 접근 방법",
+        "url": "/section/02-iam#aws-접근-방법"
+      }
+    ],
+    "q26": [
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      },
+      {
+        "label": "RDS Read Replicas",
+        "url": "/section/07-rds-aurora-elasticache#rds-read-replicas"
+      }
+    ],
+    "q27": [
+      {
+        "label": "RDS & Aurora 백업",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-백업"
+      },
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q28": [
+      {
+        "label": "EC2 인스턴스 타입",
+        "url": "/section/03-ec2-basics#ec2-인스턴스-타입"
+      }
+    ],
+    "q29": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q30": [
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      },
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/19-databases#amazon-dynamodb"
+      }
+    ],
+    "q31": [
+      {
+        "label": "Security Group vs NACL",
+        "url": "/section/25-vpc#security-group-vs-nacl"
+      },
+      {
+        "label": "NACL Network Access Control List",
+        "url": "/section/25-vpc#nacl-network-access-control-list"
+      }
+    ],
+    "q32": [
+      {
+        "label": "Password Policy 비밀번호 정책",
+        "url": "/section/02-iam#password-policy-비밀번호-정책"
+      }
+    ],
+    "q33": [
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      }
+    ],
+    "q34": [
+      {
+        "label": "Elastic Beanstalk",
+        "url": "/section/09-classic-solutions-architecture#elastic-beanstalk"
+      }
+    ],
+    "q35": [
+      {
+        "label": "Amazon Simple Email Service SES",
+        "url": "/section/28-other-services#amazon-simple-email-service-ses"
+      }
+    ],
+    "q36": [
+      {
+        "label": "Amazon CloudWatch Metrics",
+        "url": "/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics"
+      },
+      {
+        "label": "CloudWatch Alarms",
+        "url": "/section/22-monitoring-audit-performance#cloudwatch-alarms"
+      }
+    ],
+    "q37": [
+      {
+        "label": "Amazon Redshift",
+        "url": "/section/20-data-analytics#amazon-redshift"
+      },
+      {
+        "label": "RDS Read Replicas",
+        "url": "/section/07-rds-aurora-elasticache#rds-read-replicas"
+      },
+      {
+        "label": "Amazon SNS Simple Notification Service",
+        "url": "/section/15-integration-messaging#amazon-sns-simple-notification-service"
+      }
+    ],
+    "q38": [
+      {
+        "label": "Internet Gateway IGW",
+        "url": "/section/25-vpc#internet-gateway-igw"
+      },
+      {
+        "label": "서브넷 Subnet",
+        "url": "/section/25-vpc#서브넷-subnet"
+      }
+    ],
+    "q39": [
+      {
+        "label": "Amazon Redshift",
+        "url": "/section/20-data-analytics#amazon-redshift"
+      }
+    ],
+    "q40": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      },
+      {
+        "label": "EBS Volume Types 6가지",
+        "url": "/section/05-ec2-instance-storage#ebs-volume-types-6가지"
+      }
+    ],
+    "q41": [
+      {
+        "label": "S3 보안",
+        "url": "/section/10-amazon-s3#s3-보안"
+      },
+      {
+        "label": "S3 Bucket Policy",
+        "url": "/section/10-amazon-s3#s3-bucket-policy"
+      },
+      {
+        "label": "S3 Access Points",
+        "url": "/section/12-s3-security#s3-access-points"
+      }
+    ],
+    "q42": [
+      {
+        "label": "Health Checks 헬스 체크",
+        "url": "/section/08-route-53#health-checks-헬스-체크"
+      },
+      {
+        "label": "라우팅 정책 Routing Policies",
+        "url": "/section/08-route-53#라우팅-정책-routing-policies"
+      },
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      }
+    ],
+    "q43": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      },
+      {
+        "label": "RDS Storage Auto Scaling",
+        "url": "/section/07-rds-aurora-elasticache#rds-storage-auto-scaling"
+      }
+    ],
+    "q44": [
+      {
+        "label": "EC2 구성 요소",
+        "url": "/section/03-ec2-basics#ec2-구성-요소"
+      },
+      {
+        "label": "Elastic IP",
+        "url": "/section/04-ec2-associate#elastic-ip"
+      }
+    ],
+    "q45": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      },
+      {
+        "label": "AMI Amazon Machine Image",
+        "url": "/section/05-ec2-instance-storage#ami-amazon-machine-image"
+      }
+    ],
+    "q46": [
+      {
+        "label": "EC2 설정 옵션",
+        "url": "/section/03-ec2-basics#ec2-설정-옵션"
+      }
+    ],
+    "q47": [
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      },
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/19-databases#amazon-dynamodb"
+      }
+    ],
+    "q48": [
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      },
+      {
+        "label": "EC2 구매 옵션 시험 핵심!",
+        "url": "/section/03-ec2-basics#ec2-구매-옵션-시험-핵심"
+      }
+    ],
+    "q49": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      },
+      {
+        "label": "서브넷 Subnet",
+        "url": "/section/25-vpc#서브넷-subnet"
+      }
+    ],
+    "q50": [
+      {
+        "label": "Security Group vs NACL",
+        "url": "/section/25-vpc#security-group-vs-nacl"
+      },
+      {
+        "label": "NACL Network Access Control List",
+        "url": "/section/25-vpc#nacl-network-access-control-list"
+      },
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ]
+  },
+  "ditectrev-batch-02": {
+    "q51": [
+      {
+        "label": "RDS & Aurora 백업",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-백업"
+      }
+    ],
+    "q52": [
+      {
+        "label": "EC2 구매 옵션 시험 핵심!",
+        "url": "/section/03-ec2-basics#ec2-구매-옵션-시험-핵심"
+      },
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      },
+      {
+        "label": "라우팅 정책 Routing Policies",
+        "url": "/section/08-route-53#라우팅-정책-routing-policies"
+      }
+    ],
+    "q53": [
+      {
+        "label": "EBS Encryption",
+        "url": "/section/05-ec2-instance-storage#ebs-encryption"
+      },
+      {
+        "label": "CloudHSM",
+        "url": "/section/24-security-encryption#cloudhsm"
+      }
+    ],
+    "q54": [
+      {
+        "label": "RDS & Aurora 보안",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-보안"
+      },
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q55": [
+      {
+        "label": "AWS Storage Gateway",
+        "url": "/section/14-storage-extras#aws-storage-gateway"
+      },
+      {
+        "label": "재해 복구 기본 개념",
+        "url": "/section/26-disaster-recovery-migrations#재해-복구-기본-개념"
+      }
+    ],
+    "q56": [
+      {
+        "label": "RDS & Aurora 보안",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-보안"
+      },
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q57": [
+      {
+        "label": "DMS Database Migration Service, 데이터베이스 마이그레이션 서비스",
+        "url": "/section/26-disaster-recovery-migrations#dms-database-migration-service-데이터베이스-마이그레이션-서비스"
+      }
+    ],
+    "q58": [
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      },
+      {
+        "label": "Amazon CloudWatch Metrics",
+        "url": "/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics"
+      }
+    ],
+    "q59": [
+      {
+        "label": "EC2 구성 요소",
+        "url": "/section/03-ec2-basics#ec2-구성-요소"
+      }
+    ],
+    "q60": [
+      {
+        "label": "Direct Connect DX",
+        "url": "/section/25-vpc#direct-connect-dx"
+      },
+      {
+        "label": "Domain Registrar vs DNS Service",
+        "url": "/section/08-route-53#domain-registrar-vs-dns-service"
+      }
+    ],
+    "q61": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      }
+    ],
+    "q62": [
+      {
+        "label": "Elastic IP",
+        "url": "/section/04-ec2-associate#elastic-ip"
+      },
+      {
+        "label": "IP 주소 IPv4",
+        "url": "/section/04-ec2-associate#ip-주소-ipv4"
+      },
+      {
+        "label": "Internet Gateway IGW",
+        "url": "/section/25-vpc#internet-gateway-igw"
+      }
+    ],
+    "q63": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      },
+      {
+        "label": "EC2 Instance Store",
+        "url": "/section/05-ec2-instance-storage#ec2-instance-store"
+      }
+    ],
+    "q64": [
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      }
+    ],
+    "q65": [
+      {
+        "label": "SSL/TLS 인증서",
+        "url": "/section/06-high-availability-scalability#ssltls-인증서"
+      },
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      }
+    ],
+    "q66": [
+      {
+        "label": "Elastic IP",
+        "url": "/section/04-ec2-associate#elastic-ip"
+      },
+      {
+        "label": "NAT Instance 레거시, 시험에 출제",
+        "url": "/section/25-vpc#nat-instance-레거시-시험에-출제"
+      }
+    ],
+    "q67": [
+      {
+        "label": "Amazon Simple Email Service SES",
+        "url": "/section/28-other-services#amazon-simple-email-service-ses"
+      }
+    ],
+    "q68": [
+      {
+        "label": "RDS Read Replicas",
+        "url": "/section/07-rds-aurora-elasticache#rds-read-replicas"
+      },
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      },
+      {
+        "label": "Amazon ElastiCache",
+        "url": "/section/07-rds-aurora-elasticache#amazon-elasticache"
+      }
+    ],
+    "q69": [],
+    "q70": [
+      {
+        "label": "DMS Database Migration Service, 데이터베이스 마이그레이션 서비스",
+        "url": "/section/26-disaster-recovery-migrations#dms-database-migration-service-데이터베이스-마이그레이션-서비스"
+      }
+    ],
+    "q71": [
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      },
+      {
+        "label": "Security Group vs NACL",
+        "url": "/section/25-vpc#security-group-vs-nacl"
+      }
+    ],
+    "q72": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      },
+      {
+        "label": "S3 Storage Classes 스토리지 클래스",
+        "url": "/section/10-amazon-s3#s3-storage-classes-스토리지-클래스"
+      },
+      {
+        "label": "CloudFront vs S3 Cross Region Replication",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-vs-s3-cross-region-replication"
+      }
+    ],
+    "q73": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      },
+      {
+        "label": "EC2 설정 옵션",
+        "url": "/section/03-ec2-basics#ec2-설정-옵션"
+      }
+    ],
+    "q74": [
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      }
+    ],
+    "q75": [
+      {
+        "label": "EBS Multi-Attach io1/io2",
+        "url": "/section/05-ec2-instance-storage#ebs-multiattach-io1io2"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q76": [
+      {
+        "label": "EBS Volume Types 6가지",
+        "url": "/section/05-ec2-instance-storage#ebs-volume-types-6가지"
+      }
+    ],
+    "q77": [
+      {
+        "label": "EC2 인스턴스 타입",
+        "url": "/section/03-ec2-basics#ec2-인스턴스-타입"
+      },
+      {
+        "label": "Placement Groups 배치 그룹",
+        "url": "/section/04-ec2-associate#placement-groups-배치-그룹"
+      },
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      }
+    ],
+    "q78": [
+      {
+        "label": "IP 주소 IPv4",
+        "url": "/section/04-ec2-associate#ip-주소-ipv4"
+      },
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      },
+      {
+        "label": "CNAME vs Alias",
+        "url": "/section/08-route-53#cname-vs-alias"
+      }
+    ],
+    "q79": [
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      },
+      {
+        "label": "S3 Bucket Policy",
+        "url": "/section/10-amazon-s3#s3-bucket-policy"
+      },
+      {
+        "label": "S3 보안",
+        "url": "/section/10-amazon-s3#s3-보안"
+      }
+    ],
+    "q80": [
+      {
+        "label": "재해 복구 기본 개념",
+        "url": "/section/26-disaster-recovery-migrations#재해-복구-기본-개념"
+      },
+      {
+        "label": "AMI Amazon Machine Image",
+        "url": "/section/05-ec2-instance-storage#ami-amazon-machine-image"
+      }
+    ],
+    "q81": [
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      },
+      {
+        "label": "Amazon Cognito",
+        "url": "/section/17-serverless-overview#amazon-cognito"
+      },
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      }
+    ],
+    "q82": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q83": [
+      {
+        "label": "라우팅 정책 Routing Policies",
+        "url": "/section/08-route-53#라우팅-정책-routing-policies"
+      },
+      {
+        "label": "Health Checks 헬스 체크",
+        "url": "/section/08-route-53#health-checks-헬스-체크"
+      },
+      {
+        "label": "CNAME vs Alias",
+        "url": "/section/08-route-53#cname-vs-alias"
+      }
+    ],
+    "q84": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      },
+      {
+        "label": "AMI Amazon Machine Image",
+        "url": "/section/05-ec2-instance-storage#ami-amazon-machine-image"
+      }
+    ],
+    "q85": [
+      {
+        "label": "AWS WAF Web Application Firewall",
+        "url": "/section/24-security-encryption#aws-waf-web-application-firewall"
+      },
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      },
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q86": [
+      {
+        "label": "Direct Connect DX",
+        "url": "/section/25-vpc#direct-connect-dx"
+      },
+      {
+        "label": "VPC 기본 사항",
+        "url": "/section/25-vpc#vpc-기본-사항"
+      }
+    ],
+    "q87": [
+      {
+        "label": "AWS VPN CloudHub",
+        "url": "/section/25-vpc#aws-vpn-cloudhub"
+      }
+    ],
+    "q88": [
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      }
+    ],
+    "q89": [
+      {
+        "label": "EC2 구성 요소",
+        "url": "/section/03-ec2-basics#ec2-구성-요소"
+      }
+    ],
+    "q90": [
+      {
+        "label": "EBS Encryption",
+        "url": "/section/05-ec2-instance-storage#ebs-encryption"
+      },
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      }
+    ],
+    "q91": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q92": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      }
+    ],
+    "q93": [
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      },
+      {
+        "label": "CloudWatch Logs",
+        "url": "/section/22-monitoring-audit-performance#cloudwatch-logs"
+      },
+      {
+        "label": "Amazon CloudWatch Metrics",
+        "url": "/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics"
+      }
+    ],
+    "q94": [
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      }
+    ],
+    "q95": [
+      {
+        "label": "EC2 구매 옵션 시험 핵심!",
+        "url": "/section/03-ec2-basics#ec2-구매-옵션-시험-핵심"
+      }
+    ],
+    "q96": [],
+    "q97": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      },
+      {
+        "label": "AMI Amazon Machine Image",
+        "url": "/section/05-ec2-instance-storage#ami-amazon-machine-image"
+      }
+    ],
+    "q98": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q99": [
+      {
+        "label": "CloudWatch Logs",
+        "url": "/section/22-monitoring-audit-performance#cloudwatch-logs"
+      },
+      {
+        "label": "Amazon CloudWatch Metrics",
+        "url": "/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics"
+      }
+    ],
+    "q100": [
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      }
+    ]
+  },
+  "ditectrev-batch-03": {
+    "q101": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q102": [
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      },
+      {
+        "label": "NACL Network Access Control List",
+        "url": "/section/25-vpc#nacl-network-access-control-list"
+      },
+      {
+        "label": "Security Group vs NACL",
+        "url": "/section/25-vpc#security-group-vs-nacl"
+      }
+    ],
+    "q103": [
+      {
+        "label": "RDS & Aurora 보안",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-보안"
+      },
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q104": [
+      {
+        "label": "EBS Volume Types 6가지",
+        "url": "/section/05-ec2-instance-storage#ebs-volume-types-6가지"
+      },
+      {
+        "label": "Amazon CloudWatch Metrics",
+        "url": "/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics"
+      }
+    ],
+    "q105": [
+      {
+        "label": "Amazon ElastiCache",
+        "url": "/section/07-rds-aurora-elasticache#amazon-elasticache"
+      },
+      {
+        "label": "ElastiCache 캐싱 패턴",
+        "url": "/section/07-rds-aurora-elasticache#elasticache-캐싱-패턴"
+      }
+    ],
+    "q106": [
+      {
+        "label": "AWS Organizations",
+        "url": "/section/23-advanced-identity#aws-organizations"
+      },
+      {
+        "label": "AWS CloudTrail",
+        "url": "/section/22-monitoring-audit-performance#aws-cloudtrail"
+      }
+    ],
+    "q107": [
+      {
+        "label": "AWS 접근 방법",
+        "url": "/section/02-iam#aws-접근-방법"
+      },
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      }
+    ],
+    "q108": [
+      {
+        "label": "S3 객체 Object",
+        "url": "/section/10-amazon-s3#s3-객체-object"
+      }
+    ],
+    "q109": [
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      },
+      {
+        "label": "IAM Policy Evaluation Logic",
+        "url": "/section/23-advanced-identity#iam-policy-evaluation-logic"
+      }
+    ],
+    "q110": [
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      },
+      {
+        "label": "CloudWatch Alarms",
+        "url": "/section/22-monitoring-audit-performance#cloudwatch-alarms"
+      },
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      }
+    ],
+    "q111": [
+      {
+        "label": "EC2 구매 옵션 시험 핵심!",
+        "url": "/section/03-ec2-basics#ec2-구매-옵션-시험-핵심"
+      },
+      {
+        "label": "AMI Amazon Machine Image",
+        "url": "/section/05-ec2-instance-storage#ami-amazon-machine-image"
+      }
+    ],
+    "q112": [
+      {
+        "label": "S3 객체 Object",
+        "url": "/section/10-amazon-s3#s3-객체-object"
+      }
+    ],
+    "q113": [
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      },
+      {
+        "label": "IAM Roles vs Resource-Based Policies",
+        "url": "/section/23-advanced-identity#iam-roles-vs-resourcebased-policies"
+      },
+      {
+        "label": "Microsoft Active Directory AD",
+        "url": "/section/23-advanced-identity#microsoft-active-directory-ad"
+      }
+    ],
+    "q114": [
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      },
+      {
+        "label": "Users & Groups",
+        "url": "/section/02-iam#users-groups"
+      }
+    ],
+    "q115": [
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      }
+    ],
+    "q116": [
+      {
+        "label": "EC2 구매 옵션 시험 핵심!",
+        "url": "/section/03-ec2-basics#ec2-구매-옵션-시험-핵심"
+      }
+    ],
+    "q117": [
+      {
+        "label": "EC2 구성 요소",
+        "url": "/section/03-ec2-basics#ec2-구성-요소"
+      }
+    ],
+    "q118": [
+      {
+        "label": "Elastic Network Interface ENI",
+        "url": "/section/04-ec2-associate#elastic-network-interface-eni"
+      }
+    ],
+    "q119": [
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      },
+      {
+        "label": "Elastic IP",
+        "url": "/section/04-ec2-associate#elastic-ip"
+      },
+      {
+        "label": "IP 주소 IPv4",
+        "url": "/section/04-ec2-associate#ip-주소-ipv4"
+      }
+    ],
+    "q120": [
+      {
+        "label": "AWS CloudFormation",
+        "url": "/section/28-other-services#aws-cloudformation"
+      },
+      {
+        "label": "Elastic Beanstalk",
+        "url": "/section/09-classic-solutions-architecture#elastic-beanstalk"
+      }
+    ],
+    "q121": [
+      {
+        "label": "RDS Read Replicas",
+        "url": "/section/07-rds-aurora-elasticache#rds-read-replicas"
+      },
+      {
+        "label": "Amazon CloudWatch Metrics",
+        "url": "/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics"
+      }
+    ],
+    "q122": [
+      {
+        "label": "Amazon SQS Simple Queue Service",
+        "url": "/section/15-integration-messaging#amazon-sqs-simple-queue-service"
+      }
+    ],
+    "q123": [
+      {
+        "label": "EC2 Instance Store",
+        "url": "/section/05-ec2-instance-storage#ec2-instance-store"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q124": [
+      {
+        "label": "AWS CloudFormation",
+        "url": "/section/28-other-services#aws-cloudformation"
+      }
+    ],
+    "q125": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q126": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q127": [
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      },
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      },
+      {
+        "label": "IAM Conditions",
+        "url": "/section/23-advanced-identity#iam-conditions"
+      }
+    ],
+    "q128": [
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      },
+      {
+        "label": "IAM Roles vs Resource-Based Policies",
+        "url": "/section/23-advanced-identity#iam-roles-vs-resourcebased-policies"
+      }
+    ],
+    "q129": [
+      {
+        "label": "Elastic Network Interface ENI",
+        "url": "/section/04-ec2-associate#elastic-network-interface-eni"
+      },
+      {
+        "label": "EC2 Hibernate 최대 절전 모드",
+        "url": "/section/04-ec2-associate#ec2-hibernate-최대-절전-모드"
+      }
+    ],
+    "q130": [
+      {
+        "label": "EC2 Instance Store",
+        "url": "/section/05-ec2-instance-storage#ec2-instance-store"
+      }
+    ],
+    "q131": [
+      {
+        "label": "DDoS 복원력 모범 사례",
+        "url": "/section/24-security-encryption#ddos-복원력-모범-사례"
+      },
+      {
+        "label": "CloudFront 기본 개념",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-기본-개념"
+      },
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      }
+    ],
+    "q132": [
+      {
+        "label": "CloudFront Origins 원본 소스",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-origins-원본-소스"
+      },
+      {
+        "label": "CloudFront와 퍼블릭 네트워크를 통한 ALB/EC2 연결",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront와-퍼블릭-네트워크를-통한-albec2-연결"
+      }
+    ],
+    "q133": [
+      {
+        "label": "Elastic Network Interface ENI",
+        "url": "/section/04-ec2-associate#elastic-network-interface-eni"
+      }
+    ],
+    "q134": [
+      {
+        "label": "Elastic Network Interface ENI",
+        "url": "/section/04-ec2-associate#elastic-network-interface-eni"
+      },
+      {
+        "label": "IP 주소 IPv4",
+        "url": "/section/04-ec2-associate#ip-주소-ipv4"
+      }
+    ],
+    "q135": [
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      },
+      {
+        "label": "IAM Roles vs Resource-Based Policies",
+        "url": "/section/23-advanced-identity#iam-roles-vs-resourcebased-policies"
+      },
+      {
+        "label": "AWS IAM Identity Center AWS SSO 후속",
+        "url": "/section/23-advanced-identity#aws-iam-identity-center-aws-sso-후속"
+      }
+    ],
+    "q136": [
+      {
+        "label": "S3 Performance 최적화",
+        "url": "/section/11-s3-advanced#s3-performance-최적화"
+      },
+      {
+        "label": "S3 Baseline Performance 기본 성능",
+        "url": "/section/11-s3-advanced#s3-baseline-performance-기본-성능"
+      }
+    ],
+    "q137": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      },
+      {
+        "label": "S3 객체 Object",
+        "url": "/section/10-amazon-s3#s3-객체-object"
+      }
+    ],
+    "q138": [
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/19-databases#amazon-dynamodb"
+      },
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q139": [
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      },
+      {
+        "label": "DNS 레코드 타입",
+        "url": "/section/08-route-53#dns-레코드-타입"
+      }
+    ],
+    "q140": [
+      {
+        "label": "Elastic IP",
+        "url": "/section/04-ec2-associate#elastic-ip"
+      },
+      {
+        "label": "IP 주소 IPv4",
+        "url": "/section/04-ec2-associate#ip-주소-ipv4"
+      },
+      {
+        "label": "Internet Gateway IGW",
+        "url": "/section/25-vpc#internet-gateway-igw"
+      }
+    ],
+    "q141": [
+      {
+        "label": "EC2 User Data",
+        "url": "/section/03-ec2-basics#ec2-user-data"
+      }
+    ],
+    "q142": [
+      {
+        "label": "S3 Event Notifications 이벤트 알림",
+        "url": "/section/11-s3-advanced#s3-event-notifications-이벤트-알림"
+      },
+      {
+        "label": "AWS CloudTrail",
+        "url": "/section/22-monitoring-audit-performance#aws-cloudtrail"
+      }
+    ],
+    "q143": [
+      {
+        "label": "IP 주소 IPv4",
+        "url": "/section/04-ec2-associate#ip-주소-ipv4"
+      }
+    ],
+    "q144": [
+      {
+        "label": "Amazon SNS Simple Notification Service",
+        "url": "/section/15-integration-messaging#amazon-sns-simple-notification-service"
+      },
+      {
+        "label": "AWS KMS Key Management Service",
+        "url": "/section/24-security-encryption#aws-kms-key-management-service"
+      }
+    ],
+    "q145": [
+      {
+        "label": "핵심 개념",
+        "url": "/section/03-ec2-basics#핵심-개념"
+      },
+      {
+        "label": "S3 Bucket Policy",
+        "url": "/section/10-amazon-s3#s3-bucket-policy"
+      },
+      {
+        "label": "S3 객체 암호화 - 4가지 방법",
+        "url": "/section/12-s3-security#s3-객체-암호화-4가지-방법"
+      }
+    ],
+    "q146": [
+      {
+        "label": "EC2 구매 옵션 시험 핵심!",
+        "url": "/section/03-ec2-basics#ec2-구매-옵션-시험-핵심"
+      }
+    ],
+    "q147": [
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      },
+      {
+        "label": "AWS 접근 방법",
+        "url": "/section/02-iam#aws-접근-방법"
+      }
+    ],
+    "q148": [
+      {
+        "label": "Amazon ECS Elastic Container Service",
+        "url": "/section/16-containers#amazon-ecs-elastic-container-service"
+      }
+    ],
+    "q149": [
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      },
+      {
+        "label": "IAM Roles vs Resource-Based Policies",
+        "url": "/section/23-advanced-identity#iam-roles-vs-resourcebased-policies"
+      }
+    ],
+    "q150": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      }
+    ]
+  },
+  "ditectrev-batch-04": {
+    "q151": [
+      {
+        "label": "Bastion Host",
+        "url": "/section/25-vpc#bastion-host"
+      },
+      {
+        "label": "Elastic IP",
+        "url": "/section/04-ec2-associate#elastic-ip"
+      }
+    ],
+    "q152": [
+      {
+        "label": "AWS 글로벌 인프라",
+        "url": "/section/01-getting-started#aws-글로벌-인프라"
+      }
+    ],
+    "q153": [
+      {
+        "label": "Amazon SQS",
+        "url": "/section/15-integration-messaging#amazon-sqs-simple-queue-service"
+      },
+      {
+        "label": "SQS / SNS / Kinesis 비교",
+        "url": "/section/15-integration-messaging#언제-무엇을-쓰는가-sqs-sns-kinesis-한눈에-비교"
+      }
+    ],
+    "q154": [
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      },
+      {
+        "label": "S3 Pre-Signed URLs",
+        "url": "/section/12-s3-security#s3-presigned-urls"
+      }
+    ],
+    "q155": [
+      {
+        "label": "Users & Groups",
+        "url": "/section/02-iam#users-groups"
+      }
+    ],
+    "q156": [
+      {
+        "label": "AWS 글로벌 인프라",
+        "url": "/section/01-getting-started#aws-글로벌-인프라"
+      },
+      {
+        "label": "Region 선택 기준 시험 중요!",
+        "url": "/section/01-getting-started#region-선택-기준-시험-중요"
+      }
+    ],
+    "q157": [
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/19-databases#amazon-dynamodb"
+      },
+      {
+        "label": "Amazon SQS",
+        "url": "/section/15-integration-messaging#amazon-sqs-simple-queue-service"
+      }
+    ],
+    "q158": [
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      }
+    ],
+    "q159": [
+      {
+        "label": "서브넷 Subnet",
+        "url": "/section/25-vpc#서브넷-subnet"
+      },
+      {
+        "label": "Internet Gateway IGW",
+        "url": "/section/25-vpc#internet-gateway-igw"
+      }
+    ],
+    "q160": [
+      {
+        "label": "Users & Groups",
+        "url": "/section/02-iam#users-groups"
+      }
+    ],
+    "q161": [
+      {
+        "label": "RDS & Aurora 백업",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-백업"
+      }
+    ],
+    "q162": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      },
+      {
+        "label": "EC2 Instance Store",
+        "url": "/section/05-ec2-instance-storage#ec2-instance-store"
+      },
+      {
+        "label": "EBS vs EFS vs Instance Store 비교 시험 핵심!",
+        "url": "/section/05-ec2-instance-storage#ebs-vs-efs-vs-instance-store-비교-시험-핵심"
+      }
+    ],
+    "q163": [
+      {
+        "label": "4가지 DR 전략",
+        "url": "/section/26-disaster-recovery-migrations#4가지-dr-전략-빠른-rto-순"
+      },
+      {
+        "label": "AMI Amazon Machine Image",
+        "url": "/section/05-ec2-instance-storage#ami-amazon-machine-image"
+      }
+    ],
+    "q164": [
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q165": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q166": [
+      {
+        "label": "EBS Volume Types 6가지",
+        "url": "/section/05-ec2-instance-storage#ebs-volume-types-6가지"
+      }
+    ],
+    "q167": [
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q168": [
+      {
+        "label": "CloudFront 기본 개념",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-기본-개념"
+      }
+    ],
+    "q169": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      },
+      {
+        "label": "EBS Volume Types 6가지",
+        "url": "/section/05-ec2-instance-storage#ebs-volume-types-6가지"
+      }
+    ],
+    "q170": [
+      {
+        "label": "S3 Storage Classes 스토리지 클래스",
+        "url": "/section/10-amazon-s3#s3-storage-classes-스토리지-클래스"
+      },
+      {
+        "label": "S3 버킷 Bucket",
+        "url": "/section/10-amazon-s3#s3-버킷-bucket"
+      }
+    ],
+    "q171": [
+      {
+        "label": "S3 Bucket Policy",
+        "url": "/section/10-amazon-s3#s3-bucket-policy"
+      },
+      {
+        "label": "Block Public Access",
+        "url": "/section/10-amazon-s3#block-public-access"
+      }
+    ],
+    "q172": [
+      {
+        "label": "EC2 인스턴스 타입",
+        "url": "/section/03-ec2-basics#ec2-인스턴스-타입"
+      }
+    ],
+    "q173": [
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      },
+      {
+        "label": "Amazon SNS",
+        "url": "/section/15-integration-messaging#amazon-sns-simple-notification-service"
+      }
+    ],
+    "q174": [
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      },
+      {
+        "label": "Amazon Cognito",
+        "url": "/section/17-serverless-overview#amazon-cognito"
+      }
+    ],
+    "q175": [],
+    "q176": [
+      {
+        "label": "Amazon RDS",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q177": [
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      }
+    ],
+    "q178": [],
+    "q179": [
+      {
+        "label": "CloudFront Origins 원본 소스",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-origins-원본-소스"
+      },
+      {
+        "label": "CloudFront 기본 개념",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-기본-개념"
+      }
+    ],
+    "q180": [
+      {
+        "label": "Amazon EMR",
+        "url": "/section/20-data-analytics#amazon-emr-elastic-mapreduce"
+      }
+    ],
+    "q181": [
+      {
+        "label": "Amazon RDS",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q182": [
+      {
+        "label": "CNAME vs Alias",
+        "url": "/section/08-route-53#cname-vs-alias"
+      },
+      {
+        "label": "DNS 레코드 타입",
+        "url": "/section/08-route-53#dns-레코드-타입"
+      }
+    ],
+    "q183": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      }
+    ],
+    "q184": [
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      }
+    ],
+    "q185": [
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      }
+    ],
+    "q186": [],
+    "q187": [
+      {
+        "label": "Direct Connect DX",
+        "url": "/section/25-vpc#direct-connect-dx"
+      }
+    ],
+    "q188": [
+      {
+        "label": "CloudWatch Alarms",
+        "url": "/section/22-monitoring-audit-performance#cloudwatch-alarms"
+      }
+    ],
+    "q189": [
+      {
+        "label": "DMS",
+        "url": "/section/26-disaster-recovery-migrations#dms-database-migration-service-데이터베이스-마이그레이션-서비스"
+      },
+      {
+        "label": "RDS Read Replicas",
+        "url": "/section/07-rds-aurora-elasticache#rds-read-replicas"
+      }
+    ],
+    "q190": [],
+    "q191": [
+      {
+        "label": "IAM Security Tools",
+        "url": "/section/02-iam#iam-security-tools"
+      }
+    ],
+    "q192": [
+      {
+        "label": "Scalability vs High Availability",
+        "url": "/section/06-high-availability-scalability#scalability-vs-high-availability"
+      }
+    ],
+    "q193": [
+      {
+        "label": "S3 버킷 Bucket",
+        "url": "/section/10-amazon-s3#s3-버킷-bucket"
+      }
+    ],
+    "q194": [
+      {
+        "label": "Amazon CloudWatch Metrics",
+        "url": "/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics"
+      },
+      {
+        "label": "CloudWatch Alarms",
+        "url": "/section/22-monitoring-audit-performance#cloudwatch-alarms"
+      },
+      {
+        "label": "Amazon SNS",
+        "url": "/section/15-integration-messaging#amazon-sns-simple-notification-service"
+      }
+    ],
+    "q195": [
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      },
+      {
+        "label": "IP 주소 IPv4",
+        "url": "/section/04-ec2-associate#ip-주소-ipv4"
+      }
+    ],
+    "q196": [],
+    "q197": [
+      {
+        "label": "Security Group vs NACL",
+        "url": "/section/25-vpc#security-group-vs-nacl"
+      },
+      {
+        "label": "NACL",
+        "url": "/section/25-vpc#nacl-network-access-control-list"
+      }
+    ],
+    "q198": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      },
+      {
+        "label": "Amazon CloudWatch Metrics",
+        "url": "/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics"
+      }
+    ],
+    "q199": [
+      {
+        "label": "Amazon CloudWatch Metrics",
+        "url": "/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics"
+      },
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      }
+    ],
+    "q200": []
+  },
+  "ditectrev-batch-05": {
+    "q201": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      },
+      {
+        "label": "AMI Amazon Machine Image",
+        "url": "/section/05-ec2-instance-storage#ami-amazon-machine-image"
+      }
+    ],
+    "q202": [
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      },
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      }
+    ],
+    "q203": [
+      {
+        "label": "EBS Volume Types 6가지",
+        "url": "/section/05-ec2-instance-storage#ebs-volume-types-6가지"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q204": [
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      },
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q205": [
+      {
+        "label": "SSL/TLS 인증서",
+        "url": "/section/06-high-availability-scalability#ssltls-인증서"
+      },
+      {
+        "label": "AWS Certificate Manager ACM",
+        "url": "/section/24-security-encryption#aws-certificate-manager-acm"
+      }
+    ],
+    "q206": [
+      {
+        "label": "CloudHSM",
+        "url": "/section/24-security-encryption#cloudhsm"
+      },
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q207": [
+      {
+        "label": "Security Group vs NACL",
+        "url": "/section/25-vpc#security-group-vs-nacl"
+      },
+      {
+        "label": "AWS Network Firewall",
+        "url": "/section/25-vpc#aws-network-firewall"
+      }
+    ],
+    "q208": [
+      {
+        "label": "S3 Pre-Signed URLs",
+        "url": "/section/12-s3-security#s3-presigned-urls"
+      }
+    ],
+    "q209": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      },
+      {
+        "label": "EBS Volume Types 6가지",
+        "url": "/section/05-ec2-instance-storage#ebs-volume-types-6가지"
+      }
+    ],
+    "q210": [
+      {
+        "label": "RDS & Aurora 백업",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-백업"
+      }
+    ],
+    "q211": [
+      {
+        "label": "Placement Groups 배치 그룹",
+        "url": "/section/04-ec2-associate#placement-groups-배치-그룹"
+      },
+      {
+        "label": "AWS 글로벌 인프라",
+        "url": "/section/01-getting-started#aws-글로벌-인프라"
+      }
+    ],
+    "q212": [
+      {
+        "label": "IAM Security Tools",
+        "url": "/section/02-iam#iam-security-tools"
+      },
+      {
+        "label": "MFA Multi Factor Authentication",
+        "url": "/section/02-iam#mfa-multi-factor-authentication"
+      }
+    ],
+    "q213": [],
+    "q214": [
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      },
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      }
+    ],
+    "q215": [
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      },
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      }
+    ],
+    "q216": [
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q217": [
+      {
+        "label": "CloudWatch Alarms",
+        "url": "/section/22-monitoring-audit-performance#cloudwatch-alarms"
+      }
+    ],
+    "q218": [],
+    "q219": [
+      {
+        "label": "Elastic IP",
+        "url": "/section/04-ec2-associate#elastic-ip"
+      },
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      }
+    ],
+    "q220": [
+      {
+        "label": "AWS Storage Gateway",
+        "url": "/section/14-storage-extras#aws-storage-gateway"
+      },
+      {
+        "label": "S3 Storage Classes 스토리지 클래스",
+        "url": "/section/10-amazon-s3#s3-storage-classes-스토리지-클래스"
+      }
+    ],
+    "q221": [
+      {
+        "label": "RDS Read Replicas",
+        "url": "/section/07-rds-aurora-elasticache#rds-read-replicas"
+      },
+      {
+        "label": "RDS & Aurora 백업",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-백업"
+      }
+    ],
+    "q222": [
+      {
+        "label": "Amazon SNS",
+        "url": "/section/15-integration-messaging#amazon-sns-simple-notification-service"
+      }
+    ],
+    "q223": [
+      {
+        "label": "Bastion Host",
+        "url": "/section/25-vpc#bastion-host"
+      },
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q224": [
+      {
+        "label": "EBS Encryption",
+        "url": "/section/05-ec2-instance-storage#ebs-encryption"
+      },
+      {
+        "label": "AWS KMS",
+        "url": "/section/24-security-encryption#aws-kms-key-management-service"
+      }
+    ],
+    "q225": [
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      },
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q226": [
+      {
+        "label": "Users & Groups",
+        "url": "/section/02-iam#users-groups"
+      },
+      {
+        "label": "정책 상속",
+        "url": "/section/02-iam#정책-상속"
+      }
+    ],
+    "q227": [
+      {
+        "label": "AWS Lambda",
+        "url": "/section/17-serverless-overview#aws-lambda"
+      },
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/19-databases#amazon-dynamodb"
+      }
+    ],
+    "q228": [
+      {
+        "label": "Amazon RDS",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      },
+      {
+        "label": "Placement Groups 배치 그룹",
+        "url": "/section/04-ec2-associate#placement-groups-배치-그룹"
+      }
+    ],
+    "q229": [],
+    "q230": [
+      {
+        "label": "EBS Volume Types 6가지",
+        "url": "/section/05-ec2-instance-storage#ebs-volume-types-6가지"
+      },
+      {
+        "label": "EBS Multi-Attach io1/io2",
+        "url": "/section/05-ec2-instance-storage#ebs-multiattach-io1io2"
+      }
+    ],
+    "q231": [
+      {
+        "label": "S3 Glacier Vault Lock",
+        "url": "/section/12-s3-security#s3-glacier-vault-lock"
+      },
+      {
+        "label": "AWS KMS",
+        "url": "/section/24-security-encryption#aws-kms-key-management-service"
+      }
+    ],
+    "q232": [
+      {
+        "label": "Amazon RDS",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      },
+      {
+        "label": "EBS Volume Types 6가지",
+        "url": "/section/05-ec2-instance-storage#ebs-volume-types-6가지"
+      }
+    ],
+    "q233": [
+      {
+        "label": "Elastic Network Interface ENI",
+        "url": "/section/04-ec2-associate#elastic-network-interface-eni"
+      }
+    ],
+    "q234": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q235": [
+      {
+        "label": "Amazon SQS",
+        "url": "/section/15-integration-messaging#amazon-sqs-simple-queue-service"
+      }
+    ],
+    "q236": [
+      {
+        "label": "Site-to-Site VPN",
+        "url": "/section/25-vpc#sitetosite-vpn"
+      },
+      {
+        "label": "Direct Connect DX",
+        "url": "/section/25-vpc#direct-connect-dx"
+      }
+    ],
+    "q237": [
+      {
+        "label": "EC2 구매 옵션 시험 핵심!",
+        "url": "/section/03-ec2-basics#ec2-구매-옵션-시험-핵심"
+      }
+    ],
+    "q238": [
+      {
+        "label": "AWS CloudTrail",
+        "url": "/section/22-monitoring-audit-performance#aws-cloudtrail"
+      }
+    ],
+    "q239": [
+      {
+        "label": "AWS Trusted Advisor",
+        "url": "/section/29-white-papers-architectures#aws-trusted-advisor"
+      }
+    ],
+    "q240": [
+      {
+        "label": "CloudFront Origins 원본 소스",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-origins-원본-소스"
+      },
+      {
+        "label": "CloudFront Cache Invalidation 캐시 무효화",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-cache-invalidation-캐시-무효화"
+      }
+    ],
+    "q241": [
+      {
+        "label": "Amazon SES",
+        "url": "/section/28-other-services#amazon-simple-email-service-ses"
+      }
+    ],
+    "q242": [],
+    "q243": [
+      {
+        "label": "RDS & Aurora 백업",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-백업"
+      },
+      {
+        "label": "AMI Amazon Machine Image",
+        "url": "/section/05-ec2-instance-storage#ami-amazon-machine-image"
+      },
+      {
+        "label": "RPO와 RTO",
+        "url": "/section/26-disaster-recovery-migrations#rpo와-rto"
+      }
+    ],
+    "q244": [
+      {
+        "label": "Amazon CloudWatch Metrics",
+        "url": "/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics"
+      },
+      {
+        "label": "CloudFront 기본 개념",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-기본-개념"
+      }
+    ],
+    "q245": [
+      {
+        "label": "Amazon RDS",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      },
+      {
+        "label": "RDS Custom",
+        "url": "/section/07-rds-aurora-elasticache#rds-custom"
+      }
+    ],
+    "q246": [],
+    "q247": [
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      },
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q248": [
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      }
+    ],
+    "q249": [
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      },
+      {
+        "label": "서브넷 Subnet",
+        "url": "/section/25-vpc#서브넷-subnet"
+      }
+    ],
+    "q250": []
+  },
+  "ditectrev-batch-06": {
+    "q251": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q252": [
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      },
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      },
+      {
+        "label": "S3 보안",
+        "url": "/section/10-amazon-s3#s3-보안"
+      }
+    ],
+    "q253": [
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      },
+      {
+        "label": "Scalability vs High Availability",
+        "url": "/section/06-high-availability-scalability#scalability-vs-high-availability"
+      }
+    ],
+    "q254": [
+      {
+        "label": "재해 복구 기본 개념",
+        "url": "/section/26-disaster-recovery-migrations#재해-복구-기본-개념"
+      },
+      {
+        "label": "RPO와 RTO",
+        "url": "/section/26-disaster-recovery-migrations#rpo와-rto"
+      },
+      {
+        "label": "4가지 DR 전략 빠른 RTO 순",
+        "url": "/section/26-disaster-recovery-migrations#4가지-dr-전략-빠른-rto-순"
+      }
+    ],
+    "q255": [
+      {
+        "label": "Security Group vs NACL",
+        "url": "/section/25-vpc#security-group-vs-nacl"
+      },
+      {
+        "label": "NACL Network Access Control List",
+        "url": "/section/25-vpc#nacl-network-access-control-list"
+      },
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q256": [],
+    "q257": [
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      },
+      {
+        "label": "데이터베이스 유형별 분류",
+        "url": "/section/19-databases#데이터베이스-유형별-분류"
+      }
+    ],
+    "q258": [
+      {
+        "label": "라우팅 정책 Routing Policies",
+        "url": "/section/08-route-53#라우팅-정책-routing-policies"
+      },
+      {
+        "label": "Health Checks 헬스 체크",
+        "url": "/section/08-route-53#health-checks-헬스-체크"
+      }
+    ],
+    "q259": [
+      {
+        "label": "Amazon SQS Simple Queue Service",
+        "url": "/section/15-integration-messaging#amazon-sqs-simple-queue-service"
+      },
+      {
+        "label": "언제 무엇을 쓰는가? SQS / SNS / Kinesis 한눈에 비교",
+        "url": "/section/15-integration-messaging#언제-무엇을-쓰는가-sqs-sns-kinesis-한눈에-비교"
+      }
+    ],
+    "q260": [
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      }
+    ],
+    "q261": [
+      {
+        "label": "ALB Application Load Balancer 상세",
+        "url": "/section/06-high-availability-scalability#alb-application-load-balancer-상세"
+      },
+      {
+        "label": "NLB Network Load Balancer 상세",
+        "url": "/section/06-high-availability-scalability#nlb-network-load-balancer-상세"
+      }
+    ],
+    "q262": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      },
+      {
+        "label": "Aurora Database Cloning",
+        "url": "/section/07-rds-aurora-elasticache#aurora-database-cloning"
+      }
+    ],
+    "q263": [
+      {
+        "label": "IAM Conditions",
+        "url": "/section/23-advanced-identity#iam-conditions"
+      },
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      }
+    ],
+    "q264": [
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      }
+    ],
+    "q265": [
+      {
+        "label": "CloudFront 기본 개념",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-기본-개념"
+      },
+      {
+        "label": "CloudFront vs S3 Cross Region Replication",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-vs-s3-cross-region-replication"
+      }
+    ],
+    "q266": [
+      {
+        "label": "AWS Organizations",
+        "url": "/section/23-advanced-identity#aws-organizations"
+      }
+    ],
+    "q267": [
+      {
+        "label": "EBS Volume Types 6가지",
+        "url": "/section/05-ec2-instance-storage#ebs-volume-types-6가지"
+      },
+      {
+        "label": "Amazon SQS Simple Queue Service",
+        "url": "/section/15-integration-messaging#amazon-sqs-simple-queue-service"
+      },
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      }
+    ],
+    "q268": [
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q269": [
+      {
+        "label": "EC2 구성 요소",
+        "url": "/section/03-ec2-basics#ec2-구성-요소"
+      }
+    ],
+    "q270": [
+      {
+        "label": "AWS 접근 방법",
+        "url": "/section/02-iam#aws-접근-방법"
+      }
+    ],
+    "q271": [
+      {
+        "label": "EBS Volume Types 6가지",
+        "url": "/section/05-ec2-instance-storage#ebs-volume-types-6가지"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q272": [
+      {
+        "label": "Amazon SNS Simple Notification Service",
+        "url": "/section/15-integration-messaging#amazon-sns-simple-notification-service"
+      },
+      {
+        "label": "Spot Instance 상세",
+        "url": "/section/03-ec2-basics#spot-instance-상세"
+      },
+      {
+        "label": "S3 Storage Classes 스토리지 클래스",
+        "url": "/section/10-amazon-s3#s3-storage-classes-스토리지-클래스"
+      }
+    ],
+    "q273": [
+      {
+        "label": "Placement Groups 배치 그룹",
+        "url": "/section/04-ec2-associate#placement-groups-배치-그룹"
+      }
+    ],
+    "q274": [
+      {
+        "label": "AWS CloudFormation",
+        "url": "/section/28-other-services#aws-cloudformation"
+      }
+    ],
+    "q275": [
+      {
+        "label": "EBS Multi-Attach io1/io2",
+        "url": "/section/05-ec2-instance-storage#ebs-multiattach-io1io2"
+      },
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      }
+    ],
+    "q276": [
+      {
+        "label": "Microsoft Active Directory AD",
+        "url": "/section/23-advanced-identity#microsoft-active-directory-ad"
+      },
+      {
+        "label": "AWS Directory Services",
+        "url": "/section/23-advanced-identity#aws-directory-services"
+      },
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      }
+    ],
+    "q277": [
+      {
+        "label": "Amazon Simple Email Service SES",
+        "url": "/section/28-other-services#amazon-simple-email-service-ses"
+      },
+      {
+        "label": "AWS Step Functions",
+        "url": "/section/17-serverless-overview#aws-step-functions"
+      }
+    ],
+    "q278": [
+      {
+        "label": "Users & Groups",
+        "url": "/section/02-iam#users-groups"
+      }
+    ],
+    "q279": [
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      },
+      {
+        "label": "CIDR Classless Inter-Domain Routing, 사이더",
+        "url": "/section/25-vpc#cidr-classless-interdomain-routing-사이더"
+      }
+    ],
+    "q280": [
+      {
+        "label": "RDS Read Replicas",
+        "url": "/section/07-rds-aurora-elasticache#rds-read-replicas"
+      },
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q281": [
+      {
+        "label": "S3 Storage Classes 스토리지 클래스",
+        "url": "/section/10-amazon-s3#s3-storage-classes-스토리지-클래스"
+      },
+      {
+        "label": "S3 Glacier Vault Lock",
+        "url": "/section/12-s3-security#s3-glacier-vault-lock"
+      }
+    ],
+    "q282": [
+      {
+        "label": "CloudFront 기본 개념",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-기본-개념"
+      },
+      {
+        "label": "CloudFront Cache Invalidation 캐시 무효화",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-cache-invalidation-캐시-무효화"
+      }
+    ],
+    "q283": [
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      }
+    ],
+    "q284": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      }
+    ],
+    "q285": [
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      }
+    ],
+    "q286": [
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      }
+    ],
+    "q287": [
+      {
+        "label": "VPC Peering",
+        "url": "/section/25-vpc#vpc-peering"
+      }
+    ],
+    "q288": [
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      },
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/19-databases#amazon-dynamodb"
+      }
+    ],
+    "q289": [
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q290": [
+      {
+        "label": "AWS VPN CloudHub",
+        "url": "/section/25-vpc#aws-vpn-cloudhub"
+      },
+      {
+        "label": "Site-to-Site VPN",
+        "url": "/section/25-vpc#sitetosite-vpn"
+      }
+    ],
+    "q291": [
+      {
+        "label": "Elastic Network Interface ENI",
+        "url": "/section/04-ec2-associate#elastic-network-interface-eni"
+      },
+      {
+        "label": "Placement Groups 배치 그룹",
+        "url": "/section/04-ec2-associate#placement-groups-배치-그룹"
+      }
+    ],
+    "q292": [
+      {
+        "label": "VPC 기본 사항",
+        "url": "/section/25-vpc#vpc-기본-사항"
+      },
+      {
+        "label": "Default VPC",
+        "url": "/section/25-vpc#default-vpc"
+      }
+    ],
+    "q293": [
+      {
+        "label": "RDS Read Replicas",
+        "url": "/section/07-rds-aurora-elasticache#rds-read-replicas"
+      }
+    ],
+    "q294": [
+      {
+        "label": "EBS Volume Types 6가지",
+        "url": "/section/05-ec2-instance-storage#ebs-volume-types-6가지"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q295": [
+      {
+        "label": "S3 Performance 최적화",
+        "url": "/section/11-s3-advanced#s3-performance-최적화"
+      },
+      {
+        "label": "S3 Storage Classes 스토리지 클래스",
+        "url": "/section/10-amazon-s3#s3-storage-classes-스토리지-클래스"
+      }
+    ],
+    "q296": [
+      {
+        "label": "Classic Ports",
+        "url": "/section/03-ec2-basics#classic-ports"
+      }
+    ],
+    "q297": [
+      {
+        "label": "EC2 Instance Store",
+        "url": "/section/05-ec2-instance-storage#ec2-instance-store"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      },
+      {
+        "label": "EBS vs EFS vs Instance Store 비교 시험 핵심!",
+        "url": "/section/05-ec2-instance-storage#ebs-vs-efs-vs-instance-store-비교-시험-핵심"
+      }
+    ],
+    "q298": [
+      {
+        "label": "EC2 구성 요소",
+        "url": "/section/03-ec2-basics#ec2-구성-요소"
+      }
+    ],
+    "q299": [
+      {
+        "label": "Users & Groups",
+        "url": "/section/02-iam#users-groups"
+      },
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      }
+    ],
+    "q300": [
+      {
+        "label": "Elastic Network Interface ENI",
+        "url": "/section/04-ec2-associate#elastic-network-interface-eni"
+      },
+      {
+        "label": "서브넷 Subnet",
+        "url": "/section/25-vpc#서브넷-subnet"
+      }
+    ]
+  },
+  "ditectrev-batch-07": {
+    "q301": [
+      {
+        "label": "서브넷 Subnet",
+        "url": "/section/25-vpc#서브넷-subnet"
+      },
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      }
+    ],
+    "q302": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q303": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q304": [
+      {
+        "label": "Direct Connect DX",
+        "url": "/section/25-vpc#direct-connect-dx"
+      },
+      {
+        "label": "온프레미스 전략",
+        "url": "/section/26-disaster-recovery-migrations#온프레미스-전략"
+      },
+      {
+        "label": "CIDR Classless Inter-Domain Routing, 사이더",
+        "url": "/section/25-vpc#cidr-classless-interdomain-routing-사이더"
+      }
+    ],
+    "q305": [
+      {
+        "label": "Users & Groups",
+        "url": "/section/02-iam#users-groups"
+      },
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      }
+    ],
+    "q306": [
+      {
+        "label": "IP 주소 IPv4",
+        "url": "/section/04-ec2-associate#ip-주소-ipv4"
+      },
+      {
+        "label": "서브넷 Subnet",
+        "url": "/section/25-vpc#서브넷-subnet"
+      }
+    ],
+    "q307": [
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      },
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q308": [],
+    "q309": [
+      {
+        "label": "S3 사용 사례",
+        "url": "/section/10-amazon-s3#s3-사용-사례"
+      },
+      {
+        "label": "Elastic Beanstalk",
+        "url": "/section/09-classic-solutions-architecture#elastic-beanstalk"
+      }
+    ],
+    "q310": [
+      {
+        "label": "EBS Volume Types 6가지",
+        "url": "/section/05-ec2-instance-storage#ebs-volume-types-6가지"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q311": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      },
+      {
+        "label": "AMI Amazon Machine Image",
+        "url": "/section/05-ec2-instance-storage#ami-amazon-machine-image"
+      }
+    ],
+    "q312": [
+      {
+        "label": "VPC Peering",
+        "url": "/section/25-vpc#vpc-peering"
+      }
+    ],
+    "q313": [
+      {
+        "label": "Users & Groups",
+        "url": "/section/02-iam#users-groups"
+      },
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      }
+    ],
+    "q314": [
+      {
+        "label": "Amazon Redshift",
+        "url": "/section/20-data-analytics#amazon-redshift"
+      }
+    ],
+    "q315": [
+      {
+        "label": "Sticky Sessions Session Affinity",
+        "url": "/section/06-high-availability-scalability#sticky-sessions-session-affinity"
+      }
+    ],
+    "q316": [
+      {
+        "label": "AWS CloudFormation",
+        "url": "/section/28-other-services#aws-cloudformation"
+      }
+    ],
+    "q317": [
+      {
+        "label": "AWS CloudFormation",
+        "url": "/section/28-other-services#aws-cloudformation"
+      }
+    ],
+    "q318": [
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      },
+      {
+        "label": "EC2 구성 요소",
+        "url": "/section/03-ec2-basics#ec2-구성-요소"
+      }
+    ],
+    "q319": [
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q320": [
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      },
+      {
+        "label": "Amazon SNS Simple Notification Service",
+        "url": "/section/15-integration-messaging#amazon-sns-simple-notification-service"
+      }
+    ],
+    "q321": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      },
+      {
+        "label": "EBS vs EFS vs Instance Store 비교 시험 핵심!",
+        "url": "/section/05-ec2-instance-storage#ebs-vs-efs-vs-instance-store-비교-시험-핵심"
+      }
+    ],
+    "q322": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q323": [
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      }
+    ],
+    "q324": [
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      },
+      {
+        "label": "AWS CloudFormation",
+        "url": "/section/28-other-services#aws-cloudformation"
+      },
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      }
+    ],
+    "q325": [
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      }
+    ],
+    "q326": [
+      {
+        "label": "RDS & Aurora 백업",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-백업"
+      },
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q327": [
+      {
+        "label": "S3 보안",
+        "url": "/section/10-amazon-s3#s3-보안"
+      },
+      {
+        "label": "S3 Bucket Policy",
+        "url": "/section/10-amazon-s3#s3-bucket-policy"
+      }
+    ],
+    "q328": [
+      {
+        "label": "S3 객체 암호화 - 4가지 방법",
+        "url": "/section/12-s3-security#s3-객체-암호화-4가지-방법"
+      },
+      {
+        "label": "S3 Storage Classes 스토리지 클래스",
+        "url": "/section/10-amazon-s3#s3-storage-classes-스토리지-클래스"
+      }
+    ],
+    "q329": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q330": [
+      {
+        "label": "Spot Instance 상세",
+        "url": "/section/03-ec2-basics#spot-instance-상세"
+      },
+      {
+        "label": "EC2 구매 옵션 시험 핵심!",
+        "url": "/section/03-ec2-basics#ec2-구매-옵션-시험-핵심"
+      }
+    ],
+    "q331": [
+      {
+        "label": "AWS Step Functions",
+        "url": "/section/17-serverless-overview#aws-step-functions"
+      }
+    ],
+    "q332": [
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      },
+      {
+        "label": "VPC 기본 사항",
+        "url": "/section/25-vpc#vpc-기본-사항"
+      }
+    ],
+    "q333": [
+      {
+        "label": "Direct Connect DX",
+        "url": "/section/25-vpc#direct-connect-dx"
+      },
+      {
+        "label": "Site-to-Site VPN",
+        "url": "/section/25-vpc#sitetosite-vpn"
+      }
+    ],
+    "q334": [
+      {
+        "label": "ElastiCache 아키텍처 패턴",
+        "url": "/section/07-rds-aurora-elasticache#elasticache-아키텍처-패턴"
+      },
+      {
+        "label": "CloudFront 기본 개념",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-기본-개념"
+      },
+      {
+        "label": "Amazon ElastiCache",
+        "url": "/section/07-rds-aurora-elasticache#amazon-elasticache"
+      }
+    ],
+    "q335": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q336": [
+      {
+        "label": "AWS 접근 방법",
+        "url": "/section/02-iam#aws-접근-방법"
+      }
+    ],
+    "q337": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q338": [
+      {
+        "label": "Amazon EMR Elastic MapReduce",
+        "url": "/section/20-data-analytics#amazon-emr-elastic-mapreduce"
+      }
+    ],
+    "q339": [
+      {
+        "label": "라우팅 정책 Routing Policies",
+        "url": "/section/08-route-53#라우팅-정책-routing-policies"
+      },
+      {
+        "label": "Health Checks 헬스 체크",
+        "url": "/section/08-route-53#health-checks-헬스-체크"
+      }
+    ],
+    "q340": [
+      {
+        "label": "RDS Read Replicas",
+        "url": "/section/07-rds-aurora-elasticache#rds-read-replicas"
+      }
+    ],
+    "q341": [
+      {
+        "label": "AWS Storage Gateway",
+        "url": "/section/14-storage-extras#aws-storage-gateway"
+      }
+    ],
+    "q342": [
+      {
+        "label": "RDS & Aurora 보안",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-보안"
+      },
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q343": [
+      {
+        "label": "EC2 구매 옵션 시험 핵심!",
+        "url": "/section/03-ec2-basics#ec2-구매-옵션-시험-핵심"
+      }
+    ],
+    "q344": [
+      {
+        "label": "Amazon Redshift",
+        "url": "/section/20-data-analytics#amazon-redshift"
+      }
+    ],
+    "q345": [
+      {
+        "label": "EC2 Instance Connect",
+        "url": "/section/03-ec2-basics#ec2-instance-connect"
+      },
+      {
+        "label": "Bastion Host",
+        "url": "/section/25-vpc#bastion-host"
+      }
+    ],
+    "q346": [
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      },
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/19-databases#amazon-dynamodb"
+      }
+    ],
+    "q347": [
+      {
+        "label": "Placement Groups 배치 그룹",
+        "url": "/section/04-ec2-associate#placement-groups-배치-그룹"
+      },
+      {
+        "label": "EC2 인스턴스 타입",
+        "url": "/section/03-ec2-basics#ec2-인스턴스-타입"
+      }
+    ],
+    "q348": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      },
+      {
+        "label": "EC2 Instance Store",
+        "url": "/section/05-ec2-instance-storage#ec2-instance-store"
+      }
+    ],
+    "q349": [
+      {
+        "label": "RDS & Aurora 보안",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-보안"
+      },
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q350": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ]
+  },
+  "ditectrev-batch-08": {
+    "q351": [
+      {
+        "label": "EBS Volume Types 6가지",
+        "url": "/section/05-ec2-instance-storage#ebs-volume-types-6가지"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q352": [
+      {
+        "label": "4가지 DR 전략 빠른 RTO 순",
+        "url": "/section/26-disaster-recovery-migrations#4가지-dr-전략-빠른-rto-순"
+      },
+      {
+        "label": "RPO와 RTO",
+        "url": "/section/26-disaster-recovery-migrations#rpo와-rto"
+      },
+      {
+        "label": "AMI Amazon Machine Image",
+        "url": "/section/05-ec2-instance-storage#ami-amazon-machine-image"
+      }
+    ],
+    "q353": [
+      {
+        "label": "AWS Storage Gateway",
+        "url": "/section/14-storage-extras#aws-storage-gateway"
+      },
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      },
+      {
+        "label": "AMI Amazon Machine Image",
+        "url": "/section/05-ec2-instance-storage#ami-amazon-machine-image"
+      }
+    ],
+    "q354": [
+      {
+        "label": "Amazon Kinesis Data Streams",
+        "url": "/section/15-integration-messaging#amazon-kinesis-data-streams"
+      },
+      {
+        "label": "Amazon SQS Simple Queue Service",
+        "url": "/section/15-integration-messaging#amazon-sqs-simple-queue-service"
+      }
+    ],
+    "q355": [
+      {
+        "label": "개요",
+        "url": "/section/02-iam#개요"
+      }
+    ],
+    "q356": [
+      {
+        "label": "Case Study 2: MyClothes.com Stateful",
+        "url": "/section/09-classic-solutions-architecture#case-study-2-myclothescom-stateful"
+      },
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      }
+    ],
+    "q357": [
+      {
+        "label": "Site-to-Site VPN",
+        "url": "/section/25-vpc#sitetosite-vpn"
+      },
+      {
+        "label": "Direct Connect DX",
+        "url": "/section/25-vpc#direct-connect-dx"
+      }
+    ],
+    "q358": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      },
+      {
+        "label": "Amazon CloudWatch Metrics",
+        "url": "/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics"
+      },
+      {
+        "label": "AWS CloudTrail",
+        "url": "/section/22-monitoring-audit-performance#aws-cloudtrail"
+      }
+    ],
+    "q359": [
+      {
+        "label": "CloudFront 기본 개념",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-기본-개념"
+      },
+      {
+        "label": "S3 Access Logs 액세스 로그",
+        "url": "/section/12-s3-security#s3-access-logs-액세스-로그"
+      }
+    ],
+    "q360": [
+      {
+        "label": "Amazon SQS Simple Queue Service",
+        "url": "/section/15-integration-messaging#amazon-sqs-simple-queue-service"
+      }
+    ],
+    "q361": [
+      {
+        "label": "AWS CloudTrail",
+        "url": "/section/22-monitoring-audit-performance#aws-cloudtrail"
+      }
+    ],
+    "q362": [
+      {
+        "label": "핵심 개념",
+        "url": "/section/02-iam#핵심-개념"
+      }
+    ],
+    "q363": [
+      {
+        "label": "S3 Bucket Policy",
+        "url": "/section/10-amazon-s3#s3-bucket-policy"
+      },
+      {
+        "label": "S3 보안",
+        "url": "/section/10-amazon-s3#s3-보안"
+      }
+    ],
+    "q364": [
+      {
+        "label": "NLB Network Load Balancer 상세",
+        "url": "/section/06-high-availability-scalability#nlb-network-load-balancer-상세"
+      },
+      {
+        "label": "SSL/TLS 인증서",
+        "url": "/section/06-high-availability-scalability#ssltls-인증서"
+      }
+    ],
+    "q365": [
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      },
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/19-databases#amazon-dynamodb"
+      }
+    ],
+    "q366": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      },
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q367": [
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      }
+    ],
+    "q368": [
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      },
+      {
+        "label": "Amazon Cognito",
+        "url": "/section/17-serverless-overview#amazon-cognito"
+      }
+    ],
+    "q369": [
+      {
+        "label": "RDS Storage Auto Scaling",
+        "url": "/section/07-rds-aurora-elasticache#rds-storage-auto-scaling"
+      },
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q370": [
+      {
+        "label": "AWS Certificate Manager ACM",
+        "url": "/section/24-security-encryption#aws-certificate-manager-acm"
+      },
+      {
+        "label": "SSL/TLS 인증서",
+        "url": "/section/06-high-availability-scalability#ssltls-인증서"
+      }
+    ],
+    "q371": [
+      {
+        "label": "Placement Groups 배치 그룹",
+        "url": "/section/04-ec2-associate#placement-groups-배치-그룹"
+      }
+    ],
+    "q372": [
+      {
+        "label": "RDS & Aurora 백업",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-백업"
+      },
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q373": [
+      {
+        "label": "S3 Storage Classes 스토리지 클래스",
+        "url": "/section/10-amazon-s3#s3-storage-classes-스토리지-클래스"
+      }
+    ],
+    "q374": [
+      {
+        "label": "서브넷 Subnet",
+        "url": "/section/25-vpc#서브넷-subnet"
+      }
+    ],
+    "q375": [
+      {
+        "label": "AWS Step Functions",
+        "url": "/section/17-serverless-overview#aws-step-functions"
+      },
+      {
+        "label": "Amazon SQS Simple Queue Service",
+        "url": "/section/15-integration-messaging#amazon-sqs-simple-queue-service"
+      }
+    ],
+    "q376": [
+      {
+        "label": "EC2 인스턴스 타입",
+        "url": "/section/03-ec2-basics#ec2-인스턴스-타입"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q377": [
+      {
+        "label": "개요",
+        "url": "/section/02-iam#개요"
+      },
+      {
+        "label": "핵심 개념",
+        "url": "/section/02-iam#핵심-개념"
+      }
+    ],
+    "q378": [
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      }
+    ],
+    "q379": [
+      {
+        "label": "RDS Read Replicas",
+        "url": "/section/07-rds-aurora-elasticache#rds-read-replicas"
+      },
+      {
+        "label": "Amazon ElastiCache",
+        "url": "/section/07-rds-aurora-elasticache#amazon-elasticache"
+      },
+      {
+        "label": "Case Study 1: WhatIsTheTime.com Stateless",
+        "url": "/section/09-classic-solutions-architecture#case-study-1-whatisthetimecom-stateless"
+      }
+    ],
+    "q380": [
+      {
+        "label": "EC2 구매 옵션 시험 핵심!",
+        "url": "/section/03-ec2-basics#ec2-구매-옵션-시험-핵심"
+      },
+      {
+        "label": "CloudFront 기본 개념",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-기본-개념"
+      }
+    ],
+    "q381": [
+      {
+        "label": "Amazon ElastiCache",
+        "url": "/section/07-rds-aurora-elasticache#amazon-elasticache"
+      }
+    ],
+    "q382": [
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      },
+      {
+        "label": "IAM Roles vs Resource-Based Policies",
+        "url": "/section/23-advanced-identity#iam-roles-vs-resourcebased-policies"
+      }
+    ],
+    "q383": [
+      {
+        "label": "CloudHSM",
+        "url": "/section/24-security-encryption#cloudhsm"
+      }
+    ],
+    "q384": [
+      {
+        "label": "S3 객체 암호화 - 4가지 방법",
+        "url": "/section/12-s3-security#s3-객체-암호화-4가지-방법"
+      },
+      {
+        "label": "MFA Delete",
+        "url": "/section/12-s3-security#mfa-delete"
+      },
+      {
+        "label": "S3 Versioning 버저닝",
+        "url": "/section/10-amazon-s3#s3-versioning-버저닝"
+      }
+    ],
+    "q385": [
+      {
+        "label": "Amazon Kinesis Data Streams",
+        "url": "/section/15-integration-messaging#amazon-kinesis-data-streams"
+      },
+      {
+        "label": "Amazon Redshift",
+        "url": "/section/20-data-analytics#amazon-redshift"
+      },
+      {
+        "label": "Big Data Ingestion Pipeline",
+        "url": "/section/20-data-analytics#big-data-ingestion-pipeline"
+      }
+    ],
+    "q386": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      },
+      {
+        "label": "S3 Storage Classes 스토리지 클래스",
+        "url": "/section/10-amazon-s3#s3-storage-classes-스토리지-클래스"
+      }
+    ],
+    "q387": [
+      {
+        "label": "Spot Instance 상세",
+        "url": "/section/03-ec2-basics#spot-instance-상세"
+      }
+    ],
+    "q388": [
+      {
+        "label": "AWS Storage Gateway",
+        "url": "/section/14-storage-extras#aws-storage-gateway"
+      }
+    ],
+    "q389": [
+      {
+        "label": "Amazon Redshift",
+        "url": "/section/20-data-analytics#amazon-redshift"
+      }
+    ],
+    "q390": [
+      {
+        "label": "IAM Security Tools",
+        "url": "/section/02-iam#iam-security-tools"
+      }
+    ],
+    "q391": [],
+    "q392": [],
+    "q393": [
+      {
+        "label": "EC2 구성 요소",
+        "url": "/section/03-ec2-basics#ec2-구성-요소"
+      }
+    ],
+    "q394": [
+      {
+        "label": "핵심 개념",
+        "url": "/section/02-iam#핵심-개념"
+      }
+    ],
+    "q395": [
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      }
+    ],
+    "q396": [
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      },
+      {
+        "label": "Amazon CloudWatch Metrics",
+        "url": "/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics"
+      }
+    ],
+    "q397": [
+      {
+        "label": "Bastion Host",
+        "url": "/section/25-vpc#bastion-host"
+      },
+      {
+        "label": "NAT Instance 레거시, 시험에 출제",
+        "url": "/section/25-vpc#nat-instance-레거시-시험에-출제"
+      },
+      {
+        "label": "NAT Gateway",
+        "url": "/section/25-vpc#nat-gateway"
+      }
+    ],
+    "q398": [
+      {
+        "label": "Amazon EMR Elastic MapReduce",
+        "url": "/section/20-data-analytics#amazon-emr-elastic-mapreduce"
+      },
+      {
+        "label": "Amazon CloudWatch Metrics",
+        "url": "/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics"
+      }
+    ],
+    "q399": [
+      {
+        "label": "개요",
+        "url": "/section/02-iam#개요"
+      },
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      }
+    ],
+    "q400": [
+      {
+        "label": "RDS Read Replicas",
+        "url": "/section/07-rds-aurora-elasticache#rds-read-replicas"
+      }
+    ]
+  },
+  "ditectrev-batch-09": {
+    "q424": [
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      },
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/19-databases#amazon-dynamodb"
+      }
+    ],
+    "q420": [
+      {
+        "label": "S3 버킷 Bucket",
+        "url": "/section/10-amazon-s3#s3-버킷-bucket"
+      },
+      {
+        "label": "Amazon SQS Simple Queue Service",
+        "url": "/section/15-integration-messaging#amazon-sqs-simple-queue-service"
+      },
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      }
+    ],
+    "q401": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      },
+      {
+        "label": "AMI Amazon Machine Image",
+        "url": "/section/05-ec2-instance-storage#ami-amazon-machine-image"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q402": [
+      {
+        "label": "Classic Ports",
+        "url": "/section/03-ec2-basics#classic-ports"
+      },
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q403": [
+      {
+        "label": "EBS Volume Types 6가지",
+        "url": "/section/05-ec2-instance-storage#ebs-volume-types-6가지"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      },
+      {
+        "label": "Amazon CloudWatch Metrics",
+        "url": "/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics"
+      }
+    ],
+    "q404": [
+      {
+        "label": "Amazon SNS Simple Notification Service",
+        "url": "/section/15-integration-messaging#amazon-sns-simple-notification-service"
+      }
+    ],
+    "q405": [
+      {
+        "label": "Route 53 특징",
+        "url": "/section/08-route-53#route-53-특징"
+      }
+    ],
+    "q406": [
+      {
+        "label": "CloudHSM",
+        "url": "/section/24-security-encryption#cloudhsm"
+      }
+    ],
+    "q407": [
+      {
+        "label": "EC2 구매 옵션 시험 핵심!",
+        "url": "/section/03-ec2-basics#ec2-구매-옵션-시험-핵심"
+      }
+    ],
+    "q408": [
+      {
+        "label": "EC2 구매 옵션 시험 핵심!",
+        "url": "/section/03-ec2-basics#ec2-구매-옵션-시험-핵심"
+      }
+    ],
+    "q409": [
+      {
+        "label": "IAM Conditions",
+        "url": "/section/23-advanced-identity#iam-conditions"
+      },
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      }
+    ],
+    "q410": [
+      {
+        "label": "AWS CloudFormation",
+        "url": "/section/28-other-services#aws-cloudformation"
+      }
+    ],
+    "q411": [
+      {
+        "label": "CloudWatch Alarms",
+        "url": "/section/22-monitoring-audit-performance#cloudwatch-alarms"
+      },
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      }
+    ],
+    "q412": [
+      {
+        "label": "S3 버킷 Bucket",
+        "url": "/section/10-amazon-s3#s3-버킷-bucket"
+      },
+      {
+        "label": "S3 사용 사례",
+        "url": "/section/10-amazon-s3#s3-사용-사례"
+      }
+    ],
+    "q413": [
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      },
+      {
+        "label": "AWS IAM Identity Center AWS SSO 후속",
+        "url": "/section/23-advanced-identity#aws-iam-identity-center-aws-sso-후속"
+      }
+    ],
+    "q414": [
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      },
+      {
+        "label": "SSL/TLS 인증서",
+        "url": "/section/06-high-availability-scalability#ssltls-인증서"
+      }
+    ],
+    "q415": [
+      {
+        "label": "AMI Amazon Machine Image",
+        "url": "/section/05-ec2-instance-storage#ami-amazon-machine-image"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      },
+      {
+        "label": "EC2 인스턴스 타입",
+        "url": "/section/03-ec2-basics#ec2-인스턴스-타입"
+      }
+    ],
+    "q416": [
+      {
+        "label": "Elastic IP",
+        "url": "/section/04-ec2-associate#elastic-ip"
+      },
+      {
+        "label": "VPC 기본 사항",
+        "url": "/section/25-vpc#vpc-기본-사항"
+      }
+    ],
+    "q417": [
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      },
+      {
+        "label": "Amazon EventBridge CloudWatch Events 후속",
+        "url": "/section/22-monitoring-audit-performance#amazon-eventbridge-cloudwatch-events-후속"
+      }
+    ],
+    "q418": [
+      {
+        "label": "AWS API Gateway",
+        "url": "/section/17-serverless-overview#aws-api-gateway"
+      }
+    ],
+    "q419": [
+      {
+        "label": "Amazon CloudWatch Metrics",
+        "url": "/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics"
+      }
+    ],
+    "q421": [
+      {
+        "label": "Elastic IP",
+        "url": "/section/04-ec2-associate#elastic-ip"
+      }
+    ],
+    "q422": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q423": [
+      {
+        "label": "AWS CloudTrail",
+        "url": "/section/22-monitoring-audit-performance#aws-cloudtrail"
+      },
+      {
+        "label": "MFA Delete",
+        "url": "/section/12-s3-security#mfa-delete"
+      }
+    ],
+    "q425": [
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q426": [
+      {
+        "label": "Security Group vs NACL",
+        "url": "/section/25-vpc#security-group-vs-nacl"
+      },
+      {
+        "label": "NACL Network Access Control List",
+        "url": "/section/25-vpc#nacl-network-access-control-list"
+      }
+    ],
+    "q427": [
+      {
+        "label": "AMI Amazon Machine Image",
+        "url": "/section/05-ec2-instance-storage#ami-amazon-machine-image"
+      }
+    ],
+    "q428": [
+      {
+        "label": "Users & Groups",
+        "url": "/section/02-iam#users-groups"
+      },
+      {
+        "label": "AWS 접근 방법",
+        "url": "/section/02-iam#aws-접근-방법"
+      }
+    ],
+    "q429": [
+      {
+        "label": "AWS Systems Manager SSM",
+        "url": "/section/28-other-services#aws-systems-manager-ssm"
+      }
+    ],
+    "q430": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      },
+      {
+        "label": "RDS Custom",
+        "url": "/section/07-rds-aurora-elasticache#rds-custom"
+      }
+    ],
+    "q431": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q432": [
+      {
+        "label": "라우팅 정책 Routing Policies",
+        "url": "/section/08-route-53#라우팅-정책-routing-policies"
+      },
+      {
+        "label": "Health Checks 헬스 체크",
+        "url": "/section/08-route-53#health-checks-헬스-체크"
+      }
+    ],
+    "q433": [
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      },
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      }
+    ],
+    "q434": [
+      {
+        "label": "RDS Storage Auto Scaling",
+        "url": "/section/07-rds-aurora-elasticache#rds-storage-auto-scaling"
+      },
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q435": [
+      {
+        "label": "EBS Encryption",
+        "url": "/section/05-ec2-instance-storage#ebs-encryption"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      },
+      {
+        "label": "AWS KMS Key Management Service",
+        "url": "/section/24-security-encryption#aws-kms-key-management-service"
+      }
+    ],
+    "q436": [
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q437": [
+      {
+        "label": "RDS & Aurora 보안",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-보안"
+      },
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q438": [
+      {
+        "label": "AWS Organizations",
+        "url": "/section/23-advanced-identity#aws-organizations"
+      }
+    ],
+    "q439": [
+      {
+        "label": "라우팅 정책 Routing Policies",
+        "url": "/section/08-route-53#라우팅-정책-routing-policies"
+      }
+    ],
+    "q440": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q441": [
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      },
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      },
+      {
+        "label": "Scalability vs High Availability",
+        "url": "/section/06-high-availability-scalability#scalability-vs-high-availability"
+      }
+    ],
+    "q442": [
+      {
+        "label": "CNAME vs Alias",
+        "url": "/section/08-route-53#cname-vs-alias"
+      },
+      {
+        "label": "Alias Record 대상",
+        "url": "/section/08-route-53#alias-record-대상"
+      }
+    ],
+    "q443": [
+      {
+        "label": "AWS API Gateway",
+        "url": "/section/17-serverless-overview#aws-api-gateway"
+      }
+    ],
+    "q444": [
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      },
+      {
+        "label": "Cross-Zone Load Balancing",
+        "url": "/section/06-high-availability-scalability#crosszone-load-balancing"
+      }
+    ],
+    "q445": [
+      {
+        "label": "Users & Groups",
+        "url": "/section/02-iam#users-groups"
+      }
+    ],
+    "q446": [
+      {
+        "label": "EC2 인스턴스 타입",
+        "url": "/section/03-ec2-basics#ec2-인스턴스-타입"
+      }
+    ],
+    "q447": [
+      {
+        "label": "EC2 인스턴스 타입",
+        "url": "/section/03-ec2-basics#ec2-인스턴스-타입"
+      },
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q448": [
+      {
+        "label": "AWS CloudTrail",
+        "url": "/section/22-monitoring-audit-performance#aws-cloudtrail"
+      }
+    ],
+    "q449": [
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      },
+      {
+        "label": "Classic Ports",
+        "url": "/section/03-ec2-basics#classic-ports"
+      }
+    ],
+    "q450": [
+      {
+        "label": "Amazon EMR Elastic MapReduce",
+        "url": "/section/20-data-analytics#amazon-emr-elastic-mapreduce"
+      }
+    ]
+  },
+  "ditectrev-batch-10": {
+    "q451": [
+      {
+        "label": "Direct Connect DX",
+        "url": "/section/25-vpc#direct-connect-dx"
+      },
+      {
+        "label": "Site-to-Site VPN",
+        "url": "/section/25-vpc#sitetosite-vpn"
+      },
+      {
+        "label": "VPC 기본 사항",
+        "url": "/section/25-vpc#vpc-기본-사항"
+      }
+    ],
+    "q452": [
+      {
+        "label": "NAT Gateway vs NAT Instance 비교",
+        "url": "/section/25-vpc#nat-gateway-vs-nat-instance-비교"
+      },
+      {
+        "label": "NAT Gateway",
+        "url": "/section/25-vpc#nat-gateway"
+      },
+      {
+        "label": "NAT Instance 레거시, 시험에 출제",
+        "url": "/section/25-vpc#nat-instance-레거시-시험에-출제"
+      }
+    ],
+    "q453": [
+      {
+        "label": "Elastic IP",
+        "url": "/section/04-ec2-associate#elastic-ip"
+      }
+    ],
+    "q454": [
+      {
+        "label": "Connection Draining / Deregistration Delay",
+        "url": "/section/06-high-availability-scalability#connection-draining-deregistration-delay"
+      }
+    ],
+    "q455": [
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q456": [
+      {
+        "label": "Route 53 특징",
+        "url": "/section/08-route-53#route-53-특징"
+      },
+      {
+        "label": "DNS 레코드 타입",
+        "url": "/section/08-route-53#dns-레코드-타입"
+      },
+      {
+        "label": "라우팅 정책 Routing Policies",
+        "url": "/section/08-route-53#라우팅-정책-routing-policies"
+      }
+    ],
+    "q457": [
+      {
+        "label": "EC2 구매 옵션 시험 핵심!",
+        "url": "/section/03-ec2-basics#ec2-구매-옵션-시험-핵심"
+      }
+    ],
+    "q458": [
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      }
+    ],
+    "q459": [
+      {
+        "label": "Elastic IP",
+        "url": "/section/04-ec2-associate#elastic-ip"
+      },
+      {
+        "label": "Internet Gateway IGW",
+        "url": "/section/25-vpc#internet-gateway-igw"
+      }
+    ],
+    "q460": [
+      {
+        "label": "S3 객체 암호화 - 4가지 방법",
+        "url": "/section/12-s3-security#s3-객체-암호화-4가지-방법"
+      },
+      {
+        "label": "S3 암호화 방식 비교 SSE-S3 / SSE-KMS / SSE-C / Client-Side",
+        "url": "/section/12-s3-security#s3-암호화-방식-비교-sses3-ssekms-ssec-clientside"
+      }
+    ],
+    "q461": [
+      {
+        "label": "Placement Groups 배치 그룹",
+        "url": "/section/04-ec2-associate#placement-groups-배치-그룹"
+      }
+    ],
+    "q462": [
+      {
+        "label": "EBS Volume Types 6가지",
+        "url": "/section/05-ec2-instance-storage#ebs-volume-types-6가지"
+      },
+      {
+        "label": "Amazon CloudWatch Metrics",
+        "url": "/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics"
+      }
+    ],
+    "q463": [
+      {
+        "label": "Users & Groups",
+        "url": "/section/02-iam#users-groups"
+      },
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      }
+    ],
+    "q464": [
+      {
+        "label": "CIDR Classless Inter-Domain Routing, 사이더",
+        "url": "/section/25-vpc#cidr-classless-interdomain-routing-사이더"
+      },
+      {
+        "label": "서브넷 Subnet",
+        "url": "/section/25-vpc#서브넷-subnet"
+      }
+    ],
+    "q465": [
+      {
+        "label": "Amazon Simple Email Service SES",
+        "url": "/section/28-other-services#amazon-simple-email-service-ses"
+      }
+    ],
+    "q466": [
+      {
+        "label": "RDS Read Replicas",
+        "url": "/section/07-rds-aurora-elasticache#rds-read-replicas"
+      }
+    ],
+    "q467": [
+      {
+        "label": "EC2 구성 요소",
+        "url": "/section/03-ec2-basics#ec2-구성-요소"
+      }
+    ],
+    "q468": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      },
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q469": [
+      {
+        "label": "RDS & Aurora 백업",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-백업"
+      },
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      }
+    ],
+    "q470": [
+      {
+        "label": "EC2 Instance Store",
+        "url": "/section/05-ec2-instance-storage#ec2-instance-store"
+      },
+      {
+        "label": "EBS vs EFS vs Instance Store 비교 시험 핵심!",
+        "url": "/section/05-ec2-instance-storage#ebs-vs-efs-vs-instance-store-비교-시험-핵심"
+      }
+    ],
+    "q471": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q472": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q473": [
+      {
+        "label": "Amazon SQS Simple Queue Service",
+        "url": "/section/15-integration-messaging#amazon-sqs-simple-queue-service"
+      }
+    ],
+    "q474": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      },
+      {
+        "label": "RDS & Aurora 보안",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-보안"
+      }
+    ],
+    "q475": [
+      {
+        "label": "NAT Instance 레거시, 시험에 출제",
+        "url": "/section/25-vpc#nat-instance-레거시-시험에-출제"
+      }
+    ],
+    "q476": [
+      {
+        "label": "AWS Snowball Snow Family",
+        "url": "/section/14-storage-extras#aws-snowball-snow-family"
+      }
+    ],
+    "q477": [
+      {
+        "label": "Amazon Cognito",
+        "url": "/section/17-serverless-overview#amazon-cognito"
+      },
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      }
+    ],
+    "q478": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      },
+      {
+        "label": "RDS Storage Auto Scaling",
+        "url": "/section/07-rds-aurora-elasticache#rds-storage-auto-scaling"
+      }
+    ],
+    "q479": [
+      {
+        "label": "Amazon ElastiCache",
+        "url": "/section/07-rds-aurora-elasticache#amazon-elasticache"
+      },
+      {
+        "label": "Redis vs Memcached",
+        "url": "/section/07-rds-aurora-elasticache#redis-vs-memcached"
+      }
+    ],
+    "q480": [
+      {
+        "label": "Elastic IP",
+        "url": "/section/04-ec2-associate#elastic-ip"
+      }
+    ],
+    "q481": [
+      {
+        "label": "EC2 구성 요소",
+        "url": "/section/03-ec2-basics#ec2-구성-요소"
+      }
+    ],
+    "q482": [
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      },
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      }
+    ],
+    "q483": [
+      {
+        "label": "Site-to-Site VPN",
+        "url": "/section/25-vpc#sitetosite-vpn"
+      },
+      {
+        "label": "Direct Connect DX",
+        "url": "/section/25-vpc#direct-connect-dx"
+      }
+    ],
+    "q484": [
+      {
+        "label": "S3 Glacier Vault Lock",
+        "url": "/section/12-s3-security#s3-glacier-vault-lock"
+      },
+      {
+        "label": "S3 Storage Classes 스토리지 클래스",
+        "url": "/section/10-amazon-s3#s3-storage-classes-스토리지-클래스"
+      }
+    ],
+    "q485": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      }
+    ],
+    "q486": [
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      }
+    ],
+    "q487": [
+      {
+        "label": "라우팅 정책 Routing Policies",
+        "url": "/section/08-route-53#라우팅-정책-routing-policies"
+      }
+    ],
+    "q488": [
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      },
+      {
+        "label": "Amazon SQS Simple Queue Service",
+        "url": "/section/15-integration-messaging#amazon-sqs-simple-queue-service"
+      }
+    ],
+    "q489": [
+      {
+        "label": "NAT Instance 레거시, 시험에 출제",
+        "url": "/section/25-vpc#nat-instance-레거시-시험에-출제"
+      },
+      {
+        "label": "NAT Gateway vs NAT Instance 비교",
+        "url": "/section/25-vpc#nat-gateway-vs-nat-instance-비교"
+      }
+    ],
+    "q490": [
+      {
+        "label": "AWS CloudFormation",
+        "url": "/section/28-other-services#aws-cloudformation"
+      }
+    ],
+    "q491": [
+      {
+        "label": "AWS CloudFormation",
+        "url": "/section/28-other-services#aws-cloudformation"
+      }
+    ],
+    "q492": [
+      {
+        "label": "S3 Bucket Policy",
+        "url": "/section/10-amazon-s3#s3-bucket-policy"
+      },
+      {
+        "label": "IAM Policy Evaluation Logic",
+        "url": "/section/23-advanced-identity#iam-policy-evaluation-logic"
+      }
+    ],
+    "q493": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q494": [
+      {
+        "label": "Amazon Simple Email Service SES",
+        "url": "/section/28-other-services#amazon-simple-email-service-ses"
+      }
+    ],
+    "q495": [],
+    "q496": [
+      {
+        "label": "RDS & Aurora 백업",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-백업"
+      }
+    ],
+    "q497": [
+      {
+        "label": "AMI Amazon Machine Image",
+        "url": "/section/05-ec2-instance-storage#ami-amazon-machine-image"
+      },
+      {
+        "label": "4가지 DR 전략 빠른 RTO 순",
+        "url": "/section/26-disaster-recovery-migrations#4가지-dr-전략-빠른-rto-순"
+      }
+    ],
+    "q498": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q499": [
+      {
+        "label": "MFA Multi Factor Authentication",
+        "url": "/section/02-iam#mfa-multi-factor-authentication"
+      }
+    ],
+    "q500": [
+      {
+        "label": "MFA Multi Factor Authentication",
+        "url": "/section/02-iam#mfa-multi-factor-authentication"
+      }
+    ]
+  },
+  "ditectrev-batch-11": {
+    "q501": [
+      {
+        "label": "EC2 구성 요소",
+        "url": "/section/03-ec2-basics#ec2-구성-요소"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q502": [
+      {
+        "label": "DNS 레코드 타입",
+        "url": "/section/08-route-53#dns-레코드-타입"
+      }
+    ],
+    "q503": [
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      },
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      }
+    ],
+    "q504": [
+      {
+        "label": "AWS 글로벌 인프라",
+        "url": "/section/01-getting-started#aws-글로벌-인프라"
+      }
+    ],
+    "q505": [],
+    "q506": [
+      {
+        "label": "서브넷 Subnet",
+        "url": "/section/25-vpc#서브넷-subnet"
+      },
+      {
+        "label": "NAT Gateway",
+        "url": "/section/25-vpc#nat-gateway"
+      }
+    ],
+    "q507": [
+      {
+        "label": "Elastic IP",
+        "url": "/section/04-ec2-associate#elastic-ip"
+      }
+    ],
+    "q508": [
+      {
+        "label": "Security Group vs NACL",
+        "url": "/section/25-vpc#security-group-vs-nacl"
+      },
+      {
+        "label": "AWS Network Firewall",
+        "url": "/section/25-vpc#aws-network-firewall"
+      }
+    ],
+    "q509": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q510": [
+      {
+        "label": "Amazon Simple Email Service SES",
+        "url": "/section/28-other-services#amazon-simple-email-service-ses"
+      }
+    ],
+    "q511": [
+      {
+        "label": "EC2 인스턴스 타입",
+        "url": "/section/03-ec2-basics#ec2-인스턴스-타입"
+      }
+    ],
+    "q512": [
+      {
+        "label": "글로벌 서비스 vs 리전 서비스",
+        "url": "/section/01-getting-started#글로벌-서비스-vs-리전-서비스"
+      },
+      {
+        "label": "4가지 DR 전략 빠른 RTO 순",
+        "url": "/section/26-disaster-recovery-migrations#4가지-dr-전략-빠른-rto-순"
+      }
+    ],
+    "q513": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      },
+      {
+        "label": "EBS Multi-Attach io1/io2",
+        "url": "/section/05-ec2-instance-storage#ebs-multiattach-io1io2"
+      }
+    ],
+    "q514": [
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      },
+      {
+        "label": "RDS Read Replicas",
+        "url": "/section/07-rds-aurora-elasticache#rds-read-replicas"
+      }
+    ],
+    "q515": [
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      },
+      {
+        "label": "IAM Roles vs Resource-Based Policies",
+        "url": "/section/23-advanced-identity#iam-roles-vs-resourcebased-policies"
+      }
+    ],
+    "q516": [
+      {
+        "label": "S3 보안",
+        "url": "/section/10-amazon-s3#s3-보안"
+      },
+      {
+        "label": "S3 Bucket Policy",
+        "url": "/section/10-amazon-s3#s3-bucket-policy"
+      },
+      {
+        "label": "S3 Pre-Signed URLs",
+        "url": "/section/12-s3-security#s3-presigned-urls"
+      }
+    ],
+    "q517": [
+      {
+        "label": "Direct Connect DX",
+        "url": "/section/25-vpc#direct-connect-dx"
+      },
+      {
+        "label": "VPC Endpoints AWS PrivateLink",
+        "url": "/section/25-vpc#vpc-endpoints-aws-privatelink"
+      }
+    ],
+    "q518": [
+      {
+        "label": "VPC 기본 사항",
+        "url": "/section/25-vpc#vpc-기본-사항"
+      },
+      {
+        "label": "NAT Gateway",
+        "url": "/section/25-vpc#nat-gateway"
+      }
+    ],
+    "q519": [
+      {
+        "label": "서브넷 Subnet",
+        "url": "/section/25-vpc#서브넷-subnet"
+      },
+      {
+        "label": "VPC 기본 사항",
+        "url": "/section/25-vpc#vpc-기본-사항"
+      }
+    ],
+    "q520": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      },
+      {
+        "label": "RDS & Aurora 백업",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-백업"
+      }
+    ],
+    "q521": [
+      {
+        "label": "SSL/TLS 인증서",
+        "url": "/section/06-high-availability-scalability#ssltls-인증서"
+      },
+      {
+        "label": "RDS & Aurora 보안",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-보안"
+      }
+    ],
+    "q522": [
+      {
+        "label": "EBS Volume Types 6가지",
+        "url": "/section/05-ec2-instance-storage#ebs-volume-types-6가지"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q523": [
+      {
+        "label": "RDS & Aurora 보안",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-보안"
+      }
+    ],
+    "q524": [
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      },
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      }
+    ],
+    "q525": [
+      {
+        "label": "EC2 구매 옵션 시험 핵심!",
+        "url": "/section/03-ec2-basics#ec2-구매-옵션-시험-핵심"
+      },
+      {
+        "label": "Spot Instance 상세",
+        "url": "/section/03-ec2-basics#spot-instance-상세"
+      }
+    ],
+    "q526": [
+      {
+        "label": "Elastic IP",
+        "url": "/section/04-ec2-associate#elastic-ip"
+      }
+    ],
+    "q527": [
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      }
+    ],
+    "q528": [
+      {
+        "label": "S3 Storage Classes 스토리지 클래스",
+        "url": "/section/10-amazon-s3#s3-storage-classes-스토리지-클래스"
+      }
+    ],
+    "q529": [
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q530": [],
+    "q531": [
+      {
+        "label": "DNS 레코드 타입",
+        "url": "/section/08-route-53#dns-레코드-타입"
+      }
+    ],
+    "q532": [
+      {
+        "label": "Amazon SNS Simple Notification Service",
+        "url": "/section/15-integration-messaging#amazon-sns-simple-notification-service"
+      }
+    ],
+    "q533": [
+      {
+        "label": "IAM Roles vs Resource-Based Policies",
+        "url": "/section/23-advanced-identity#iam-roles-vs-resourcebased-policies"
+      }
+    ],
+    "q534": [
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      },
+      {
+        "label": "IAM Conditions",
+        "url": "/section/23-advanced-identity#iam-conditions"
+      }
+    ],
+    "q535": [
+      {
+        "label": "AWS Lambda",
+        "url": "/section/17-serverless-overview#aws-lambda"
+      },
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      }
+    ],
+    "q536": [
+      {
+        "label": "Hosted Zones",
+        "url": "/section/08-route-53#hosted-zones"
+      }
+    ],
+    "q537": [
+      {
+        "label": "EC2 구성 요소",
+        "url": "/section/03-ec2-basics#ec2-구성-요소"
+      },
+      {
+        "label": "IP 주소 IPv4",
+        "url": "/section/04-ec2-associate#ip-주소-ipv4"
+      }
+    ],
+    "q538": [
+      {
+        "label": "Amazon SNS Simple Notification Service",
+        "url": "/section/15-integration-messaging#amazon-sns-simple-notification-service"
+      },
+      {
+        "label": "Amazon Simple Email Service SES",
+        "url": "/section/28-other-services#amazon-simple-email-service-ses"
+      }
+    ],
+    "q539": [
+      {
+        "label": "AMI Amazon Machine Image",
+        "url": "/section/05-ec2-instance-storage#ami-amazon-machine-image"
+      }
+    ],
+    "q540": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q541": [
+      {
+        "label": "S3 Glacier Vault Lock",
+        "url": "/section/12-s3-security#s3-glacier-vault-lock"
+      },
+      {
+        "label": "Amazon SNS Simple Notification Service",
+        "url": "/section/15-integration-messaging#amazon-sns-simple-notification-service"
+      }
+    ],
+    "q542": [
+      {
+        "label": "AWS IAM Identity Center AWS SSO 후속",
+        "url": "/section/23-advanced-identity#aws-iam-identity-center-aws-sso-후속"
+      },
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      },
+      {
+        "label": "S3 보안",
+        "url": "/section/10-amazon-s3#s3-보안"
+      }
+    ],
+    "q543": [
+      {
+        "label": "EBS Encryption",
+        "url": "/section/05-ec2-instance-storage#ebs-encryption"
+      },
+      {
+        "label": "S3 객체 암호화 - 4가지 방법",
+        "url": "/section/12-s3-security#s3-객체-암호화-4가지-방법"
+      }
+    ],
+    "q544": [
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      }
+    ],
+    "q545": [
+      {
+        "label": "Hosted Zones",
+        "url": "/section/08-route-53#hosted-zones"
+      },
+      {
+        "label": "Route 53 특징",
+        "url": "/section/08-route-53#route-53-특징"
+      }
+    ],
+    "q546": [
+      {
+        "label": "AWS Snowball Snow Family",
+        "url": "/section/14-storage-extras#aws-snowball-snow-family"
+      }
+    ],
+    "q547": [
+      {
+        "label": "Amazon Kinesis Data Streams",
+        "url": "/section/15-integration-messaging#amazon-kinesis-data-streams"
+      },
+      {
+        "label": "언제 무엇을 쓰는가? SQS / SNS / Kinesis 한눈에 비교",
+        "url": "/section/15-integration-messaging#언제-무엇을-쓰는가-sqs-sns-kinesis-한눈에-비교"
+      }
+    ],
+    "q548": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      },
+      {
+        "label": "Amazon CloudWatch Metrics",
+        "url": "/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics"
+      }
+    ],
+    "q549": [
+      {
+        "label": "IAM Security Tools",
+        "url": "/section/02-iam#iam-security-tools"
+      },
+      {
+        "label": "AWS 접근 방법",
+        "url": "/section/02-iam#aws-접근-방법"
+      }
+    ],
+    "q550": [
+      {
+        "label": "EC2 구매 옵션 시험 핵심!",
+        "url": "/section/03-ec2-basics#ec2-구매-옵션-시험-핵심"
+      }
+    ]
+  },
+  "ditectrev-batch-12": {
+    "q551": [
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      },
+      {
+        "label": "ALB Application Load Balancer 상세",
+        "url": "/section/06-high-availability-scalability#alb-application-load-balancer-상세"
+      }
+    ],
+    "q552": [],
+    "q553": [
+      {
+        "label": "AWS IAM Identity Center AWS SSO 후속",
+        "url": "/section/23-advanced-identity#aws-iam-identity-center-aws-sso-후속"
+      },
+      {
+        "label": "Microsoft Active Directory AD",
+        "url": "/section/23-advanced-identity#microsoft-active-directory-ad"
+      },
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      }
+    ],
+    "q554": [
+      {
+        "label": "Direct Connect DX",
+        "url": "/section/25-vpc#direct-connect-dx"
+      },
+      {
+        "label": "Site-to-Site VPN",
+        "url": "/section/25-vpc#sitetosite-vpn"
+      }
+    ],
+    "q555": [
+      {
+        "label": "S3 보안",
+        "url": "/section/10-amazon-s3#s3-보안"
+      },
+      {
+        "label": "S3 Bucket Policy",
+        "url": "/section/10-amazon-s3#s3-bucket-policy"
+      },
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      }
+    ],
+    "q556": [
+      {
+        "label": "Spot Instance 상세",
+        "url": "/section/03-ec2-basics#spot-instance-상세"
+      },
+      {
+        "label": "EC2 구매 옵션 시험 핵심!",
+        "url": "/section/03-ec2-basics#ec2-구매-옵션-시험-핵심"
+      }
+    ],
+    "q557": [
+      {
+        "label": "EC2 구매 옵션 시험 핵심!",
+        "url": "/section/03-ec2-basics#ec2-구매-옵션-시험-핵심"
+      }
+    ],
+    "q558": [
+      {
+        "label": "Amazon SQS Simple Queue Service",
+        "url": "/section/15-integration-messaging#amazon-sqs-simple-queue-service"
+      },
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      },
+      {
+        "label": "CloudWatch Alarms",
+        "url": "/section/22-monitoring-audit-performance#cloudwatch-alarms"
+      }
+    ],
+    "q559": [
+      {
+        "label": "S3 객체 Object",
+        "url": "/section/10-amazon-s3#s3-객체-object"
+      }
+    ],
+    "q560": [
+      {
+        "label": "Direct Connect DX",
+        "url": "/section/25-vpc#direct-connect-dx"
+      }
+    ],
+    "q561": [
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      },
+      {
+        "label": "Security Group vs NACL",
+        "url": "/section/25-vpc#security-group-vs-nacl"
+      }
+    ],
+    "q562": [
+      {
+        "label": "S3 객체 암호화 - 4가지 방법",
+        "url": "/section/12-s3-security#s3-객체-암호화-4가지-방법"
+      },
+      {
+        "label": "S3 암호화 방식 비교 SSE-S3 / SSE-KMS / SSE-C / Client-Side",
+        "url": "/section/12-s3-security#s3-암호화-방식-비교-sses3-ssekms-ssec-clientside"
+      }
+    ],
+    "q563": [
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      }
+    ],
+    "q564": [
+      {
+        "label": "Elastic IP",
+        "url": "/section/04-ec2-associate#elastic-ip"
+      }
+    ],
+    "q565": [
+      {
+        "label": "Amazon SQS Simple Queue Service",
+        "url": "/section/15-integration-messaging#amazon-sqs-simple-queue-service"
+      },
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      }
+    ],
+    "q566": [
+      {
+        "label": "Amazon CloudWatch Metrics",
+        "url": "/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics"
+      }
+    ],
+    "q567": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q568": [
+      {
+        "label": "CloudWatch Alarms",
+        "url": "/section/22-monitoring-audit-performance#cloudwatch-alarms"
+      },
+      {
+        "label": "Amazon SNS Simple Notification Service",
+        "url": "/section/15-integration-messaging#amazon-sns-simple-notification-service"
+      }
+    ],
+    "q569": [
+      {
+        "label": "AWS Storage Gateway",
+        "url": "/section/14-storage-extras#aws-storage-gateway"
+      }
+    ],
+    "q570": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q571": [
+      {
+        "label": "Amazon Kinesis Data Streams",
+        "url": "/section/15-integration-messaging#amazon-kinesis-data-streams"
+      }
+    ],
+    "q572": [
+      {
+        "label": "Amazon SNS Simple Notification Service",
+        "url": "/section/15-integration-messaging#amazon-sns-simple-notification-service"
+      }
+    ],
+    "q573": [
+      {
+        "label": "AWS Directory Services",
+        "url": "/section/23-advanced-identity#aws-directory-services"
+      },
+      {
+        "label": "Microsoft Active Directory AD",
+        "url": "/section/23-advanced-identity#microsoft-active-directory-ad"
+      }
+    ],
+    "q574": [
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      },
+      {
+        "label": "Sticky Sessions Session Affinity",
+        "url": "/section/06-high-availability-scalability#sticky-sessions-session-affinity"
+      },
+      {
+        "label": "SSL/TLS 인증서",
+        "url": "/section/06-high-availability-scalability#ssltls-인증서"
+      }
+    ],
+    "q575": [
+      {
+        "label": "S3 정적 웹사이트 호스팅",
+        "url": "/section/10-amazon-s3#s3-정적-웹사이트-호스팅"
+      },
+      {
+        "label": "CloudFront 기본 개념",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-기본-개념"
+      }
+    ],
+    "q576": [
+      {
+        "label": "IP 주소 IPv4",
+        "url": "/section/04-ec2-associate#ip-주소-ipv4"
+      },
+      {
+        "label": "Elastic IP",
+        "url": "/section/04-ec2-associate#elastic-ip"
+      }
+    ],
+    "q577": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      },
+      {
+        "label": "EBS Encryption",
+        "url": "/section/05-ec2-instance-storage#ebs-encryption"
+      }
+    ],
+    "q578": [
+      {
+        "label": "S3 접근 제어 흐름 Bucket Policy + IAM + ACL 평가",
+        "url": "/section/12-s3-security#s3-접근-제어-흐름-bucket-policy-iam-acl-평가"
+      },
+      {
+        "label": "IAM for S3",
+        "url": "/section/23-advanced-identity#iam-for-s3"
+      }
+    ],
+    "q579": [
+      {
+        "label": "RDS & Aurora 백업",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-백업"
+      }
+    ],
+    "q580": [
+      {
+        "label": "S3 Performance 최적화",
+        "url": "/section/11-s3-advanced#s3-performance-최적화"
+      },
+      {
+        "label": "S3 Baseline Performance 기본 성능",
+        "url": "/section/11-s3-advanced#s3-baseline-performance-기본-성능"
+      }
+    ],
+    "q581": [
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      }
+    ],
+    "q582": [
+      {
+        "label": "Amazon SQS Simple Queue Service",
+        "url": "/section/15-integration-messaging#amazon-sqs-simple-queue-service"
+      }
+    ],
+    "q583": [
+      {
+        "label": "CloudWatch Alarms",
+        "url": "/section/22-monitoring-audit-performance#cloudwatch-alarms"
+      }
+    ],
+    "q584": [
+      {
+        "label": "S3 Performance 최적화",
+        "url": "/section/11-s3-advanced#s3-performance-최적화"
+      },
+      {
+        "label": "S3 Baseline Performance 기본 성능",
+        "url": "/section/11-s3-advanced#s3-baseline-performance-기본-성능"
+      }
+    ],
+    "q585": [
+      {
+        "label": "개요",
+        "url": "/section/03-ec2-basics#개요"
+      },
+      {
+        "label": "EC2 구성 요소",
+        "url": "/section/03-ec2-basics#ec2-구성-요소"
+      }
+    ],
+    "q586": [
+      {
+        "label": "AWS Storage Gateway",
+        "url": "/section/14-storage-extras#aws-storage-gateway"
+      }
+    ],
+    "q587": [
+      {
+        "label": "Amazon SQS Simple Queue Service",
+        "url": "/section/15-integration-messaging#amazon-sqs-simple-queue-service"
+      }
+    ],
+    "q588": [
+      {
+        "label": "VPC 기본 사항",
+        "url": "/section/25-vpc#vpc-기본-사항"
+      },
+      {
+        "label": "VPC 전체 구조",
+        "url": "/section/25-vpc#vpc-전체-구조"
+      }
+    ],
+    "q589": [
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      },
+      {
+        "label": "Security Group vs NACL",
+        "url": "/section/25-vpc#security-group-vs-nacl"
+      }
+    ],
+    "q590": [
+      {
+        "label": "AWS Snowball Snow Family",
+        "url": "/section/14-storage-extras#aws-snowball-snow-family"
+      }
+    ],
+    "q591": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q592": [
+      {
+        "label": "RDS Read Replicas",
+        "url": "/section/07-rds-aurora-elasticache#rds-read-replicas"
+      }
+    ],
+    "q593": [
+      {
+        "label": "EC2 구매 옵션 시험 핵심!",
+        "url": "/section/03-ec2-basics#ec2-구매-옵션-시험-핵심"
+      }
+    ],
+    "q594": [
+      {
+        "label": "Amazon EMR Elastic MapReduce",
+        "url": "/section/20-data-analytics#amazon-emr-elastic-mapreduce"
+      }
+    ],
+    "q595": [
+      {
+        "label": "Elastic Beanstalk",
+        "url": "/section/09-classic-solutions-architecture#elastic-beanstalk"
+      },
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q596": [
+      {
+        "label": "S3 객체 Object",
+        "url": "/section/10-amazon-s3#s3-객체-object"
+      },
+      {
+        "label": "S3 버킷 Bucket",
+        "url": "/section/10-amazon-s3#s3-버킷-bucket"
+      }
+    ],
+    "q597": [
+      {
+        "label": "AWS CloudFormation",
+        "url": "/section/28-other-services#aws-cloudformation"
+      }
+    ],
+    "q598": [
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      }
+    ],
+    "q599": [
+      {
+        "label": "서브넷 Subnet",
+        "url": "/section/25-vpc#서브넷-subnet"
+      },
+      {
+        "label": "Internet Gateway IGW",
+        "url": "/section/25-vpc#internet-gateway-igw"
+      }
+    ],
+    "q600": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      }
+    ]
+  },
+  "ditectrev-batch-13": {
+    "q601": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      },
+      {
+        "label": "EC2 Instance Store",
+        "url": "/section/05-ec2-instance-storage#ec2-instance-store"
+      },
+      {
+        "label": "EBS vs EFS vs Instance Store 비교 시험 핵심!",
+        "url": "/section/05-ec2-instance-storage#ebs-vs-efs-vs-instance-store-비교-시험-핵심"
+      }
+    ],
+    "q602": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q603": [
+      {
+        "label": "EBS Volume Types 6가지",
+        "url": "/section/05-ec2-instance-storage#ebs-volume-types-6가지"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q604": [
+      {
+        "label": "S3 버킷 Bucket",
+        "url": "/section/10-amazon-s3#s3-버킷-bucket"
+      }
+    ],
+    "q605": [
+      {
+        "label": "Security Group vs NACL",
+        "url": "/section/25-vpc#security-group-vs-nacl"
+      },
+      {
+        "label": "NACL Network Access Control List",
+        "url": "/section/25-vpc#nacl-network-access-control-list"
+      },
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q606": [
+      {
+        "label": "EBS Multi-Attach io1/io2",
+        "url": "/section/05-ec2-instance-storage#ebs-multiattach-io1io2"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q607": [
+      {
+        "label": "EBS Volume Types 6가지",
+        "url": "/section/05-ec2-instance-storage#ebs-volume-types-6가지"
+      }
+    ],
+    "q608": [
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      },
+      {
+        "label": "IAM Roles vs Resource-Based Policies",
+        "url": "/section/23-advanced-identity#iam-roles-vs-resourcebased-policies"
+      }
+    ],
+    "q609": [
+      {
+        "label": "NACL Network Access Control List",
+        "url": "/section/25-vpc#nacl-network-access-control-list"
+      },
+      {
+        "label": "Security Group vs NACL",
+        "url": "/section/25-vpc#security-group-vs-nacl"
+      }
+    ],
+    "q610": [
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      }
+    ],
+    "q611": [
+      {
+        "label": "Direct Connect DX",
+        "url": "/section/25-vpc#direct-connect-dx"
+      }
+    ],
+    "q612": [
+      {
+        "label": "S3 Storage Classes 스토리지 클래스",
+        "url": "/section/10-amazon-s3#s3-storage-classes-스토리지-클래스"
+      },
+      {
+        "label": "스토리지 클래스 비교표",
+        "url": "/section/10-amazon-s3#스토리지-클래스-비교표"
+      }
+    ],
+    "q613": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      },
+      {
+        "label": "RDS & Aurora 백업",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-백업"
+      }
+    ],
+    "q614": [
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      },
+      {
+        "label": "Internet Gateway IGW",
+        "url": "/section/25-vpc#internet-gateway-igw"
+      }
+    ],
+    "q615": [
+      {
+        "label": "Amazon CloudWatch Metrics",
+        "url": "/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics"
+      },
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q616": [],
+    "q617": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q618": [
+      {
+        "label": "EC2 구매 옵션 시험 핵심!",
+        "url": "/section/03-ec2-basics#ec2-구매-옵션-시험-핵심"
+      }
+    ],
+    "q619": [
+      {
+        "label": "RDS & Aurora 보안",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-보안"
+      }
+    ],
+    "q620": [
+      {
+        "label": "EC2 Instance Store",
+        "url": "/section/05-ec2-instance-storage#ec2-instance-store"
+      },
+      {
+        "label": "EBS vs EFS vs Instance Store 비교 시험 핵심!",
+        "url": "/section/05-ec2-instance-storage#ebs-vs-efs-vs-instance-store-비교-시험-핵심"
+      }
+    ],
+    "q621": [
+      {
+        "label": "NAT Instance 레거시, 시험에 출제",
+        "url": "/section/25-vpc#nat-instance-레거시-시험에-출제"
+      }
+    ],
+    "q622": [
+      {
+        "label": "S3 Performance 최적화",
+        "url": "/section/11-s3-advanced#s3-performance-최적화"
+      },
+      {
+        "label": "S3 Baseline Performance 기본 성능",
+        "url": "/section/11-s3-advanced#s3-baseline-performance-기본-성능"
+      }
+    ],
+    "q623": [],
+    "q624": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q625": [
+      {
+        "label": "EC2 구성 요소",
+        "url": "/section/03-ec2-basics#ec2-구성-요소"
+      }
+    ],
+    "q626": [
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      },
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q627": [
+      {
+        "label": "Placement Groups 배치 그룹",
+        "url": "/section/04-ec2-associate#placement-groups-배치-그룹"
+      }
+    ],
+    "q628": [
+      {
+        "label": "Elastic Network Interface ENI",
+        "url": "/section/04-ec2-associate#elastic-network-interface-eni"
+      }
+    ],
+    "q629": [
+      {
+        "label": "IAM Policies 정책",
+        "url": "/section/02-iam#iam-policies-정책"
+      }
+    ],
+    "q630": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q631": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      }
+    ],
+    "q632": [
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q633": [
+      {
+        "label": "Connection Draining / Deregistration Delay",
+        "url": "/section/06-high-availability-scalability#connection-draining-deregistration-delay"
+      }
+    ],
+    "q634": [],
+    "q635": [
+      {
+        "label": "Hosted Zones",
+        "url": "/section/08-route-53#hosted-zones"
+      },
+      {
+        "label": "DNS 레코드 타입",
+        "url": "/section/08-route-53#dns-레코드-타입"
+      }
+    ],
+    "q636": [
+      {
+        "label": "EC2 설정 옵션",
+        "url": "/section/03-ec2-basics#ec2-설정-옵션"
+      }
+    ],
+    "q637": [
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q638": [],
+    "q639": [
+      {
+        "label": "Amazon CloudWatch Metrics",
+        "url": "/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics"
+      }
+    ],
+    "q640": [
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      },
+      {
+        "label": "Elastic Load Balancer ELB",
+        "url": "/section/06-high-availability-scalability#elastic-load-balancer-elb"
+      }
+    ],
+    "q641": [
+      {
+        "label": "RDS Multi-AZ 재해 복구",
+        "url": "/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구"
+      }
+    ],
+    "q642": [
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      },
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/19-databases#amazon-dynamodb"
+      }
+    ],
+    "q643": [
+      {
+        "label": "Placement Groups 배치 그룹",
+        "url": "/section/04-ec2-associate#placement-groups-배치-그룹"
+      }
+    ],
+    "q644": [
+      {
+        "label": "S3 Lifecycle Rules 수명주기 규칙",
+        "url": "/section/11-s3-advanced#s3-lifecycle-rules-수명주기-규칙"
+      },
+      {
+        "label": "S3 Storage Classes 스토리지 클래스",
+        "url": "/section/10-amazon-s3#s3-storage-classes-스토리지-클래스"
+      }
+    ],
+    "q645": [
+      {
+        "label": "Aurora Serverless",
+        "url": "/section/07-rds-aurora-elasticache#aurora-serverless"
+      }
+    ],
+    "q646": [
+      {
+        "label": "Amazon EFS Elastic File System",
+        "url": "/section/05-ec2-instance-storage#amazon-efs-elastic-file-system"
+      },
+      {
+        "label": "EBS vs EFS vs Instance Store 비교 시험 핵심!",
+        "url": "/section/05-ec2-instance-storage#ebs-vs-efs-vs-instance-store-비교-시험-핵심"
+      }
+    ],
+    "q647": [
+      {
+        "label": "Amazon GuardDuty",
+        "url": "/section/24-security-encryption#amazon-guardduty"
+      },
+      {
+        "label": "Amazon EventBridge CloudWatch Events 후속",
+        "url": "/section/22-monitoring-audit-performance#amazon-eventbridge-cloudwatch-events-후속"
+      }
+    ],
+    "q648": [
+      {
+        "label": "RDS & Aurora 보안",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-보안"
+      },
+      {
+        "label": "Amazon Aurora",
+        "url": "/section/07-rds-aurora-elasticache#amazon-aurora"
+      }
+    ],
+    "q649": [
+      {
+        "label": "AWS Certificate Manager ACM",
+        "url": "/section/24-security-encryption#aws-certificate-manager-acm"
+      },
+      {
+        "label": "CloudFront 기본 개념",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-기본-개념"
+      }
+    ],
+    "q650": [
+      {
+        "label": "S3 Pre-Signed URLs",
+        "url": "/section/12-s3-security#s3-presigned-urls"
+      }
+    ]
+  },
+  "ditectrev-batch-14": {
+    "q651": [
+      {
+        "label": "Placement Groups 배치 그룹",
+        "url": "/section/04-ec2-associate#placement-groups-배치-그룹"
+      },
+      {
+        "label": "High Performance Computing HPC",
+        "url": "/section/27-more-solutions-architecture#high-performance-computing-hpc"
+      }
+    ],
+    "q652": [
+      {
+        "label": "Direct Connect DX",
+        "url": "/section/25-vpc#direct-connect-dx"
+      },
+      {
+        "label": "Transit Gateway",
+        "url": "/section/25-vpc#transit-gateway"
+      }
+    ],
+    "q653": [
+      {
+        "label": "AWS Trusted Advisor",
+        "url": "/section/29-white-papers-architectures#aws-trusted-advisor"
+      },
+      {
+        "label": "AWS Organizations",
+        "url": "/section/23-advanced-identity#aws-organizations"
+      }
+    ],
+    "q654": [
+      {
+        "label": "VPC Endpoints AWS PrivateLink",
+        "url": "/section/25-vpc#vpc-endpoints-aws-privatelink"
+      },
+      {
+        "label": "네트워킹 비용",
+        "url": "/section/25-vpc#네트워킹-비용"
+      }
+    ],
+    "q655": [
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      },
+      {
+        "label": "EBS Volume Types 6가지",
+        "url": "/section/05-ec2-instance-storage#ebs-volume-types-6가지"
+      }
+    ],
+    "q656": [
+      {
+        "label": "S3 객체 암호화 - 4가지 방법",
+        "url": "/section/12-s3-security#s3-객체-암호화-4가지-방법"
+      },
+      {
+        "label": "S3 암호화 방식 비교 SSE-S3 / SSE-KMS / SSE-C / Client-Side",
+        "url": "/section/12-s3-security#s3-암호화-방식-비교-sses3-ssekms-ssec-clientside"
+      }
+    ],
+    "q657": [
+      {
+        "label": "RDS & Aurora 백업",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-백업"
+      }
+    ],
+    "q658": [
+      {
+        "label": "Aurora 고가용성 및 스토리지",
+        "url": "/section/07-rds-aurora-elasticache#aurora-고가용성-및-스토리지"
+      },
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      }
+    ],
+    "q659": [
+      {
+        "label": "Aurora 엔드포인트",
+        "url": "/section/07-rds-aurora-elasticache#aurora-엔드포인트"
+      },
+      {
+        "label": "Aurora 고가용성 및 스토리지",
+        "url": "/section/07-rds-aurora-elasticache#aurora-고가용성-및-스토리지"
+      }
+    ],
+    "q660": [
+      {
+        "label": "Amazon Data Firehose 구 Kinesis Data Firehose",
+        "url": "/section/15-integration-messaging#amazon-data-firehose-구-kinesis-data-firehose"
+      },
+      {
+        "label": "Amazon ECS Elastic Container Service",
+        "url": "/section/16-containers#amazon-ecs-elastic-container-service"
+      },
+      {
+        "label": "AWS Lambda",
+        "url": "/section/17-serverless-overview#aws-lambda"
+      }
+    ],
+    "q661": [
+      {
+        "label": "VPC Endpoints AWS PrivateLink",
+        "url": "/section/25-vpc#vpc-endpoints-aws-privatelink"
+      }
+    ],
+    "q662": [
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q663": [
+      {
+        "label": "S3 Storage Lens",
+        "url": "/section/11-s3-advanced#s3-storage-lens"
+      },
+      {
+        "label": "S3 Versioning 버저닝",
+        "url": "/section/10-amazon-s3#s3-versioning-버저닝"
+      }
+    ],
+    "q664": [
+      {
+        "label": "Amazon SQS Simple Queue Service",
+        "url": "/section/15-integration-messaging#amazon-sqs-simple-queue-service"
+      },
+      {
+        "label": "언제 무엇을 쓰는가? SQS / SNS / Kinesis 한눈에 비교",
+        "url": "/section/15-integration-messaging#언제-무엇을-쓰는가-sqs-sns-kinesis-한눈에-비교"
+      }
+    ],
+    "q665": [
+      {
+        "label": "IAM Roles 역할",
+        "url": "/section/02-iam#iam-roles-역할"
+      },
+      {
+        "label": "IAM Roles vs Resource-Based Policies",
+        "url": "/section/23-advanced-identity#iam-roles-vs-resourcebased-policies"
+      }
+    ],
+    "q666": [
+      {
+        "label": "Amazon Cognito",
+        "url": "/section/17-serverless-overview#amazon-cognito"
+      },
+      {
+        "label": "CloudFront Functions & Lambda@Edge",
+        "url": "/section/17-serverless-overview#cloudfront-functions-lambdaedge"
+      }
+    ],
+    "q667": [
+      {
+        "label": "Service Control Policies SCP",
+        "url": "/section/23-advanced-identity#service-control-policies-scp"
+      },
+      {
+        "label": "AWS Organizations",
+        "url": "/section/23-advanced-identity#aws-organizations"
+      }
+    ],
+    "q668": [
+      {
+        "label": "AWS Systems Manager SSM",
+        "url": "/section/28-other-services#aws-systems-manager-ssm"
+      },
+      {
+        "label": "Amazon Inspector",
+        "url": "/section/24-security-encryption#amazon-inspector"
+      }
+    ],
+    "q669": [
+      {
+        "label": "4가지 DR 전략 빠른 RTO 순",
+        "url": "/section/26-disaster-recovery-migrations#4가지-dr-전략-빠른-rto-순"
+      },
+      {
+        "label": "라우팅 정책 Routing Policies",
+        "url": "/section/08-route-53#라우팅-정책-routing-policies"
+      },
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      }
+    ],
+    "q670": [
+      {
+        "label": "VPC Endpoints AWS PrivateLink",
+        "url": "/section/25-vpc#vpc-endpoints-aws-privatelink"
+      },
+      {
+        "label": "네트워킹 비용",
+        "url": "/section/25-vpc#네트워킹-비용"
+      }
+    ],
+    "q671": [
+      {
+        "label": "NLB Network Load Balancer 상세",
+        "url": "/section/06-high-availability-scalability#nlb-network-load-balancer-상세"
+      },
+      {
+        "label": "Auto Scaling Group ASG",
+        "url": "/section/06-high-availability-scalability#auto-scaling-group-asg"
+      }
+    ],
+    "q672": [
+      {
+        "label": "AWS API Gateway",
+        "url": "/section/17-serverless-overview#aws-api-gateway"
+      },
+      {
+        "label": "AWS Lambda",
+        "url": "/section/17-serverless-overview#aws-lambda"
+      },
+      {
+        "label": "Amazon SNS Simple Notification Service",
+        "url": "/section/15-integration-messaging#amazon-sns-simple-notification-service"
+      }
+    ],
+    "q673": [
+      {
+        "label": "AWS Organizations",
+        "url": "/section/23-advanced-identity#aws-organizations"
+      }
+    ],
+    "q674": [
+      {
+        "label": "Amazon RDS Proxy",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-proxy"
+      },
+      {
+        "label": "Amazon SQS Simple Queue Service",
+        "url": "/section/15-integration-messaging#amazon-sqs-simple-queue-service"
+      }
+    ],
+    "q675": [
+      {
+        "label": "Amazon Athena",
+        "url": "/section/20-data-analytics#amazon-athena"
+      },
+      {
+        "label": "Amazon QuickSight",
+        "url": "/section/20-data-analytics#amazon-quicksight"
+      }
+    ],
+    "q676": [
+      {
+        "label": "CloudFront Cache Invalidation 캐시 무효화",
+        "url": "/section/13-cloudfront-global-accelerator#cloudfront-cache-invalidation-캐시-무효화"
+      },
+      {
+        "label": "캐싱 전략",
+        "url": "/section/27-more-solutions-architecture#캐싱-전략"
+      }
+    ],
+    "q677": [
+      {
+        "label": "Lambda in VPC",
+        "url": "/section/17-serverless-overview#lambda-in-vpc"
+      },
+      {
+        "label": "AWS Lambda",
+        "url": "/section/17-serverless-overview#aws-lambda"
+      }
+    ],
+    "q678": [
+      {
+        "label": "Amazon QuickSight",
+        "url": "/section/20-data-analytics#amazon-quicksight"
+      }
+    ],
+    "q679": [
+      {
+        "label": "Aurora 고가용성 및 스토리지",
+        "url": "/section/07-rds-aurora-elasticache#aurora-고가용성-및-스토리지"
+      },
+      {
+        "label": "Amazon Aurora",
+        "url": "/section/07-rds-aurora-elasticache#amazon-aurora"
+      }
+    ],
+    "q680": [
+      {
+        "label": "Amazon SNS Simple Notification Service",
+        "url": "/section/15-integration-messaging#amazon-sns-simple-notification-service"
+      },
+      {
+        "label": "Fan Out 패턴",
+        "url": "/section/27-more-solutions-architecture#fan-out-패턴"
+      },
+      {
+        "label": "언제 무엇을 쓰는가? SQS / SNS / Kinesis 한눈에 비교",
+        "url": "/section/15-integration-messaging#언제-무엇을-쓰는가-sqs-sns-kinesis-한눈에-비교"
+      }
+    ],
+    "q681": [
+      {
+        "label": "S3 Event Notifications 이벤트 알림",
+        "url": "/section/11-s3-advanced#s3-event-notifications-이벤트-알림"
+      },
+      {
+        "label": "Amazon SQS Simple Queue Service",
+        "url": "/section/15-integration-messaging#amazon-sqs-simple-queue-service"
+      },
+      {
+        "label": "Lambda, SNS & SQS 패턴",
+        "url": "/section/27-more-solutions-architecture#lambda-sns-sqs-패턴"
+      }
+    ],
+    "q682": [
+      {
+        "label": "GWLB Gateway Load Balancer 상세",
+        "url": "/section/06-high-availability-scalability#gwlb-gateway-load-balancer-상세"
+      },
+      {
+        "label": "AWS Network Firewall",
+        "url": "/section/25-vpc#aws-network-firewall"
+      }
+    ],
+    "q683": [
+      {
+        "label": "EBS Snapshots",
+        "url": "/section/05-ec2-instance-storage#ebs-snapshots"
+      },
+      {
+        "label": "EBS Elastic Block Store",
+        "url": "/section/05-ec2-instance-storage#ebs-elastic-block-store"
+      }
+    ],
+    "q684": [
+      {
+        "label": "아키텍처 2: 서버리스 웹사이트 MyBlog.com",
+        "url": "/section/18-serverless-architectures#아키텍처-2-서버리스-웹사이트-myblogcom"
+      },
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      },
+      {
+        "label": "AWS API Gateway",
+        "url": "/section/17-serverless-overview#aws-api-gateway"
+      }
+    ],
+    "q685": [
+      {
+        "label": "S3 Storage Classes 스토리지 클래스",
+        "url": "/section/10-amazon-s3#s3-storage-classes-스토리지-클래스"
+      },
+      {
+        "label": "스토리지 클래스 비교표",
+        "url": "/section/10-amazon-s3#스토리지-클래스-비교표"
+      }
+    ],
+    "q686": [
+      {
+        "label": "S3 Lifecycle Rules 수명주기 규칙",
+        "url": "/section/11-s3-advanced#s3-lifecycle-rules-수명주기-규칙"
+      },
+      {
+        "label": "S3 Storage Classes 스토리지 클래스",
+        "url": "/section/10-amazon-s3#s3-storage-classes-스토리지-클래스"
+      }
+    ],
+    "q687": [
+      {
+        "label": "Cost Explorer",
+        "url": "/section/28-other-services#cost-explorer"
+      }
+    ],
+    "q688": [
+      {
+        "label": "Amazon SQS Simple Queue Service",
+        "url": "/section/15-integration-messaging#amazon-sqs-simple-queue-service"
+      },
+      {
+        "label": "AWS Lambda",
+        "url": "/section/17-serverless-overview#aws-lambda"
+      }
+    ],
+    "q689": [
+      {
+        "label": "AWS Config",
+        "url": "/section/22-monitoring-audit-performance#aws-config"
+      },
+      {
+        "label": "S3 보안",
+        "url": "/section/10-amazon-s3#s3-보안"
+      }
+    ],
+    "q690": [
+      {
+        "label": "Amazon CloudWatch Metrics",
+        "url": "/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics"
+      },
+      {
+        "label": "CloudWatch Alarms",
+        "url": "/section/22-monitoring-audit-performance#cloudwatch-alarms"
+      }
+    ],
+    "q691": [
+      {
+        "label": "AWS IAM Identity Center AWS SSO 후속",
+        "url": "/section/23-advanced-identity#aws-iam-identity-center-aws-sso-후속"
+      },
+      {
+        "label": "AWS Directory Services",
+        "url": "/section/23-advanced-identity#aws-directory-services"
+      },
+      {
+        "label": "Microsoft Active Directory AD",
+        "url": "/section/23-advanced-identity#microsoft-active-directory-ad"
+      }
+    ],
+    "q692": [
+      {
+        "label": "AWS Global Accelerator",
+        "url": "/section/13-cloudfront-global-accelerator#aws-global-accelerator"
+      },
+      {
+        "label": "NLB Network Load Balancer 상세",
+        "url": "/section/06-high-availability-scalability#nlb-network-load-balancer-상세"
+      }
+    ],
+    "q693": [
+      {
+        "label": "RDS & Aurora 백업",
+        "url": "/section/07-rds-aurora-elasticache#rds-aurora-백업"
+      },
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q694": [
+      {
+        "label": "AWS Config",
+        "url": "/section/22-monitoring-audit-performance#aws-config"
+      }
+    ],
+    "q695": [
+      {
+        "label": "Amazon Kinesis Data Streams",
+        "url": "/section/15-integration-messaging#amazon-kinesis-data-streams"
+      },
+      {
+        "label": "Amazon DynamoDB",
+        "url": "/section/17-serverless-overview#amazon-dynamodb"
+      },
+      {
+        "label": "AWS Lambda",
+        "url": "/section/17-serverless-overview#aws-lambda"
+      }
+    ],
+    "q696": [
+      {
+        "label": "AWS Shield",
+        "url": "/section/24-security-encryption#aws-shield"
+      },
+      {
+        "label": "DDoS 복원력 모범 사례",
+        "url": "/section/24-security-encryption#ddos-복원력-모범-사례"
+      }
+    ],
+    "q697": [
+      {
+        "label": "AWS KMS Key Management Service",
+        "url": "/section/24-security-encryption#aws-kms-key-management-service"
+      },
+      {
+        "label": "S3 Replication 복제",
+        "url": "/section/10-amazon-s3#s3-replication-복제"
+      }
+    ],
+    "q698": [
+      {
+        "label": "AWS Systems Manager SSM",
+        "url": "/section/28-other-services#aws-systems-manager-ssm"
+      },
+      {
+        "label": "Bastion Host",
+        "url": "/section/25-vpc#bastion-host"
+      }
+    ],
+    "q699": [
+      {
+        "label": "S3 정적 웹사이트 호스팅",
+        "url": "/section/10-amazon-s3#s3-정적-웹사이트-호스팅"
+      }
+    ],
+    "q700": [
+      {
+        "label": "AWS Systems Manager SSM",
+        "url": "/section/28-other-services#aws-systems-manager-ssm"
+      }
+    ]
+  },
+  "ditectrev-batch-15": {
+    "q701": [
+      {
+        "label": "AWS Secrets Manager",
+        "url": "/section/24-security-encryption#aws-secrets-manager"
+      },
+      {
+        "label": "SSM Parameter Store vs Secrets Manager 비교",
+        "url": "/section/24-security-encryption#ssm-parameter-store-vs-secrets-manager-비교"
+      }
+    ],
+    "q702": [
+      {
+        "label": "RDS Custom",
+        "url": "/section/07-rds-aurora-elasticache#rds-custom"
+      },
+      {
+        "label": "Amazon RDS Relational Database Service",
+        "url": "/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service"
+      }
+    ],
+    "q703": [
+      {
+        "label": "AWS Control Tower",
+        "url": "/section/23-advanced-identity#aws-control-tower"
+      },
+      {
+        "label": "AWS Config",
+        "url": "/section/22-monitoring-audit-performance#aws-config"
+      }
+    ],
+    "q704": [
+      {
+        "label": "S3 Storage Classes 스토리지 클래스",
+        "url": "/section/10-amazon-s3#s3-storage-classes-스토리지-클래스"
+      },
+      {
+        "label": "S3 Lifecycle Rules 수명주기 규칙",
+        "url": "/section/11-s3-advanced#s3-lifecycle-rules-수명주기-규칙"
+      },
+      {
+        "label": "스토리지 클래스 비교표",
+        "url": "/section/10-amazon-s3#스토리지-클래스-비교표"
+      }
+    ],
+    "q705": [
+      {
+        "label": "Security Group vs NACL",
+        "url": "/section/25-vpc#security-group-vs-nacl"
+      },
+      {
+        "label": "Security Groups 보안 그룹",
+        "url": "/section/03-ec2-basics#security-groups-보안-그룹"
+      }
+    ],
+    "q706": [
+      {
+        "label": "EC2 구매 옵션 시험 핵심!",
+        "url": "/section/03-ec2-basics#ec2-구매-옵션-시험-핵심"
+      }
+    ],
+    "q707": [
+      {
+        "label": "Babelfish for Aurora PostgreSQL",
+        "url": "/section/07-rds-aurora-elasticache#babelfish-for-aurora-postgresql"
+      },
+      {
+        "label": "DMS Database Migration Service, 데이터베이스 마이그레이션 서비스",
+        "url": "/section/26-disaster-recovery-migrations#dms-database-migration-service-데이터베이스-마이그레이션-서비스"
+      },
+      {
+        "label": "AWS Schema Conversion Tool SCT",
+        "url": "/section/26-disaster-recovery-migrations#aws-schema-conversion-tool-sct"
+      }
+    ],
+    "q708": [
+      {
+        "label": "EBS Encryption",
+        "url": "/section/05-ec2-instance-storage#ebs-encryption"
+      },
+      {
+        "label": "AWS Config",
+        "url": "/section/22-monitoring-audit-performance#aws-config"
+      },
+      {
+        "label": "AWS KMS Key Management Service",
+        "url": "/section/24-security-encryption#aws-kms-key-management-service"
+      }
+    ],
+    "q709": [
+      {
+        "label": "Amazon Kinesis Data Streams",
+        "url": "/section/15-integration-messaging#amazon-kinesis-data-streams"
+      },
+      {
+        "label": "AWS Lambda",
+        "url": "/section/17-serverless-overview#aws-lambda"
+      }
+    ]
+  }
+}

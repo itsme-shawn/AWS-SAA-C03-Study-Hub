@@ -7,6 +7,7 @@ const __dirname = path.dirname(__filename);
 const NOTES_DIR = path.resolve(__dirname, '../../notes');
 const DUMPS_DIR = path.resolve(__dirname, '../../practice/dumps');
 const OUTPUT_FILE = path.resolve(__dirname, '../src/data/content.json');
+const NOTE_LINKS_FILE = path.resolve(__dirname, '../src/data/note-links.json');
 
 const SECTION_TITLES = {
   '01-getting-started': 'Getting Started with AWS',
@@ -97,19 +98,26 @@ function parseQuestions(text) {
     const explanation = explMatch ? explMatch[1].trim() : '';
 
     // Extract key concept
-    const conceptMatch = block.match(/\*\*핵심 개념:\*\*\s*(.*)/);
+    const conceptMatch = block.match(/\*\*핵심 개념:\*\*\s*([^\n]*)/);
     const keyConcept = conceptMatch ? conceptMatch[1].trim() : '';
 
+    // Extract note links: **관련 노트:** [label](url), [label](url)
+    const noteLinksMatch = block.match(/\*\*관련 노트:\*\*\s*([^\n]+)/);
+    let noteLinks;
+    if (noteLinksMatch) {
+      const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+      const links = [];
+      let lm;
+      while ((lm = linkRegex.exec(noteLinksMatch[1])) !== null) {
+        links.push({ label: lm[1], url: lm[2] });
+      }
+      if (links.length > 0) noteLinks = links;
+    }
+
     if (questionText && options.length > 0 && answer) {
-      questions.push({
-        id: `q${num}`,
-        number: num,
-        text: questionText,
-        options,
-        answer,
-        explanation,
-        keyConcept,
-      });
+      const q = { id: `q${num}`, number: num, text: questionText, options, answer, explanation, keyConcept };
+      if (noteLinks) q.noteLinks = noteLinks;
+      questions.push(q);
     }
   }
 
@@ -199,9 +207,36 @@ function loadDumps() {
   return dumps;
 }
 
+function loadNoteLinks() {
+  if (!fs.existsSync(NOTE_LINKS_FILE)) return {};
+  try {
+    return JSON.parse(fs.readFileSync(NOTE_LINKS_FILE, 'utf-8'));
+  } catch {
+    return {};
+  }
+}
+
+function mergeNoteLinks(dumps, noteLinks) {
+  if (!noteLinks || Object.keys(noteLinks).length === 0) return dumps;
+  return dumps.map(dump => {
+    const dumpLinks = noteLinks[dump.id];
+    if (!dumpLinks) return dump;
+    return {
+      ...dump,
+      questions: dump.questions.map(q => {
+        const links = dumpLinks[q.id];
+        if (!links || links.length === 0) return q;
+        return { ...q, noteLinks: links };
+      }),
+    };
+  });
+}
+
 function buildOutput() {
   const sections = loadSections();
-  const dumps = loadDumps();
+  const noteLinks = loadNoteLinks();
+  const rawDumps = loadDumps();
+  const dumps = mergeNoteLinks(rawDumps, noteLinks);
   const totalQuestions = sections.reduce((sum, s) => sum + s.questions.length, 0);
   const totalDumpQuestions = dumps.reduce((sum, d) => sum + d.questions.length, 0);
 

@@ -1,0 +1,3040 @@
+[
+  {
+    "sectionId": "01-getting-started",
+    "sectionTitle": "Getting Started with AWS",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "01-getting-started",
+    "sectionTitle": "Getting Started with AWS",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "01-getting-started",
+    "sectionTitle": "Getting Started with AWS",
+    "headingId": "aws-역사-및-시장-위치",
+    "text": "AWS 역사 및 시장 위치",
+    "level": 3
+  },
+  {
+    "sectionId": "01-getting-started",
+    "sectionTitle": "Getting Started with AWS",
+    "headingId": "aws-글로벌-인프라",
+    "text": "AWS 글로벌 인프라",
+    "level": 3
+  },
+  {
+    "sectionId": "01-getting-started",
+    "sectionTitle": "Getting Started with AWS",
+    "headingId": "region-선택-기준-시험-중요",
+    "text": "Region 선택 기준 시험 중요!",
+    "level": 3
+  },
+  {
+    "sectionId": "01-getting-started",
+    "sectionTitle": "Getting Started with AWS",
+    "headingId": "글로벌-서비스-vs-리전-서비스",
+    "text": "글로벌 서비스 vs 리전 서비스",
+    "level": 3
+  },
+  {
+    "sectionId": "01-getting-started",
+    "sectionTitle": "Getting Started with AWS",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "01-getting-started",
+    "sectionTitle": "Getting Started with AWS",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "02-iam",
+    "sectionTitle": "IAM (Identity & Access Management)",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "02-iam",
+    "sectionTitle": "IAM (Identity & Access Management)",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "02-iam",
+    "sectionTitle": "IAM (Identity & Access Management)",
+    "headingId": "users-groups",
+    "text": "Users & Groups",
+    "level": 3
+  },
+  {
+    "sectionId": "02-iam",
+    "sectionTitle": "IAM (Identity & Access Management)",
+    "headingId": "iam-policies-정책",
+    "text": "IAM Policies 정책",
+    "level": 3
+  },
+  {
+    "sectionId": "02-iam",
+    "sectionTitle": "IAM (Identity & Access Management)",
+    "headingId": "정책-상속",
+    "text": "정책 상속",
+    "level": 3
+  },
+  {
+    "sectionId": "02-iam",
+    "sectionTitle": "IAM (Identity & Access Management)",
+    "headingId": "password-policy-비밀번호-정책",
+    "text": "Password Policy 비밀번호 정책",
+    "level": 3
+  },
+  {
+    "sectionId": "02-iam",
+    "sectionTitle": "IAM (Identity & Access Management)",
+    "headingId": "mfa-multi-factor-authentication",
+    "text": "MFA Multi Factor Authentication",
+    "level": 3
+  },
+  {
+    "sectionId": "02-iam",
+    "sectionTitle": "IAM (Identity & Access Management)",
+    "headingId": "aws-접근-방법",
+    "text": "AWS 접근 방법",
+    "level": 3
+  },
+  {
+    "sectionId": "02-iam",
+    "sectionTitle": "IAM (Identity & Access Management)",
+    "headingId": "iam-roles-역할",
+    "text": "IAM Roles 역할",
+    "level": 3
+  },
+  {
+    "sectionId": "02-iam",
+    "sectionTitle": "IAM (Identity & Access Management)",
+    "headingId": "iam-security-tools",
+    "text": "IAM Security Tools",
+    "level": 3
+  },
+  {
+    "sectionId": "02-iam",
+    "sectionTitle": "IAM (Identity & Access Management)",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "02-iam",
+    "sectionTitle": "IAM (Identity & Access Management)",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "03-ec2-basics",
+    "sectionTitle": "EC2 Basics",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "03-ec2-basics",
+    "sectionTitle": "EC2 Basics",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "03-ec2-basics",
+    "sectionTitle": "EC2 Basics",
+    "headingId": "ec2-구성-요소",
+    "text": "EC2 구성 요소",
+    "level": 3
+  },
+  {
+    "sectionId": "03-ec2-basics",
+    "sectionTitle": "EC2 Basics",
+    "headingId": "ec2-설정-옵션",
+    "text": "EC2 설정 옵션",
+    "level": 3
+  },
+  {
+    "sectionId": "03-ec2-basics",
+    "sectionTitle": "EC2 Basics",
+    "headingId": "ec2-user-data",
+    "text": "EC2 User Data",
+    "level": 3
+  },
+  {
+    "sectionId": "03-ec2-basics",
+    "sectionTitle": "EC2 Basics",
+    "headingId": "ec2-인스턴스-타입",
+    "text": "EC2 인스턴스 타입",
+    "level": 3
+  },
+  {
+    "sectionId": "03-ec2-basics",
+    "sectionTitle": "EC2 Basics",
+    "headingId": "security-groups-보안-그룹",
+    "text": "Security Groups 보안 그룹",
+    "level": 3
+  },
+  {
+    "sectionId": "03-ec2-basics",
+    "sectionTitle": "EC2 Basics",
+    "headingId": "classic-ports",
+    "text": "Classic Ports",
+    "level": 3
+  },
+  {
+    "sectionId": "03-ec2-basics",
+    "sectionTitle": "EC2 Basics",
+    "headingId": "ec2-instance-connect",
+    "text": "EC2 Instance Connect",
+    "level": 3
+  },
+  {
+    "sectionId": "03-ec2-basics",
+    "sectionTitle": "EC2 Basics",
+    "headingId": "ec2-구매-옵션-시험-핵심",
+    "text": "EC2 구매 옵션 시험 핵심!",
+    "level": 3
+  },
+  {
+    "sectionId": "03-ec2-basics",
+    "sectionTitle": "EC2 Basics",
+    "headingId": "spot-instance-상세",
+    "text": "Spot Instance 상세",
+    "level": 3
+  },
+  {
+    "sectionId": "03-ec2-basics",
+    "sectionTitle": "EC2 Basics",
+    "headingId": "spot-fleet",
+    "text": "Spot Fleet",
+    "level": 3
+  },
+  {
+    "sectionId": "03-ec2-basics",
+    "sectionTitle": "EC2 Basics",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "03-ec2-basics",
+    "sectionTitle": "EC2 Basics",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "04-ec2-associate",
+    "sectionTitle": "EC2 Associate",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "04-ec2-associate",
+    "sectionTitle": "EC2 Associate",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "04-ec2-associate",
+    "sectionTitle": "EC2 Associate",
+    "headingId": "ip-주소-ipv4",
+    "text": "IP 주소 IPv4",
+    "level": 3
+  },
+  {
+    "sectionId": "04-ec2-associate",
+    "sectionTitle": "EC2 Associate",
+    "headingId": "elastic-ip",
+    "text": "Elastic IP",
+    "level": 3
+  },
+  {
+    "sectionId": "04-ec2-associate",
+    "sectionTitle": "EC2 Associate",
+    "headingId": "placement-groups-배치-그룹",
+    "text": "Placement Groups 배치 그룹",
+    "level": 3
+  },
+  {
+    "sectionId": "04-ec2-associate",
+    "sectionTitle": "EC2 Associate",
+    "headingId": "elastic-network-interface-eni",
+    "text": "Elastic Network Interface ENI",
+    "level": 3
+  },
+  {
+    "sectionId": "04-ec2-associate",
+    "sectionTitle": "EC2 Associate",
+    "headingId": "ec2-hibernate-최대-절전-모드",
+    "text": "EC2 Hibernate 최대 절전 모드",
+    "level": 3
+  },
+  {
+    "sectionId": "04-ec2-associate",
+    "sectionTitle": "EC2 Associate",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "04-ec2-associate",
+    "sectionTitle": "EC2 Associate",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "05-ec2-instance-storage",
+    "sectionTitle": "EC2 Instance Storage",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "05-ec2-instance-storage",
+    "sectionTitle": "EC2 Instance Storage",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "05-ec2-instance-storage",
+    "sectionTitle": "EC2 Instance Storage",
+    "headingId": "ebs-elastic-block-store",
+    "text": "EBS Elastic Block Store",
+    "level": 3
+  },
+  {
+    "sectionId": "05-ec2-instance-storage",
+    "sectionTitle": "EC2 Instance Storage",
+    "headingId": "ebs-snapshots",
+    "text": "EBS Snapshots",
+    "level": 3
+  },
+  {
+    "sectionId": "05-ec2-instance-storage",
+    "sectionTitle": "EC2 Instance Storage",
+    "headingId": "ami-amazon-machine-image",
+    "text": "AMI Amazon Machine Image",
+    "level": 3
+  },
+  {
+    "sectionId": "05-ec2-instance-storage",
+    "sectionTitle": "EC2 Instance Storage",
+    "headingId": "ec2-instance-store",
+    "text": "EC2 Instance Store",
+    "level": 3
+  },
+  {
+    "sectionId": "05-ec2-instance-storage",
+    "sectionTitle": "EC2 Instance Storage",
+    "headingId": "ebs-volume-types-6가지",
+    "text": "EBS Volume Types 6가지",
+    "level": 3
+  },
+  {
+    "sectionId": "05-ec2-instance-storage",
+    "sectionTitle": "EC2 Instance Storage",
+    "headingId": "ebs-multiattach-io1io2",
+    "text": "EBS Multi-Attach io1/io2",
+    "level": 3
+  },
+  {
+    "sectionId": "05-ec2-instance-storage",
+    "sectionTitle": "EC2 Instance Storage",
+    "headingId": "ebs-encryption",
+    "text": "EBS Encryption",
+    "level": 3
+  },
+  {
+    "sectionId": "05-ec2-instance-storage",
+    "sectionTitle": "EC2 Instance Storage",
+    "headingId": "amazon-efs-elastic-file-system",
+    "text": "Amazon EFS Elastic File System",
+    "level": 3
+  },
+  {
+    "sectionId": "05-ec2-instance-storage",
+    "sectionTitle": "EC2 Instance Storage",
+    "headingId": "ebs-vs-efs-vs-instance-store-비교-시험-핵심",
+    "text": "EBS vs EFS vs Instance Store 비교 시험 핵심!",
+    "level": 3
+  },
+  {
+    "sectionId": "05-ec2-instance-storage",
+    "sectionTitle": "EC2 Instance Storage",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "05-ec2-instance-storage",
+    "sectionTitle": "EC2 Instance Storage",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "06-high-availability-scalability",
+    "sectionTitle": "High Availability & Scalability",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "06-high-availability-scalability",
+    "sectionTitle": "High Availability & Scalability",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "06-high-availability-scalability",
+    "sectionTitle": "High Availability & Scalability",
+    "headingId": "scalability-vs-high-availability",
+    "text": "Scalability vs High Availability",
+    "level": 3
+  },
+  {
+    "sectionId": "06-high-availability-scalability",
+    "sectionTitle": "High Availability & Scalability",
+    "headingId": "elastic-load-balancer-elb",
+    "text": "Elastic Load Balancer ELB",
+    "level": 3
+  },
+  {
+    "sectionId": "06-high-availability-scalability",
+    "sectionTitle": "High Availability & Scalability",
+    "headingId": "alb-nlb-gwlb-동작-구조",
+    "text": "ALB / NLB / GWLB 동작 구조",
+    "level": 3
+  },
+  {
+    "sectionId": "06-high-availability-scalability",
+    "sectionTitle": "High Availability & Scalability",
+    "headingId": "alb-application-load-balancer-상세",
+    "text": "ALB Application Load Balancer 상세",
+    "level": 3
+  },
+  {
+    "sectionId": "06-high-availability-scalability",
+    "sectionTitle": "High Availability & Scalability",
+    "headingId": "nlb-network-load-balancer-상세",
+    "text": "NLB Network Load Balancer 상세",
+    "level": 3
+  },
+  {
+    "sectionId": "06-high-availability-scalability",
+    "sectionTitle": "High Availability & Scalability",
+    "headingId": "gwlb-gateway-load-balancer-상세",
+    "text": "GWLB Gateway Load Balancer 상세",
+    "level": 3
+  },
+  {
+    "sectionId": "06-high-availability-scalability",
+    "sectionTitle": "High Availability & Scalability",
+    "headingId": "sticky-sessions-session-affinity",
+    "text": "Sticky Sessions Session Affinity",
+    "level": 3
+  },
+  {
+    "sectionId": "06-high-availability-scalability",
+    "sectionTitle": "High Availability & Scalability",
+    "headingId": "crosszone-load-balancing",
+    "text": "Cross-Zone Load Balancing",
+    "level": 3
+  },
+  {
+    "sectionId": "06-high-availability-scalability",
+    "sectionTitle": "High Availability & Scalability",
+    "headingId": "ssltls-인증서",
+    "text": "SSL/TLS 인증서",
+    "level": 3
+  },
+  {
+    "sectionId": "06-high-availability-scalability",
+    "sectionTitle": "High Availability & Scalability",
+    "headingId": "connection-draining-deregistration-delay",
+    "text": "Connection Draining / Deregistration Delay",
+    "level": 3
+  },
+  {
+    "sectionId": "06-high-availability-scalability",
+    "sectionTitle": "High Availability & Scalability",
+    "headingId": "auto-scaling-group-asg",
+    "text": "Auto Scaling Group ASG",
+    "level": 3
+  },
+  {
+    "sectionId": "06-high-availability-scalability",
+    "sectionTitle": "High Availability & Scalability",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "06-high-availability-scalability",
+    "sectionTitle": "High Availability & Scalability",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "amazon-rds-relational-database-service",
+    "text": "Amazon RDS Relational Database Service",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "rds-storage-auto-scaling",
+    "text": "RDS Storage Auto Scaling",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "rds-read-replicas",
+    "text": "RDS Read Replicas",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "rds-multiaz-재해-복구",
+    "text": "RDS Multi-AZ 재해 복구",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "rds-custom",
+    "text": "RDS Custom",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "amazon-aurora",
+    "text": "Amazon Aurora",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "aurora-고가용성-및-스토리지",
+    "text": "Aurora 고가용성 및 스토리지",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "aurora-엔드포인트",
+    "text": "Aurora 엔드포인트",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "aurora-serverless",
+    "text": "Aurora Serverless",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "aurora-global-database",
+    "text": "Aurora Global Database",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "aurora-machine-learning",
+    "text": "Aurora Machine Learning",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "babelfish-for-aurora-postgresql",
+    "text": "Babelfish for Aurora PostgreSQL",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "rds-aurora-백업",
+    "text": "RDS & Aurora 백업",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "rds-aurora-복원",
+    "text": "RDS & Aurora 복원",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "aurora-database-cloning",
+    "text": "Aurora Database Cloning",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "rds-aurora-보안",
+    "text": "RDS & Aurora 보안",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "amazon-rds-proxy",
+    "text": "Amazon RDS Proxy",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "amazon-elasticache",
+    "text": "Amazon ElastiCache",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "elasticache-아키텍처-패턴",
+    "text": "ElastiCache 아키텍처 패턴",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "redis-vs-memcached",
+    "text": "Redis vs Memcached",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "elasticache-보안",
+    "text": "ElastiCache 보안",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "elasticache-캐싱-패턴",
+    "text": "ElastiCache 캐싱 패턴",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "redis-사용-사례",
+    "text": "Redis 사용 사례",
+    "level": 3
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "07-rds-aurora-elasticache",
+    "sectionTitle": "RDS, Aurora & ElastiCache",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "08-route-53",
+    "sectionTitle": "Route 53",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "08-route-53",
+    "sectionTitle": "Route 53",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "08-route-53",
+    "sectionTitle": "Route 53",
+    "headingId": "dns-기본-용어",
+    "text": "DNS 기본 용어",
+    "level": 3
+  },
+  {
+    "sectionId": "08-route-53",
+    "sectionTitle": "Route 53",
+    "headingId": "route-53-특징",
+    "text": "Route 53 특징",
+    "level": 3
+  },
+  {
+    "sectionId": "08-route-53",
+    "sectionTitle": "Route 53",
+    "headingId": "dns-레코드-타입",
+    "text": "DNS 레코드 타입",
+    "level": 3
+  },
+  {
+    "sectionId": "08-route-53",
+    "sectionTitle": "Route 53",
+    "headingId": "hosted-zones",
+    "text": "Hosted Zones",
+    "level": 3
+  },
+  {
+    "sectionId": "08-route-53",
+    "sectionTitle": "Route 53",
+    "headingId": "ttl-time-to-live",
+    "text": "TTL Time To Live",
+    "level": 3
+  },
+  {
+    "sectionId": "08-route-53",
+    "sectionTitle": "Route 53",
+    "headingId": "cname-vs-alias",
+    "text": "CNAME vs Alias",
+    "level": 3
+  },
+  {
+    "sectionId": "08-route-53",
+    "sectionTitle": "Route 53",
+    "headingId": "alias-record-대상",
+    "text": "Alias Record 대상",
+    "level": 3
+  },
+  {
+    "sectionId": "08-route-53",
+    "sectionTitle": "Route 53",
+    "headingId": "라우팅-정책-routing-policies",
+    "text": "라우팅 정책 Routing Policies",
+    "level": 3
+  },
+  {
+    "sectionId": "08-route-53",
+    "sectionTitle": "Route 53",
+    "headingId": "health-checks-헬스-체크",
+    "text": "Health Checks 헬스 체크",
+    "level": 3
+  },
+  {
+    "sectionId": "08-route-53",
+    "sectionTitle": "Route 53",
+    "headingId": "route-53-hybrid-dns",
+    "text": "Route 53 Hybrid DNS",
+    "level": 3
+  },
+  {
+    "sectionId": "08-route-53",
+    "sectionTitle": "Route 53",
+    "headingId": "domain-registrar-vs-dns-service",
+    "text": "Domain Registrar vs DNS Service",
+    "level": 3
+  },
+  {
+    "sectionId": "08-route-53",
+    "sectionTitle": "Route 53",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "08-route-53",
+    "sectionTitle": "Route 53",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "09-classic-solutions-architecture",
+    "sectionTitle": "Classic Solutions Architecture",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "09-classic-solutions-architecture",
+    "sectionTitle": "Classic Solutions Architecture",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "09-classic-solutions-architecture",
+    "sectionTitle": "Classic Solutions Architecture",
+    "headingId": "case-study-1-whatisthetimecom-stateless",
+    "text": "Case Study 1: WhatIsTheTime.com Stateless",
+    "level": 3
+  },
+  {
+    "sectionId": "09-classic-solutions-architecture",
+    "sectionTitle": "Classic Solutions Architecture",
+    "headingId": "case-study-2-myclothescom-stateful",
+    "text": "Case Study 2: MyClothes.com Stateful",
+    "level": 3
+  },
+  {
+    "sectionId": "09-classic-solutions-architecture",
+    "sectionTitle": "Classic Solutions Architecture",
+    "headingId": "case-study-3-mywordpresscom-stateful-이미지",
+    "text": "Case Study 3: MyWordPress.com Stateful + 이미지",
+    "level": 3
+  },
+  {
+    "sectionId": "09-classic-solutions-architecture",
+    "sectionTitle": "Classic Solutions Architecture",
+    "headingId": "애플리케이션-빠른-시작-instantiating-quickly",
+    "text": "애플리케이션 빠른 시작 Instantiating Quickly",
+    "level": 3
+  },
+  {
+    "sectionId": "09-classic-solutions-architecture",
+    "sectionTitle": "Classic Solutions Architecture",
+    "headingId": "3tier-웹-아키텍처",
+    "text": "3-Tier 웹 아키텍처",
+    "level": 3
+  },
+  {
+    "sectionId": "09-classic-solutions-architecture",
+    "sectionTitle": "Classic Solutions Architecture",
+    "headingId": "elastic-beanstalk",
+    "text": "Elastic Beanstalk",
+    "level": 3
+  },
+  {
+    "sectionId": "09-classic-solutions-architecture",
+    "sectionTitle": "Classic Solutions Architecture",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "09-classic-solutions-architecture",
+    "sectionTitle": "Classic Solutions Architecture",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "10-amazon-s3",
+    "sectionTitle": "Amazon S3",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "10-amazon-s3",
+    "sectionTitle": "Amazon S3",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "10-amazon-s3",
+    "sectionTitle": "Amazon S3",
+    "headingId": "s3-사용-사례",
+    "text": "S3 사용 사례",
+    "level": 3
+  },
+  {
+    "sectionId": "10-amazon-s3",
+    "sectionTitle": "Amazon S3",
+    "headingId": "s3-버킷-bucket",
+    "text": "S3 버킷 Bucket",
+    "level": 3
+  },
+  {
+    "sectionId": "10-amazon-s3",
+    "sectionTitle": "Amazon S3",
+    "headingId": "s3-객체-object",
+    "text": "S3 객체 Object",
+    "level": 3
+  },
+  {
+    "sectionId": "10-amazon-s3",
+    "sectionTitle": "Amazon S3",
+    "headingId": "s3-보안",
+    "text": "S3 보안",
+    "level": 3
+  },
+  {
+    "sectionId": "10-amazon-s3",
+    "sectionTitle": "Amazon S3",
+    "headingId": "s3-bucket-policy",
+    "text": "S3 Bucket Policy",
+    "level": 3
+  },
+  {
+    "sectionId": "10-amazon-s3",
+    "sectionTitle": "Amazon S3",
+    "headingId": "block-public-access",
+    "text": "Block Public Access",
+    "level": 3
+  },
+  {
+    "sectionId": "10-amazon-s3",
+    "sectionTitle": "Amazon S3",
+    "headingId": "s3-정적-웹사이트-호스팅",
+    "text": "S3 정적 웹사이트 호스팅",
+    "level": 3
+  },
+  {
+    "sectionId": "10-amazon-s3",
+    "sectionTitle": "Amazon S3",
+    "headingId": "s3-versioning-버저닝",
+    "text": "S3 Versioning 버저닝",
+    "level": 3
+  },
+  {
+    "sectionId": "10-amazon-s3",
+    "sectionTitle": "Amazon S3",
+    "headingId": "s3-replication-복제",
+    "text": "S3 Replication 복제",
+    "level": 3
+  },
+  {
+    "sectionId": "10-amazon-s3",
+    "sectionTitle": "Amazon S3",
+    "headingId": "s3-storage-classes-스토리지-클래스",
+    "text": "S3 Storage Classes 스토리지 클래스",
+    "level": 3
+  },
+  {
+    "sectionId": "10-amazon-s3",
+    "sectionTitle": "Amazon S3",
+    "headingId": "s3-express-one-zone",
+    "text": "S3 Express One Zone",
+    "level": 3
+  },
+  {
+    "sectionId": "10-amazon-s3",
+    "sectionTitle": "Amazon S3",
+    "headingId": "스토리지-클래스-비교표",
+    "text": "스토리지 클래스 비교표",
+    "level": 3
+  },
+  {
+    "sectionId": "10-amazon-s3",
+    "sectionTitle": "Amazon S3",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "10-amazon-s3",
+    "sectionTitle": "Amazon S3",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "11-s3-advanced",
+    "sectionTitle": "S3 Advanced",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "11-s3-advanced",
+    "sectionTitle": "S3 Advanced",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "11-s3-advanced",
+    "sectionTitle": "S3 Advanced",
+    "headingId": "s3-lifecycle-rules-수명주기-규칙",
+    "text": "S3 Lifecycle Rules 수명주기 규칙",
+    "level": 3
+  },
+  {
+    "sectionId": "11-s3-advanced",
+    "sectionTitle": "S3 Advanced",
+    "headingId": "lifecycle-rules-시나리오",
+    "text": "Lifecycle Rules 시나리오",
+    "level": 3
+  },
+  {
+    "sectionId": "11-s3-advanced",
+    "sectionTitle": "S3 Advanced",
+    "headingId": "s3-analytics-storage-class-analysis",
+    "text": "S3 Analytics - Storage Class Analysis",
+    "level": 3
+  },
+  {
+    "sectionId": "11-s3-advanced",
+    "sectionTitle": "S3 Advanced",
+    "headingId": "s3-requester-pays-요청자-지불",
+    "text": "S3 Requester Pays 요청자 지불",
+    "level": 3
+  },
+  {
+    "sectionId": "11-s3-advanced",
+    "sectionTitle": "S3 Advanced",
+    "headingId": "s3-event-notifications-이벤트-알림",
+    "text": "S3 Event Notifications 이벤트 알림",
+    "level": 3
+  },
+  {
+    "sectionId": "11-s3-advanced",
+    "sectionTitle": "S3 Advanced",
+    "headingId": "s3-baseline-performance-기본-성능",
+    "text": "S3 Baseline Performance 기본 성능",
+    "level": 3
+  },
+  {
+    "sectionId": "11-s3-advanced",
+    "sectionTitle": "S3 Advanced",
+    "headingId": "s3-performance-최적화",
+    "text": "S3 Performance 최적화",
+    "level": 3
+  },
+  {
+    "sectionId": "11-s3-advanced",
+    "sectionTitle": "S3 Advanced",
+    "headingId": "s3-batch-operations",
+    "text": "S3 Batch Operations",
+    "level": 3
+  },
+  {
+    "sectionId": "11-s3-advanced",
+    "sectionTitle": "S3 Advanced",
+    "headingId": "s3-storage-lens",
+    "text": "S3 Storage Lens",
+    "level": 3
+  },
+  {
+    "sectionId": "11-s3-advanced",
+    "sectionTitle": "S3 Advanced",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "11-s3-advanced",
+    "sectionTitle": "S3 Advanced",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "12-s3-security",
+    "sectionTitle": "S3 Security",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "12-s3-security",
+    "sectionTitle": "S3 Security",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "12-s3-security",
+    "sectionTitle": "S3 Security",
+    "headingId": "s3-객체-암호화-4가지-방법",
+    "text": "S3 객체 암호화 - 4가지 방법",
+    "level": 3
+  },
+  {
+    "sectionId": "12-s3-security",
+    "sectionTitle": "S3 Security",
+    "headingId": "s3-암호화-방식-비교-sses3-ssekms-ssec-clientside",
+    "text": "S3 암호화 방식 비교 SSE-S3 / SSE-KMS / SSE-C / Client-Side",
+    "level": 3
+  },
+  {
+    "sectionId": "12-s3-security",
+    "sectionTitle": "S3 Security",
+    "headingId": "encryption-in-transit-전송-중-암호화",
+    "text": "Encryption in Transit 전송 중 암호화",
+    "level": 3
+  },
+  {
+    "sectionId": "12-s3-security",
+    "sectionTitle": "S3 Security",
+    "headingId": "s3-접근-제어-흐름-bucket-policy-iam-acl-평가",
+    "text": "S3 접근 제어 흐름 Bucket Policy + IAM + ACL 평가",
+    "level": 3
+  },
+  {
+    "sectionId": "12-s3-security",
+    "sectionTitle": "S3 Security",
+    "headingId": "default-encryption-vs-bucket-policy",
+    "text": "Default Encryption vs Bucket Policy",
+    "level": 3
+  },
+  {
+    "sectionId": "12-s3-security",
+    "sectionTitle": "S3 Security",
+    "headingId": "cors-crossorigin-resource-sharing-교차-출처-리소스-공유",
+    "text": "CORS Cross-Origin Resource Sharing, 교차 출처 리소스 공유",
+    "level": 3
+  },
+  {
+    "sectionId": "12-s3-security",
+    "sectionTitle": "S3 Security",
+    "headingId": "mfa-delete",
+    "text": "MFA Delete",
+    "level": 3
+  },
+  {
+    "sectionId": "12-s3-security",
+    "sectionTitle": "S3 Security",
+    "headingId": "s3-access-logs-액세스-로그",
+    "text": "S3 Access Logs 액세스 로그",
+    "level": 3
+  },
+  {
+    "sectionId": "12-s3-security",
+    "sectionTitle": "S3 Security",
+    "headingId": "s3-presigned-urls",
+    "text": "S3 Pre-Signed URLs",
+    "level": 3
+  },
+  {
+    "sectionId": "12-s3-security",
+    "sectionTitle": "S3 Security",
+    "headingId": "s3-glacier-vault-lock",
+    "text": "S3 Glacier Vault Lock",
+    "level": 3
+  },
+  {
+    "sectionId": "12-s3-security",
+    "sectionTitle": "S3 Security",
+    "headingId": "s3-object-lock-버저닝-활성화-필수",
+    "text": "S3 Object Lock 버저닝 활성화 필수",
+    "level": 3
+  },
+  {
+    "sectionId": "12-s3-security",
+    "sectionTitle": "S3 Security",
+    "headingId": "s3-access-points",
+    "text": "S3 Access Points",
+    "level": 3
+  },
+  {
+    "sectionId": "12-s3-security",
+    "sectionTitle": "S3 Security",
+    "headingId": "s3-object-lambda",
+    "text": "S3 Object Lambda",
+    "level": 3
+  },
+  {
+    "sectionId": "12-s3-security",
+    "sectionTitle": "S3 Security",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "12-s3-security",
+    "sectionTitle": "S3 Security",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "13-cloudfront-global-accelerator",
+    "sectionTitle": "CloudFront & Global Accelerator",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "13-cloudfront-global-accelerator",
+    "sectionTitle": "CloudFront & Global Accelerator",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "13-cloudfront-global-accelerator",
+    "sectionTitle": "CloudFront & Global Accelerator",
+    "headingId": "cloudfront-기본-개념",
+    "text": "CloudFront 기본 개념",
+    "level": 3
+  },
+  {
+    "sectionId": "13-cloudfront-global-accelerator",
+    "sectionTitle": "CloudFront & Global Accelerator",
+    "headingId": "cloudfront-배포-구조",
+    "text": "CloudFront 배포 구조",
+    "level": 3
+  },
+  {
+    "sectionId": "13-cloudfront-global-accelerator",
+    "sectionTitle": "CloudFront & Global Accelerator",
+    "headingId": "cloudfront-origins-원본-소스",
+    "text": "CloudFront Origins 원본 소스",
+    "level": 3
+  },
+  {
+    "sectionId": "13-cloudfront-global-accelerator",
+    "sectionTitle": "CloudFront & Global Accelerator",
+    "headingId": "cloudfront와-퍼블릭-네트워크를-통한-albec2-연결",
+    "text": "CloudFront와 퍼블릭 네트워크를 통한 ALB/EC2 연결",
+    "level": 3
+  },
+  {
+    "sectionId": "13-cloudfront-global-accelerator",
+    "sectionTitle": "CloudFront & Global Accelerator",
+    "headingId": "cloudfront-vs-s3-cross-region-replication",
+    "text": "CloudFront vs S3 Cross Region Replication",
+    "level": 3
+  },
+  {
+    "sectionId": "13-cloudfront-global-accelerator",
+    "sectionTitle": "CloudFront & Global Accelerator",
+    "headingId": "cloudfront-geo-restriction-지역-제한",
+    "text": "CloudFront Geo Restriction 지역 제한",
+    "level": 3
+  },
+  {
+    "sectionId": "13-cloudfront-global-accelerator",
+    "sectionTitle": "CloudFront & Global Accelerator",
+    "headingId": "cloudfront-cache-invalidation-캐시-무효화",
+    "text": "CloudFront Cache Invalidation 캐시 무효화",
+    "level": 3
+  },
+  {
+    "sectionId": "13-cloudfront-global-accelerator",
+    "sectionTitle": "CloudFront & Global Accelerator",
+    "headingId": "aws-global-accelerator",
+    "text": "AWS Global Accelerator",
+    "level": 3
+  },
+  {
+    "sectionId": "13-cloudfront-global-accelerator",
+    "sectionTitle": "CloudFront & Global Accelerator",
+    "headingId": "global-accelerator-동작-구조",
+    "text": "Global Accelerator 동작 구조",
+    "level": 3
+  },
+  {
+    "sectionId": "13-cloudfront-global-accelerator",
+    "sectionTitle": "CloudFront & Global Accelerator",
+    "headingId": "unicast-ip-vs-anycast-ip",
+    "text": "Unicast IP vs Anycast IP",
+    "level": 3
+  },
+  {
+    "sectionId": "13-cloudfront-global-accelerator",
+    "sectionTitle": "CloudFront & Global Accelerator",
+    "headingId": "cloudfront-vs-global-accelerator",
+    "text": "CloudFront vs Global Accelerator",
+    "level": 3
+  },
+  {
+    "sectionId": "13-cloudfront-global-accelerator",
+    "sectionTitle": "CloudFront & Global Accelerator",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "13-cloudfront-global-accelerator",
+    "sectionTitle": "CloudFront & Global Accelerator",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "14-storage-extras",
+    "sectionTitle": "Storage Extras",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "14-storage-extras",
+    "sectionTitle": "Storage Extras",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "14-storage-extras",
+    "sectionTitle": "Storage Extras",
+    "headingId": "aws-snowball-snow-family",
+    "text": "AWS Snowball Snow Family",
+    "level": 3
+  },
+  {
+    "sectionId": "14-storage-extras",
+    "sectionTitle": "Storage Extras",
+    "headingId": "edge-computing",
+    "text": "Edge Computing",
+    "level": 3
+  },
+  {
+    "sectionId": "14-storage-extras",
+    "sectionTitle": "Storage Extras",
+    "headingId": "snow-family-데이터-전송-흐름",
+    "text": "Snow Family 데이터 전송 흐름",
+    "level": 3
+  },
+  {
+    "sectionId": "14-storage-extras",
+    "sectionTitle": "Storage Extras",
+    "headingId": "snowball-glacier-아키텍처",
+    "text": "Snowball -> Glacier 아키텍처",
+    "level": 3
+  },
+  {
+    "sectionId": "14-storage-extras",
+    "sectionTitle": "Storage Extras",
+    "headingId": "amazon-fsx-개요",
+    "text": "Amazon FSx 개요",
+    "level": 3
+  },
+  {
+    "sectionId": "14-storage-extras",
+    "sectionTitle": "Storage Extras",
+    "headingId": "fsx-for-windows-file-server",
+    "text": "FSx for Windows File Server",
+    "level": 3
+  },
+  {
+    "sectionId": "14-storage-extras",
+    "sectionTitle": "Storage Extras",
+    "headingId": "fsx-for-lustre",
+    "text": "FSx for Lustre",
+    "level": 3
+  },
+  {
+    "sectionId": "14-storage-extras",
+    "sectionTitle": "Storage Extras",
+    "headingId": "fsx-for-netapp-ontap",
+    "text": "FSx for NetApp ONTAP",
+    "level": 3
+  },
+  {
+    "sectionId": "14-storage-extras",
+    "sectionTitle": "Storage Extras",
+    "headingId": "fsx-for-openzfs",
+    "text": "FSx for OpenZFS",
+    "level": 3
+  },
+  {
+    "sectionId": "14-storage-extras",
+    "sectionTitle": "Storage Extras",
+    "headingId": "aws-storage-gateway",
+    "text": "AWS Storage Gateway",
+    "level": 3
+  },
+  {
+    "sectionId": "14-storage-extras",
+    "sectionTitle": "Storage Extras",
+    "headingId": "aws-transfer-family",
+    "text": "AWS Transfer Family",
+    "level": 3
+  },
+  {
+    "sectionId": "14-storage-extras",
+    "sectionTitle": "Storage Extras",
+    "headingId": "aws-datasync",
+    "text": "AWS DataSync",
+    "level": 3
+  },
+  {
+    "sectionId": "14-storage-extras",
+    "sectionTitle": "Storage Extras",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "14-storage-extras",
+    "sectionTitle": "Storage Extras",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "15-integration-messaging",
+    "sectionTitle": "Integration & Messaging",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "15-integration-messaging",
+    "sectionTitle": "Integration & Messaging",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "15-integration-messaging",
+    "sectionTitle": "Integration & Messaging",
+    "headingId": "동기-vs-비동기-통신",
+    "text": "동기 vs 비동기 통신",
+    "level": 3
+  },
+  {
+    "sectionId": "15-integration-messaging",
+    "sectionTitle": "Integration & Messaging",
+    "headingId": "amazon-sqs-simple-queue-service",
+    "text": "Amazon SQS Simple Queue Service",
+    "level": 3
+  },
+  {
+    "sectionId": "15-integration-messaging",
+    "sectionTitle": "Integration & Messaging",
+    "headingId": "amazon-sns-simple-notification-service",
+    "text": "Amazon SNS Simple Notification Service",
+    "level": 3
+  },
+  {
+    "sectionId": "15-integration-messaging",
+    "sectionTitle": "Integration & Messaging",
+    "headingId": "언제-무엇을-쓰는가-sqs-sns-kinesis-한눈에-비교",
+    "text": "언제 무엇을 쓰는가? SQS / SNS / Kinesis 한눈에 비교",
+    "level": 3
+  },
+  {
+    "sectionId": "15-integration-messaging",
+    "sectionTitle": "Integration & Messaging",
+    "headingId": "amazon-kinesis-data-streams",
+    "text": "Amazon Kinesis Data Streams",
+    "level": 3
+  },
+  {
+    "sectionId": "15-integration-messaging",
+    "sectionTitle": "Integration & Messaging",
+    "headingId": "amazon-data-firehose-구-kinesis-data-firehose",
+    "text": "Amazon Data Firehose 구 Kinesis Data Firehose",
+    "level": 3
+  },
+  {
+    "sectionId": "15-integration-messaging",
+    "sectionTitle": "Integration & Messaging",
+    "headingId": "kinesis-data-streams-vs-data-firehose",
+    "text": "Kinesis Data Streams vs Data Firehose",
+    "level": 3
+  },
+  {
+    "sectionId": "15-integration-messaging",
+    "sectionTitle": "Integration & Messaging",
+    "headingId": "amazon-mq",
+    "text": "Amazon MQ",
+    "level": 3
+  },
+  {
+    "sectionId": "15-integration-messaging",
+    "sectionTitle": "Integration & Messaging",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "15-integration-messaging",
+    "sectionTitle": "Integration & Messaging",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "16-containers",
+    "sectionTitle": "Containers on AWS",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "16-containers",
+    "sectionTitle": "Containers on AWS",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "16-containers",
+    "sectionTitle": "Containers on AWS",
+    "headingId": "docker-기본-개념",
+    "text": "Docker 기본 개념",
+    "level": 3
+  },
+  {
+    "sectionId": "16-containers",
+    "sectionTitle": "Containers on AWS",
+    "headingId": "docker-이미지-저장소",
+    "text": "Docker 이미지 저장소",
+    "level": 3
+  },
+  {
+    "sectionId": "16-containers",
+    "sectionTitle": "Containers on AWS",
+    "headingId": "aws-컨테이너-관리-서비스",
+    "text": "AWS 컨테이너 관리 서비스",
+    "level": 3
+  },
+  {
+    "sectionId": "16-containers",
+    "sectionTitle": "Containers on AWS",
+    "headingId": "amazon-ecs-elastic-container-service",
+    "text": "Amazon ECS Elastic Container Service",
+    "level": 3
+  },
+  {
+    "sectionId": "16-containers",
+    "sectionTitle": "Containers on AWS",
+    "headingId": "amazon-ecr-elastic-container-registry",
+    "text": "Amazon ECR Elastic Container Registry",
+    "level": 3
+  },
+  {
+    "sectionId": "16-containers",
+    "sectionTitle": "Containers on AWS",
+    "headingId": "amazon-eks-elastic-kubernetes-service",
+    "text": "Amazon EKS Elastic Kubernetes Service",
+    "level": 3
+  },
+  {
+    "sectionId": "16-containers",
+    "sectionTitle": "Containers on AWS",
+    "headingId": "aws-app-runner",
+    "text": "AWS App Runner",
+    "level": 3
+  },
+  {
+    "sectionId": "16-containers",
+    "sectionTitle": "Containers on AWS",
+    "headingId": "aws-app2container-a2c",
+    "text": "AWS App2Container A2C",
+    "level": 3
+  },
+  {
+    "sectionId": "16-containers",
+    "sectionTitle": "Containers on AWS",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "16-containers",
+    "sectionTitle": "Containers on AWS",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "17-serverless-overview",
+    "sectionTitle": "Serverless Overview",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "17-serverless-overview",
+    "sectionTitle": "Serverless Overview",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "17-serverless-overview",
+    "sectionTitle": "Serverless Overview",
+    "headingId": "서버리스란",
+    "text": "서버리스란?",
+    "level": 3
+  },
+  {
+    "sectionId": "17-serverless-overview",
+    "sectionTitle": "Serverless Overview",
+    "headingId": "aws-lambda",
+    "text": "AWS Lambda",
+    "level": 3
+  },
+  {
+    "sectionId": "17-serverless-overview",
+    "sectionTitle": "Serverless Overview",
+    "headingId": "cloudfront-functions-lambdaedge",
+    "text": "CloudFront Functions & Lambda@Edge",
+    "level": 3
+  },
+  {
+    "sectionId": "17-serverless-overview",
+    "sectionTitle": "Serverless Overview",
+    "headingId": "lambda-in-vpc",
+    "text": "Lambda in VPC",
+    "level": 3
+  },
+  {
+    "sectionId": "17-serverless-overview",
+    "sectionTitle": "Serverless Overview",
+    "headingId": "amazon-dynamodb",
+    "text": "Amazon DynamoDB",
+    "level": 3
+  },
+  {
+    "sectionId": "17-serverless-overview",
+    "sectionTitle": "Serverless Overview",
+    "headingId": "aws-api-gateway",
+    "text": "AWS API Gateway",
+    "level": 3
+  },
+  {
+    "sectionId": "17-serverless-overview",
+    "sectionTitle": "Serverless Overview",
+    "headingId": "aws-step-functions",
+    "text": "AWS Step Functions",
+    "level": 3
+  },
+  {
+    "sectionId": "17-serverless-overview",
+    "sectionTitle": "Serverless Overview",
+    "headingId": "amazon-cognito",
+    "text": "Amazon Cognito",
+    "level": 3
+  },
+  {
+    "sectionId": "17-serverless-overview",
+    "sectionTitle": "Serverless Overview",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "17-serverless-overview",
+    "sectionTitle": "Serverless Overview",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "18-serverless-architectures",
+    "sectionTitle": "Serverless Architectures",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "18-serverless-architectures",
+    "sectionTitle": "Serverless Architectures",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "18-serverless-architectures",
+    "sectionTitle": "Serverless Architectures",
+    "headingId": "아키텍처-1-모바일-앱-mytodolist",
+    "text": "아키텍처 1: 모바일 앱 MyTodoList",
+    "level": 3
+  },
+  {
+    "sectionId": "18-serverless-architectures",
+    "sectionTitle": "Serverless Architectures",
+    "headingId": "아키텍처-2-서버리스-웹사이트-myblogcom",
+    "text": "아키텍처 2: 서버리스 웹사이트 MyBlog.com",
+    "level": 3
+  },
+  {
+    "sectionId": "18-serverless-architectures",
+    "sectionTitle": "Serverless Architectures",
+    "headingId": "아키텍처-3-마이크로서비스",
+    "text": "아키텍처 3: 마이크로서비스",
+    "level": 3
+  },
+  {
+    "sectionId": "18-serverless-architectures",
+    "sectionTitle": "Serverless Architectures",
+    "headingId": "아키텍처-4-소프트웨어-업데이트-오프로딩",
+    "text": "아키텍처 4: 소프트웨어 업데이트 오프로딩",
+    "level": 3
+  },
+  {
+    "sectionId": "18-serverless-architectures",
+    "sectionTitle": "Serverless Architectures",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "18-serverless-architectures",
+    "sectionTitle": "Serverless Architectures",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "19-databases",
+    "sectionTitle": "Databases in AWS",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "19-databases",
+    "sectionTitle": "Databases in AWS",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "19-databases",
+    "sectionTitle": "Databases in AWS",
+    "headingId": "데이터베이스-유형별-분류",
+    "text": "데이터베이스 유형별 분류",
+    "level": 3
+  },
+  {
+    "sectionId": "19-databases",
+    "sectionTitle": "Databases in AWS",
+    "headingId": "amazon-rds",
+    "text": "Amazon RDS",
+    "level": 3
+  },
+  {
+    "sectionId": "19-databases",
+    "sectionTitle": "Databases in AWS",
+    "headingId": "amazon-aurora",
+    "text": "Amazon Aurora",
+    "level": 3
+  },
+  {
+    "sectionId": "19-databases",
+    "sectionTitle": "Databases in AWS",
+    "headingId": "amazon-elasticache",
+    "text": "Amazon ElastiCache",
+    "level": 3
+  },
+  {
+    "sectionId": "19-databases",
+    "sectionTitle": "Databases in AWS",
+    "headingId": "amazon-dynamodb",
+    "text": "Amazon DynamoDB",
+    "level": 3
+  },
+  {
+    "sectionId": "19-databases",
+    "sectionTitle": "Databases in AWS",
+    "headingId": "amazon-s3-데이터베이스-관점",
+    "text": "Amazon S3 데이터베이스 관점",
+    "level": 3
+  },
+  {
+    "sectionId": "19-databases",
+    "sectionTitle": "Databases in AWS",
+    "headingId": "amazon-documentdb",
+    "text": "Amazon DocumentDB",
+    "level": 3
+  },
+  {
+    "sectionId": "19-databases",
+    "sectionTitle": "Databases in AWS",
+    "headingId": "amazon-neptune",
+    "text": "Amazon Neptune",
+    "level": 3
+  },
+  {
+    "sectionId": "19-databases",
+    "sectionTitle": "Databases in AWS",
+    "headingId": "amazon-keyspaces-apache-cassandra-호환",
+    "text": "Amazon Keyspaces Apache Cassandra 호환",
+    "level": 3
+  },
+  {
+    "sectionId": "19-databases",
+    "sectionTitle": "Databases in AWS",
+    "headingId": "amazon-timestream",
+    "text": "Amazon Timestream",
+    "level": 3
+  },
+  {
+    "sectionId": "19-databases",
+    "sectionTitle": "Databases in AWS",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "19-databases",
+    "sectionTitle": "Databases in AWS",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "20-data-analytics",
+    "sectionTitle": "Data & Analytics",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "20-data-analytics",
+    "sectionTitle": "Data & Analytics",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "20-data-analytics",
+    "sectionTitle": "Data & Analytics",
+    "headingId": "데이터-분석-서비스-한눈에-보기-초보자용",
+    "text": "데이터 분석 서비스 한눈에 보기 초보자용",
+    "level": 3
+  },
+  {
+    "sectionId": "20-data-analytics",
+    "sectionTitle": "Data & Analytics",
+    "headingId": "amazon-athena",
+    "text": "Amazon Athena",
+    "level": 3
+  },
+  {
+    "sectionId": "20-data-analytics",
+    "sectionTitle": "Data & Analytics",
+    "headingId": "amazon-redshift",
+    "text": "Amazon Redshift",
+    "level": 3
+  },
+  {
+    "sectionId": "20-data-analytics",
+    "sectionTitle": "Data & Analytics",
+    "headingId": "amazon-opensearch-service",
+    "text": "Amazon OpenSearch Service",
+    "level": 3
+  },
+  {
+    "sectionId": "20-data-analytics",
+    "sectionTitle": "Data & Analytics",
+    "headingId": "amazon-emr-elastic-mapreduce",
+    "text": "Amazon EMR Elastic MapReduce",
+    "level": 3
+  },
+  {
+    "sectionId": "20-data-analytics",
+    "sectionTitle": "Data & Analytics",
+    "headingId": "amazon-quicksight",
+    "text": "Amazon QuickSight",
+    "level": 3
+  },
+  {
+    "sectionId": "20-data-analytics",
+    "sectionTitle": "Data & Analytics",
+    "headingId": "aws-glue",
+    "text": "AWS Glue",
+    "level": 3
+  },
+  {
+    "sectionId": "20-data-analytics",
+    "sectionTitle": "Data & Analytics",
+    "headingId": "aws-lake-formation",
+    "text": "AWS Lake Formation",
+    "level": 3
+  },
+  {
+    "sectionId": "20-data-analytics",
+    "sectionTitle": "Data & Analytics",
+    "headingId": "amazon-managed-service-for-apache-flink",
+    "text": "Amazon Managed Service for Apache Flink",
+    "level": 3
+  },
+  {
+    "sectionId": "20-data-analytics",
+    "sectionTitle": "Data & Analytics",
+    "headingId": "amazon-msk-managed-streaming-for-apache-kafka",
+    "text": "Amazon MSK Managed Streaming for Apache Kafka",
+    "level": 3
+  },
+  {
+    "sectionId": "20-data-analytics",
+    "sectionTitle": "Data & Analytics",
+    "headingId": "big-data-ingestion-pipeline",
+    "text": "Big Data Ingestion Pipeline",
+    "level": 3
+  },
+  {
+    "sectionId": "20-data-analytics",
+    "sectionTitle": "Data & Analytics",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "20-data-analytics",
+    "sectionTitle": "Data & Analytics",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "21-machine-learning",
+    "sectionTitle": "Machine Learning",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "21-machine-learning",
+    "sectionTitle": "Machine Learning",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "21-machine-learning",
+    "sectionTitle": "Machine Learning",
+    "headingId": "amazon-rekognition",
+    "text": "Amazon Rekognition",
+    "level": 3
+  },
+  {
+    "sectionId": "21-machine-learning",
+    "sectionTitle": "Machine Learning",
+    "headingId": "amazon-transcribe",
+    "text": "Amazon Transcribe",
+    "level": 3
+  },
+  {
+    "sectionId": "21-machine-learning",
+    "sectionTitle": "Machine Learning",
+    "headingId": "amazon-polly",
+    "text": "Amazon Polly",
+    "level": 3
+  },
+  {
+    "sectionId": "21-machine-learning",
+    "sectionTitle": "Machine Learning",
+    "headingId": "amazon-translate",
+    "text": "Amazon Translate",
+    "level": 3
+  },
+  {
+    "sectionId": "21-machine-learning",
+    "sectionTitle": "Machine Learning",
+    "headingId": "amazon-lex-connect",
+    "text": "Amazon Lex & Connect",
+    "level": 3
+  },
+  {
+    "sectionId": "21-machine-learning",
+    "sectionTitle": "Machine Learning",
+    "headingId": "amazon-comprehend",
+    "text": "Amazon Comprehend",
+    "level": 3
+  },
+  {
+    "sectionId": "21-machine-learning",
+    "sectionTitle": "Machine Learning",
+    "headingId": "amazon-sagemaker-ai",
+    "text": "Amazon SageMaker AI",
+    "level": 3
+  },
+  {
+    "sectionId": "21-machine-learning",
+    "sectionTitle": "Machine Learning",
+    "headingId": "amazon-kendra",
+    "text": "Amazon Kendra",
+    "level": 3
+  },
+  {
+    "sectionId": "21-machine-learning",
+    "sectionTitle": "Machine Learning",
+    "headingId": "amazon-personalize",
+    "text": "Amazon Personalize",
+    "level": 3
+  },
+  {
+    "sectionId": "21-machine-learning",
+    "sectionTitle": "Machine Learning",
+    "headingId": "amazon-textract",
+    "text": "Amazon Textract",
+    "level": 3
+  },
+  {
+    "sectionId": "21-machine-learning",
+    "sectionTitle": "Machine Learning",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "21-machine-learning",
+    "sectionTitle": "Machine Learning",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "22-monitoring-audit-performance",
+    "sectionTitle": "Monitoring, Audit & Performance",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "22-monitoring-audit-performance",
+    "sectionTitle": "Monitoring, Audit & Performance",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "22-monitoring-audit-performance",
+    "sectionTitle": "Monitoring, Audit & Performance",
+    "headingId": "amazon-cloudwatch-metrics",
+    "text": "Amazon CloudWatch Metrics",
+    "level": 3
+  },
+  {
+    "sectionId": "22-monitoring-audit-performance",
+    "sectionTitle": "Monitoring, Audit & Performance",
+    "headingId": "cloudwatch-logs",
+    "text": "CloudWatch Logs",
+    "level": 3
+  },
+  {
+    "sectionId": "22-monitoring-audit-performance",
+    "sectionTitle": "Monitoring, Audit & Performance",
+    "headingId": "cloudwatch-alarms",
+    "text": "CloudWatch Alarms",
+    "level": 3
+  },
+  {
+    "sectionId": "22-monitoring-audit-performance",
+    "sectionTitle": "Monitoring, Audit & Performance",
+    "headingId": "cloudwatch-network-synthetic-monitor",
+    "text": "CloudWatch Network Synthetic Monitor",
+    "level": 3
+  },
+  {
+    "sectionId": "22-monitoring-audit-performance",
+    "sectionTitle": "Monitoring, Audit & Performance",
+    "headingId": "amazon-eventbridge-cloudwatch-events-후속",
+    "text": "Amazon EventBridge CloudWatch Events 후속",
+    "level": 3
+  },
+  {
+    "sectionId": "22-monitoring-audit-performance",
+    "sectionTitle": "Monitoring, Audit & Performance",
+    "headingId": "cloudwatch-insights",
+    "text": "CloudWatch Insights",
+    "level": 3
+  },
+  {
+    "sectionId": "22-monitoring-audit-performance",
+    "sectionTitle": "Monitoring, Audit & Performance",
+    "headingId": "aws-cloudtrail",
+    "text": "AWS CloudTrail",
+    "level": 3
+  },
+  {
+    "sectionId": "22-monitoring-audit-performance",
+    "sectionTitle": "Monitoring, Audit & Performance",
+    "headingId": "aws-config",
+    "text": "AWS Config",
+    "level": 3
+  },
+  {
+    "sectionId": "22-monitoring-audit-performance",
+    "sectionTitle": "Monitoring, Audit & Performance",
+    "headingId": "cloudwatch-vs-cloudtrail-vs-config-비교",
+    "text": "CloudWatch vs CloudTrail vs Config 비교",
+    "level": 3
+  },
+  {
+    "sectionId": "22-monitoring-audit-performance",
+    "sectionTitle": "Monitoring, Audit & Performance",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "22-monitoring-audit-performance",
+    "sectionTitle": "Monitoring, Audit & Performance",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "23-advanced-identity",
+    "sectionTitle": "Advanced Identity",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "23-advanced-identity",
+    "sectionTitle": "Advanced Identity",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "23-advanced-identity",
+    "sectionTitle": "Advanced Identity",
+    "headingId": "aws-organizations",
+    "text": "AWS Organizations",
+    "level": 3
+  },
+  {
+    "sectionId": "23-advanced-identity",
+    "sectionTitle": "Advanced Identity",
+    "headingId": "service-control-policies-scp",
+    "text": "Service Control Policies SCP",
+    "level": 3
+  },
+  {
+    "sectionId": "23-advanced-identity",
+    "sectionTitle": "Advanced Identity",
+    "headingId": "aws-organizations-tag-policies",
+    "text": "AWS Organizations - Tag Policies",
+    "level": 3
+  },
+  {
+    "sectionId": "23-advanced-identity",
+    "sectionTitle": "Advanced Identity",
+    "headingId": "iam-conditions",
+    "text": "IAM Conditions",
+    "level": 3
+  },
+  {
+    "sectionId": "23-advanced-identity",
+    "sectionTitle": "Advanced Identity",
+    "headingId": "iam-for-s3",
+    "text": "IAM for S3",
+    "level": 3
+  },
+  {
+    "sectionId": "23-advanced-identity",
+    "sectionTitle": "Advanced Identity",
+    "headingId": "iam-roles-vs-resourcebased-policies",
+    "text": "IAM Roles vs Resource-Based Policies",
+    "level": 3
+  },
+  {
+    "sectionId": "23-advanced-identity",
+    "sectionTitle": "Advanced Identity",
+    "headingId": "iam-permission-boundaries",
+    "text": "IAM Permission Boundaries",
+    "level": 3
+  },
+  {
+    "sectionId": "23-advanced-identity",
+    "sectionTitle": "Advanced Identity",
+    "headingId": "iam-policy-evaluation-logic",
+    "text": "IAM Policy Evaluation Logic",
+    "level": 3
+  },
+  {
+    "sectionId": "23-advanced-identity",
+    "sectionTitle": "Advanced Identity",
+    "headingId": "aws-iam-identity-center-aws-sso-후속",
+    "text": "AWS IAM Identity Center AWS SSO 후속",
+    "level": 3
+  },
+  {
+    "sectionId": "23-advanced-identity",
+    "sectionTitle": "Advanced Identity",
+    "headingId": "microsoft-active-directory-ad",
+    "text": "Microsoft Active Directory AD",
+    "level": 3
+  },
+  {
+    "sectionId": "23-advanced-identity",
+    "sectionTitle": "Advanced Identity",
+    "headingId": "aws-directory-services",
+    "text": "AWS Directory Services",
+    "level": 3
+  },
+  {
+    "sectionId": "23-advanced-identity",
+    "sectionTitle": "Advanced Identity",
+    "headingId": "aws-control-tower",
+    "text": "AWS Control Tower",
+    "level": 3
+  },
+  {
+    "sectionId": "23-advanced-identity",
+    "sectionTitle": "Advanced Identity",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "23-advanced-identity",
+    "sectionTitle": "Advanced Identity",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "24-security-encryption",
+    "sectionTitle": "Security & Encryption",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "24-security-encryption",
+    "sectionTitle": "Security & Encryption",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "24-security-encryption",
+    "sectionTitle": "Security & Encryption",
+    "headingId": "암호화-기본-개념",
+    "text": "암호화 기본 개념",
+    "level": 3
+  },
+  {
+    "sectionId": "24-security-encryption",
+    "sectionTitle": "Security & Encryption",
+    "headingId": "aws-kms-key-management-service",
+    "text": "AWS KMS Key Management Service",
+    "level": 3
+  },
+  {
+    "sectionId": "24-security-encryption",
+    "sectionTitle": "Security & Encryption",
+    "headingId": "ssm-parameter-store",
+    "text": "SSM Parameter Store",
+    "level": 3
+  },
+  {
+    "sectionId": "24-security-encryption",
+    "sectionTitle": "Security & Encryption",
+    "headingId": "ssm-parameter-store-vs-secrets-manager-비교",
+    "text": "SSM Parameter Store vs Secrets Manager 비교",
+    "level": 3
+  },
+  {
+    "sectionId": "24-security-encryption",
+    "sectionTitle": "Security & Encryption",
+    "headingId": "aws-secrets-manager",
+    "text": "AWS Secrets Manager",
+    "level": 3
+  },
+  {
+    "sectionId": "24-security-encryption",
+    "sectionTitle": "Security & Encryption",
+    "headingId": "aws-certificate-manager-acm",
+    "text": "AWS Certificate Manager ACM",
+    "level": 3
+  },
+  {
+    "sectionId": "24-security-encryption",
+    "sectionTitle": "Security & Encryption",
+    "headingId": "cloudhsm",
+    "text": "CloudHSM",
+    "level": 3
+  },
+  {
+    "sectionId": "24-security-encryption",
+    "sectionTitle": "Security & Encryption",
+    "headingId": "aws-waf-web-application-firewall",
+    "text": "AWS WAF Web Application Firewall",
+    "level": 3
+  },
+  {
+    "sectionId": "24-security-encryption",
+    "sectionTitle": "Security & Encryption",
+    "headingId": "aws-shield",
+    "text": "AWS Shield",
+    "level": 3
+  },
+  {
+    "sectionId": "24-security-encryption",
+    "sectionTitle": "Security & Encryption",
+    "headingId": "aws-firewall-manager",
+    "text": "AWS Firewall Manager",
+    "level": 3
+  },
+  {
+    "sectionId": "24-security-encryption",
+    "sectionTitle": "Security & Encryption",
+    "headingId": "waf-shield-firewall-manager-방어-계층",
+    "text": "WAF / Shield / Firewall Manager 방어 계층",
+    "level": 3
+  },
+  {
+    "sectionId": "24-security-encryption",
+    "sectionTitle": "Security & Encryption",
+    "headingId": "ddos-복원력-모범-사례",
+    "text": "DDoS 복원력 모범 사례",
+    "level": 3
+  },
+  {
+    "sectionId": "24-security-encryption",
+    "sectionTitle": "Security & Encryption",
+    "headingId": "guardduty-vs-inspector-vs-macie-초보자-비유",
+    "text": "GuardDuty vs Inspector vs Macie — 초보자 비유",
+    "level": 3
+  },
+  {
+    "sectionId": "24-security-encryption",
+    "sectionTitle": "Security & Encryption",
+    "headingId": "amazon-guardduty",
+    "text": "Amazon GuardDuty",
+    "level": 3
+  },
+  {
+    "sectionId": "24-security-encryption",
+    "sectionTitle": "Security & Encryption",
+    "headingId": "amazon-inspector",
+    "text": "Amazon Inspector",
+    "level": 3
+  },
+  {
+    "sectionId": "24-security-encryption",
+    "sectionTitle": "Security & Encryption",
+    "headingId": "amazon-macie",
+    "text": "Amazon Macie",
+    "level": 3
+  },
+  {
+    "sectionId": "24-security-encryption",
+    "sectionTitle": "Security & Encryption",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "24-security-encryption",
+    "sectionTitle": "Security & Encryption",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "cidr-classless-interdomain-routing-사이더",
+    "text": "CIDR Classless Inter-Domain Routing, 사이더",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "private-ip-범위",
+    "text": "Private IP 범위",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "vpc-전체-구조",
+    "text": "VPC 전체 구조",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "vpc-기본-사항",
+    "text": "VPC 기본 사항",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "default-vpc",
+    "text": "Default VPC",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "서브넷-subnet",
+    "text": "서브넷 Subnet",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "internet-gateway-igw",
+    "text": "Internet Gateway IGW",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "bastion-host",
+    "text": "Bastion Host",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "nat-instance-레거시-시험에-출제",
+    "text": "NAT Instance 레거시, 시험에 출제",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "nat-gateway",
+    "text": "NAT Gateway",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "nat-gateway-vs-nat-instance-비교",
+    "text": "NAT Gateway vs NAT Instance 비교",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "security-group-vs-nacl",
+    "text": "Security Group vs NACL",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "nacl-network-access-control-list",
+    "text": "NACL Network Access Control List",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "ephemeral-ports-임시-포트",
+    "text": "Ephemeral Ports 임시 포트",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "vpc-flow-logs-트러블슈팅",
+    "text": "VPC Flow Logs 트러블슈팅",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "vpc-peering",
+    "text": "VPC Peering",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "vpc-endpoints-aws-privatelink",
+    "text": "VPC Endpoints AWS PrivateLink",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "vpc-flow-logs",
+    "text": "VPC Flow Logs",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "vpc-flow-logs-아키텍처",
+    "text": "VPC Flow Logs 아키텍처",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "sitetosite-vpn",
+    "text": "Site-to-Site VPN",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "aws-vpn-cloudhub",
+    "text": "AWS VPN CloudHub",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "direct-connect-dx",
+    "text": "Direct Connect DX",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "transit-gateway",
+    "text": "Transit Gateway",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "vpc-traffic-mirroring",
+    "text": "VPC Traffic Mirroring",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "ipv6-in-vpc",
+    "text": "IPv6 in VPC",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "egressonly-internet-gateway",
+    "text": "Egress-only Internet Gateway",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "aws-network-firewall",
+    "text": "AWS Network Firewall",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "네트워킹-비용",
+    "text": "네트워킹 비용",
+    "level": 3
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "25-vpc",
+    "sectionTitle": "Amazon VPC",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "26-disaster-recovery-migrations",
+    "sectionTitle": "Disaster Recovery & Migrations",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "26-disaster-recovery-migrations",
+    "sectionTitle": "Disaster Recovery & Migrations",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "26-disaster-recovery-migrations",
+    "sectionTitle": "Disaster Recovery & Migrations",
+    "headingId": "재해-복구-기본-개념",
+    "text": "재해 복구 기본 개념",
+    "level": 3
+  },
+  {
+    "sectionId": "26-disaster-recovery-migrations",
+    "sectionTitle": "Disaster Recovery & Migrations",
+    "headingId": "rpo와-rto",
+    "text": "RPO와 RTO",
+    "level": 3
+  },
+  {
+    "sectionId": "26-disaster-recovery-migrations",
+    "sectionTitle": "Disaster Recovery & Migrations",
+    "headingId": "4가지-dr-전략-빠른-rto-순",
+    "text": "4가지 DR 전략 빠른 RTO 순",
+    "level": 3
+  },
+  {
+    "sectionId": "26-disaster-recovery-migrations",
+    "sectionTitle": "Disaster Recovery & Migrations",
+    "headingId": "dr-팁",
+    "text": "DR 팁",
+    "level": 3
+  },
+  {
+    "sectionId": "26-disaster-recovery-migrations",
+    "sectionTitle": "Disaster Recovery & Migrations",
+    "headingId": "aws-elastic-disaster-recovery-drs",
+    "text": "AWS Elastic Disaster Recovery DRS",
+    "level": 3
+  },
+  {
+    "sectionId": "26-disaster-recovery-migrations",
+    "sectionTitle": "Disaster Recovery & Migrations",
+    "headingId": "dms-database-migration-service-데이터베이스-마이그레이션-서비스",
+    "text": "DMS Database Migration Service, 데이터베이스 마이그레이션 서비스",
+    "level": 3
+  },
+  {
+    "sectionId": "26-disaster-recovery-migrations",
+    "sectionTitle": "Disaster Recovery & Migrations",
+    "headingId": "aws-schema-conversion-tool-sct",
+    "text": "AWS Schema Conversion Tool SCT",
+    "level": 3
+  },
+  {
+    "sectionId": "26-disaster-recovery-migrations",
+    "sectionTitle": "Disaster Recovery & Migrations",
+    "headingId": "rds-aurora-mysql-마이그레이션",
+    "text": "RDS & Aurora MySQL 마이그레이션",
+    "level": 3
+  },
+  {
+    "sectionId": "26-disaster-recovery-migrations",
+    "sectionTitle": "Disaster Recovery & Migrations",
+    "headingId": "rds-aurora-postgresql-마이그레이션",
+    "text": "RDS & Aurora PostgreSQL 마이그레이션",
+    "level": 3
+  },
+  {
+    "sectionId": "26-disaster-recovery-migrations",
+    "sectionTitle": "Disaster Recovery & Migrations",
+    "headingId": "온프레미스-전략",
+    "text": "온프레미스 전략",
+    "level": 3
+  },
+  {
+    "sectionId": "26-disaster-recovery-migrations",
+    "sectionTitle": "Disaster Recovery & Migrations",
+    "headingId": "vmware-cloud-on-aws",
+    "text": "VMware Cloud on AWS",
+    "level": 3
+  },
+  {
+    "sectionId": "26-disaster-recovery-migrations",
+    "sectionTitle": "Disaster Recovery & Migrations",
+    "headingId": "aws-backup",
+    "text": "AWS Backup",
+    "level": 3
+  },
+  {
+    "sectionId": "26-disaster-recovery-migrations",
+    "sectionTitle": "Disaster Recovery & Migrations",
+    "headingId": "대량-데이터-전송-비교",
+    "text": "대량 데이터 전송 비교",
+    "level": 3
+  },
+  {
+    "sectionId": "26-disaster-recovery-migrations",
+    "sectionTitle": "Disaster Recovery & Migrations",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "26-disaster-recovery-migrations",
+    "sectionTitle": "Disaster Recovery & Migrations",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "27-more-solutions-architecture",
+    "sectionTitle": "More Solutions Architecture",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "27-more-solutions-architecture",
+    "sectionTitle": "More Solutions Architecture",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "27-more-solutions-architecture",
+    "sectionTitle": "More Solutions Architecture",
+    "headingId": "lambda-sns-sqs-패턴",
+    "text": "Lambda, SNS & SQS 패턴",
+    "level": 3
+  },
+  {
+    "sectionId": "27-more-solutions-architecture",
+    "sectionTitle": "More Solutions Architecture",
+    "headingId": "fan-out-패턴",
+    "text": "Fan Out 패턴",
+    "level": 3
+  },
+  {
+    "sectionId": "27-more-solutions-architecture",
+    "sectionTitle": "More Solutions Architecture",
+    "headingId": "s3-event-notifications",
+    "text": "S3 Event Notifications",
+    "level": 3
+  },
+  {
+    "sectionId": "27-more-solutions-architecture",
+    "sectionTitle": "More Solutions Architecture",
+    "headingId": "s3-event-notifications-with-amazon-eventbridge",
+    "text": "S3 Event Notifications with Amazon EventBridge",
+    "level": 3
+  },
+  {
+    "sectionId": "27-more-solutions-architecture",
+    "sectionTitle": "More Solutions Architecture",
+    "headingId": "amazon-eventbridge-api-호출-인터셉트",
+    "text": "Amazon EventBridge - API 호출 인터셉트",
+    "level": 3
+  },
+  {
+    "sectionId": "27-more-solutions-architecture",
+    "sectionTitle": "More Solutions Architecture",
+    "headingId": "api-gateway-aws-서비스-통합",
+    "text": "API Gateway - AWS 서비스 통합",
+    "level": 3
+  },
+  {
+    "sectionId": "27-more-solutions-architecture",
+    "sectionTitle": "More Solutions Architecture",
+    "headingId": "캐싱-전략",
+    "text": "캐싱 전략",
+    "level": 3
+  },
+  {
+    "sectionId": "27-more-solutions-architecture",
+    "sectionTitle": "More Solutions Architecture",
+    "headingId": "ip-주소-차단-방법",
+    "text": "IP 주소 차단 방법",
+    "level": 3
+  },
+  {
+    "sectionId": "27-more-solutions-architecture",
+    "sectionTitle": "More Solutions Architecture",
+    "headingId": "high-performance-computing-hpc",
+    "text": "High Performance Computing HPC",
+    "level": 3
+  },
+  {
+    "sectionId": "27-more-solutions-architecture",
+    "sectionTitle": "More Solutions Architecture",
+    "headingId": "고가용성-ec2-구성",
+    "text": "고가용성 EC2 구성",
+    "level": 3
+  },
+  {
+    "sectionId": "27-more-solutions-architecture",
+    "sectionTitle": "More Solutions Architecture",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "27-more-solutions-architecture",
+    "sectionTitle": "More Solutions Architecture",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "28-other-services",
+    "sectionTitle": "Other Services",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "28-other-services",
+    "sectionTitle": "Other Services",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "28-other-services",
+    "sectionTitle": "Other Services",
+    "headingId": "aws-cloudformation",
+    "text": "AWS CloudFormation",
+    "level": 3
+  },
+  {
+    "sectionId": "28-other-services",
+    "sectionTitle": "Other Services",
+    "headingId": "amazon-simple-email-service-ses",
+    "text": "Amazon Simple Email Service SES",
+    "level": 3
+  },
+  {
+    "sectionId": "28-other-services",
+    "sectionTitle": "Other Services",
+    "headingId": "amazon-pinpoint",
+    "text": "Amazon Pinpoint",
+    "level": 3
+  },
+  {
+    "sectionId": "28-other-services",
+    "sectionTitle": "Other Services",
+    "headingId": "aws-systems-manager-ssm",
+    "text": "AWS Systems Manager SSM",
+    "level": 3
+  },
+  {
+    "sectionId": "28-other-services",
+    "sectionTitle": "Other Services",
+    "headingId": "cost-explorer",
+    "text": "Cost Explorer",
+    "level": 3
+  },
+  {
+    "sectionId": "28-other-services",
+    "sectionTitle": "Other Services",
+    "headingId": "aws-cost-anomaly-detection",
+    "text": "AWS Cost Anomaly Detection",
+    "level": 3
+  },
+  {
+    "sectionId": "28-other-services",
+    "sectionTitle": "Other Services",
+    "headingId": "aws-outposts",
+    "text": "AWS Outposts",
+    "level": 3
+  },
+  {
+    "sectionId": "28-other-services",
+    "sectionTitle": "Other Services",
+    "headingId": "aws-batch",
+    "text": "AWS Batch",
+    "level": 3
+  },
+  {
+    "sectionId": "28-other-services",
+    "sectionTitle": "Other Services",
+    "headingId": "amazon-appflow",
+    "text": "Amazon AppFlow",
+    "level": 3
+  },
+  {
+    "sectionId": "28-other-services",
+    "sectionTitle": "Other Services",
+    "headingId": "aws-amplify",
+    "text": "AWS Amplify",
+    "level": 3
+  },
+  {
+    "sectionId": "28-other-services",
+    "sectionTitle": "Other Services",
+    "headingId": "instance-scheduler-on-aws",
+    "text": "Instance Scheduler on AWS",
+    "level": 3
+  },
+  {
+    "sectionId": "28-other-services",
+    "sectionTitle": "Other Services",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "28-other-services",
+    "sectionTitle": "Other Services",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "29-white-papers-architectures",
+    "sectionTitle": "White Papers & Architectures",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "29-white-papers-architectures",
+    "sectionTitle": "White Papers & Architectures",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "29-white-papers-architectures",
+    "sectionTitle": "White Papers & Architectures",
+    "headingId": "wellarchitected-framework-일반-원칙",
+    "text": "Well-Architected Framework 일반 원칙",
+    "level": 3
+  },
+  {
+    "sectionId": "29-white-papers-architectures",
+    "sectionTitle": "White Papers & Architectures",
+    "headingId": "wellarchitected-framework-6-pillars",
+    "text": "Well-Architected Framework 6 Pillars",
+    "level": 3
+  },
+  {
+    "sectionId": "29-white-papers-architectures",
+    "sectionTitle": "White Papers & Architectures",
+    "headingId": "aws-wellarchitected-tool",
+    "text": "AWS Well-Architected Tool",
+    "level": 3
+  },
+  {
+    "sectionId": "29-white-papers-architectures",
+    "sectionTitle": "White Papers & Architectures",
+    "headingId": "aws-trusted-advisor",
+    "text": "AWS Trusted Advisor",
+    "level": 3
+  },
+  {
+    "sectionId": "29-white-papers-architectures",
+    "sectionTitle": "White Papers & Architectures",
+    "headingId": "참조-아키텍처",
+    "text": "참조 아키텍처",
+    "level": 3
+  },
+  {
+    "sectionId": "29-white-papers-architectures",
+    "sectionTitle": "White Papers & Architectures",
+    "headingId": "추천-white-papers",
+    "text": "추천 White Papers",
+    "level": 3
+  },
+  {
+    "sectionId": "29-white-papers-architectures",
+    "sectionTitle": "White Papers & Architectures",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "29-white-papers-architectures",
+    "sectionTitle": "White Papers & Architectures",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  },
+  {
+    "sectionId": "30-exam-preparation",
+    "sectionTitle": "Exam Preparation",
+    "headingId": "개요",
+    "text": "개요",
+    "level": 2
+  },
+  {
+    "sectionId": "30-exam-preparation",
+    "sectionTitle": "Exam Preparation",
+    "headingId": "핵심-개념",
+    "text": "핵심 개념",
+    "level": 2
+  },
+  {
+    "sectionId": "30-exam-preparation",
+    "sectionTitle": "Exam Preparation",
+    "headingId": "시험-기본-정보",
+    "text": "시험 기본 정보",
+    "level": 3
+  },
+  {
+    "sectionId": "30-exam-preparation",
+    "sectionTitle": "Exam Preparation",
+    "headingId": "시험-전략",
+    "text": "시험 전략",
+    "level": 3
+  },
+  {
+    "sectionId": "30-exam-preparation",
+    "sectionTitle": "Exam Preparation",
+    "headingId": "학습-전략",
+    "text": "학습 전략",
+    "level": 3
+  },
+  {
+    "sectionId": "30-exam-preparation",
+    "sectionTitle": "Exam Preparation",
+    "headingId": "추천-학습-자료",
+    "text": "추천 학습 자료",
+    "level": 3
+  },
+  {
+    "sectionId": "30-exam-preparation",
+    "sectionTitle": "Exam Preparation",
+    "headingId": "커뮤니티-참여",
+    "text": "커뮤니티 참여",
+    "level": 3
+  },
+  {
+    "sectionId": "30-exam-preparation",
+    "sectionTitle": "Exam Preparation",
+    "headingId": "aws-자격증-경로",
+    "text": "AWS 자격증 경로",
+    "level": 3
+  },
+  {
+    "sectionId": "30-exam-preparation",
+    "sectionTitle": "Exam Preparation",
+    "headingId": "시험-포인트",
+    "text": "시험 포인트",
+    "level": 2
+  },
+  {
+    "sectionId": "30-exam-preparation",
+    "sectionTitle": "Exam Preparation",
+    "headingId": "치트시트",
+    "text": "치트시트",
+    "level": 2
+  }
+]

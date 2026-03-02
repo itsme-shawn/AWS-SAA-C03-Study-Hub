@@ -3,6 +3,11 @@ export interface QuestionOption {
   text: string
 }
 
+export interface NoteLink {
+  label: string  // e.g. "NAT Gateway"
+  url: string    // e.g. "/section/25-vpc#nat-gateway"
+}
+
 export interface Question {
   id: string
   number: number
@@ -11,6 +16,7 @@ export interface Question {
   answer: string // e.g. "A" or "A,C"
   explanation: string
   keyConcept: string
+  noteLinks?: NoteLink[]
 }
 
 export interface Section {

@@ -9,6 +9,7 @@ import BookmarksPage from './pages/BookmarksPage'
 import WrongAnswersPage from './pages/WrongAnswersPage'
 import DumpsPage from './pages/DumpsPage'
 import DumpViewPage from './pages/DumpViewPage'
+import { NotePopupProvider } from './components/NotePopup'
 import { useTheme } from './hooks/useTheme'
 import { useProgress } from './hooks/useProgress'
 import contentData from './data/content.json'
@@ -68,6 +69,7 @@ export default function App() {
   }, [addWrongAnswers])
 
   return (
+    <NotePopupProvider sections={data.sections}>
     <Layout data={data} theme={theme} onToggleTheme={toggleTheme} progress={progress}>
       <Routes>
         <Route path="/" element={<Dashboard data={data} progress={progress} onResetAll={resetAll} />} />
@@ -124,5 +126,6 @@ export default function App() {
         />
       </Routes>
     </Layout>
+    </NotePopupProvider>
   )
 }

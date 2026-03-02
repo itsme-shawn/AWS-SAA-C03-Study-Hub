@@ -7,7 +7,9 @@
     "dev": "node scripts/generate-data.mjs && node scripts/generate-data.mjs --watch & vite",
     "build": "node scripts/generate-data.mjs && tsc -b && vite build",
     "preview": "vite preview",
-    "generate-data": "node scripts/generate-data.mjs"
+    "generate-data": "node scripts/generate-data.mjs",
+    "generate-notes-index": "node scripts/generate-notes-index.mjs",
+    "generate-note-links": "node scripts/generate-note-links.mjs"
   },
   "dependencies": {
     "framer-motion": "^11.18.0",
