@@ -29,17 +29,19 @@
 | D | 인터넷 게이트웨이로 인터넷 트래픽을 라우팅하는 커스텀 라우팅 테이블을 정의하고 프라이빗 서브넷에 연결한다. |
 | E | 프라이빗 서브넷에 NAT 인스턴스를 구성한다. |
 
-**(A) 정답** : NAT 게이트웨이는 반드시 퍼블릭 서브넷에 위치해야 합니다. 프라이빗 서브넷의 EC2 인스턴스가 인터넷으로 아웃바운드 트래픽을 보낼 수 있도록 해주며, 외부에서 직접 접근은 불가능합니다.
+**(A) 정답** : NAT 게이트웨이는 반드시 퍼블릭 서브넷에 위치해야 합니다. 프라이빗 서브넷의 EC2 인스턴스가 인터넷으로 아웃바운드 트래픽을 보낼 수 있도록 해주며, 외부에서 직접 접근은 불가능합니다. → [📖 NAT Gateway](/section/25-vpc#nat-gateway)
 
-**(B) 정답** : 프라이빗 서브넷에 커스텀 라우팅 테이블을 연결하여 0.0.0.0/0 트래픽이 NAT 게이트웨이를 경유하도록 설정해야 실제로 인터넷 통신이 가능합니다. NAT 게이트웨이 생성만으로는 부족하며 라우팅 설정이 필수입니다.
+**(B) 정답** : 프라이빗 서브넷에 커스텀 라우팅 테이블을 연결하여 0.0.0.0/0 트래픽이 NAT 게이트웨이를 경유하도록 설정해야 실제로 인터넷 통신이 가능합니다. NAT 게이트웨이 생성만으로는 부족하며 라우팅 설정이 필수입니다. → [📖 NAT Gateway](/section/25-vpc#nat-gateway)
 
-**(C)** : Elastic IP를 EC2 인스턴스에 직접 할당하면 인터넷에서 해당 인스턴스에 직접 접근이 가능해집니다. 이는 요구사항("EC2 인스턴스는 인터넷에서 직접 접근 불가")에 위배됩니다.
+**(C)** : Elastic IP를 EC2 인스턴스에 직접 할당하면 인터넷에서 해당 인스턴스에 직접 접근이 가능해집니다. 이는 요구사항("EC2 인스턴스는 인터넷에서 직접 접근 불가")에 위배됩니다. → [📖 NAT Gateway](/section/25-vpc#nat-gateway) (NAT GW가 Elastic IP를 대신 보유하는 방식 참고)
 
-**(D)** : 프라이빗 서브넷의 라우팅 테이블에 인터넷 게이트웨이를 직접 연결하면 해당 서브넷은 사실상 퍼블릭 서브넷이 되어 인터넷에서 직접 접근이 가능해집니다. 요구사항에 위배됩니다.
+**(D)** : 프라이빗 서브넷의 라우팅 테이블에 인터넷 게이트웨이를 직접 연결하면 해당 서브넷은 사실상 퍼블릭 서브넷이 되어 인터넷에서 직접 접근이 가능해집니다. 요구사항에 위배됩니다. → [📖 Internet Gateway (IGW)](/section/25-vpc#internet-gateway-igw)
 
-**(E)** : NAT 인스턴스는 퍼블릭 서브넷에 위치해야 합니다. 프라이빗 서브넷에 NAT 인스턴스를 배치하면 자체적으로 인터넷 연결이 없어 작동하지 않습니다.
+**(E)** : NAT 인스턴스는 퍼블릭 서브넷에 위치해야 합니다. 프라이빗 서브넷에 NAT 인스턴스를 배치하면 자체적으로 인터넷 연결이 없어 작동하지 않습니다. → [📖 NAT Instance](/section/25-vpc#nat-instance-레거시-시험에-출제)
 
 **핵심 개념:** NAT Gateway는 퍼블릭 서브넷에 배치하고, 프라이빗 서브넷의 라우팅 테이블에서 0.0.0.0/0을 NAT Gateway로 향하도록 설정해야 아웃바운드 인터넷 접근이 가능합니다. 인터넷 게이트웨이를 프라이빗 서브넷 라우팅에 직접 연결하면 프라이빗 서브넷이 퍼블릭화됩니다.
+
+**관련 노트:** [NAT Gateway](/section/25-vpc#nat-gateway), [서브넷 Subnet](/section/25-vpc#서브넷-subnet), [Internet Gateway IGW](/section/25-vpc#internet-gateway-igw)
 
 ---
 
@@ -64,15 +66,17 @@
 | C | 최대 절전 모드(Hibernation)가 활성화된 EC2 인스턴스에서 애플리케이션을 실행하고, 2주 셧다운 전에 인스턴스를 최대 절전 모드로 전환한다. |
 | D | 중지 전 각 EC2 인스턴스의 가용 영역을 메모하고, 2주 후 동일한 가용 영역에서 인스턴스를 재시작한다. |
 
-**(A)** : 인스턴스 스토어는 인스턴스가 중지되거나 종료되면 데이터가 소멸됩니다. 재연결도 불가능합니다(인스턴스 스토어는 특정 인스턴스에 물리적으로 종속됨). 요구사항을 충족하지 못합니다.
+**(A)** : 인스턴스 스토어는 인스턴스가 중지되거나 종료되면 데이터가 소멸됩니다. 재연결도 불가능합니다(인스턴스 스토어는 특정 인스턴스에 물리적으로 종속됨). 요구사항을 충족하지 못합니다. → [📖 EC2 Instance Store](/section/05-ec2-instance-storage#ec2-instance-store)
 
-**(B)** : EBS 스냅샷은 디스크 데이터를 백업합니다. RAM(메모리)에 저장된 데이터는 스냅샷에 포함되지 않으므로 요구사항(메모리 데이터 보존)을 충족하지 못합니다.
+**(B)** : EBS 스냅샷은 디스크 데이터를 백업합니다. RAM(메모리)에 저장된 데이터는 스냅샷에 포함되지 않으므로 요구사항(메모리 데이터 보존)을 충족하지 못합니다. → [📖 EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots)
 
-**(C) 정답** : EC2 Hibernation(최대 절전 모드)은 RAM의 내용을 EBS 루트 볼륨에 저장한 뒤 인스턴스를 중지합니다. 재개 시 메모리 상태가 그대로 복원됩니다. 비용은 EBS 스토리지에 대해서만 발생하므로 비용 절감 요구사항도 충족합니다.
+**(C) 정답** : EC2 Hibernation(최대 절전 모드)은 RAM의 내용을 EBS 루트 볼륨에 저장한 뒤 인스턴스를 중지합니다. 재개 시 메모리 상태가 그대로 복원됩니다. 비용은 EBS 스토리지에 대해서만 발생하므로 비용 절감 요구사항도 충족합니다. → [📖 EC2 Hibernate 최대 절전 모드](/section/04-ec2-associate#ec2-hibernate-최대-절전-모드)
 
-**(D)** : 단순히 동일한 AZ에서 재시작하는 것은 메모리 데이터를 보존하지 않습니다. 일반 Stop/Start 시 메모리 내용은 소멸됩니다.
+**(D)** : 단순히 동일한 AZ에서 재시작하는 것은 메모리 데이터를 보존하지 않습니다. 일반 Stop/Start 시 메모리 내용은 소멸됩니다. → [📖 EC2 Hibernate 최대 절전 모드](/section/04-ec2-associate#ec2-hibernate-최대-절전-모드)
 
 **핵심 개념:** EC2 Hibernation은 RAM 상태를 EBS에 저장하여 중지 후 재개 시 메모리 상태를 복원합니다. 장기 셧다운 시 비용을 절감하면서 애플리케이션 상태를 유지해야 할 때 적합한 옵션입니다.
+
+**관련 노트:** [EC2 Hibernate 최대 절전 모드](/section/04-ec2-associate#ec2-hibernate-최대-절전-모드), [EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store)
 
 ---
 
@@ -97,15 +101,17 @@
 | C | EC2 인스턴스에 프라이빗 IP 주소로 구성된 보조 ENI(탄력적 네트워크 인터페이스)를 연결합니다. 기본 인스턴스가 접근 불가 상태가 되면 해당 네트워크 인터페이스를 스탠바이 인스턴스로 이동합니다. |
 | D | 기본 EC2 인스턴스의 네트워크 인터페이스에 Elastic IP를 연결합니다. 장애 시 기본 인스턴스에서 Elastic IP를 분리하고 스탠바이 인스턴스에 연결합니다. |
 
-**(A)** : ALB는 프라이빗 IP 리스너를 직접 지원하지 않으며, 등록/해제 과정은 즉각적이지 않습니다. 또한 문제의 핵심은 "동일한 프라이빗 IP로 연결"이므로 ALB 도입은 연결 방식 자체를 변경합니다.
+**(A)** : ALB는 프라이빗 IP 리스너를 직접 지원하지 않으며, 등록/해제 과정은 즉각적이지 않습니다. 또한 문제의 핵심은 "동일한 프라이빗 IP로 연결"이므로 ALB 도입은 연결 방식 자체를 변경합니다. → [📖 ALB Application Load Balancer 상세](/section/06-high-availability-scalability#alb-application-load-balancer-상세)
 
 **(B)** : DHCP를 통한 IP 재할당은 기술적으로 복잡하고 즉각적인 전환이 어렵습니다. AWS DHCP 옵션 세트는 이런 용도로 설계되지 않았습니다.
 
-**(C) 정답** : 보조 ENI에 특정 프라이빗 IP를 고정 할당한 뒤, 장애 발생 시 해당 ENI를 스탠바이 인스턴스에 연결하면 동일한 프라이빗 IP로 트래픽이 계속 전달됩니다. ENI 이동은 빠르게 수행 가능하며, 연결 클라이언트는 IP 변경 없이 스탠바이로 전환됩니다.
+**(C) 정답** : 보조 ENI에 특정 프라이빗 IP를 고정 할당한 뒤, 장애 발생 시 해당 ENI를 스탠바이 인스턴스에 연결하면 동일한 프라이빗 IP로 트래픽이 계속 전달됩니다. ENI 이동은 빠르게 수행 가능하며, 연결 클라이언트는 IP 변경 없이 스탠바이로 전환됩니다. → [📖 Elastic Network Interface ENI](/section/04-ec2-associate#elastic-network-interface-eni)
 
-**(D)** : Elastic IP는 퍼블릭 IP입니다. 문제의 연결은 프라이빗 IPv4 주소를 사용하므로 Elastic IP 전환은 해당 요구사항을 충족하지 않습니다.
+**(D)** : Elastic IP는 퍼블릭 IP입니다. 문제의 연결은 프라이빗 IPv4 주소를 사용하므로 Elastic IP 전환은 해당 요구사항을 충족하지 않습니다. → [📖 Elastic IP](/section/04-ec2-associate#elastic-ip)
 
 **핵심 개념:** ENI(Elastic Network Interface)는 고정 프라이빗 IP를 유지한 채 인스턴스 간에 이동할 수 있습니다. 프라이빗 IP 기반 페일오버가 필요한 경우 보조 ENI 이동이 표준 패턴입니다.
+
+**관련 노트:** [Elastic Network Interface ENI](/section/04-ec2-associate#elastic-network-interface-eni)
 
 ---
 
@@ -130,15 +136,17 @@
 | C | 사용자에게 스크립트의 서명된 URL을 제공한다. |
 | D | 공개 실행 권한을 허용하는 S3 버킷 정책을 구성한다. |
 
-**(A) 정답** : 브라우저의 Same-Origin Policy에 의해 다른 도메인(사용자 웹페이지)에서 S3 버킷으로 JavaScript를 통한 요청을 보내면 CORS 오류가 발생합니다. S3 버킷에 CORS 정책을 설정하면 허용된 출처에서의 교차 출처 요청을 허용하여 스크립트가 정상 실행됩니다.
+**(A) 정답** : 브라우저의 Same-Origin Policy에 의해 다른 도메인(사용자 웹페이지)에서 S3 버킷으로 JavaScript를 통한 요청을 보내면 CORS 오류가 발생합니다. S3 버킷에 CORS 정책을 설정하면 허용된 출처에서의 교차 출처 요청을 허용하여 스크립트가 정상 실행됩니다. → [📖 CORS Cross-Origin Resource Sharing, 교차 출처 리소스 공유](/section/12-s3-security#cors-crossorigin-resource-sharing-교차-출처-리소스-공유)
 
-**(B)** : S3 Versioning은 객체의 여러 버전을 보관하는 기능으로, 교차 출처 요청 문제와는 무관합니다.
+**(B)** : S3 Versioning은 객체의 여러 버전을 보관하는 기능으로, 교차 출처 요청 문제와는 무관합니다. → [📖 CORS Cross-Origin Resource Sharing, 교차 출처 리소스 공유](/section/12-s3-security#cors-crossorigin-resource-sharing-교차-출처-리소스-공유)
 
-**(C)** : 서명된 URL은 특정 객체에 대한 임시 접근 권한을 부여하지만, JavaScript가 다른 도메인에서 S3에 요청하는 CORS 문제를 해결하지는 않습니다.
+**(C)** : 서명된 URL은 특정 객체에 대한 임시 접근 권한을 부여하지만, JavaScript가 다른 도메인에서 S3에 요청하는 CORS 문제를 해결하지는 않습니다. → [📖 CORS Cross-Origin Resource Sharing, 교차 출처 리소스 공유](/section/12-s3-security#cors-crossorigin-resource-sharing-교차-출처-리소스-공유)
 
 **(D)** : S3에는 "실행(execute)" 권한 개념이 없습니다. 또한 공개 접근을 허용하는 것은 인증된 요청이라는 요구사항에도 맞지 않으며 보안 위험을 초래합니다.
 
 **핵심 개념:** CORS(Cross-Origin Resource Sharing)는 브라우저가 다른 출처의 리소스에 접근할 수 있도록 허용하는 메커니즘입니다. 사용자 웹페이지의 JavaScript가 다른 도메인의 S3에 요청을 보낼 때는 반드시 S3 버킷에 CORS 설정이 필요합니다.
+
+**관련 노트:** [CORS Cross-Origin Resource Sharing, 교차 출처 리소스 공유](/section/12-s3-security#cors-crossorigin-resource-sharing-교차-출처-리소스-공유), [S3 보안](/section/10-amazon-s3#s3-보안)
 
 ---
 
@@ -165,17 +173,19 @@
 | D | 클라이언트 측 암호화를 사용한 저장 데이터 암호화 |
 | E | Amazon S3 이벤트로 호출된 AWS Lambda 함수를 통해 고객 키로 데이터를 암호화 |
 
-**(A)** : SSE-S3는 AWS가 키를 완전히 관리합니다. 키가 온프레미스가 아닌 AWS에 저장되므로 요구사항을 충족하지 않습니다.
+**(A)** : SSE-S3는 AWS가 키를 완전히 관리합니다. 키가 온프레미스가 아닌 AWS에 저장되므로 요구사항을 충족하지 않습니다. → [📖 S3 객체 암호화 - 4가지 방법](/section/12-s3-security#s3-객체-암호화-4가지-방법)
 
-**(B)** : SSE-KMS는 키를 AWS KMS에서 관리합니다. KMS CMK(고객 관리형 키)를 사용하더라도 키 자체는 AWS 인프라에 존재하므로 "온프레미스 키 저장" 요구사항을 충족하지 않습니다.
+**(B)** : SSE-KMS는 키를 AWS KMS에서 관리합니다. KMS CMK(고객 관리형 키)를 사용하더라도 키 자체는 AWS 인프라에 존재하므로 "온프레미스 키 저장" 요구사항을 충족하지 않습니다. → [📖 AWS KMS Key Management Service](/section/24-security-encryption#aws-kms-key-management-service)
 
-**(C) 정답** : SSE-C는 고객이 직접 암호화 키를 제공하여 S3가 해당 키로 서버 측 암호화를 수행합니다. 키는 온프레미스에 보관하고 요청 시마다 전달하므로 키가 AWS에 저장되지 않습니다. 요구사항을 충족합니다.
+**(C) 정답** : SSE-C는 고객이 직접 암호화 키를 제공하여 S3가 해당 키로 서버 측 암호화를 수행합니다. 키는 온프레미스에 보관하고 요청 시마다 전달하므로 키가 AWS에 저장되지 않습니다. 요구사항을 충족합니다. → [📖 S3 암호화 방식 비교 SSE-S3 / SSE-KMS / SSE-C / Client-Side](/section/12-s3-security#s3-암호화-방식-비교-sses3-ssekms-ssec-clientside)
 
-**(D) 정답** : 클라이언트 측 암호화는 데이터를 AWS에 업로드하기 전에 온프레미스에서 고객의 키로 암호화합니다. AWS에는 암호화된 데이터만 저장되며, 키는 온프레미스에만 존재합니다. 요구사항을 충족합니다.
+**(D) 정답** : 클라이언트 측 암호화는 데이터를 AWS에 업로드하기 전에 온프레미스에서 고객의 키로 암호화합니다. AWS에는 암호화된 데이터만 저장되며, 키는 온프레미스에만 존재합니다. 요구사항을 충족합니다. → [📖 S3 암호화 방식 비교 SSE-S3 / SSE-KMS / SSE-C / Client-Side](/section/12-s3-security#s3-암호화-방식-비교-sses3-ssekms-ssec-clientside)
 
-**(E)** : Lambda를 통한 암호화는 키를 AWS 환경(Lambda, 환경 변수 등)에 노출할 위험이 있으며, 아키텍처가 복잡해지고 "키가 온프레미스에만 저장"된다는 보장이 어렵습니다.
+**(E)** : Lambda를 통한 암호화는 키를 AWS 환경(Lambda, 환경 변수 등)에 노출할 위험이 있으며, 아키텍처가 복잡해지고 "키가 온프레미스에만 저장"된다는 보장이 어렵습니다. → [📖 S3 객체 암호화 - 4가지 방법](/section/12-s3-security#s3-객체-암호화-4가지-방법)
 
 **핵심 개념:** 온프레미스 키 보관 요구사항에는 SSE-C(고객 제공 키) 또는 클라이언트 측 암호화가 적합합니다. SSE-S3, SSE-KMS는 키가 AWS에 저장되므로 해당 요구사항을 충족하지 않습니다.
+
+**관련 노트:** [S3 객체 암호화 - 4가지 방법](/section/12-s3-security#s3-객체-암호화-4가지-방법), [S3 암호화 방식 비교 SSE-S3 / SSE-KMS / SSE-C / Client-Side](/section/12-s3-security#s3-암호화-방식-비교-sses3-ssekms-ssec-clientside)
 
 ---
 
@@ -200,15 +210,17 @@
 | C | 수요가 높은 기간에 스팟 인스턴스를 배포한다. |
 | D | 증가된 워크로드를 지원하기 위해 EC2 예약의 인스턴스 크기를 늘린다. |
 
-**(A) 정답** : 온디맨드 인스턴스는 필요한 때에만 사용하고 중단 없이 실행됩니다. 월말에만 일시적으로 필요한 추가 용량에 적합하며, 예약 인스턴스를 추가로 구매하는 것보다 비용 효율적입니다.
+**(A) 정답** : 온디맨드 인스턴스는 필요한 때에만 사용하고 중단 없이 실행됩니다. 월말에만 일시적으로 필요한 추가 용량에 적합하며, 예약 인스턴스를 추가로 구매하는 것보다 비용 효율적입니다. → [📖 EC2 구매 옵션 시험 핵심!](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
-**(B)** : 추가 예약 인스턴스 구매는 연간/3년 약정이 필요하며, 월말에만 사용하는 임시 수요에 대해 과도한 비용이 발생합니다. 비용 효율적이지 않습니다.
+**(B)** : 추가 예약 인스턴스 구매는 연간/3년 약정이 필요하며, 월말에만 사용하는 임시 수요에 대해 과도한 비용이 발생합니다. 비용 효율적이지 않습니다. → [📖 EC2 구매 옵션 시험 핵심!](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
-**(C)** : 스팟 인스턴스는 가격이 저렴하지만 AWS에 의해 중단될 수 있습니다. 문제에서 "처리 작업은 완료 전에 중단될 수 없다"고 명시하므로 스팟 인스턴스는 부적합합니다.
+**(C)** : 스팟 인스턴스는 가격이 저렴하지만 AWS에 의해 중단될 수 있습니다. 문제에서 "처리 작업은 완료 전에 중단될 수 없다"고 명시하므로 스팟 인스턴스는 부적합합니다. → [📖 Spot Instance 상세](/section/03-ec2-basics#spot-instance-상세)
 
-**(D)** : 더 큰 예약 인스턴스로 변경하면 평소에도 더 큰 인스턴스를 사용해야 하므로 비용이 항상 증가합니다. 월말 일시적 수요를 위한 비용 효율적인 방법이 아닙니다.
+**(D)** : 더 큰 예약 인스턴스로 변경하면 평소에도 더 큰 인스턴스를 사용해야 하므로 비용이 항상 증가합니다. 월말 일시적 수요를 위한 비용 효율적인 방법이 아닙니다. → [📖 EC2 구매 옵션 시험 핵심!](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
 **핵심 개념:** 중단 불가 워크로드에는 스팟 인스턴스가 부적합합니다. 예측 가능하지만 일시적인 수요 급증에는 온디맨드 인스턴스가 예약 인스턴스 추가 구매보다 비용 효율적입니다.
+
+**관련 노트:** [EC2 구매 옵션 시험 핵심!](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심), [Spot Instance 상세](/section/03-ec2-basics#spot-instance-상세)
 
 ---
 
@@ -233,15 +245,17 @@
 | C | 프론트엔드 애플리케이션이 Amazon SQS 대기열에 투표를 전송하도록 구성하고, 워커 인스턴스를 프로비저닝하여 SQS 대기열을 읽어 투표 정보를 데이터베이스에 기록한다. |
 | D | Amazon EventBridge를 사용하여 투표 기간 동안 더 큰 메모리 최적화 인스턴스로 데이터베이스를 재프로비저닝하는 예약 이벤트를 생성하고, 투표가 끝나면 더 작은 인스턴스로 재프로비저닝한다. |
 
-**(A)** : Lambda로의 마이그레이션은 프론트엔드 확장성을 개선하지만, 근본적인 문제인 RDS 데이터베이스 병목 현상을 해결하지 못합니다.
+**(A)** : Lambda로의 마이그레이션은 프론트엔드 확장성을 개선하지만, 근본적인 문제인 RDS 데이터베이스 병목 현상을 해결하지 못합니다. → [📖 AWS Lambda](/section/17-serverless-overview#aws-lambda)
 
-**(B)** : Multi-AZ는 고가용성을 위한 기능으로, 보조 인스턴스는 읽기 전용 복제본이 아닙니다. Multi-AZ 스탠바이에 쓰기 요청을 직접 보낼 수 없습니다. 이는 잘못된 아키텍처입니다.
+**(B)** : Multi-AZ는 고가용성을 위한 기능으로, 보조 인스턴스는 읽기 전용 복제본이 아닙니다. Multi-AZ 스탠바이에 쓰기 요청을 직접 보낼 수 없습니다. 이는 잘못된 아키텍처입니다. → [📖 RDS Multi-AZ 재해 복구](/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구)
 
-**(C) 정답** : SQS를 버퍼로 활용하면 순간적인 폭발적 요청을 대기열에 수용하고, 워커 인스턴스가 데이터베이스가 처리 가능한 속도로 데이터를 기록합니다. 이는 생산자(EC2)와 소비자(DB) 간의 속도 차이를 완충하는 표준 패턴입니다.
+**(C) 정답** : SQS를 버퍼로 활용하면 순간적인 폭발적 요청을 대기열에 수용하고, 워커 인스턴스가 데이터베이스가 처리 가능한 속도로 데이터를 기록합니다. 이는 생산자(EC2)와 소비자(DB) 간의 속도 차이를 완충하는 표준 패턴입니다. → [📖 Amazon SQS Simple Queue Service](/section/15-integration-messaging#amazon-sqs-simple-queue-service)
 
 **(D)** : DB 재프로비저닝은 다운타임이 발생할 수 있으며, 예측 기반 스케일링이라 급격한 트래픽 변화에 즉각 대응하기 어렵습니다. 또한 요구사항에 "다운타임 없이"라고 명시되어 있습니다.
 
 **핵심 개념:** SQS는 버스트 트래픽을 완충하는 메시지 대기열 서비스입니다. 데이터베이스 병목 현상은 SQS + 워커 패턴으로 해결할 수 있으며, 이는 프로듀서와 컨슈머를 디커플링하는 표준 아키텍처입니다.
+
+**관련 노트:** [Amazon SQS Simple Queue Service](/section/15-integration-messaging#amazon-sqs-simple-queue-service), [Amazon RDS Relational Database Service](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
 ---
 
@@ -268,17 +282,19 @@
 | D | 새 AZ에 새 퍼블릭 및 프라이빗 서브넷을 생성하고, 새 AZ의 퍼블릭 서브넷에 EC2 인스턴스를 사용하여 데이터베이스를 생성하고 이전한다. |
 | E | 동일한 VPC 내 새 AZ에 새 퍼블릭 및 프라이빗 서브넷을 생성합니다. 프라이빗 서브넷에 Amazon RDS Multi-AZ DB 인스턴스를 생성하고 기존 데이터베이스 내용을 마이그레이션한다. |
 
-**(A)** : 동일한 AZ에 서브넷을 추가하는 것은 단일 AZ 장애에 대한 고가용성을 제공하지 않습니다.
+**(A)** : 동일한 AZ에 서브넷을 추가하는 것은 단일 AZ 장애에 대한 고가용성을 제공하지 않습니다. → [📖 Scalability vs High Availability](/section/06-high-availability-scalability#scalability-vs-high-availability)
 
-**(B) 정답** : 여러 AZ에 걸친 Auto Scaling 그룹과 ALB는 웹 계층의 고가용성을 보장합니다. 한 AZ가 장애가 나더라도 다른 AZ의 인스턴스가 트래픽을 처리합니다.
+**(B) 정답** : 여러 AZ에 걸친 Auto Scaling 그룹과 ALB는 웹 계층의 고가용성을 보장합니다. 한 AZ가 장애가 나더라도 다른 AZ의 인스턴스가 트래픽을 처리합니다. → [📖 Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
-**(C)** : 기존 인스턴스를 Auto Scaling에 추가하고 ALB를 붙이는 것은 개선이지만, 단일 AZ 내에서만 이루어지면 AZ 장애에 취약합니다. 다중 AZ 구성이 없어 완전한 고가용성이 되지 않습니다.
+**(C)** : 기존 인스턴스를 Auto Scaling에 추가하고 ALB를 붙이는 것은 개선이지만, 단일 AZ 내에서만 이루어지면 AZ 장애에 취약합니다. 다중 AZ 구성이 없어 완전한 고가용성이 되지 않습니다. → [📖 Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
-**(D)** : 데이터베이스를 퍼블릭 서브넷에 배치하는 것은 보안상 매우 위험합니다. 데이터베이스는 항상 프라이빗 서브넷에 위치해야 합니다.
+**(D)** : 데이터베이스를 퍼블릭 서브넷에 배치하는 것은 보안상 매우 위험합니다. 데이터베이스는 항상 프라이빗 서브넷에 위치해야 합니다. → [📖 서브넷 Subnet](/section/25-vpc#서브넷-subnet)
 
-**(E) 정답** : 새 AZ에 프라이빗 서브넷을 추가하고 RDS Multi-AZ를 구성하면 데이터베이스 계층의 고가용성이 확보됩니다. RDS Multi-AZ는 자동 장애 조치를 지원하며 데이터를 동기적으로 복제합니다.
+**(E) 정답** : 새 AZ에 프라이빗 서브넷을 추가하고 RDS Multi-AZ를 구성하면 데이터베이스 계층의 고가용성이 확보됩니다. RDS Multi-AZ는 자동 장애 조치를 지원하며 데이터를 동기적으로 복제합니다. → [📖 RDS Multi-AZ 재해 복구](/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구)
 
 **핵심 개념:** 고가용성 아키텍처는 웹 계층(Multi-AZ ALB + ASG)과 데이터베이스 계층(RDS Multi-AZ) 모두에서 다중 AZ 구성이 필요합니다. 데이터베이스는 반드시 프라이빗 서브넷에 배치해야 합니다.
+
+**관련 노트:** [ALB Application Load Balancer 상세](/section/06-high-availability-scalability#alb-application-load-balancer-상세), [Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg), [RDS Multi-AZ 재해 복구](/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구)
 
 ---
 
@@ -303,15 +319,17 @@
 | C | EC2 인스턴스 웜업 조건을 포함한 Auto Scaling 스텝 스케일링 정책을 구성한다. |
 | D | Amazon CloudFront가 Application Load Balancer를 오리진으로 사용하도록 구성한다. |
 
-**(A)** : NLB의 슬로우 스타트는 새로 등록된 타겟에 점진적으로 트래픽을 보내는 기능으로, ALB의 기능입니다. 그러나 이는 인스턴스 부팅 후 워밍업 시간 문제(타임아웃)를 근본적으로 해결하지 못합니다.
+**(A)** : NLB의 슬로우 스타트는 새로 등록된 타겟에 점진적으로 트래픽을 보내는 기능으로, ALB의 기능입니다. 그러나 이는 인스턴스 부팅 후 워밍업 시간 문제(타임아웃)를 근본적으로 해결하지 못합니다. → [📖 ALB Application Load Balancer 상세](/section/06-high-availability-scalability#alb-application-load-balancer-상세)
 
-**(B)** : ElastiCache는 읽기 요청 캐싱에 효과적이지만, 문제는 사용자들이 새 콘텐츠를 업로드(쓰기 작업)하고 있으며 타임아웃의 원인은 인스턴스 워밍업 시간입니다. 근본 원인이 다릅니다.
+**(B)** : ElastiCache는 읽기 요청 캐싱에 효과적이지만, 문제는 사용자들이 새 콘텐츠를 업로드(쓰기 작업)하고 있으며 타임아웃의 원인은 인스턴스 워밍업 시간입니다. 근본 원인이 다릅니다. → [📖 Amazon ElastiCache](/section/07-rds-aurora-elasticache#amazon-elasticache)
 
-**(C) 정답** : Auto Scaling의 인스턴스 워밍업(warmup) 조건을 설정하면, 새로 시작된 인스턴스가 완전히 초기화되어 요청을 처리할 준비가 될 때까지 Auto Scaling 지표에 포함되지 않습니다. 또한 스텝 스케일링 정책은 트래픽 급증에 단계적으로 신속히 대응할 수 있습니다.
+**(C) 정답** : Auto Scaling의 인스턴스 워밍업(warmup) 조건을 설정하면, 새로 시작된 인스턴스가 완전히 초기화되어 요청을 처리할 준비가 될 때까지 Auto Scaling 지표에 포함되지 않습니다. 또한 스텝 스케일링 정책은 트래픽 급증에 단계적으로 신속히 대응할 수 있습니다. → [📖 Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
-**(D)** : CloudFront는 정적 콘텐츠 캐싱과 지연 시간 감소에 효과적이지만, 매일 새로 업로드되는 콘텐츠와 인스턴스 워밍업 타임아웃 문제의 근본 해결책이 아닙니다.
+**(D)** : CloudFront는 정적 콘텐츠 캐싱과 지연 시간 감소에 효과적이지만, 매일 새로 업로드되는 콘텐츠와 인스턴스 워밍업 타임아웃 문제의 근본 해결책이 아닙니다. → [📖 CloudFront 기본 개념](/section/13-cloudfront-global-accelerator#cloudfront-기본-개념)
 
 **핵심 개념:** EC2 Auto Scaling의 인스턴스 워밍업(Instance Warmup) 설정은 새 인스턴스가 초기화 완료 전에 트래픽을 받아 타임아웃이 발생하는 것을 방지합니다. 스텝 스케일링 정책은 트래픽 패턴에 따라 스케일링 속도를 조절합니다.
+
+**관련 노트:** [Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg), [Elastic Load Balancer ELB](/section/06-high-availability-scalability#elastic-load-balancer-elb)
 
 ---
 
@@ -336,14 +354,16 @@
 | C | Aurora 복제본을 생성하고 적절한 엔드포인트를 사용하도록 애플리케이션을 수정한다. |
 | D | 두 번째 Aurora 데이터베이스를 생성하고 기본 데이터베이스에 읽기 복제본으로 연결한다. |
 
-**(A)** : Aurora는 기본적으로 read-through caching 기능을 내장 제공하지 않습니다. 캐싱은 ElastiCache 같은 별도 레이어가 필요합니다.
+**(A)** : Aurora는 기본적으로 read-through caching 기능을 내장 제공하지 않습니다. 캐싱은 ElastiCache 같은 별도 레이어가 필요합니다. → [📖 Amazon Aurora](/section/07-rds-aurora-elasticache#amazon-aurora)
 
-**(B)** : Aurora Multi-AZ의 스탠바이 인스턴스는 장애 조치(failover) 목적으로만 존재하며, 읽기 트래픽을 처리할 수 없습니다. RDS Multi-AZ와 Aurora의 구조 차이를 이해해야 합니다.
+**(B)** : Aurora Multi-AZ의 스탠바이 인스턴스는 장애 조치(failover) 목적으로만 존재하며, 읽기 트래픽을 처리할 수 없습니다. RDS Multi-AZ와 Aurora의 구조 차이를 이해해야 합니다. → [📖 RDS Multi-AZ 재해 복구](/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구)
 
-**(C) 정답** : Aurora 복제본을 생성하면 읽기 전용 엔드포인트(Reader Endpoint)가 제공됩니다. 애플리케이션의 읽기 요청은 Reader Endpoint로, 쓰기 요청은 Writer Endpoint(클러스터 엔드포인트)로 분리하면 I/O 경합이 줄어들고 전체 성능이 향상됩니다.
+**(C) 정답** : Aurora 복제본을 생성하면 읽기 전용 엔드포인트(Reader Endpoint)가 제공됩니다. 애플리케이션의 읽기 요청은 Reader Endpoint로, 쓰기 요청은 Writer Endpoint(클러스터 엔드포인트)로 분리하면 I/O 경합이 줄어들고 전체 성능이 향상됩니다. → [📖 Aurora 엔드포인트](/section/07-rds-aurora-elasticache#aurora-엔드포인트)
 
-**(D)** : Aurora는 동일 클러스터 내에서 복제본을 추가하는 방식이 표준입니다. 별도의 Aurora 데이터베이스를 생성하여 연결하는 방식은 불필요하게 복잡하며, Aurora의 내장 복제 기능을 활용하지 못하는 비효율적인 방법입니다.
+**(D)** : Aurora는 동일 클러스터 내에서 복제본을 추가하는 방식이 표준입니다. 별도의 Aurora 데이터베이스를 생성하여 연결하는 방식은 불필요하게 복잡하며, Aurora의 내장 복제 기능을 활용하지 못하는 비효율적인 방법입니다. → [📖 Aurora 엔드포인트](/section/07-rds-aurora-elasticache#aurora-엔드포인트)
 
 **핵심 개념:** Aurora는 클러스터 엔드포인트(쓰기)와 읽기 전용 엔드포인트(읽기)를 분리하여 제공합니다. Aurora 복제본을 추가하고 엔드포인트를 분리하면 읽기/쓰기 부하를 효율적으로 나눌 수 있습니다. Aurora Multi-AZ 스탠바이는 읽기 트래픽을 처리하지 않습니다.
+
+**관련 노트:** [Aurora 엔드포인트](/section/07-rds-aurora-elasticache#aurora-엔드포인트), [Amazon Aurora](/section/07-rds-aurora-elasticache#amazon-aurora), [RDS Read Replicas](/section/07-rds-aurora-elasticache#rds-read-replicas)
 
 ---

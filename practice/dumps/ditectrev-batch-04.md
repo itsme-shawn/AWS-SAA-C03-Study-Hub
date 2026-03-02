@@ -30,11 +30,13 @@
 
 **(B)** : SSH는 Windows RDP가 필요한 환경에 적합하지 않으며, "어디서나" 접근 허용은 보안상 문제입니다.
 
-**(C) 정답** : 프라이빗 서브넷의 Bastion에 Elastic IP를 할당하고 기업 IP에서만 RDP를 허용하는 것이 가장 안전합니다. 단, 실제로는 퍼블릭 서브넷에 배치하는 것이 일반적이며, 이 답은 제한적 접근이 핵심입니다.
+**(C) 정답** : 프라이빗 서브넷의 Bastion에 Elastic IP를 할당하고 기업 IP에서만 RDP를 허용하는 것이 가장 안전합니다. 단, 실제로는 퍼블릭 서브넷에 배치하는 것이 일반적이며, 이 답은 제한적 접근이 핵심입니다. → [📖 Bastion Host](/section/25-vpc#bastion-host)
 
-**(D)** : 자동 할당 퍼블릭 IP는 재시작 시 변경될 수 있어 안정적이지 않습니다. Elastic IP를 사용하는 것이 올바릅니다.
+**(D)** : 자동 할당 퍼블릭 IP는 재시작 시 변경될 수 있어 안정적이지 않습니다. Elastic IP를 사용하는 것이 올바릅니다. → [📖 Elastic IP](/section/04-ec2-associate#elastic-ip)
 
 **핵심 개념:** Bastion Host 보안 — Elastic IP + 특정 IP에서만 접근 허용으로 관리 접근 제한
+
+**관련 노트:** [Bastion Host](/section/25-vpc#bastion-host), [Elastic IP](/section/04-ec2-associate#elastic-ip)
 
 ---
 
@@ -57,9 +59,11 @@
 
 **(A)** : AZ는 공통 장애 지점을 공유하지 않습니다.
 
-**(B) 정답** : 각 가용 영역은 독립적인 전력 공급, 냉각 시설, 네트워크를 갖추고 있으며, 공통 장애 지점을 공유하지 않습니다. 이것이 Multi-AZ 아키텍처의 핵심 이점입니다.
+**(B) 정답** : 각 가용 영역은 독립적인 전력 공급, 냉각 시설, 네트워크를 갖추고 있으며, 공통 장애 지점을 공유하지 않습니다. 이것이 Multi-AZ 아키텍처의 핵심 이점입니다. → [📖 AWS 글로벌 인프라](/section/01-getting-started#aws-글로벌-인프라)
 
 **핵심 개념:** 가용 영역(AZ) 독립성 — 전력, 냉각, 네트워크가 각 AZ별로 독립적으로 구성
+
+**관련 노트:** [AWS 글로벌 인프라](/section/01-getting-started#aws-글로벌-인프라)
 
 ---
 
@@ -84,15 +88,17 @@
 | C | CloudFront + ELB + Auto Scaling 웹 서버, DynamoDB에 직접 투표 저장. |
 | D | CloudFront + ELB + Auto Scaling 웹 서버, SQS 큐에 저장 후 애플리케이션 서버가 DynamoDB에 저장. |
 
-**(A)** : RDS는 갑작스러운 대규모 트래픽 처리에 DynamoDB보다 확장성이 낮습니다.
+**(A)** : RDS는 갑작스러운 대규모 트래픽 처리에 DynamoDB보다 확장성이 낮습니다. → [📖 Amazon RDS](/section/19-databases#amazon-rds)
 
-**(B)** : S3 정적 호스팅만으로는 복잡한 투표 처리 로직을 구현하기 어렵습니다.
+**(B)** : S3 정적 호스팅만으로는 복잡한 투표 처리 로직을 구현하기 어렵습니다. → [📖 S3 정적 웹사이트 호스팅](/section/10-amazon-s3#s3-정적-웹사이트-호스팅)
 
-**(C)** : DynamoDB에 직접 쓰기는 가능하지만 SQS를 통한 버퍼링이 더 안정적으로 피크 트래픽을 처리합니다.
+**(C)** : DynamoDB에 직접 쓰기는 가능하지만 SQS를 통한 버퍼링이 더 안정적으로 피크 트래픽을 처리합니다. → [📖 Amazon SQS Simple Queue Service](/section/15-integration-messaging#amazon-sqs-simple-queue-service)
 
-**(D) 정답** : CloudFront로 콘텐츠 캐싱, ELB+ASG로 트래픽 분산, SQS로 투표 요청을 버퍼링하여 백엔드 부하를 평탄화하고, DynamoDB로 확장 가능한 저장소를 사용하는 최적의 아키텍처입니다.
+**(D) 정답** : CloudFront로 콘텐츠 캐싱, ELB+ASG로 트래픽 분산, SQS로 투표 요청을 버퍼링하여 백엔드 부하를 평탄화하고, DynamoDB로 확장 가능한 저장소를 사용하는 최적의 아키텍처입니다. → [📖 Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
 **핵심 개념:** SQS 버퍼링 패턴 — 피크 트래픽을 SQS로 흡수하여 백엔드 부하 평탄화
+
+**관련 노트:** [Amazon SQS](/section/15-integration-messaging#amazon-sqs-simple-queue-service), [SQS / SNS / Kinesis 비교](/section/15-integration-messaging#언제-무엇을-쓰는가-sqs-sns-kinesis-한눈에-비교)
 
 ---
 
@@ -123,13 +129,15 @@
 
 **(B)** : A와 동일한 문제가 있습니다.
 
-**(C)** : STS는 임시 자격 증명을 제공하는데 "장기 자격 증명"은 STS 목적에 맞지 않습니다.
+**(C)** : STS는 임시 자격 증명을 제공하는데 "장기 자격 증명"은 STS 목적에 맞지 않습니다. → [📖 AWS KMS Key Management Service](/section/24-security-encryption#aws-kms-key-management-service)
 
-**(D) 정답** : IAM 역할 + STS AssumeRole을 통해 임시 자격 증명만 사용하고, RDS에 사용자 정보를 관리하는 안전하고 확장 가능한 접근 방식입니다.
+**(D) 정답** : IAM 역할 + STS AssumeRole을 통해 임시 자격 증명만 사용하고, RDS에 사용자 정보를 관리하는 안전하고 확장 가능한 접근 방식입니다. → [📖 IAM Roles 역할](/section/02-iam#iam-roles-역할)
 
-**(E)** : D와 유사하지만, RDS 대신 DynamoDB를 사용합니다. D가 더 전통적인 사용자 관리 DB 접근 방식이므로 정답으로 선택됩니다.
+**(E)** : D와 유사하지만, RDS 대신 DynamoDB를 사용합니다. D가 더 전통적인 사용자 관리 DB 접근 방식이므로 정답으로 선택됩니다. → [📖 Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb)
 
 **핵심 개념:** 모바일 앱 S3 접근 보안 — STS 임시 자격 증명 + IAM 역할로 안전한 접근
+
+**관련 노트:** [IAM Roles 역할](/section/02-iam#iam-roles-역할), [S3 Pre-Signed URLs](/section/12-s3-security#s3-presigned-urls)
 
 ---
 
@@ -154,7 +162,7 @@
 | C | 아니요. |
 | D | 예, 특별 권한이 부여된 경우를 제외하고. |
 
-**(A) 정답** : IAM 사용자는 최대 10개의 그룹에 속할 수 있습니다. 이는 모든 IAM 사용자에게 적용되는 제한입니다.
+**(A) 정답** : IAM 사용자는 최대 10개의 그룹에 속할 수 있습니다. 이는 모든 IAM 사용자에게 적용되는 제한입니다. → [📖 Users & Groups](/section/02-iam#users-groups)
 
 **(B)** : 루트 계정은 IAM 그룹의 구성원이 될 수 없으므로 이 구분은 의미가 없습니다.
 
@@ -163,6 +171,8 @@
 **(D)** : 특별 권한으로 제한을 변경할 수 없습니다.
 
 **핵심 개념:** IAM 사용자 그룹 제한 — 한 사용자당 최대 10개 그룹
+
+**관련 노트:** [Users & Groups](/section/02-iam#users-groups)
 
 ---
 
@@ -189,13 +199,15 @@
 
 **(A)** : eu-west-1은 기본 리전이 아닙니다.
 
-**(B) 정답** : AWS의 기본 리전은 us-east-1(버지니아 북부)입니다. 새로운 글로벌 서비스 출시 시 가장 먼저 제공되는 리전이기도 합니다.
+**(B) 정답** : AWS의 기본 리전은 us-east-1(버지니아 북부)입니다. 새로운 글로벌 서비스 출시 시 가장 먼저 제공되는 리전이기도 합니다. → [📖 Region 선택 기준 시험 중요!](/section/01-getting-started#region-선택-기준-시험-중요)
 
 **(C)** : us-east-2는 기본 리전이 아닙니다.
 
 **(D)** : ap-southeast-1은 기본 리전이 아닙니다.
 
 **핵심 개념:** AWS 기본 리전 — us-east-1 (버지니아 북부), 새 서비스 최초 출시 리전
+
+**관련 노트:** [AWS 글로벌 인프라](/section/01-getting-started#aws-글로벌-인프라), [Region 선택 기준 시험 중요!](/section/01-getting-started#region-선택-기준-시험-중요)
 
 ---
 
@@ -220,15 +232,17 @@
 | C | S3 Copy API, Route 53, DynamoDB + SQS. |
 | D | CloudFront + ELB, ElastiCache + SWF. |
 
-**(A) 정답** : 각 리전에 로컬 DynamoDB 테이블을 두어 지연 시간을 최소화하고, SQS + 워커로 변경 사항을 각 리전에 전파하는 방식이 요구 사항(지연 민감, 고가용성, 멀티 리전)을 가장 잘 충족합니다.
+**(A) 정답** : 각 리전에 로컬 DynamoDB 테이블을 두어 지연 시간을 최소화하고, SQS + 워커로 변경 사항을 각 리전에 전파하는 방식이 요구 사항(지연 민감, 고가용성, 멀티 리전)을 가장 잘 충족합니다. → [📖 Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb)
 
-**(B)** : ElastiCache는 단일 리전 캐시로 멀티 리전 복제가 복잡합니다.
+**(B)** : ElastiCache는 단일 리전 캐시로 멀티 리전 복제가 복잡합니다. → [📖 Amazon ElastiCache](/section/19-databases#amazon-elasticache)
 
-**(C)** : 단일 DynamoDB 테이블 사용은 멀티 리전 지연 시간 최소화에 적합하지 않습니다.
+**(C)** : 단일 DynamoDB 테이블 사용은 멀티 리전 지연 시간 최소화에 적합하지 않습니다. → [📖 Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb)
 
 **(D)** : SWF는 이 시나리오에 과도하게 복잡한 솔루션입니다.
 
 **핵심 개념:** 멀티 리전 사용자 기본 설정 — 로컬 DynamoDB + SQS 기반 변경 전파
+
+**관련 노트:** [Amazon DynamoDB](/section/19-databases#amazon-dynamodb), [Amazon SQS](/section/15-integration-messaging#amazon-sqs-simple-queue-service)
 
 ---
 
@@ -253,15 +267,17 @@
 | C | 역할(role). |
 | D | 리소스(resource). |
 
-**(A) 정답** : IAM 정책(Policy)은 JSON 형식의 문서로, 하나 이상의 권한을 공식적으로 정의합니다.
+**(A) 정답** : IAM 정책(Policy)은 JSON 형식의 문서로, 하나 이상의 권한을 공식적으로 정의합니다. → [📖 IAM Policies 정책](/section/02-iam#iam-policies-정책)
 
 **(B)** : 권한(Permission)은 정책이 정의하는 개념이지 문서 자체가 아닙니다.
 
-**(C)** : 역할(Role)은 정책을 연결할 수 있는 IAM 주체이며 문서가 아닙니다.
+**(C)** : 역할(Role)은 정책을 연결할 수 있는 IAM 주체이며 문서가 아닙니다. → [📖 IAM Roles 역할](/section/02-iam#iam-roles-역할)
 
 **(D)** : 리소스(Resource)는 정책이 적용되는 대상입니다.
 
 **핵심 개념:** IAM 정책(Policy) — 하나 이상의 권한을 정의하는 JSON 문서
+
+**관련 노트:** [IAM Policies 정책](/section/02-iam#iam-policies-정책)
 
 ---
 
@@ -286,15 +302,17 @@
 | C | 3개. |
 | D | 4개. |
 
-**(A)** : 단일 서브넷으로는 멀티 AZ와 퍼블릭/프라이빗 분리를 구현할 수 없습니다.
+**(A)** : 단일 서브넷으로는 멀티 AZ와 퍼블릭/프라이빗 분리를 구현할 수 없습니다. → [📖 서브넷 Subnet](/section/25-vpc#서브넷-subnet)
 
 **(B)** : 2개로는 부족합니다.
 
 **(C)** : 3개로는 부족합니다.
 
-**(D) 정답** : 최소 4개의 서브넷이 필요합니다. 2개의 퍼블릭 서브넷(각 AZ에 하나, 웹 서버용)과 2개의 프라이빗 서브넷(각 AZ에 하나, RDS Multi-AZ용). RDS Multi-AZ는 최소 2개의 AZ에 서브넷이 필요합니다.
+**(D) 정답** : 최소 4개의 서브넷이 필요합니다. 2개의 퍼블릭 서브넷(각 AZ에 하나, 웹 서버용)과 2개의 프라이빗 서브넷(각 AZ에 하나, RDS Multi-AZ용). RDS Multi-AZ는 최소 2개의 AZ에 서브넷이 필요합니다. → [📖 RDS Multi-AZ 재해 복구](/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구)
 
 **핵심 개념:** VPC 서브넷 설계 — 퍼블릭 2개(웹, 2AZ) + 프라이빗 2개(DB, 2AZ) = 최소 4개
+
+**관련 노트:** [서브넷 Subnet](/section/25-vpc#서브넷-subnet), [Internet Gateway IGW](/section/25-vpc#internet-gateway-igw)
 
 ---
 
@@ -325,9 +343,11 @@
 
 **(C)** : 특별 권한으로 변경할 수 없는 한도입니다.
 
-**(D) 정답** : AWS 계정당 IAM 그룹 수는 기본 300개로 제한됩니다. 이는 모든 사용자에게 적용됩니다.
+**(D) 정답** : AWS 계정당 IAM 그룹 수는 기본 300개로 제한됩니다. 이는 모든 사용자에게 적용됩니다. → [📖 Users & Groups](/section/02-iam#users-groups)
 
 **핵심 개념:** IAM 그룹 수 제한 — 계정당 기본 최대 300개
+
+**관련 노트:** [Users & Groups](/section/02-iam#users-groups)
 
 ---
 
@@ -348,11 +368,13 @@
 | A | 참. |
 | B | 거짓. |
 
-**(A) 정답** : Amazon RDS는 새 DB 인스턴스 생성 시 자동 백업이 기본으로 활성화됩니다. 기본 보존 기간은 1일입니다.
+**(A) 정답** : Amazon RDS는 새 DB 인스턴스 생성 시 자동 백업이 기본으로 활성화됩니다. 기본 보존 기간은 1일입니다. → [📖 RDS & Aurora 백업](/section/07-rds-aurora-elasticache#rds-aurora-백업)
 
-**(B)** : 자동 백업은 기본적으로 활성화되어 있습니다.
+**(B)** : 자동 백업은 기본적으로 활성화되어 있습니다. → [📖 RDS & Aurora 백업](/section/07-rds-aurora-elasticache#rds-aurora-백업)
 
 **핵심 개념:** RDS 자동 백업 — 기본 활성화, 보존 기간 기본 1일 (최대 35일)
+
+**관련 노트:** [RDS & Aurora 백업](/section/07-rds-aurora-elasticache#rds-aurora-백업)
 
 ---
 
@@ -377,15 +399,17 @@
 | C | Auto Scaling은 Amazon EBS 지원 인스턴스를 사용해야 합니다. |
 | D | Virtual Private Cloud는 EBS 지원 인스턴스가 필요합니다. |
 
-**(A) 정답** : EBS 지원 인스턴스는 중지(stop) 후 재시작이 가능합니다. 중지 시 인스턴스 요금이 청구되지 않으며 EBS 데이터는 유지됩니다.
+**(A) 정답** : EBS 지원 인스턴스는 중지(stop) 후 재시작이 가능합니다. 중지 시 인스턴스 요금이 청구되지 않으며 EBS 데이터는 유지됩니다. → [📖 EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store)
 
-**(B)** : 인스턴스 스토어 지원 인스턴스는 중지할 수 없으며, 종료(terminate)만 가능합니다.
+**(B)** : 인스턴스 스토어 지원 인스턴스는 중지할 수 없으며, 종료(terminate)만 가능합니다. → [📖 EC2 Instance Store](/section/05-ec2-instance-storage#ec2-instance-store)
 
-**(C)** : Auto Scaling은 인스턴스 스토어 기반도 지원합니다.
+**(C)** : Auto Scaling은 인스턴스 스토어 기반도 지원합니다. → [📖 Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
-**(D)** : VPC는 두 유형 모두 지원합니다.
+**(D)** : VPC는 두 유형 모두 지원합니다. → [📖 VPC 기본 사항](/section/25-vpc#vpc-기본-사항)
 
 **핵심 개념:** EBS vs 인스턴스 스토어 — EBS는 중지/재시작 가능, 인스턴스 스토어는 종료만 가능
+
+**관련 노트:** [EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store), [EC2 Instance Store](/section/05-ec2-instance-storage#ec2-instance-store), [EBS vs EFS vs Instance Store 비교 시험 핵심!](/section/05-ec2-instance-storage#ebs-vs-efs-vs-instance-store-비교-시험-핵심)
 
 ---
 
@@ -410,15 +434,17 @@
 | C | 모든 지원 사용자 정의 소프트웨어 패키지를 AWS에서 사용 가능하도록 합니다. |
 | D | 재해 복구를 고려할 때 여기 나열된 모든 항목이 중요합니다. |
 
-**(A)** : AMI 유지는 중요한 재해 복구 요소이지만 이것만이 정답은 아닙니다.
+**(A)** : AMI 유지는 중요한 재해 복구 요소이지만 이것만이 정답은 아닙니다. → [📖 AMI Amazon Machine Image](/section/05-ec2-instance-storage#ami-amazon-machine-image)
 
-**(B)** : 정기적 테스트와 업데이트도 중요하지만 이것만이 정답은 아닙니다.
+**(B)** : 정기적 테스트와 업데이트도 중요하지만 이것만이 정답은 아닙니다. → [📖 4가지 DR 전략 빠른 RTO 순](/section/26-disaster-recovery-migrations#4가지-dr-전략-빠른-rto-순)
 
-**(C)** : 소프트웨어 패키지 가용성 확보도 중요하지만 이것만이 정답은 아닙니다.
+**(C)** : 소프트웨어 패키지 가용성 확보도 중요하지만 이것만이 정답은 아닙니다. → [📖 4가지 DR 전략 빠른 RTO 순](/section/26-disaster-recovery-migrations#4가지-dr-전략-빠른-rto-순)
 
-**(D) 정답** : 재해 복구를 위해서는 A, B, C 모두 중요합니다. AMI 유지, 정기적 테스트/업데이트, 소프트웨어 가용성 모두 DR 전략의 핵심 요소입니다.
+**(D) 정답** : 재해 복구를 위해서는 A, B, C 모두 중요합니다. AMI 유지, 정기적 테스트/업데이트, 소프트웨어 가용성 모두 DR 전략의 핵심 요소입니다. → [📖 4가지 DR 전략 빠른 RTO 순](/section/26-disaster-recovery-migrations#4가지-dr-전략-빠른-rto-순)
 
 **핵심 개념:** 재해 복구(DR) 전략 — AMI 유지 + 정기 테스트 + 소프트웨어 가용성 확보
+
+**관련 노트:** [4가지 DR 전략](/section/26-disaster-recovery-migrations#4가지-dr-전략-빠른-rto-순), [AMI Amazon Machine Image](/section/05-ec2-instance-storage#ami-amazon-machine-image)
 
 ---
 
@@ -443,15 +469,17 @@
 | C | EC2-Classic에서 인스턴스를 시작한 후 보안 그룹에 규칙만 추가할 수 있습니다. |
 | D | EC2-Classic에서 인스턴스를 시작한 후 보안 그룹의 규칙을 추가하거나 제거할 수 없습니다. |
 
-**(A) 정답** : EC2-Classic 환경에서는 인스턴스 시작 후 할당된 보안 그룹을 변경할 수 없습니다. VPC 환경과 달리 EC2-Classic은 인스턴스 실행 후 보안 그룹 변경이 불가능합니다.
+**(A) 정답** : EC2-Classic 환경에서는 인스턴스 시작 후 할당된 보안 그룹을 변경할 수 없습니다. VPC 환경과 달리 EC2-Classic은 인스턴스 실행 후 보안 그룹 변경이 불가능합니다. → [📖 Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹)
 
 **(B)** : 한 번도 변경할 수 없습니다.
 
-**(C)** : 보안 그룹의 규칙을 추가/삭제하는 것은 가능하지만, 인스턴스에 연결된 보안 그룹 자체를 변경할 수 없습니다.
+**(C)** : 보안 그룹의 규칙을 추가/삭제하는 것은 가능하지만, 인스턴스에 연결된 보안 그룹 자체를 변경할 수 없습니다. → [📖 Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹)
 
-**(D)** : 보안 그룹 내 규칙 변경은 가능합니다.
+**(D)** : 보안 그룹 내 규칙 변경은 가능합니다. → [📖 Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹)
 
 **핵심 개념:** EC2-Classic 보안 그룹 — 인스턴스 시작 후 보안 그룹 변경 불가 (VPC와 다른 점)
+
+**관련 노트:** [Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹)
 
 ---
 
@@ -482,9 +510,11 @@
 
 **(C)** : "Details"는 개별 리소스의 세부 정보 탭이며 탐색 항목이 아닙니다.
 
-**(D) 정답** : EC2 콘솔 좌측 탐색 패널의 "Elastic Block Store" 섹션 아래 "Volumes"를 클릭하여 EBS 볼륨 정보를 확인합니다.
+**(D) 정답** : EC2 콘솔 좌측 탐색 패널의 "Elastic Block Store" 섹션 아래 "Volumes"를 클릭하여 EBS 볼륨 정보를 확인합니다. → [📖 EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store)
 
 **핵심 개념:** EC2 콘솔 탐색 — Volumes 항목에서 EBS 볼륨 목록 및 정보 확인
+
+**관련 노트:** [EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store)
 
 ---
 
@@ -505,11 +535,13 @@
 | A | 참. |
 | B | 거짓. |
 
-**(A) 정답** : Provisioned IOPS는 예약형 리소스이므로 실제 사용량에 관계없이 프로비저닝된 IOPS 수와 스토리지 용량에 대해 요금이 청구됩니다.
+**(A) 정답** : Provisioned IOPS는 예약형 리소스이므로 실제 사용량에 관계없이 프로비저닝된 IOPS 수와 스토리지 용량에 대해 요금이 청구됩니다. → [📖 EBS Volume Types 6가지](/section/05-ec2-instance-storage#ebs-volume-types-6가지)
 
 **(B)** : 사용량 기반이 아닌 프로비저닝 기반 과금입니다.
 
 **핵심 개념:** Provisioned IOPS 과금 — 사용 여부 관계없이 프로비저닝된 용량에 대해 과금
+
+**관련 노트:** [EBS Volume Types 6가지](/section/05-ec2-instance-storage#ebs-volume-types-6가지)
 
 ---
 
@@ -534,7 +566,7 @@
 | C | 새 인스턴스에는 즉시 적용되지만 기존 인스턴스는 중지 후 재시작이 필요합니다. |
 | D | 모든 인스턴스에 적용되지만 기존 인스턴스에는 몇 분이 걸릴 수 있습니다. |
 
-**(A) 정답** : 보안 그룹 규칙 변경은 해당 보안 그룹에 속한 모든 인스턴스(기존 및 신규)에 즉시 적용됩니다. 재시작이나 지연 없이 실시간으로 반영됩니다.
+**(A) 정답** : 보안 그룹 규칙 변경은 해당 보안 그룹에 속한 모든 인스턴스(기존 및 신규)에 즉시 적용됩니다. 재시작이나 지연 없이 실시간으로 반영됩니다. → [📖 Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹)
 
 **(B)** : 기존 인스턴스에도 즉시 적용됩니다.
 
@@ -543,6 +575,8 @@
 **(D)** : 지연 없이 즉시 적용됩니다.
 
 **핵심 개념:** 보안 그룹 규칙 변경 — 그룹 내 모든 인스턴스에 즉시 실시간 적용
+
+**관련 노트:** [Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹)
 
 ---
 
@@ -571,11 +605,13 @@
 
 **(B)** : 엣지 로케이션은 리전과 다른 개념입니다.
 
-**(C) 정답** : 엣지 로케이션은 Amazon CloudFront CDN이 콘텐츠를 캐시하고 사용자에게 더 가깝게 전달하기 위해 사용하는 데이터 센터 위치입니다. 리전보다 훨씬 많은 수가 전 세계에 분포합니다.
+**(C) 정답** : 엣지 로케이션은 Amazon CloudFront CDN이 콘텐츠를 캐시하고 사용자에게 더 가깝게 전달하기 위해 사용하는 데이터 센터 위치입니다. 리전보다 훨씬 많은 수가 전 세계에 분포합니다. → [📖 CloudFront 기본 개념](/section/13-cloudfront-global-accelerator#cloudfront-기본-개념)
 
 **(D)** : 엣지 로케이션은 AZ와 다른 개념입니다.
 
 **핵심 개념:** CloudFront 엣지 로케이션 — 전 세계 분산 CDN 캐시 포인트
+
+**관련 노트:** [CloudFront 기본 개념](/section/13-cloudfront-global-accelerator#cloudfront-기본-개념)
 
 ---
 
@@ -600,15 +636,17 @@
 | C | Amazon 인스턴스 내에서 데이터베이스를 실행할 수 없습니다. |
 | D | Amazon S3. |
 
-**(A)** : 인스턴스 스토리지는 휘발성이어서 데이터베이스에 적합하지 않습니다.
+**(A)** : 인스턴스 스토리지는 휘발성이어서 데이터베이스에 적합하지 않습니다. → [📖 EC2 Instance Store](/section/05-ec2-instance-storage#ec2-instance-store)
 
-**(B) 정답** : Amazon EBS는 영속적인 블록 스토리지로, 데이터베이스 실행에 가장 적합합니다. 높은 IOPS, 낮은 지연 시간, 데이터 영속성을 제공합니다.
+**(B) 정답** : Amazon EBS는 영속적인 블록 스토리지로, 데이터베이스 실행에 가장 적합합니다. 높은 IOPS, 낮은 지연 시간, 데이터 영속성을 제공합니다. → [📖 EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store)
 
 **(C)** : EC2 인스턴스에서 데이터베이스를 실행할 수 있습니다.
 
-**(D)** : S3는 객체 스토리지로 데이터베이스 블록 스토리지로 사용할 수 없습니다.
+**(D)** : S3는 객체 스토리지로 데이터베이스 블록 스토리지로 사용할 수 없습니다. → [📖 Amazon S3 데이터베이스 관점](/section/19-databases#amazon-s3-데이터베이스-관점)
 
 **핵심 개념:** EC2 데이터베이스 스토리지 — Amazon EBS 권장 (영속성, 낮은 지연, 높은 IOPS)
+
+**관련 노트:** [EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store), [EBS Volume Types 6가지](/section/05-ec2-instance-storage#ebs-volume-types-6가지)
 
 ---
 
@@ -633,15 +671,17 @@
 | C | eu-west-1의 여러 시설. |
 | D | eu-west-1의 단일 시설. |
 
-**(A)** : S3 Standard는 다른 리전으로 자동 복제하지 않습니다.
+**(A)** : S3 Standard는 다른 리전으로 자동 복제하지 않습니다. → [📖 S3 Replication 복제](/section/10-amazon-s3#s3-replication-복제)
 
 **(B)** : 리전 간 자동 복제는 S3 Standard에서 기본으로 제공되지 않습니다.
 
-**(C) 정답** : Amazon S3 Standard 스토리지 클래스는 동일 리전(eu-west-1) 내 최소 3개의 가용 영역에 걸쳐 데이터를 복제합니다. 99.999999999%(11 nines)의 내구성을 제공합니다.
+**(C) 정답** : Amazon S3 Standard 스토리지 클래스는 동일 리전(eu-west-1) 내 최소 3개의 가용 영역에 걸쳐 데이터를 복제합니다. 99.999999999%(11 nines)의 내구성을 제공합니다. → [📖 S3 Storage Classes 스토리지 클래스](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
 **(D)** : 단일 시설에만 저장되지 않으며 리전 내 여러 시설에 복제됩니다.
 
 **핵심 개념:** S3 Standard 데이터 복제 — 동일 리전 내 여러 AZ에 걸쳐 자동 복제 (11 nines 내구성)
+
+**관련 노트:** [S3 Storage Classes 스토리지 클래스](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스), [S3 버킷 Bucket](/section/10-amazon-s3#s3-버킷-bucket)
 
 ---
 
@@ -670,11 +710,13 @@
 
 **(B)** : "anonymous user"라는 literal 값은 Principal로 사용하지 않습니다.
 
-**(C) 정답** : S3 버킷 정책에서 Principal을 `"*"`(와일드카드)로 설정하면 인증되지 않은 익명 사용자를 포함한 모든 사람이 접근할 수 있습니다.
+**(C) 정답** : S3 버킷 정책에서 Principal을 `"*"`(와일드카드)로 설정하면 인증되지 않은 익명 사용자를 포함한 모든 사람이 접근할 수 있습니다. → [📖 S3 Bucket Policy](/section/10-amazon-s3#s3-bucket-policy)
 
 **(D)** : "S3 user"라는 개념은 존재하지 않습니다.
 
 **핵심 개념:** S3 버킷 정책 퍼블릭 액세스 — Principal: "*" 로 모든 사용자(익명 포함) 접근 허용
+
+**관련 노트:** [S3 Bucket Policy](/section/10-amazon-s3#s3-bucket-policy), [Block Public Access](/section/10-amazon-s3#block-public-access)
 
 ---
 
@@ -705,13 +747,15 @@
 
 **(B)** : IAM 시작 권한은 이미 인스턴스가 실행 중이므로 관련 없습니다.
 
-**(C) 정답** : AMI에 따라 기본 사용자 이름이 다릅니다. Amazon Linux는 `ec2-user`, Ubuntu는 `ubuntu`, CentOS는 `centos` 등입니다. 잘못된 사용자 이름으로 연결하면 실패합니다.
+**(C) 정답** : AMI에 따라 기본 사용자 이름이 다릅니다. Amazon Linux는 `ec2-user`, Ubuntu는 `ubuntu`, CentOS는 `centos` 등입니다. 잘못된 사용자 이름으로 연결하면 실패합니다. → [📖 EC2 Instance Connect](/section/03-ec2-basics#ec2-instance-connect)
 
-**(D)** : IAM 역할은 SSH 연결과 무관합니다.
+**(D)** : IAM 역할은 SSH 연결과 무관합니다. → [📖 IAM Roles 역할](/section/02-iam#iam-roles-역할)
 
 **(E)** : 페더레이션 신뢰는 SSH 연결과 무관합니다.
 
 **핵심 개념:** EC2 SSH 연결 문제 해결 — 키 페어 확인 + AMI별 올바른 사용자 이름 확인
+
+**관련 노트:** [EC2 인스턴스 타입](/section/03-ec2-basics#ec2-인스턴스-타입)
 
 ---
 
@@ -738,17 +782,19 @@
 | D | 현재 2개의 EC2 인스턴스를 실행 중인 AZ에서 인스턴스를 종료합니다. |
 | E | 3개의 AZ 중 하나를 무작위로 선택한 후 해당 AZ에서 인스턴스를 종료합니다. |
 
-**(A)** : Auto Scaling은 기본적으로 종료 스크립트를 위해 5분을 대기하지 않습니다 (수명 주기 후크로 구성 가능).
+**(A)** : Auto Scaling은 기본적으로 종료 스크립트를 위해 5분을 대기하지 않습니다 (수명 주기 후크로 구성 가능). → [📖 Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
 **(B)** : 네트워크 연결 수는 기본 종료 정책 기준이 아닙니다.
 
-**(C) 정답** : Auto Scaling은 SNS 알림이 구성된 경우 스케일 인/아웃 이벤트 시 알림을 전송합니다.
+**(C) 정답** : Auto Scaling은 SNS 알림이 구성된 경우 스케일 인/아웃 이벤트 시 알림을 전송합니다. → [📖 Amazon SNS Simple Notification Service](/section/15-integration-messaging#amazon-sns-simple-notification-service)
 
-**(D) 정답** : Auto Scaling의 기본 정책은 가장 많은 인스턴스가 있는 AZ(여기서는 2개)에서 인스턴스를 종료하여 AZ 간 균형을 맞춥니다.
+**(D) 정답** : Auto Scaling의 기본 정책은 가장 많은 인스턴스가 있는 AZ(여기서는 2개)에서 인스턴스를 종료하여 AZ 간 균형을 맞춥니다. → [📖 Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
 **(E)** : 무작위 AZ 선택이 아닌 인스턴스가 가장 많은 AZ를 선택합니다.
 
 **핵심 개념:** Auto Scaling 종료 정책 — 가장 인스턴스가 많은 AZ에서 종료 (AZ 균형 유지) + SNS 알림
+
+**관련 노트:** [Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg), [Amazon SNS](/section/15-integration-messaging#amazon-sns-simple-notification-service)
 
 ---
 
@@ -773,15 +819,17 @@
 | C | AWS IAM 역할. |
 | D | 웹 ID 페더레이션(Web Identity Federation). |
 
-**(A)** : SAML은 기업 SSO에 사용되며 OpenID Connect와는 다른 프로토콜입니다.
+**(A)** : SAML은 기업 SSO에 사용되며 OpenID Connect와는 다른 프로토콜입니다. → [📖 AWS IAM Identity Center AWS SSO 후속](/section/23-advanced-identity#aws-iam-identity-center-aws-sso-후속)
 
-**(B)** : 교차 계정 액세스는 다른 AWS 계정 간 접근을 위한 방식입니다.
+**(B)** : 교차 계정 액세스는 다른 AWS 계정 간 접근을 위한 방식입니다. → [📖 IAM Roles vs Resource-Based Policies](/section/23-advanced-identity#iam-roles-vs-resourcebased-policies)
 
-**(C)** : IAM 역할은 웹 ID 페더레이션과 함께 사용되지만 그 자체가 접근 방식은 아닙니다.
+**(C)** : IAM 역할은 웹 ID 페더레이션과 함께 사용되지만 그 자체가 접근 방식은 아닙니다. → [📖 IAM Roles 역할](/section/02-iam#iam-roles-역할)
 
-**(D) 정답** : Web Identity Federation은 OpenID Connect(Google, Facebook, Amazon 등) 또는 Cognito를 통해 인증된 사용자에게 임시 AWS 자격 증명을 발급하는 방식입니다.
+**(D) 정답** : Web Identity Federation은 OpenID Connect(Google, Facebook, Amazon 등) 또는 Cognito를 통해 인증된 사용자에게 임시 AWS 자격 증명을 발급하는 방식입니다. → [📖 Amazon Cognito](/section/17-serverless-overview#amazon-cognito)
 
 **핵심 개념:** Web Identity Federation — OpenID Connect/OAuth 2.0 기반 외부 ID로 AWS 임시 자격 증명 획득
+
+**관련 노트:** [IAM Roles 역할](/section/02-iam#iam-roles-역할), [Amazon Cognito](/section/17-serverless-overview#amazon-cognito)
 
 ---
 
@@ -812,7 +860,7 @@
 
 **(C)** : 256자는 태그 값(Value)의 최대 길이입니다.
 
-**(D) 정답** : AWS 태그 키의 최대 길이는 128 유니코드 문자이며, 태그 값의 최대 길이는 256 유니코드 문자입니다.
+**(D) 정답** : AWS 태그 키의 최대 길이는 128 유니코드 문자이며, 태그 값의 최대 길이는 256 유니코드 문자입니다. → [📖 AWS Organizations - Tag Policies](/section/23-advanced-identity#aws-organizations-tag-policies)
 
 **핵심 개념:** AWS 태그 제한 — 키 최대 128자, 값 최대 256자
 
@@ -835,11 +883,13 @@
 | A | 예. |
 | B | 아니요. |
 
-**(A)** : RDS는 관리형 서비스이므로 기본 OS에 직접 접근을 허용하지 않습니다.
+**(A)** : RDS는 관리형 서비스이므로 기본 OS에 직접 접근을 허용하지 않습니다. → [📖 Amazon RDS Relational Database Service](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
-**(B) 정답** : Amazon RDS는 완전 관리형 서비스로, 기저 OS(호스트)에 대한 Telnet, SSH, RDP 직접 접근을 허용하지 않습니다. DB 엔드포인트로의 데이터베이스 연결만 가능합니다.
+**(B) 정답** : Amazon RDS는 완전 관리형 서비스로, 기저 OS(호스트)에 대한 Telnet, SSH, RDP 직접 접근을 허용하지 않습니다. DB 엔드포인트로의 데이터베이스 연결만 가능합니다. → [📖 Amazon RDS Relational Database Service](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
 **핵심 개념:** Amazon RDS 관리형 서비스 — 기저 OS에 대한 직접 접근 불가 (SSH/RDP/Telnet)
+
+**관련 노트:** [Amazon RDS](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
 ---
 
@@ -864,15 +914,17 @@
 | C | 멀티 리전(Multi region). |
 | D | PostgreSQL은 HA를 지원하지 않습니다. |
 
-**(A) 정답** : RDS Multi-AZ 배포는 동기 복제와 자동 장애 조치를 통해 고가용성을 제공합니다. 기본 인스턴스 장애 시 자동으로 대기 인스턴스로 전환됩니다.
+**(A) 정답** : RDS Multi-AZ 배포는 동기 복제와 자동 장애 조치를 통해 고가용성을 제공합니다. 기본 인스턴스 장애 시 자동으로 대기 인스턴스로 전환됩니다. → [📖 RDS Multi-AZ 재해 복구](/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구)
 
-**(B)** : Read Replica는 읽기 성능 확장용이며 자동 장애 조치를 제공하지 않습니다.
+**(B)** : Read Replica는 읽기 성능 확장용이며 자동 장애 조치를 제공하지 않습니다. → [📖 RDS Read Replicas](/section/07-rds-aurora-elasticache#rds-read-replicas)
 
-**(C)** : 멀티 리전은 재해 복구(DR) 목적이며 기본 HA 기능이 아닙니다.
+**(C)** : 멀티 리전은 재해 복구(DR) 목적이며 기본 HA 기능이 아닙니다. → [📖 Aurora Global Database](/section/07-rds-aurora-elasticache#aurora-global-database)
 
 **(D)** : PostgreSQL은 RDS에서 Multi-AZ HA를 지원합니다.
 
 **핵심 개념:** RDS 고가용성 — Multi-AZ 배포로 자동 장애 조치(failover) 제공
+
+**관련 노트:** [RDS Multi-AZ 재해 복구](/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구)
 
 ---
 
@@ -932,13 +984,15 @@
 
 **(A)** : CloudFront 계정 보안 그룹을 통한 S3 접근 제어 방식은 존재하지 않습니다.
 
-**(B)** : CloudFront 배포 ID로 Principal을 지정하는 방식은 올바르지 않습니다. OAI 또는 OAC(Origin Access Control)를 사용합니다.
+**(B)** : CloudFront 배포 ID로 Principal을 지정하는 방식은 올바르지 않습니다. OAI 또는 OAC(Origin Access Control)를 사용합니다. → [📖 CloudFront Origins 원본 소스](/section/13-cloudfront-global-accelerator#cloudfront-origins-원본-소스)
 
 **(C)** : CloudFront용 IAM 사용자는 실용적이지 않으며 권장되지 않습니다.
 
-**(D) 정답** : OAI(Origin Access Identity)를 생성하고 S3 버킷 정책에서 해당 OAI에만 접근을 허용하면, CloudFront를 통해서만 콘텐츠에 접근할 수 있고 S3 직접 접근은 차단됩니다.
+**(D) 정답** : OAI(Origin Access Identity)를 생성하고 S3 버킷 정책에서 해당 OAI에만 접근을 허용하면, CloudFront를 통해서만 콘텐츠에 접근할 수 있고 S3 직접 접근은 차단됩니다. → [📖 CloudFront Origins 원본 소스](/section/13-cloudfront-global-accelerator#cloudfront-origins-원본-소스)
 
 **핵심 개념:** CloudFront OAI — S3 콘텐츠를 CloudFront를 통해서만 접근하도록 제한하는 메커니즘
+
+**관련 노트:** [CloudFront Origins 원본 소스](/section/13-cloudfront-global-accelerator#cloudfront-origins-원본-소스), [CloudFront 기본 개념](/section/13-cloudfront-global-accelerator#cloudfront-기본-개념)
 
 ---
 
@@ -963,15 +1017,17 @@
 | C | 집계 I/O 성능이 더 높은 소형 인스턴스를 사용합니다. |
 | D | Amazon S3에 더 크고 수가 적은 파일을 생성합니다. |
 
-**(A)** : 더 작은 파일이 항상 EMR 성능 향상으로 이어지지는 않습니다.
+**(A)** : 더 작은 파일이 항상 EMR 성능 향상으로 이어지지는 않습니다. → [📖 Amazon EMR Elastic MapReduce](/section/20-data-analytics#amazon-emr-elastic-mapreduce)
 
-**(B)** : 동일한 대형 인스턴스를 추가하면 CPU 유휴 문제가 해결되지 않고 비용만 증가합니다.
+**(B)** : 동일한 대형 인스턴스를 추가하면 CPU 유휴 문제가 해결되지 않고 비용만 증가합니다. → [📖 Amazon EMR Elastic MapReduce](/section/20-data-analytics#amazon-emr-elastic-mapreduce)
 
-**(C) 정답** : CPU가 아닌 I/O가 병목일 때는 I/O 성능이 높은 소형 인스턴스를 더 많이 사용하는 것이 비용 효율적입니다. 동일한 비용으로 더 높은 집계 I/O 처리량을 얻을 수 있습니다.
+**(C) 정답** : CPU가 아닌 I/O가 병목일 때는 I/O 성능이 높은 소형 인스턴스를 더 많이 사용하는 것이 비용 효율적입니다. 동일한 비용으로 더 높은 집계 I/O 처리량을 얻을 수 있습니다. → [📖 Amazon EMR Elastic MapReduce](/section/20-data-analytics#amazon-emr-elastic-mapreduce)
 
-**(D)** : 큰 파일은 EMR HDFS 블록 처리에 영향을 미치지만 I/O 병목의 직접적인 해결책은 아닙니다.
+**(D)** : 큰 파일은 EMR HDFS 블록 처리에 영향을 미치지만 I/O 병목의 직접적인 해결책은 아닙니다. → [📖 Amazon EMR Elastic MapReduce](/section/20-data-analytics#amazon-emr-elastic-mapreduce)
 
 **핵심 개념:** EMR 성능 최적화 — CPU 유휴 시 I/O가 병목, I/O 최적화 인스턴스로 비용 효율화
+
+**관련 노트:** [Amazon EMR](/section/20-data-analytics#amazon-emr-elastic-mapreduce)
 
 ---
 
@@ -996,15 +1052,17 @@
 | C | 엔터프라이즈 라이선스(Enterprise License). |
 | D | 라이선스 포함(License Included). |
 
-**(A) 정답** : BYOL(Bring Your Own License) 모델은 기존에 보유한 Oracle 라이선스를 RDS에 적용하여 별도 라이선스 비용 없이 사용하는 방식입니다.
+**(A) 정답** : BYOL(Bring Your Own License) 모델은 기존에 보유한 Oracle 라이선스를 RDS에 적용하여 별도 라이선스 비용 없이 사용하는 방식입니다. → [📖 Amazon RDS Relational Database Service](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
 **(B)** : 역할 기반 라이선스는 존재하지 않는 개념입니다.
 
 **(C)** : 엔터프라이즈 라이선스는 Oracle의 라이선스 에디션이지 AWS 라이선스 모델이 아닙니다.
 
-**(D)** : License Included는 AWS가 라이선스를 포함하여 제공하는 반대 모델입니다.
+**(D)** : License Included는 AWS가 라이선스를 포함하여 제공하는 반대 모델입니다. → [📖 Amazon RDS Relational Database Service](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
 **핵심 개념:** RDS 라이선스 모델 — BYOL(자체 라이선스 사용) vs License Included(AWS 포함 라이선스)
+
+**관련 노트:** [Amazon RDS](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
 ---
 
@@ -1031,17 +1089,19 @@
 | D | Amazon Route 53에서 Alias 레코드에 TTL을 설정할 수 있습니다. |
 | E | Amazon Route 53 Alias 레코드는 어디에나 호스팅된 모든 DNS 레코드를 가리킬 수 있습니다. |
 
-**(A) 정답** : Route 53 Alias 레코드는 CloudFront 배포, ELB, S3 버킷, 같은 호스팅 영역의 다른 Route 53 레코드를 가리킬 수 있습니다.
+**(A) 정답** : Route 53 Alias 레코드는 CloudFront 배포, ELB, S3 버킷, 같은 호스팅 영역의 다른 Route 53 레코드를 가리킬 수 있습니다. → [📖 Alias Record 대상](/section/08-route-53#alias-record-대상)
 
-**(B)** : Zone Apex(루트 도메인, 예: example.com)에는 CNAME을 사용할 수 없습니다. Alias 레코드만 사용 가능합니다.
+**(B)** : Zone Apex(루트 도메인, 예: example.com)에는 CNAME을 사용할 수 없습니다. Alias 레코드만 사용 가능합니다. → [📖 CNAME vs Alias](/section/08-route-53#cname-vs-alias)
 
-**(C) 정답** : CNAME 레코드는 어느 DNS 서버에 호스팅된 레코드든 가리킬 수 있습니다.
+**(C) 정답** : CNAME 레코드는 어느 DNS 서버에 호스팅된 레코드든 가리킬 수 있습니다. → [📖 DNS 레코드 타입](/section/08-route-53#dns-레코드-타입)
 
-**(D)** : Route 53 Alias 레코드에는 TTL을 직접 설정할 수 없습니다. Route 53이 자동으로 관리합니다.
+**(D)** : Route 53 Alias 레코드에는 TTL을 직접 설정할 수 없습니다. Route 53이 자동으로 관리합니다. → [📖 CNAME vs Alias](/section/08-route-53#cname-vs-alias)
 
-**(E)** : Alias 레코드는 AWS 리소스(ELB, CloudFront, S3 등)만 가리킬 수 있으며 외부 DNS 레코드는 가리킬 수 없습니다.
+**(E)** : Alias 레코드는 AWS 리소스(ELB, CloudFront, S3 등)만 가리킬 수 있으며 외부 DNS 레코드는 가리킬 수 없습니다. → [📖 Alias Record 대상](/section/08-route-53#alias-record-대상)
 
 **핵심 개념:** Route 53 Alias vs CNAME — Alias는 AWS 리소스 전용, CNAME은 어느 DNS든 가능 (단 Zone Apex에는 사용 불가)
+
+**관련 노트:** [CNAME vs Alias](/section/08-route-53#cname-vs-alias), [DNS 레코드 타입](/section/08-route-53#dns-레코드-타입)
 
 ---
 
@@ -1066,15 +1126,17 @@
 | C | 아니요, 스냅샷이 인스턴스를 자동으로 종료합니다. |
 | D | 아니요. |
 
-**(A)** : 스냅샷 생성을 위해 종료가 권장됩니다.
+**(A)** : 스냅샷 생성을 위해 종료가 권장됩니다. → [📖 EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots)
 
-**(B) 정답** : 루트 디바이스(부팅 볼륨)의 스냅샷을 생성하기 전에 인스턴스를 종료(stop)하는 것이 권장됩니다. 실행 중에도 가능하지만 데이터 일관성을 위해 종료 후 스냅샷 생성이 권장됩니다.
+**(B) 정답** : 루트 디바이스(부팅 볼륨)의 스냅샷을 생성하기 전에 인스턴스를 종료(stop)하는 것이 권장됩니다. 실행 중에도 가능하지만 데이터 일관성을 위해 종료 후 스냅샷 생성이 권장됩니다. → [📖 EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots)
 
 **(C)** : 스냅샷이 인스턴스를 자동으로 종료하지 않습니다.
 
 **(D)** : 기술적으로 실행 중에도 가능하지만 일관성을 위해 종료가 권장됩니다.
 
 **핵심 개념:** EBS 루트 볼륨 스냅샷 — 데이터 일관성을 위해 인스턴스 종료(stop) 후 스냅샷 권장
+
+**관련 노트:** [EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots)
 
 ---
 
@@ -1099,7 +1161,7 @@
 | C | VPC에서만 가능합니다. |
 | D | 아니요. |
 
-**(A) 정답** : Amazon RDS Multi-AZ 배포에서 DB 인스턴스를 재부팅하면서 강제 장애 조치를 시작할 수 있습니다. 이는 Oracle을 포함한 모든 Multi-AZ 지원 DB 엔진에서 가능합니다.
+**(A) 정답** : Amazon RDS Multi-AZ 배포에서 DB 인스턴스를 재부팅하면서 강제 장애 조치를 시작할 수 있습니다. 이는 Oracle을 포함한 모든 Multi-AZ 지원 DB 엔진에서 가능합니다. → [📖 RDS Multi-AZ 재해 복구](/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구)
 
 **(B)** : 리전 제한 없이 모든 리전에서 가능합니다.
 
@@ -1108,6 +1170,8 @@
 **(D)** : 강제 장애 조치가 가능합니다.
 
 **핵심 개념:** RDS Multi-AZ 강제 장애 조치 — DB 인스턴스 재부팅으로 수동 failover 가능
+
+**관련 노트:** [RDS Multi-AZ 재해 복구](/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구)
 
 ---
 
@@ -1138,9 +1202,11 @@
 
 **(C)** : 로그 이벤트는 모니터링 도구이며 HA를 제공하지 않습니다.
 
-**(D) 정답** : Amazon RDS Multi-AZ 배포는 동기 복제와 자동 장애 조치를 통해 고가용성과 failover 지원을 제공합니다.
+**(D) 정답** : Amazon RDS Multi-AZ 배포는 동기 복제와 자동 장애 조치를 통해 고가용성과 failover 지원을 제공합니다. → [📖 RDS Multi-AZ 재해 복구](/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구)
 
 **핵심 개념:** RDS 고가용성 메커니즘 — Multi-AZ 배포 (동기 복제 + 자동 장애 조치)
+
+**관련 노트:** [RDS Multi-AZ 재해 복구](/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구)
 
 ---
 
@@ -1192,13 +1258,15 @@
 
 **(A)** : 500Mbps는 Direct Connect 포트 속도로 제공되지 않습니다.
 
-**(B) 정답** : AWS Direct Connect는 1Gbps 및 10Gbps 포트 속도를 제공합니다. 100Mbps 및 500Mbps는 호스티드 커넥션(Hosted Connection)을 통해 파트너에게서 제공될 수 있습니다.
+**(B) 정답** : AWS Direct Connect는 1Gbps 및 10Gbps 포트 속도를 제공합니다. 100Mbps 및 500Mbps는 호스티드 커넥션(Hosted Connection)을 통해 파트너에게서 제공될 수 있습니다. → [📖 Direct Connect DX](/section/25-vpc#direct-connect-dx)
 
 **(C)** : 100Mbps는 직접 포트 속도가 아닙니다.
 
 **(D)** : 10Gbps도 제공되므로 1Gbps만이 아닙니다.
 
 **핵심 개념:** AWS Direct Connect 포트 속도 — 1Gbps 및 10Gbps (전용 연결 기준)
+
+**관련 노트:** [Direct Connect DX](/section/25-vpc#direct-connect-dx)
 
 ---
 
@@ -1225,13 +1293,15 @@
 
 **(A)** : "ALERT"는 CloudWatch 알람 상태가 아닙니다.
 
-**(B) 정답** : CloudWatch 알람의 상태는 OK, ALARM, INSUFFICIENT_DATA 세 가지입니다. CPU 사용률이 설정된 임계값(예: 70%)을 초과하여 90분 동안 지속되면 ALARM 상태가 됩니다.
+**(B) 정답** : CloudWatch 알람의 상태는 OK, ALARM, INSUFFICIENT_DATA 세 가지입니다. CPU 사용률이 설정된 임계값(예: 70%)을 초과하여 90분 동안 지속되면 ALARM 상태가 됩니다. → [📖 CloudWatch Alarms](/section/22-monitoring-audit-performance#cloudwatch-alarms)
 
-**(C)** : OK 상태는 메트릭이 임계값 이하일 때입니다.
+**(C)** : OK 상태는 메트릭이 임계값 이하일 때입니다. → [📖 CloudWatch Alarms](/section/22-monitoring-audit-performance#cloudwatch-alarms)
 
-**(D)** : INSUFFICIENT_DATA는 데이터가 부족할 때이며 90분 동안 80% 유지라면 데이터가 충분합니다.
+**(D)** : INSUFFICIENT_DATA는 데이터가 부족할 때이며 90분 동안 80% 유지라면 데이터가 충분합니다. → [📖 CloudWatch Alarms](/section/22-monitoring-audit-performance#cloudwatch-alarms)
 
 **핵심 개념:** CloudWatch 알람 상태 — OK / ALARM / INSUFFICIENT_DATA
+
+**관련 노트:** [CloudWatch Alarms](/section/22-monitoring-audit-performance#cloudwatch-alarms)
 
 ---
 
@@ -1256,15 +1326,17 @@
 | C | 웹: S3, 앱: DynamoDB+IP unicast, DB: Multi-AZ RDS+읽기 복제본, 백업: AMI+스냅샷 |
 | D | 웹: S3, 앱: DynamoDB+IP unicast, DB: Multi-AZ RDS(복제본 없음), 백업: AMI+스냅샷 |
 
-**(A)** : Glacier는 주간 백업보다 접근 속도가 느려 복구에 적합하지 않습니다.
+**(A)** : Glacier는 주간 백업보다 접근 속도가 느려 복구에 적합하지 않습니다. → [📖 AWS Snowball Snow Family](/section/14-storage-extras#aws-snowball-snow-family)
 
-**(B)** : IP multicast는 AWS VPC에서 지원되지 않습니다.
+**(B)** : IP multicast는 AWS VPC에서 지원되지 않습니다. → [📖 VPC 기본 사항](/section/25-vpc#vpc-기본-사항)
 
-**(C) 정답** : S3로 읽기 전용 데이터 공유, DynamoDB+IP unicast로 세션 상태 관리(IP multicast 대체), Multi-AZ RDS+읽기 복제본으로 확장성 제공, AMI/스냅샷으로 백업하는 완전한 솔루션입니다.
+**(C) 정답** : S3로 읽기 전용 데이터 공유, DynamoDB+IP unicast로 세션 상태 관리(IP multicast 대체), Multi-AZ RDS+읽기 복제본으로 확장성 제공, AMI/스냅샷으로 백업하는 완전한 솔루션입니다. → [📖 Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb)
 
-**(D)** : 읽기 복제본이 없어 읽기 확장성 요건을 충족하지 못합니다.
+**(D)** : 읽기 복제본이 없어 읽기 확장성 요건을 충족하지 못합니다. → [📖 RDS Read Replicas](/section/07-rds-aurora-elasticache#rds-read-replicas)
 
 **핵심 개념:** AWS 마이그레이션 아키텍처 — IP multicast 미지원으로 unicast+DynamoDB 대체, S3 정적 데이터, RDS Multi-AZ+읽기 복제본
+
+**관련 노트:** [DMS](/section/26-disaster-recovery-migrations#dms-database-migration-service-데이터베이스-마이그레이션-서비스), [RDS Read Replicas](/section/07-rds-aurora-elasticache#rds-read-replicas)
 
 ---
 
@@ -1326,11 +1398,13 @@
 
 **(B)** : 15개는 액세스 키 한도가 아닙니다.
 
-**(C) 정답** : IAM 사용자당 최대 2개의 액세스 키를 생성할 수 있습니다. 이를 통해 키 교체(rotation) 시 중단 없이 새 키를 생성하고 이전 키를 삭제할 수 있습니다.
+**(C) 정답** : IAM 사용자당 최대 2개의 액세스 키를 생성할 수 있습니다. 이를 통해 키 교체(rotation) 시 중단 없이 새 키를 생성하고 이전 키를 삭제할 수 있습니다. → [📖 AWS 접근 방법](/section/02-iam#aws-접근-방법)
 
 **(D)** : 20개는 액세스 키 한도가 아닙니다.
 
 **핵심 개념:** IAM 액세스 키 한도 — 사용자당 최대 2개 (키 교체를 위한 최소 요건)
+
+**관련 노트:** [IAM Security Tools](/section/02-iam#iam-security-tools)
 
 ---
 
@@ -1359,11 +1433,13 @@
 
 **(B)** : 확장 가능한 서비스는 장애에서 회복하는 능력이 있습니다. 옳은 설명입니다.
 
-**(C) 정답** : 틀린 설명입니다. 확장 가능한 아키텍처는 성장할수록 더 비용 효율적입니다. 클라우드의 규모의 경제(Economies of Scale)가 작동하여 비용이 절감됩니다.
+**(C) 정답** : 틀린 설명입니다. 확장 가능한 아키텍처는 성장할수록 더 비용 효율적입니다. 클라우드의 규모의 경제(Economies of Scale)가 작동하여 비용이 절감됩니다. → [📖 Well-Architected Framework 6 Pillars](/section/29-white-papers-architectures#wellarchitected-framework-6-pillars)
 
 **(D)** : 진정한 확장성은 리소스 증가에 비례하여 성능이 향상되는 것을 의미합니다. 옳은 설명입니다.
 
 **핵심 개념:** 확장 가능한 아키텍처 특성 — 규모 성장 시 비용 효율성 향상 (틀린 설명 식별)
+
+**관련 노트:** [Scalability vs High Availability](/section/06-high-availability-scalability#scalability-vs-high-availability)
 
 ---
 
@@ -1394,9 +1470,11 @@
 
 **(C)** : Storage Server Solution은 S3의 약자가 아닙니다.
 
-**(D) 정답** : Amazon S3는 Simple Storage Service의 약자입니다. S가 3개여서 S3라고 불립니다.
+**(D) 정답** : Amazon S3는 Simple Storage Service의 약자입니다. S가 3개여서 S3라고 불립니다. → [📖 Amazon S3 > 개요](/section/10-amazon-s3#개요)
 
 **핵심 개념:** Amazon S3 — Simple Storage Service (단순 스토리지 서비스)
+
+**관련 노트:** [S3 버킷 Bucket](/section/10-amazon-s3#s3-버킷-bucket)
 
 ---
 
@@ -1423,17 +1501,19 @@
 | D | Amazon Route 53. |
 | E | Amazon Simple Notification Service. |
 
-**(A)** : SES는 이메일 전송 서비스로 모니터링 기능이 없습니다.
+**(A)** : SES는 이메일 전송 서비스로 모니터링 기능이 없습니다. → [📖 Amazon Simple Email Service SES](/section/28-other-services#amazon-simple-email-service-ses)
 
-**(B) 정답** : Amazon CloudWatch는 RDS의 ReadIOPS 및 WriteIOPS 메트릭을 수집하고 알람을 설정할 수 있습니다.
+**(B) 정답** : Amazon CloudWatch는 RDS의 ReadIOPS 및 WriteIOPS 메트릭을 수집하고 알람을 설정할 수 있습니다. → [📖 Amazon CloudWatch Metrics](/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics)
 
-**(C)** : SQS는 메시지 큐 서비스로 직접적인 모니터링 알림 기능이 없습니다.
+**(C)** : SQS는 메시지 큐 서비스로 직접적인 모니터링 알림 기능이 없습니다. → [📖 Amazon SQS Simple Queue Service](/section/15-integration-messaging#amazon-sqs-simple-queue-service)
 
-**(D)** : Route 53은 DNS 서비스로 RDS 모니터링과 관련 없습니다.
+**(D)** : Route 53은 DNS 서비스로 RDS 모니터링과 관련 없습니다. → [📖 Route 53 특징](/section/08-route-53#route-53-특징)
 
-**(E) 정답** : Amazon SNS는 CloudWatch 알람과 통합하여 이메일, SMS, HTTP 등으로 실시간 알림을 운영팀에 전송합니다.
+**(E) 정답** : Amazon SNS는 CloudWatch 알람과 통합하여 이메일, SMS, HTTP 등으로 실시간 알림을 운영팀에 전송합니다. → [📖 Amazon SNS Simple Notification Service](/section/15-integration-messaging#amazon-sns-simple-notification-service)
 
 **핵심 개념:** RDS 모니터링 알림 — CloudWatch(메트릭 수집+알람) + SNS(알림 전송)
+
+**관련 노트:** [Amazon CloudWatch Metrics](/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics), [CloudWatch Alarms](/section/22-monitoring-audit-performance#cloudwatch-alarms), [Amazon SNS](/section/15-integration-messaging#amazon-sns-simple-notification-service)
 
 ---
 
@@ -1458,15 +1538,17 @@
 | C | ELB DNS는 IPv4와 IPv6을 모두 지원합니다. |
 | D | ELB는 IPv4 또는 IPv6 중 하나만 지원하며 둘 다는 아닙니다. |
 
-**(A)** : ELB는 Dualstack DNS 이름으로 IPv4와 IPv6을 모두 지원합니다. 사실입니다.
+**(A)** : ELB는 Dualstack DNS 이름으로 IPv4와 IPv6을 모두 지원합니다. 사실입니다. → [📖 ALB Application Load Balancer 상세](/section/06-high-availability-scalability#alb-application-load-balancer-상세)
 
-**(B)** : ELB와 백엔드 EC2 인스턴스 간 통신은 IPv4를 통해 이루어집니다. 사실입니다.
+**(B)** : ELB와 백엔드 EC2 인스턴스 간 통신은 IPv4를 통해 이루어집니다. 사실입니다. → [📖 ALB Application Load Balancer 상세](/section/06-high-availability-scalability#alb-application-load-balancer-상세)
 
-**(C)** : ELB의 Dualstack DNS는 IPv4와 IPv6 모두 지원합니다. 사실입니다.
+**(C)** : ELB의 Dualstack DNS는 IPv4와 IPv6 모두 지원합니다. 사실입니다. → [📖 ALB Application Load Balancer 상세](/section/06-high-availability-scalability#alb-application-load-balancer-상세)
 
-**(D) 정답** : ELB는 IPv4만 지원하는 것이 아니라 Dualstack을 통해 IPv4와 IPv6 모두 지원합니다. 따라서 "둘 중 하나만 지원"이라는 이 설명은 사실이 아니며 ELB IP 메커니즘 이해에 도움이 되지 않습니다.
+**(D) 정답** : ELB는 IPv4만 지원하는 것이 아니라 Dualstack을 통해 IPv4와 IPv6 모두 지원합니다. 따라서 "둘 중 하나만 지원"이라는 이 설명은 사실이 아니며 ELB IP 메커니즘 이해에 도움이 되지 않습니다. → [📖 ALB Application Load Balancer 상세](/section/06-high-availability-scalability#alb-application-load-balancer-상세)
 
 **핵심 개념:** ELB IP 지원 — Dualstack을 통해 IPv4와 IPv6 모두 지원, 백엔드 통신은 IPv4
+
+**관련 노트:** [Elastic Load Balancer ELB](/section/06-high-availability-scalability#elastic-load-balancer-elb), [IP 주소 IPv4](/section/04-ec2-associate#ip-주소-ipv4)
 
 ---
 
@@ -1493,7 +1575,7 @@
 
 **(A)** : AWS 직원 직책이 아닙니다.
 
-**(B) 정답** : Oracle SQL Developer는 Oracle Corporation이 무료로 제공하는 그래픽 사용자 인터페이스(GUI) 기반의 Java 데이터베이스 개발 도구입니다. Oracle DB 및 Amazon RDS Oracle 인스턴스에 연결하여 사용할 수 있습니다.
+**(B) 정답** : Oracle SQL Developer는 Oracle Corporation이 무료로 제공하는 그래픽 사용자 인터페이스(GUI) 기반의 Java 데이터베이스 개발 도구입니다. Oracle DB 및 Amazon RDS Oracle 인스턴스에 연결하여 사용할 수 있습니다. → [📖 Amazon RDS Relational Database Service](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
 **(C)** : Microsoft가 아닌 Oracle이 개발한 도구입니다.
 
@@ -1524,15 +1606,17 @@
 | C | 보안 그룹과 생체 인증. |
 | D | 보안 그룹과 네트워크 ACL. |
 
-**(A)** : MFA는 사용자 인증 보안에 관한 것이며 인스턴스 네트워크 트래픽 보안이 아닙니다.
+**(A)** : MFA는 사용자 인증 보안에 관한 것이며 인스턴스 네트워크 트래픽 보안이 아닙니다. → [📖 MFA Multi Factor Authentication](/section/02-iam#mfa-multi-factor-authentication)
 
 **(B)** : 2단계 인증은 MFA와 동일하게 사용자 인증 관련입니다.
 
 **(C)** : 생체 인증은 VPC 인스턴스 보안 메커니즘이 아닙니다.
 
-**(D) 정답** : VPC에서는 보안 그룹(인스턴스 수준, stateful)과 네트워크 ACL(서브넷 수준, stateless)을 함께 사용하여 심층 방어(Defense in Depth)를 구현합니다.
+**(D) 정답** : VPC에서는 보안 그룹(인스턴스 수준, stateful)과 네트워크 ACL(서브넷 수준, stateless)을 함께 사용하여 심층 방어(Defense in Depth)를 구현합니다. → [📖 Security Group vs NACL](/section/25-vpc#security-group-vs-nacl)
 
 **핵심 개념:** VPC 네트워크 보안 — 보안 그룹(인스턴스 레벨) + 네트워크 ACL(서브넷 레벨) 이중 보안
+
+**관련 노트:** [Security Group vs NACL](/section/25-vpc#security-group-vs-nacl), [NACL](/section/25-vpc#nacl-network-access-control-list)
 
 ---
 
@@ -1557,15 +1641,17 @@
 | C | 상세(Detailed). |
 | D | 로컬(Local). |
 
-**(A) 정답** : Amazon EBS의 기본(Basic) 모니터링은 5분 간격으로 CloudWatch에 메트릭을 전송하며 무료입니다.
+**(A) 정답** : Amazon EBS의 기본(Basic) 모니터링은 5분 간격으로 CloudWatch에 메트릭을 전송하며 무료입니다. → [📖 EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store)
 
 **(B)** : "Primary" 모니터링은 CloudWatch 모니터링 유형에 존재하지 않습니다.
 
-**(C)** : 상세(Detailed) 모니터링은 Provisioned IOPS 볼륨에서 1분 간격으로 제공됩니다.
+**(C)** : 상세(Detailed) 모니터링은 Provisioned IOPS 볼륨에서 1분 간격으로 제공됩니다. → [📖 EBS Volume Types 6가지](/section/05-ec2-instance-storage#ebs-volume-types-6가지)
 
 **(D)** : "Local" 모니터링은 CloudWatch 유형에 존재하지 않습니다.
 
 **핵심 개념:** EBS 모니터링 — Basic(5분 무료) vs Detailed(1분, Provisioned IOPS 자동)
+
+**관련 노트:** [EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store), [Amazon CloudWatch Metrics](/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics)
 
 ---
 
@@ -1590,7 +1676,7 @@
 | C | 아니요, CloudWatch 데이터에 액세스하려면 Sysadmin이어야 합니다. |
 | D | 예. 모든 사용자가 모든 CloudWatch 데이터를 볼 수 있으며 액세스 권한이 필요하지 않습니다. |
 
-**(A) 정답** : Amazon CloudWatch는 리소스 수준의 IAM 권한 제어를 지원하지 않습니다. CloudWatch에 대한 IAM 정책은 CloudWatch API 작업(예: PutMetricData, GetMetricData) 수준에서만 제어되며, 특정 ELB나 인스턴스의 데이터만 보는 것을 IAM으로 제한할 수 없습니다.
+**(A) 정답** : Amazon CloudWatch는 리소스 수준의 IAM 권한 제어를 지원하지 않습니다. CloudWatch에 대한 IAM 정책은 CloudWatch API 작업(예: PutMetricData, GetMetricData) 수준에서만 제어되며, 특정 ELB나 인스턴스의 데이터만 보는 것을 IAM으로 제한할 수 없습니다. → [📖 Amazon CloudWatch Metrics](/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics)
 
 **(B)** : 특정 리소스 수준의 CloudWatch 데이터 접근 제한은 불가능합니다.
 
@@ -1599,6 +1685,8 @@
 **(D)** : 액세스 권한은 필요하지만 리소스 수준 제한이 불가능합니다.
 
 **핵심 개념:** CloudWatch IAM 제한 — 특정 리소스의 CloudWatch 메트릭만 볼 수 있도록 IAM으로 제한 불가
+
+**관련 노트:** [Amazon CloudWatch Metrics](/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics), [IAM Policies 정책](/section/02-iam#iam-policies-정책)
 
 ---
 
@@ -1623,13 +1711,13 @@
 | C | 인스턴스 메타데이터. |
 | D | Amazon Machine Image. |
 
-**(A)** : User data는 인스턴스 시작 시 전달한 스크립트/데이터이며 인스턴스 속성이 아닙니다.
+**(A)** : User data는 인스턴스 시작 시 전달한 스크립트/데이터이며 인스턴스 속성이 아닙니다. → [📖 EC2 User Data](/section/03-ec2-basics#ec2-user-data)
 
-**(B)** : 리소스 태그는 콘솔/API를 통해 관리되며 인스턴스 내부에서 직접 쿼리하는 용도가 아닙니다.
+**(B)** : 리소스 태그는 콘솔/API를 통해 관리되며 인스턴스 내부에서 직접 쿼리하는 용도가 아닙니다. → [📖 AWS Organizations - Tag Policies](/section/23-advanced-identity#aws-organizations-tag-policies)
 
-**(C) 정답** : 인스턴스 메타데이터(Instance Metadata)는 `http://169.254.169.254/latest/meta-data/` 엔드포인트를 통해 인스턴스 내부에서 쿼리할 수 있습니다. 인스턴스 ID, 퍼블릭 IP, AZ 등 인스턴스 속성을 확인할 수 있습니다.
+**(C) 정답** : 인스턴스 메타데이터(Instance Metadata)는 `http://169.254.169.254/latest/meta-data/` 엔드포인트를 통해 인스턴스 내부에서 쿼리할 수 있습니다. 인스턴스 ID, 퍼블릭 IP, AZ 등 인스턴스 속성을 확인할 수 있습니다. → [📖 EC2 설정 옵션](/section/03-ec2-basics#ec2-설정-옵션)
 
-**(D)** : AMI는 인스턴스 시작에 사용된 이미지이며 인스턴스 내부 쿼리 대상이 아닙니다.
+**(D)** : AMI는 인스턴스 시작에 사용된 이미지이며 인스턴스 내부 쿼리 대상이 아닙니다. → [📖 AMI Amazon Machine Image](/section/05-ec2-instance-storage#ami-amazon-machine-image)
 
 **핵심 개념:** EC2 인스턴스 메타데이터 — 169.254.169.254를 통해 인스턴스 내부에서 속성 조회
 

@@ -25,15 +25,17 @@
 | C | 15일. |
 | D | 5일. |
 
-**(A)** : 45일은 RDS 백업 보존 기간 한도를 초과합니다.
+**(A)** : 45일은 RDS 백업 보존 기간 한도를 초과합니다. → [📖 RDS & Aurora 백업](/section/07-rds-aurora-elasticache#rds-aurora-백업)
 
-**(B) 정답** : Amazon RDS의 자동 백업 보존 기간은 최대 35일까지 설정 가능합니다.
+**(B) 정답** : Amazon RDS의 자동 백업 보존 기간은 최대 35일까지 설정 가능합니다. → [📖 RDS & Aurora 백업](/section/07-rds-aurora-elasticache#rds-aurora-백업)
 
-**(C)** : 15일은 유효한 값이지만 최댓값이 아닙니다.
+**(C)** : 15일은 유효한 값이지만 최댓값이 아닙니다. → [📖 RDS & Aurora 백업](/section/07-rds-aurora-elasticache#rds-aurora-백업)
 
-**(D)** : 5일은 기본값에 가깝지만 최댓값이 아닙니다.
+**(D)** : 5일은 기본값에 가깝지만 최댓값이 아닙니다. → [📖 RDS & Aurora 백업](/section/07-rds-aurora-elasticache#rds-aurora-백업)
 
 **핵심 개념:** Amazon RDS 자동 백업 보존 기간
+
+**관련 노트:** [RDS & Aurora 백업](/section/07-rds-aurora-elasticache#rds-aurora-백업)
 
 ---
 
@@ -58,15 +60,17 @@
 | C | Route 53 지연 시간 기반 라우팅 및 상태 확인을 사용하여 EC2 m1.large 및 c3.2xlarge 인스턴스로 직접 트래픽을 라우팅합니다. ELB는 종료합니다. |
 | D | 두 개의 c3.2xlarge 인스턴스로 ELB를 구성하고 최대 두 개의 c3.2xlarge 인스턴스를 위한 온디맨드 Auto Scaling 그룹을 사용합니다. m1.large 인스턴스는 종료합니다. |
 
-**(A) 정답** : 인스턴스 유형별로 별도 ELB를 두고 Route 53 가중치 라운드 로빈으로 분산하면 각 인스턴스 유형의 용량에 맞게 트래픽을 조절할 수 있어 가장 비용 효율적입니다.
+**(A) 정답** : 인스턴스 유형별로 별도 ELB를 두고 Route 53 가중치 라운드 로빈으로 분산하면 각 인스턴스 유형의 용량에 맞게 트래픽을 조절할 수 있어 가장 비용 효율적입니다. → [📖 라우팅 정책 Routing Policies](/section/08-route-53#라우팅-정책-routing-policies)
 
-**(B)** : c3.2xlarge의 유휴 용량을 활용하지 못하고 추가 온디맨드 인스턴스 비용이 발생합니다.
+**(B)** : c3.2xlarge의 유휴 용량을 활용하지 못하고 추가 온디맨드 인스턴스 비용이 발생합니다. → [📖 EC2 구매 옵션 시험 핵심!](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
-**(C)** : ELB를 제거하면 고가용성이 저하되고 Route 53 지연 시간 기반 라우팅만으로는 용량 균형을 맞추기 어렵습니다.
+**(C)** : ELB를 제거하면 고가용성이 저하되고 Route 53 지연 시간 기반 라우팅만으로는 용량 균형을 맞추기 어렵습니다. → [📖 Elastic Load Balancer ELB](/section/06-high-availability-scalability#elastic-load-balancer-elb)
 
-**(D)** : 이미 구매한 m1.large RI를 버리는 것은 비용 낭비이며, RI 비용은 사용 여부와 무관하게 청구됩니다.
+**(D)** : 이미 구매한 m1.large RI를 버리는 것은 비용 낭비이며, RI 비용은 사용 여부와 무관하게 청구됩니다. → [📖 EC2 구매 옵션 시험 핵심!](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
 **핵심 개념:** Route 53 가중치 기반 라우팅, 예약 인스턴스 활용
+
+**관련 노트:** [EC2 구매 옵션 시험 핵심!](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심), [Elastic Load Balancer ELB](/section/06-high-availability-scalability#elastic-load-balancer-elb), [라우팅 정책 Routing Policies](/section/08-route-53#라우팅-정책-routing-policies)
 
 ---
 
@@ -95,19 +99,21 @@
 | E | EBS 볼륨을 언마운트합니다. 암호화 속성을 True로 전환합니다. Amazon EBS 볼륨을 다시 마운트합니다. |
 | F | 현재 Amazon EBS 볼륨의 스냅샷을 생성합니다. 스냅샷을 새로운 암호화된 EBS 볼륨으로 복원합니다. Amazon EBS 볼륨을 마운트합니다. |
 
-**(A)** : CloudHSM에 키를 업로드하는 것만으로는 기존 비암호화 EBS 볼륨이 암호화되지 않습니다.
+**(A)** : CloudHSM에 키를 업로드하는 것만으로는 기존 비암호화 EBS 볼륨이 암호화되지 않습니다. → [📖 CloudHSM](/section/24-security-encryption#cloudhsm)
 
-**(B)** : EBS 볼륨을 CloudHSM과 직접 연결하는 것은 지원되지 않는 방식입니다.
+**(B)** : EBS 볼륨을 CloudHSM과 직접 연결하는 것은 지원되지 않는 방식입니다. → [📖 EBS Encryption](/section/05-ec2-instance-storage#ebs-encryption)
 
 **(C)** : 단순 재마운트는 데이터 암호화나 보안 강화에 아무런 효과가 없습니다.
 
-**(D) 정답** : 기존 EBS 볼륨은 암호화 속성을 변경할 수 없으므로, 새 암호화 볼륨을 만들어 데이터를 이전하는 방법이 올바른 접근입니다.
+**(D) 정답** : 기존 EBS 볼륨은 암호화 속성을 변경할 수 없으므로, 새 암호화 볼륨을 만들어 데이터를 이전하는 방법이 올바른 접근입니다. → [📖 EBS Encryption](/section/05-ec2-instance-storage#ebs-encryption)
 
-**(E)** : EBS 볼륨은 생성 후 암호화 속성을 변경할 수 없습니다. 이 방법은 작동하지 않습니다.
+**(E)** : EBS 볼륨은 생성 후 암호화 속성을 변경할 수 없습니다. 이 방법은 작동하지 않습니다. → [📖 EBS Encryption](/section/05-ec2-instance-storage#ebs-encryption)
 
-**(F)** : F 옵션도 유효한 대안이지만, 이 문제에서 정답으로 선택된 것은 D입니다. 스냅샷을 통한 암호화 볼륨 생성도 가능하나, 직접 새 볼륨을 생성하는 D가 더 직접적입니다.
+**(F)** : F 옵션도 유효한 대안이지만, 이 문제에서 정답으로 선택된 것은 D입니다. 스냅샷을 통한 암호화 볼륨 생성도 가능하나, 직접 새 볼륨을 생성하는 D가 더 직접적입니다. → [📖 EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots)
 
 **핵심 개념:** EBS 볼륨 암호화 (기존 볼륨 암호화 불가, 새 볼륨 생성 필요)
+
+**관련 노트:** [EBS Encryption](/section/05-ec2-instance-storage#ebs-encryption), [CloudHSM](/section/24-security-encryption#cloudhsm)
 
 ---
 
@@ -132,15 +138,17 @@
 | C | RDS 보안 그룹의 인바운드 규칙에 US West 리전의 보안 그룹을 추가합니다. |
 | D | RDS에 접근 권한이 있는 IAM 역할을 생성하고 US West 리전의 인스턴스에 연결합니다. |
 
-**(A) 정답** : 리전 간 RDS 접근 시 보안 그룹은 다른 리전의 보안 그룹을 참조할 수 없으므로, EC2 인스턴스의 퍼블릭 IP 또는 IP 범위를 RDS 인바운드 규칙에 직접 등록해야 합니다.
+**(A) 정답** : 리전 간 RDS 접근 시 보안 그룹은 다른 리전의 보안 그룹을 참조할 수 없으므로, EC2 인스턴스의 퍼블릭 IP 또는 IP 범위를 RDS 인바운드 규칙에 직접 등록해야 합니다. → [📖 Security Group vs NACL](/section/25-vpc#security-group-vs-nacl)
 
-**(B)** : 리전 간 RDS 접근은 가능합니다. 네트워크 구성만 올바르게 하면 됩니다.
+**(B)** : 리전 간 RDS 접근은 가능합니다. 네트워크 구성만 올바르게 하면 됩니다. → [📖 Amazon RDS](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
-**(C)** : 보안 그룹 참조는 같은 리전 내에서만 가능합니다. 다른 리전의 보안 그룹을 참조할 수 없습니다.
+**(C)** : 보안 그룹 참조는 같은 리전 내에서만 가능합니다. 다른 리전의 보안 그룹을 참조할 수 없습니다. → [📖 Security Group vs NACL](/section/25-vpc#security-group-vs-nacl)
 
-**(D)** : IAM 역할은 API 호출 권한을 관리하지, 네트워크 수준의 접근 제어는 하지 않습니다.
+**(D)** : IAM 역할은 API 호출 권한을 관리하지, 네트워크 수준의 접근 제어는 하지 않습니다. → [📖 IAM Roles 역할](/section/02-iam#iam-roles-역할)
 
 **핵심 개념:** RDS 보안 그룹, 리전 간 접근 제어
+
+**관련 노트:** [RDS & Aurora 보안](/section/07-rds-aurora-elasticache#rds-aurora-보안), [Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹)
 
 ---
 
@@ -165,15 +173,17 @@
 | C | 온프레미스 소프트웨어 어플라이언스를 클라우드 기반 스토리지와 연결하여 온프레미스 IT 환경과 AWS 스토리지 인프라 간의 원활하고 안전한 통합을 제공합니다. |
 | D | 비정기적으로 사용되는 데이터, 즉 '콜드 데이터'에 최적화된 스토리지 서비스입니다. |
 
-**(A)** : 이는 AWS Snowball에 대한 설명입니다.
+**(A)** : 이는 AWS Snowball에 대한 설명입니다. → [📖 AWS Snowball Snow Family](/section/14-storage-extras#aws-snowball-snow-family)
 
-**(B)** : 이는 Amazon CloudFront에 대한 설명입니다.
+**(B)** : 이는 Amazon CloudFront에 대한 설명입니다. → [📖 CloudFront 기본 개념](/section/13-cloudfront-global-accelerator#cloudfront-기본-개념)
 
-**(C) 정답** : AWS Storage Gateway는 온프레미스 환경과 AWS 클라우드 스토리지를 연결하는 하이브리드 스토리지 서비스로, 재해 복구, 백업, 데이터 마이그레이션에 활용됩니다.
+**(C) 정답** : AWS Storage Gateway는 온프레미스 환경과 AWS 클라우드 스토리지를 연결하는 하이브리드 스토리지 서비스로, 재해 복구, 백업, 데이터 마이그레이션에 활용됩니다. → [📖 AWS Storage Gateway](/section/14-storage-extras#aws-storage-gateway)
 
-**(D)** : 이는 Amazon S3 Glacier에 대한 설명입니다.
+**(D)** : 이는 Amazon S3 Glacier에 대한 설명입니다. → [📖 S3 Storage Classes](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
 **핵심 개념:** AWS Storage Gateway — 하이브리드 스토리지
+
+**관련 노트:** [AWS Storage Gateway](/section/14-storage-extras#aws-storage-gateway), [재해 복구 기본 개념](/section/26-disaster-recovery-migrations#재해-복구-기본-개념)
 
 ---
 
@@ -200,13 +210,15 @@
 
 **(A)** : 보안 토큰 풀은 RDS 접근 제어에 사용되는 개념이 아닙니다.
 
-**(B)** : 보안 토큰은 임시 자격 증명(STS)에 사용되며 DB 접근 제어와는 다릅니다.
+**(B)** : 보안 토큰은 임시 자격 증명(STS)에 사용되며 DB 접근 제어와는 다릅니다. → [📖 AWS KMS Key Management Service](/section/24-security-encryption#aws-kms-key-management-service)
 
 **(C)** : 보안 풀은 존재하지 않는 개념입니다.
 
-**(D) 정답** : RDS DB 인스턴스에 대한 네트워크 접근은 보안 그룹(Security Group)으로 제어합니다. 인바운드 규칙에 허용할 IP 또는 보안 그룹을 지정합니다.
+**(D) 정답** : RDS DB 인스턴스에 대한 네트워크 접근은 보안 그룹(Security Group)으로 제어합니다. 인바운드 규칙에 허용할 IP 또는 보안 그룹을 지정합니다. → [📖 Security Group vs NACL](/section/25-vpc#security-group-vs-nacl)
 
 **핵심 개념:** RDS 보안 그룹
+
+**관련 노트:** [RDS & Aurora 보안](/section/07-rds-aurora-elasticache#rds-aurora-보안), [Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹)
 
 ---
 
@@ -231,15 +243,17 @@
 | C | Oracle Data Pump. |
 | D | DBMS_FILE_TRANSFER. |
 
-**(A)** : Oracle export/import 유틸리티(exp/imp)는 레거시 도구로, Data Pump보다 성능이 낮습니다.
+**(A)** : Oracle export/import 유틸리티(exp/imp)는 레거시 도구로, Data Pump보다 성능이 낮습니다. → [📖 DMS Database Migration Service](/section/26-disaster-recovery-migrations#dms-database-migration-service-데이터베이스-마이그레이션-서비스)
 
-**(B)** : SQL Developer는 GUI 도구로 대용량 데이터 마이그레이션에는 적합하지 않습니다.
+**(B)** : SQL Developer는 GUI 도구로 대용량 데이터 마이그레이션에는 적합하지 않습니다. → [📖 DMS Database Migration Service](/section/26-disaster-recovery-migrations#dms-database-migration-service-데이터베이스-마이그레이션-서비스)
 
-**(C) 정답** : Oracle Data Pump(expdp/impdp)는 AWS가 RDS로의 Oracle 데이터 마이그레이션 시 권장하는 고성능 도구입니다.
+**(C) 정답** : Oracle Data Pump(expdp/impdp)는 AWS가 RDS로의 Oracle 데이터 마이그레이션 시 권장하는 고성능 도구입니다. → [📖 DMS Database Migration Service](/section/26-disaster-recovery-migrations#dms-database-migration-service-데이터베이스-마이그레이션-서비스)
 
-**(D)** : DBMS_FILE_TRANSFER는 데이터베이스 파일을 전송하는 패키지로, 일반적인 데이터 마이그레이션 도구로는 권장되지 않습니다.
+**(D)** : DBMS_FILE_TRANSFER는 데이터베이스 파일을 전송하는 패키지로, 일반적인 데이터 마이그레이션 도구로는 권장되지 않습니다. → [📖 DMS Database Migration Service](/section/26-disaster-recovery-migrations#dms-database-migration-service-데이터베이스-마이그레이션-서비스)
 
 **핵심 개념:** Oracle RDS 데이터 마이그레이션 — Oracle Data Pump
+
+**관련 노트:** [DMS Database Migration Service, 데이터베이스 마이그레이션 서비스](/section/26-disaster-recovery-migrations#dms-database-migration-service-데이터베이스-마이그레이션-서비스)
 
 ---
 
@@ -274,6 +288,8 @@
 
 **핵심 개념:** AWS Support, EC2 접근성 자동 복구
 
+**관련 노트:** [Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg), [Amazon CloudWatch Metrics](/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics)
+
 ---
 
 ### Q59. HTTP Query-based requests are HTTP requests that use the HTTP verb GET or POST and a Query parameter named [...].
@@ -307,6 +323,8 @@
 
 **핵심 개념:** AWS HTTP 쿼리 기반 API — Action 파라미터
 
+**관련 노트:** [EC2 구성 요소](/section/03-ec2-basics#ec2-구성-요소)
+
 ---
 
 ### Q60. A friend tells you he is being charged $100 a month to host his WordPress website, and you tell him you can move it to AWS for him and he will only pay a fraction of that, which makes him very happy. He then tells you he is being charged $50 a month for the domain, which is registered with the same people that set it up, and he asks if it's possible to move that to AWS as well. You tell him you aren't sure, but will look into it. Which of the following statements is true in regards to transferring domain names to AWS?
@@ -330,15 +348,17 @@
 | C | AWS Direct Connect를 통해 기존 도메인을 이전할 수 있습니다. |
 | D | AWS Import/Export를 통해 기존 도메인을 이전할 수 있습니다. |
 
-**(A)** : 기존 도메인을 AWS로 이전하는 것은 가능합니다.
+**(A)** : 기존 도메인을 AWS로 이전하는 것은 가능합니다. → [📖 Domain Registrar vs DNS Service](/section/08-route-53#domain-registrar-vs-dns-service)
 
-**(B) 정답** : Amazon Route 53은 도메인 등록 서비스를 제공하며, 다른 등록 기관에서 관리 중인 기존 도메인을 Route 53으로 이전할 수 있습니다.
+**(B) 정답** : Amazon Route 53은 도메인 등록 서비스를 제공하며, 다른 등록 기관에서 관리 중인 기존 도메인을 Route 53으로 이전할 수 있습니다. → [📖 Domain Registrar vs DNS Service](/section/08-route-53#domain-registrar-vs-dns-service)
 
-**(C)** : Direct Connect는 네트워크 연결 서비스로 도메인 이전과는 관련이 없습니다.
+**(C)** : Direct Connect는 네트워크 연결 서비스로 도메인 이전과는 관련이 없습니다. → [📖 Direct Connect DX](/section/25-vpc#direct-connect-dx)
 
-**(D)** : AWS Import/Export는 대용량 데이터 물리적 이전 서비스로 도메인 이전과는 관련이 없습니다.
+**(D)** : AWS Import/Export는 대용량 데이터 물리적 이전 서비스로 도메인 이전과는 관련이 없습니다. → [📖 AWS Snowball Snow Family](/section/14-storage-extras#aws-snowball-snow-family)
 
 **핵심 개념:** Amazon Route 53 — 도메인 등록 및 이전
+
+**관련 노트:** [Direct Connect DX](/section/25-vpc#direct-connect-dx), [Domain Registrar vs DNS Service](/section/08-route-53#domain-registrar-vs-dns-service)
 
 ---
 
@@ -363,15 +383,17 @@
 | C | ec2-create-snapshot. |
 | D | ec2-new-snapshot. |
 
-**(A)** : ec2-deploy-snapshot은 존재하지 않는 명령어입니다.
+**(A)** : ec2-deploy-snapshot은 존재하지 않는 명령어입니다. → [📖 EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots)
 
-**(B)** : ec2-fresh-snapshot은 존재하지 않는 명령어입니다.
+**(B)** : ec2-fresh-snapshot은 존재하지 않는 명령어입니다. → [📖 EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots)
 
-**(C) 정답** : EBS 스냅샷 생성 CLI 명령어는 ec2-create-snapshot 또는 현재 AWS CLI 기준 aws ec2 create-snapshot 입니다.
+**(C) 정답** : EBS 스냅샷 생성 CLI 명령어는 ec2-create-snapshot 또는 현재 AWS CLI 기준 aws ec2 create-snapshot 입니다. → [📖 EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots)
 
-**(D)** : ec2-new-snapshot은 존재하지 않는 명령어입니다.
+**(D)** : ec2-new-snapshot은 존재하지 않는 명령어입니다. → [📖 EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots)
 
 **핵심 개념:** EBS 스냅샷 생성 CLI 명령어
+
+**관련 노트:** [EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots)
 
 ---
 
@@ -398,13 +420,15 @@
 
 **(A)** : 다중 IP 주소는 인스턴스에 여러 IP를 할당하는 기능을 말하며 이 문맥에서 정답이 아닙니다.
 
-**(B)** : 공인 IP 주소는 인터넷에서 접근 가능한 주소입니다.
+**(B)** : 공인 IP 주소는 인터넷에서 접근 가능한 주소입니다. → [📖 IP 주소 IPv4](/section/04-ec2-associate#ip-주소-ipv4)
 
-**(C) 정답** : 사설 IP 주소(Private IP)는 VPC 내부에서만 통신 가능하며, EC2 인스턴스 내부 네트워크 전용 주소입니다.
+**(C) 정답** : 사설 IP 주소(Private IP)는 VPC 내부에서만 통신 가능하며, EC2 인스턴스 내부 네트워크 전용 주소입니다. → [📖 IP 주소 IPv4](/section/04-ec2-associate#ip-주소-ipv4)
 
-**(D)** : 탄력적 IP는 퍼블릭 IP의 일종으로 인터넷에서 접근 가능합니다.
+**(D)** : 탄력적 IP는 퍼블릭 IP의 일종으로 인터넷에서 접근 가능합니다. → [📖 Elastic IP](/section/04-ec2-associate#elastic-ip)
 
 **핵심 개념:** EC2 IP 주소 — 사설 IP vs 공인 IP
+
+**관련 노트:** [Elastic IP](/section/04-ec2-associate#elastic-ip), [IP 주소 IPv4](/section/04-ec2-associate#ip-주소-ipv4), [Internet Gateway IGW](/section/25-vpc#internet-gateway-igw)
 
 ---
 
@@ -429,15 +453,17 @@
 | C | 인스턴스가 재시작될 때까지 데이터를 사용할 수 없습니다. |
 | D | 데이터는 자동으로 삭제됩니다. |
 
-**(A)** : 인스턴스 스토어 기반(S3 기반 AMI) 인스턴스는 종료 시 스냅샷이 자동 생성되지 않습니다.
+**(A)** : 인스턴스 스토어 기반(S3 기반 AMI) 인스턴스는 종료 시 스냅샷이 자동 생성되지 않습니다. → [📖 EC2 Instance Store](/section/05-ec2-instance-storage#ec2-instance-store)
 
-**(B)** : 인스턴스 스토어 기반 인스턴스는 종료 시 데이터가 EBS 볼륨으로 저장되지 않습니다.
+**(B)** : 인스턴스 스토어 기반 인스턴스는 종료 시 데이터가 EBS 볼륨으로 저장되지 않습니다. → [📖 EC2 Instance Store](/section/05-ec2-instance-storage#ec2-instance-store)
 
-**(C)** : 인스턴스 스토어는 재시작 시 데이터가 유지되지 않으므로 이 설명은 부정확합니다.
+**(C)** : 인스턴스 스토어는 재시작 시 데이터가 유지되지 않으므로 이 설명은 부정확합니다. → [📖 EC2 Instance Store](/section/05-ec2-instance-storage#ec2-instance-store)
 
-**(D) 정답** : 인스턴스 스토어(S3 기반 AMI) 루트 볼륨은 인스턴스 종료 시 데이터가 영구 삭제됩니다. 이것이 인스턴스 스토어의 핵심 특징입니다.
+**(D) 정답** : 인스턴스 스토어(S3 기반 AMI) 루트 볼륨은 인스턴스 종료 시 데이터가 영구 삭제됩니다. 이것이 인스턴스 스토어의 핵심 특징입니다. → [📖 EC2 Instance Store](/section/05-ec2-instance-storage#ec2-instance-store)
 
 **핵심 개념:** EC2 인스턴스 스토어(S3 기반 AMI) — 종료 시 데이터 삭제
+
+**관련 노트:** [EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots), [EC2 Instance Store](/section/05-ec2-instance-storage#ec2-instance-store)
 
 ---
 
@@ -462,15 +488,17 @@
 | C | ICMP. |
 | D | IPv6. |
 
-**(A)** : HTTPS는 보안 HTTP이지만 ELB 상태 확인의 기본 프로토콜이 아닙니다.
+**(A)** : HTTPS는 보안 HTTP이지만 ELB 상태 확인의 기본 프로토콜이 아닙니다. → [📖 Elastic Load Balancer ELB](/section/06-high-availability-scalability#elastic-load-balancer-elb)
 
-**(B) 정답** : ELB의 기본 상태 확인 프로토콜은 HTTP입니다. 기본적으로 포트 80에서 HTTP로 상태를 확인합니다.
+**(B) 정답** : ELB의 기본 상태 확인 프로토콜은 HTTP입니다. 기본적으로 포트 80에서 HTTP로 상태를 확인합니다. → [📖 Elastic Load Balancer ELB](/section/06-high-availability-scalability#elastic-load-balancer-elb)
 
 **(C)** : ICMP(ping)는 네트워크 계층 프로토콜로 ELB 상태 확인에 사용되지 않습니다.
 
 **(D)** : IPv6는 IP 주소 체계이며 상태 확인 프로토콜이 아닙니다.
 
 **핵심 개념:** ELB 상태 확인 — 기본 프로토콜 HTTP
+
+**관련 노트:** [Elastic Load Balancer ELB](/section/06-high-availability-scalability#elastic-load-balancer-elb)
 
 ---
 
@@ -497,13 +525,15 @@
 
 **(A) 정답** : ELB가 암호화에 '4계층 키 기반 아키텍처'를 사용한다는 설명은 사실이 아닙니다. 이것이 장점이 아닌 잘못된 설명입니다.
 
-**(B)** : ELB는 실제로 단일 DNS 엔드포인트를 제공하고 DDoS 완화 등 기본 보안 기능을 제공합니다.
+**(B)** : ELB는 실제로 단일 DNS 엔드포인트를 제공하고 DDoS 완화 등 기본 보안 기능을 제공합니다. → [📖 Elastic Load Balancer ELB](/section/06-high-availability-scalability#elastic-load-balancer-elb)
 
-**(C)** : ELB는 SSL/TLS 오프로딩을 통해 EC2 인스턴스의 암복호화 부담을 줄여줍니다.
+**(C)** : ELB는 SSL/TLS 오프로딩을 통해 EC2 인스턴스의 암복호화 부담을 줄여줍니다. → [📖 SSL/TLS 인증서](/section/06-high-availability-scalability#ssltls-인증서)
 
-**(D)** : ELB는 HTTPS를 통한 종단 간 암호화를 지원합니다.
+**(D)** : ELB는 HTTPS를 통한 종단 간 암호화를 지원합니다. → [📖 SSL/TLS 인증서](/section/06-high-availability-scalability#ssltls-인증서)
 
 **핵심 개념:** ELB 보안 기능 — SSL 오프로딩, 단일 접점
+
+**관련 노트:** [SSL/TLS 인증서](/section/06-high-availability-scalability#ssltls-인증서), [Elastic Load Balancer ELB](/section/06-high-availability-scalability#elastic-load-balancer-elb)
 
 ---
 
@@ -528,15 +558,17 @@
 | C | ELB IP 주소를 화이트리스트에 등록하고 애플리케이션 서버에서 ELB를 통해 결제 요청을 라우팅합니다. |
 | D | Auto Scaling 그룹의 애플리케이션 인스턴스에 자동으로 공인 IP를 할당하고 부팅 시 스크립트로 각 인스턴스의 공인 IP를 결제 화이트리스트 API에 추가합니다. |
 
-**(A) 정답** : NAT 인스턴스 2개에 고정 탄력적 IP를 부여하면 화이트리스트 IP가 2개로 고정되어 최대 4개 한도 내에서 유지됩니다. 고가용성도 확보됩니다.
+**(A) 정답** : NAT 인스턴스 2개에 고정 탄력적 IP를 부여하면 화이트리스트 IP가 2개로 고정되어 최대 4개 한도 내에서 유지됩니다. 고가용성도 확보됩니다. → [📖 NAT Instance 레거시](/section/25-vpc#nat-instance-레거시-시험에-출제)
 
-**(B)** : 인터넷 게이트웨이는 고정 IP를 갖지 않으므로 화이트리스트 등록이 불가능합니다.
+**(B)** : 인터넷 게이트웨이는 고정 IP를 갖지 않으므로 화이트리스트 등록이 불가능합니다. → [📖 Internet Gateway IGW](/section/25-vpc#internet-gateway-igw)
 
-**(C)** : ELB IP는 동적으로 변경될 수 있어 화이트리스트에 고정 등록하기 적합하지 않습니다.
+**(C)** : ELB IP는 동적으로 변경될 수 있어 화이트리스트에 고정 등록하기 적합하지 않습니다. → [📖 Elastic Load Balancer ELB](/section/06-high-availability-scalability#elastic-load-balancer-elb)
 
-**(D)** : Auto Scaling으로 인스턴스 수가 늘면 IP도 늘어나 4개 한도를 초과할 수 있고, 인스턴스마다 공인 IP가 직접 노출되는 보안 위험도 있습니다.
+**(D)** : Auto Scaling으로 인스턴스 수가 늘면 IP도 늘어나 4개 한도를 초과할 수 있고, 인스턴스마다 공인 IP가 직접 노출되는 보안 위험도 있습니다. → [📖 Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
 **핵심 개념:** NAT 인스턴스 + 탄력적 IP — 아웃바운드 IP 고정
+
+**관련 노트:** [Elastic IP](/section/04-ec2-associate#elastic-ip), [NAT Instance 레거시, 시험에 출제](/section/25-vpc#nat-instance-레거시-시험에-출제)
 
 ---
 
@@ -561,15 +593,17 @@
 | C | 발송 한도는 수신자가 아닌 메시지를 기준으로 합니다. |
 | D | 모든 Amazon SES 발신자는 고유한 발송 한도를 갖습니다. |
 
-**(A)** : 신규 SES 계정의 기본 한도는 이것과 다를 수 있으며, 한도는 계정별로 다릅니다.
+**(A)** : 신규 SES 계정의 기본 한도는 이것과 다를 수 있으며, 한도는 계정별로 다릅니다. → [📖 Amazon Simple Email Service SES](/section/28-other-services#amazon-simple-email-service-ses)
 
-**(B)** : SES 발송 한도는 계정별로 개별적으로 설정됩니다. 모든 발신자가 동일한 한도를 갖지 않습니다.
+**(B)** : SES 발송 한도는 계정별로 개별적으로 설정됩니다. 모든 발신자가 동일한 한도를 갖지 않습니다. → [📖 Amazon Simple Email Service SES](/section/28-other-services#amazon-simple-email-service-ses)
 
-**(C)** : SES 발송 한도는 수신자(recipients) 수를 기준으로 하며, 메시지 수가 아닙니다.
+**(C)** : SES 발송 한도는 수신자(recipients) 수를 기준으로 하며, 메시지 수가 아닙니다. → [📖 Amazon Simple Email Service SES](/section/28-other-services#amazon-simple-email-service-ses)
 
-**(D) 정답** : 각 Amazon SES 계정은 사용 패턴, 요청, 자동 평가 등에 따라 고유한 발송 한도(일일 발송량, 초당 발송률)를 갖습니다.
+**(D) 정답** : 각 Amazon SES 계정은 사용 패턴, 요청, 자동 평가 등에 따라 고유한 발송 한도(일일 발송량, 초당 발송률)를 갖습니다. → [📖 Amazon Simple Email Service SES](/section/28-other-services#amazon-simple-email-service-ses)
 
 **핵심 개념:** Amazon SES 발송 한도 — 계정별 고유 한도
+
+**관련 노트:** [Amazon Simple Email Service SES](/section/28-other-services#amazon-simple-email-service-ses)
 
 ---
 
@@ -594,15 +628,17 @@
 | C | RDS MySQL 인스턴스 크기를 늘리고 프로비저닝된 IOPS를 구현합니다. |
 | D | 각 가용 영역에 RDS MySQL 읽기 복제본을 추가합니다. |
 
-**(A) 정답** : ElastiCache는 자주 읽히는 데이터를 메모리에 캐싱하여 RDS 읽기 부하를 크게 줄입니다. 최종 일관성 모델에도 적합합니다.
+**(A) 정답** : ElastiCache는 자주 읽히는 데이터를 메모리에 캐싱하여 RDS 읽기 부하를 크게 줄입니다. 최종 일관성 모델에도 적합합니다. → [📖 Amazon ElastiCache](/section/07-rds-aurora-elasticache#amazon-elasticache)
 
 **(B)** : 샤딩은 쓰기 확장에 효과적이지만, 구현 복잡도가 높고 읽기 경합 해소에 가장 직접적인 방법이 아닙니다.
 
-**(C)** : 인스턴스 크기 증가와 IOPS 향상은 일시적 완화책이지만 근본적인 읽기 경합 해소 방법이 아닙니다.
+**(C)** : 인스턴스 크기 증가와 IOPS 향상은 일시적 완화책이지만 근본적인 읽기 경합 해소 방법이 아닙니다. → [📖 Amazon RDS](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
-**(D) 정답** : 읽기 복제본(Read Replica)은 읽기 트래픽을 복제본으로 분산하여 기본 인스턴스의 읽기 경합을 직접 해소합니다.
+**(D) 정답** : 읽기 복제본(Read Replica)은 읽기 트래픽을 복제본으로 분산하여 기본 인스턴스의 읽기 경합을 직접 해소합니다. → [📖 RDS Read Replicas](/section/07-rds-aurora-elasticache#rds-read-replicas)
 
 **핵심 개념:** RDS 읽기 경합 해소 — ElastiCache, 읽기 복제본
+
+**관련 노트:** [RDS Read Replicas](/section/07-rds-aurora-elasticache#rds-read-replicas), [RDS Multi-AZ 재해 복구](/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구), [Amazon ElastiCache](/section/07-rds-aurora-elasticache#amazon-elasticache)
 
 ---
 
@@ -660,7 +696,7 @@
 | C | 이중 복사(dual copy). |
 | D | 대규모 복사(mass copy). |
 
-**(A) 정답** : SQL Server의 BCP(Bulk Copy Program)는 대용량 데이터를 효율적으로 복사하는 유틸리티로, AWS RDS SQL Server로 데이터를 마이그레이션할 때 권장되는 방법입니다.
+**(A) 정답** : SQL Server의 BCP(Bulk Copy Program)는 대용량 데이터를 효율적으로 복사하는 유틸리티로, AWS RDS SQL Server로 데이터를 마이그레이션할 때 권장되는 방법입니다. → [📖 DMS Database Migration Service](/section/26-disaster-recovery-migrations#dms-database-migration-service-데이터베이스-마이그레이션-서비스)
 
 **(B)** : 그룹 복사(group copy)는 SQL Server의 실제 기능이 아닙니다.
 
@@ -669,6 +705,8 @@
 **(D)** : 대규모 복사(mass copy)는 SQL Server의 실제 기능이 아닙니다.
 
 **핵심 개념:** SQL Server BCP(Bulk Copy Program) — RDS 데이터 마이그레이션
+
+**관련 노트:** [DMS Database Migration Service, 데이터베이스 마이그레이션 서비스](/section/26-disaster-recovery-migrations#dms-database-migration-service-데이터베이스-마이그레이션-서비스)
 
 ---
 
@@ -693,15 +731,17 @@
 | C | 포트 80 인바운드 트래픽만 허용, 모든 아웃바운드 트래픽 허용. |
 | D | 모든 인바운드 트래픽 허용, 모든 아웃바운드 트래픽 허용. |
 
-**(A)** : 기본 보안 그룹은 인바운드를 모두 차단하므로 이 설명은 틀렸습니다.
+**(A)** : 기본 보안 그룹은 인바운드를 모두 차단하므로 이 설명은 틀렸습니다. → [📖 Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹)
 
-**(B) 정답** : 보안 그룹의 기본값은 인바운드 트래픽을 모두 거부하고, 아웃바운드 트래픽은 모두 허용합니다. 인바운드 규칙은 명시적으로 추가해야 합니다.
+**(B) 정답** : 보안 그룹의 기본값은 인바운드 트래픽을 모두 거부하고, 아웃바운드 트래픽은 모두 허용합니다. 인바운드 규칙은 명시적으로 추가해야 합니다. → [📖 Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹)
 
-**(C)** : 기본 보안 그룹은 포트 80만 허용하지 않습니다.
+**(C)** : 기본 보안 그룹은 포트 80만 허용하지 않습니다. → [📖 Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹)
 
-**(D)** : 기본 보안 그룹은 인바운드를 모두 허용하지 않습니다.
+**(D)** : 기본 보안 그룹은 인바운드를 모두 허용하지 않습니다. → [📖 Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹)
 
 **핵심 개념:** VPC 보안 그룹 기본 설정 — 인바운드 전체 차단, 아웃바운드 전체 허용
+
+**관련 노트:** [Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹), [Security Group vs NACL](/section/25-vpc#security-group-vs-nacl)
 
 ---
 
@@ -726,15 +766,17 @@
 | C | Amazon CloudFront. |
 | D | Amazon EBS. |
 
-**(A)** : Amazon S3는 객체 스토리지 서비스입니다.
+**(A)** : Amazon S3는 객체 스토리지 서비스입니다. → [📖 Amazon S3 개요](/section/10-amazon-s3#개요)
 
-**(B)** : Amazon Glacier(현 S3 Glacier)는 아카이브 스토리지 서비스입니다.
+**(B)** : Amazon Glacier(현 S3 Glacier)는 아카이브 스토리지 서비스입니다. → [📖 S3 Storage Classes](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
-**(C) 정답** : Amazon CloudFront는 콘텐츠 전송 네트워크(CDN) 서비스로, 스토리지 서비스가 아닙니다.
+**(C) 정답** : Amazon CloudFront는 콘텐츠 전송 네트워크(CDN) 서비스로, 스토리지 서비스가 아닙니다. → [📖 CloudFront 기본 개념](/section/13-cloudfront-global-accelerator#cloudfront-기본-개념)
 
-**(D)** : Amazon EBS는 블록 스토리지 서비스입니다.
+**(D)** : Amazon EBS는 블록 스토리지 서비스입니다. → [📖 EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store)
 
 **핵심 개념:** AWS 스토리지 서비스 vs CDN (CloudFront)
+
+**관련 노트:** [EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store), [S3 Storage Classes 스토리지 클래스](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스), [CloudFront vs S3 Cross Region Replication](/section/13-cloudfront-global-accelerator#cloudfront-vs-s3-cross-region-replication)
 
 ---
 
@@ -759,15 +801,17 @@
 | C | 먼저 EBS에 스토리지를 생성해야 합니다. |
 | D | 볼륨 한도에 도달했습니다. |
 
-**(A)** : AMI에 필수 구성 요소가 없으면 인스턴스 시작 실패의 원인이 됩니다.
+**(A)** : AMI에 필수 구성 요소가 없으면 인스턴스 시작 실패의 원인이 됩니다. → [📖 AMI Amazon Machine Image](/section/05-ec2-instance-storage#ami-amazon-machine-image)
 
-**(B)** : 스냅샷 손상은 인스턴스 시작 시 즉시 종료되는 원인이 될 수 있습니다.
+**(B)** : 스냅샷 손상은 인스턴스 시작 시 즉시 종료되는 원인이 될 수 있습니다. → [📖 EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots)
 
-**(C) 정답** : EC2 인스턴스를 시작하기 전에 별도로 EBS 스토리지를 미리 생성할 필요가 없습니다. 인스턴스 시작 시 자동으로 루트 볼륨이 생성됩니다. 따라서 이것은 종료 원인이 아닙니다.
+**(C) 정답** : EC2 인스턴스를 시작하기 전에 별도로 EBS 스토리지를 미리 생성할 필요가 없습니다. 인스턴스 시작 시 자동으로 루트 볼륨이 생성됩니다. 따라서 이것은 종료 원인이 아닙니다. → [📖 EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store)
 
-**(D)** : AWS 계정의 EBS 볼륨 한도 초과는 인스턴스 시작 실패의 원인이 됩니다.
+**(D)** : AWS 계정의 EBS 볼륨 한도 초과는 인스턴스 시작 실패의 원인이 됩니다. → [📖 EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store)
 
 **핵심 개념:** EC2 인스턴스 즉시 종료 원인 (AMI 오류, 스냅샷 손상, 볼륨 한도)
+
+**관련 노트:** [EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots), [EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store), [EC2 설정 옵션](/section/03-ec2-basics#ec2-설정-옵션)
 
 ---
 
@@ -792,15 +836,17 @@
 | C | 소프트웨어 주석에 AWS Access Key ID/Secret Access Key 조합을 저장합니다. |
 | D | Amazon EC2 인스턴스에 IAM 사용자를 할당합니다. |
 
-**(A)** : 루트 계정 MFA는 중요하지만, EC2 애플리케이션의 AWS 서비스 접근 방식과는 직접 관련이 없습니다.
+**(A)** : 루트 계정 MFA는 중요하지만, EC2 애플리케이션의 AWS 서비스 접근 방식과는 직접 관련이 없습니다. → [📖 MFA Multi Factor Authentication](/section/02-iam#mfa-multi-factor-authentication)
 
-**(B) 정답** : EC2 인스턴스에 IAM 역할을 부여하면 애플리케이션이 임시 자격 증명을 자동으로 사용할 수 있어, 정적 Access Key를 코드나 설정 파일에 저장할 필요가 없습니다.
+**(B) 정답** : EC2 인스턴스에 IAM 역할을 부여하면 애플리케이션이 임시 자격 증명을 자동으로 사용할 수 있어, 정적 Access Key를 코드나 설정 파일에 저장할 필요가 없습니다. → [📖 IAM Roles 역할](/section/02-iam#iam-roles-역할)
 
-**(C)** : 소스 코드 주석에 자격 증명을 저장하는 것은 심각한 보안 위험입니다. 절대 해서는 안 됩니다.
+**(C)** : 소스 코드 주석에 자격 증명을 저장하는 것은 심각한 보안 위험입니다. 절대 해서는 안 됩니다. → [📖 IAM Policies 정책](/section/02-iam#iam-policies-정책)
 
-**(D)** : IAM 사용자를 EC2 인스턴스에 할당하는 개념은 존재하지 않습니다. IAM 역할을 인스턴스 프로파일로 연결해야 합니다.
+**(D)** : IAM 사용자를 EC2 인스턴스에 할당하는 개념은 존재하지 않습니다. IAM 역할을 인스턴스 프로파일로 연결해야 합니다. → [📖 IAM Roles 역할](/section/02-iam#iam-roles-역할)
 
 **핵심 개념:** EC2 IAM 인스턴스 역할 — 자격 증명 노출 방지
+
+**관련 노트:** [IAM Roles 역할](/section/02-iam#iam-roles-역할)
 
 ---
 
@@ -825,15 +871,17 @@
 | C | EC2 최적화 EBS 볼륨만 가능합니다. |
 | D | 읽기 모드에서만 가능합니다. |
 
-**(A)** : 일반적인 EBS 볼륨은 단일 인스턴스에만 연결 가능합니다. (단, EBS Multi-Attach는 io1/io2 볼륨 타입에서 같은 AZ 내 최대 16개 인스턴스에 연결 가능하나, 이 문제는 일반적인 EBS를 다룸)
+**(A)** : 일반적인 EBS 볼륨은 단일 인스턴스에만 연결 가능합니다. (단, EBS Multi-Attach는 io1/io2 볼륨 타입에서 같은 AZ 내 최대 16개 인스턴스에 연결 가능하나, 이 문제는 일반적인 EBS를 다룸) → [📖 EBS Multi-Attach io1/io2](/section/05-ec2-instance-storage#ebs-multiattach-io1io2)
 
-**(B) 정답** : 일반적으로 EBS 볼륨은 한 번에 하나의 EC2 인스턴스에만 연결할 수 있습니다. 이것이 EBS의 기본 동작입니다.
+**(B) 정답** : 일반적으로 EBS 볼륨은 한 번에 하나의 EC2 인스턴스에만 연결할 수 있습니다. 이것이 EBS의 기본 동작입니다. → [📖 EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store)
 
-**(C)** : EC2 최적화 EBS 볼륨이라는 개념으로 다중 연결이 허용되지는 않습니다.
+**(C)** : EC2 최적화 EBS 볼륨이라는 개념으로 다중 연결이 허용되지는 않습니다. → [📖 EBS Multi-Attach io1/io2](/section/05-ec2-instance-storage#ebs-multiattach-io1io2)
 
-**(D)** : 읽기 전용 모드로 다중 연결하는 기능은 기본 EBS에서 지원되지 않습니다.
+**(D)** : 읽기 전용 모드로 다중 연결하는 기능은 기본 EBS에서 지원되지 않습니다. → [📖 EBS Multi-Attach io1/io2](/section/05-ec2-instance-storage#ebs-multiattach-io1io2)
 
 **핵심 개념:** EBS 볼륨 연결 제한 — 단일 인스턴스 전용
+
+**관련 노트:** [EBS Multi-Attach io1/io2](/section/05-ec2-instance-storage#ebs-multiattach-io1io2), [EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store)
 
 ---
 
@@ -858,15 +906,17 @@
 | C | 8. |
 | D | 4. |
 
-**(A)** : 16 IOPS × 64KB = 1,024KB가 되려면 I/O 크기가 64KB여야 하므로 이 계산은 맞지 않습니다.
+**(A)** : 16 IOPS × 64KB = 1,024KB가 되려면 I/O 크기가 64KB여야 하므로 이 계산은 맞지 않습니다. → [📖 EBS Volume Types 6가지](/section/05-ec2-instance-storage#ebs-volume-types-6가지)
 
-**(B)** : 256은 너무 큰 값입니다.
+**(B)** : 256은 너무 큰 값입니다. → [📖 EBS Volume Types 6가지](/section/05-ec2-instance-storage#ebs-volume-types-6가지)
 
-**(C)** : 8 IOPS × 128KB = 1,024KB로 계산이 가능하지만, AWS의 IOPS 기준 단위는 256KB입니다.
+**(C)** : 8 IOPS × 128KB = 1,024KB로 계산이 가능하지만, AWS의 IOPS 기준 단위는 256KB입니다. → [📖 EBS Volume Types 6가지](/section/05-ec2-instance-storage#ebs-volume-types-6가지)
 
-**(D) 정답** : AWS EBS에서 IOPS는 256KB I/O 단위를 기준으로 합니다. 따라서 1,024KB ÷ 256KB = 4 IOPS입니다.
+**(D) 정답** : AWS EBS에서 IOPS는 256KB I/O 단위를 기준으로 합니다. 따라서 1,024KB ÷ 256KB = 4 IOPS입니다. → [📖 EBS Volume Types 6가지](/section/05-ec2-instance-storage#ebs-volume-types-6가지)
 
 **핵심 개념:** EBS IOPS 계산 — 256KB 기준 단위
+
+**관련 노트:** [EBS Volume Types 6가지](/section/05-ec2-instance-storage#ebs-volume-types-6가지)
 
 ---
 
@@ -893,13 +943,15 @@
 
 **(A)** : Data Pipeline은 데이터 이동에 특화되어 있고 인간/자동화 평가의 복잡한 워크플로 조율에는 SWF가 더 적합합니다.
 
-**(B) 정답** : SWF는 인간과 자동화 태스크를 포함한 복잡한 워크플로 조율에 적합합니다. G2 인스턴스는 GPU(CUDA)를 지원하며, 배치 그룹은 저지연 네트워킹을 제공합니다.
+**(B) 정답** : SWF는 인간과 자동화 태스크를 포함한 복잡한 워크플로 조율에 적합합니다. G2 인스턴스는 GPU(CUDA)를 지원하며, 배치 그룹은 저지연 네트워킹을 제공합니다. → [📖 Placement Groups 배치 그룹](/section/04-ec2-associate#placement-groups-배치-그룹)
 
-**(C)** : C3 인스턴스는 컴퓨팅 최적화 인스턴스로 GPU를 지원하지 않아 CUDA 요구 사항을 충족하지 못합니다.
+**(C)** : C3 인스턴스는 컴퓨팅 최적화 인스턴스로 GPU를 지원하지 않아 CUDA 요구 사항을 충족하지 못합니다. → [📖 EC2 인스턴스 타입](/section/03-ec2-basics#ec2-인스턴스-타입)
 
-**(D)** : Data Pipeline보다 SWF가 워크플로 관리에 적합하고, C3는 GPU를 지원하지 않습니다.
+**(D)** : Data Pipeline보다 SWF가 워크플로 관리에 적합하고, C3는 GPU를 지원하지 않습니다. → [📖 EC2 인스턴스 타입](/section/03-ec2-basics#ec2-인스턴스-타입)
 
 **핵심 개념:** Amazon SWF 워크플로 관리, GPU 인스턴스(G2), 배치 그룹 저지연 네트워킹
+
+**관련 노트:** [EC2 인스턴스 타입](/section/03-ec2-basics#ec2-인스턴스-타입), [Placement Groups 배치 그룹](/section/04-ec2-associate#placement-groups-배치-그룹), [Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
 ---
 
@@ -926,17 +978,19 @@
 | D | 모든 웹 서버에 EIP를 할당합니다. 모든 EIP를 포함하는 Route 53 레코드 세트를 상태 확인 및 DNS 장애 조치와 함께 구성합니다. |
 | E | EIP가 있는 ELB를 구성합니다. 모든 웹 서버를 ELB 뒤에 배치합니다. EIP를 가리키는 Route 53 A 레코드를 구성합니다. |
 
-**(A)** : NAT 인스턴스는 인바운드 인터넷 트래픽을 서버로 전달하는 용도가 아니며, 고가용성도 보장하지 않습니다.
+**(A)** : NAT 인스턴스는 인바운드 인터넷 트래픽을 서버로 전달하는 용도가 아니며, 고가용성도 보장하지 않습니다. → [📖 NAT Instance 레거시](/section/25-vpc#nat-instance-레거시-시험에-출제)
 
-**(B)** : CloudFront는 사설 IP로 오리진을 직접 접근할 수 없습니다. 이 구성은 동작하지 않습니다.
+**(B)** : CloudFront는 사설 IP로 오리진을 직접 접근할 수 없습니다. 이 구성은 동작하지 않습니다. → [📖 CloudFront Origins 원본 소스](/section/13-cloudfront-global-accelerator#cloudfront-origins-원본-소스)
 
-**(C) 정답** : ELB 뒤에 웹 서버를 배치하고 Route 53 CNAME으로 연결하면 고가용성과 인터넷 접근성을 모두 충족합니다.
+**(C) 정답** : ELB 뒤에 웹 서버를 배치하고 Route 53 CNAME으로 연결하면 고가용성과 인터넷 접근성을 모두 충족합니다. → [📖 Elastic Load Balancer ELB](/section/06-high-availability-scalability#elastic-load-balancer-elb)
 
-**(D) 정답** : 각 웹 서버에 EIP를 할당하고 Route 53에 상태 확인과 함께 등록하면 개별 서버 장애 시 자동 DNS 장애 조치가 가능합니다.
+**(D) 정답** : 각 웹 서버에 EIP를 할당하고 Route 53에 상태 확인과 함께 등록하면 개별 서버 장애 시 자동 DNS 장애 조치가 가능합니다. → [📖 Health Checks 헬스 체크](/section/08-route-53#health-checks-헬스-체크)
 
-**(E)** : ELB에 고정 EIP를 연결하는 것은 일반적으로 권장되지 않으며, ELB는 DNS 이름으로 접근하는 것이 표준입니다.
+**(E)** : ELB에 고정 EIP를 연결하는 것은 일반적으로 권장되지 않으며, ELB는 DNS 이름으로 접근하는 것이 표준입니다. → [📖 Elastic IP](/section/04-ec2-associate#elastic-ip)
 
 **핵심 개념:** VPC 인터넷 연결 고가용성 — ELB + Route 53
+
+**관련 노트:** [IP 주소 IPv4](/section/04-ec2-associate#ip-주소-ipv4), [Elastic Load Balancer ELB](/section/06-high-availability-scalability#elastic-load-balancer-elb), [CNAME vs Alias](/section/08-route-53#cname-vs-alias)
 
 ---
 
@@ -965,15 +1019,17 @@
 
 **(A) 정답** : 업로드 시 객체별로 공개 읽기 권한을 설정하면 해당 객체에 대한 접근이 허용됩니다.
 
-**(B)** : 버킷 ACL로 모든 객체를 공개 읽기로 설정하는 것은 새로 업로드되는 객체에 자동 적용되지 않을 수 있어 완전한 방법이 아닙니다.
+**(B)** : 버킷 ACL로 모든 객체를 공개 읽기로 설정하는 것은 새로 업로드되는 객체에 자동 적용되지 않을 수 있어 완전한 방법이 아닙니다. → [📖 S3 보안](/section/10-amazon-s3#s3-보안)
 
-**(C) 정답** : 버킷 정책(Bucket Policy)에 s3:GetObject 허용 규칙을 추가하면 버킷의 모든 객체에 대해 공개 읽기가 보장됩니다.
+**(C) 정답** : 버킷 정책(Bucket Policy)에 s3:GetObject 허용 규칙을 추가하면 버킷의 모든 객체에 대해 공개 읽기가 보장됩니다. → [📖 S3 Bucket Policy](/section/10-amazon-s3#s3-bucket-policy)
 
-**(D)** : IAM 역할은 AWS 주체(사람, 서비스)에게 권한을 부여하는 것으로, 익명 공개 접근 설정 방법이 아닙니다.
+**(D)** : IAM 역할은 AWS 주체(사람, 서비스)에게 권한을 부여하는 것으로, 익명 공개 접근 설정 방법이 아닙니다. → [📖 IAM Roles 역할](/section/02-iam#iam-roles-역할)
 
-**(E)** : Amazon S3 객체는 기본적으로 비공개(private)입니다. 별도 설정 없이는 공개 접근이 불가능합니다.
+**(E)** : Amazon S3 객체는 기본적으로 비공개(private)입니다. 별도 설정 없이는 공개 접근이 불가능합니다. → [📖 S3 보안](/section/10-amazon-s3#s3-보안)
 
 **핵심 개념:** S3 공개 접근 설정 — 객체 ACL, 버킷 정책
+
+**관련 노트:** [IAM Policies 정책](/section/02-iam#iam-policies-정책), [S3 Bucket Policy](/section/10-amazon-s3#s3-bucket-policy), [S3 보안](/section/10-amazon-s3#s3-보안)
 
 ---
 
@@ -998,15 +1054,17 @@
 | C | 여기에 나열된 모든 항목이 재해 복구를 고려할 때 중요합니다. |
 | D | 필요한 모든 지원 커스텀 소프트웨어 패키지를 AWS에서 사용할 수 있도록 합니다. |
 
-**(A)** : AMI 유지 관리는 신속한 복구의 핵심 요소입니다.
+**(A)** : AMI 유지 관리는 신속한 복구의 핵심 요소입니다. → [📖 AMI Amazon Machine Image](/section/05-ec2-instance-storage#ami-amazon-machine-image)
 
-**(B)** : 정기적인 테스트와 업데이트는 DR 계획의 중요한 부분입니다.
+**(B)** : 정기적인 테스트와 업데이트는 DR 계획의 중요한 부분입니다. → [📖 4가지 DR 전략](/section/26-disaster-recovery-migrations#4가지-dr-전략-빠른-rto-순)
 
-**(C) 정답** : 재해 복구를 위해서는 AMI 유지 관리, 정기 테스트, 소프트웨어 패키지 관리 등 모든 요소가 종합적으로 중요합니다.
+**(C) 정답** : 재해 복구를 위해서는 AMI 유지 관리, 정기 테스트, 소프트웨어 패키지 관리 등 모든 요소가 종합적으로 중요합니다. → [📖 4가지 DR 전략](/section/26-disaster-recovery-migrations#4가지-dr-전략-빠른-rto-순)
 
 **(D)** : 커스텀 소프트웨어 패키지의 가용성도 복구 시간 단축에 중요합니다.
 
 **핵심 개념:** AWS 재해 복구(DR) — AMI, 테스트, 소프트웨어 관리
+
+**관련 노트:** [재해 복구 기본 개념](/section/26-disaster-recovery-migrations#재해-복구-기본-개념), [AMI Amazon Machine Image](/section/05-ec2-instance-storage#ami-amazon-machine-image)
 
 ---
 
@@ -1031,15 +1089,17 @@
 | C | 2개 가용 영역에 여러 읽기 복제본이 있는 RDS MySQL 인스턴스를 설정합니다. 모바일 앱이 읽기 복제본에서 사용자 기본 설정을 쿼리합니다. MySQL 사용자 관리 및 접근 권한 시스템으로 보안과 접근 자격 증명을 관리합니다. |
 | D | 사용자 기본 설정 데이터를 S3에 저장합니다. 각 사용자에 대한 항목과 S3 객체를 가리키는 속성을 가진 DynamoDB 테이블을 설정합니다. 모바일 앱은 DynamoDB에서 S3 URL을 가져온 후 S3 객체에 직접 접근합니다. STS, Web Identity Federation, S3 ACL로 인증 및 권한 부여를 처리합니다. |
 
-**(A)** : RDS는 500만 명 규모의 모바일 앱에 비용 효율적이지 않으며, 앞단 서버 관리 부담이 있습니다.
+**(A)** : RDS는 500만 명 규모의 모바일 앱에 비용 효율적이지 않으며, 앞단 서버 관리 부담이 있습니다. → [📖 Amazon RDS](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
-**(B) 정답** : DynamoDB는 확장성, 고가용성, 비용 효율성 측면에서 최적입니다. STS + Web Identity Federation을 통해 모바일 클라이언트가 직접 DynamoDB에 안전하게 접근할 수 있습니다.
+**(B) 정답** : DynamoDB는 확장성, 고가용성, 비용 효율성 측면에서 최적입니다. STS + Web Identity Federation을 통해 모바일 클라이언트가 직접 DynamoDB에 안전하게 접근할 수 있습니다. → [📖 Amazon Cognito](/section/17-serverless-overview#amazon-cognito)
 
-**(C)** : RDS MySQL은 이 규모의 모바일 앱에 비용 효율적이지 않으며, MySQL 자격 증명 관리를 모바일 앱에서 하는 것은 보안상 문제가 있습니다.
+**(C)** : RDS MySQL은 이 규모의 모바일 앱에 비용 효율적이지 않으며, MySQL 자격 증명 관리를 모바일 앱에서 하는 것은 보안상 문제가 있습니다. → [📖 Amazon RDS](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
-**(D)** : 50KB 데이터는 DynamoDB 항목으로 직접 저장 가능하므로 S3를 별도로 사용할 필요가 없으며 구조가 불필요하게 복잡합니다.
+**(D)** : 50KB 데이터는 DynamoDB 항목으로 직접 저장 가능하므로 S3를 별도로 사용할 필요가 없으며 구조가 불필요하게 복잡합니다. → [📖 Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb)
 
 **핵심 개념:** DynamoDB + STS Web Identity Federation — 모바일 앱 사용자 데이터 저장
+
+**관련 노트:** [Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb), [Amazon Cognito](/section/17-serverless-overview#amazon-cognito), [IAM Roles 역할](/section/02-iam#iam-roles-역할)
 
 ---
 
@@ -1064,15 +1124,17 @@
 | C | DB당 2TB. |
 | D | DB당 1TB. |
 
-**(A) 정답** : Amazon RDS SQL Server Express Edition은 Microsoft의 라이선스 제한으로 인해 DB당 최대 10GB로 제한됩니다.
+**(A) 정답** : Amazon RDS SQL Server Express Edition은 Microsoft의 라이선스 제한으로 인해 DB당 최대 10GB로 제한됩니다. → [📖 Amazon RDS](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
-**(B)** : 100GB는 SQL Server Express Edition의 RDS 한도보다 큽니다.
+**(B)** : 100GB는 SQL Server Express Edition의 RDS 한도보다 큽니다. → [📖 Amazon RDS](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
-**(C)** : 2TB는 더 높은 에디션(Standard, Enterprise)에 해당하는 크기입니다.
+**(C)** : 2TB는 더 높은 에디션(Standard, Enterprise)에 해당하는 크기입니다. → [📖 Amazon RDS](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
-**(D)** : 1TB도 Express Edition에는 너무 큰 용량입니다.
+**(D)** : 1TB도 Express Edition에는 너무 큰 용량입니다. → [📖 Amazon RDS](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
 **핵심 개념:** RDS SQL Server Express Edition 크기 제한 — 10GB
+
+**관련 노트:** [Amazon RDS Relational Database Service](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
 ---
 
@@ -1099,17 +1161,19 @@
 | D | 다른 리전의 두 작동 중인 웹 서버 중 하나가 HTTP 상태 확인을 통과하지 못했습니다. |
 | E | 서버를 비활성화한 리전의 example.com 관련 지연 시간 별칭 리소스 레코드 세트에서 'Evaluate Target Health'를 'Yes'로 설정하지 않았습니다. |
 
-**(A)** : Route 53은 지연 시간 기반 라우팅과 가중치 기반 라우팅을 함께 사용하는 것을 지원합니다.
+**(A)** : Route 53은 지연 시간 기반 라우팅과 가중치 기반 라우팅을 함께 사용하는 것을 지원합니다. → [📖 라우팅 정책 Routing Policies](/section/08-route-53#라우팅-정책-routing-policies)
 
-**(B) 정답** : 가중치 레코드 세트에 상태 확인이 연결되지 않으면 비활성 서버도 정상으로 간주되어 트래픽이 계속 전달됩니다.
+**(B) 정답** : 가중치 레코드 세트에 상태 확인이 연결되지 않으면 비활성 서버도 정상으로 간주되어 트래픽이 계속 전달됩니다. → [📖 Health Checks 헬스 체크](/section/08-route-53#health-checks-헬스-체크)
 
-**(C)** : 가중치 값의 차이는 이 문제의 원인이 아닙니다. 상태 확인 부재가 핵심입니다.
+**(C)** : 가중치 값의 차이는 이 문제의 원인이 아닙니다. 상태 확인 부재가 핵심입니다. → [📖 라우팅 정책 Routing Policies](/section/08-route-53#라우팅-정책-routing-policies)
 
-**(D)** : 다른 리전의 서버 상태 확인 실패는 다른 리전으로의 전환을 방해하지 않습니다.
+**(D)** : 다른 리전의 서버 상태 확인 실패는 다른 리전으로의 전환을 방해하지 않습니다. → [📖 Health Checks 헬스 체크](/section/08-route-53#health-checks-헬스-체크)
 
-**(E) 정답** : 지연 시간 별칭 레코드에서 'Evaluate Target Health'가 비활성화되어 있으면, 하위 가중치 레코드들이 모두 실패해도 별칭 레코드 자체는 건강한 것으로 간주되어 트래픽이 계속 전달됩니다.
+**(E) 정답** : 지연 시간 별칭 레코드에서 'Evaluate Target Health'가 비활성화되어 있으면, 하위 가중치 레코드들이 모두 실패해도 별칭 레코드 자체는 건강한 것으로 간주되어 트래픽이 계속 전달됩니다. → [📖 Health Checks 헬스 체크](/section/08-route-53#health-checks-헬스-체크)
 
 **핵심 개념:** Route 53 지연 시간 + 가중치 라우팅, Evaluate Target Health, 상태 확인
+
+**관련 노트:** [라우팅 정책 Routing Policies](/section/08-route-53#라우팅-정책-routing-policies), [Health Checks 헬스 체크](/section/08-route-53#health-checks-헬스-체크), [CNAME vs Alias](/section/08-route-53#cname-vs-alias)
 
 ---
 
@@ -1134,15 +1198,17 @@
 | C | 인스턴스 백업(instance backups). |
 | D | 미러(mirrors). |
 
-**(A) 정답** : EBS 볼륨의 백업은 스냅샷(Snapshot)이라 합니다. 스냅샷은 S3에 증분 방식으로 저장되며, 새 EBS 볼륨 생성이나 복원에 사용됩니다.
+**(A) 정답** : EBS 볼륨의 백업은 스냅샷(Snapshot)이라 합니다. 스냅샷은 S3에 증분 방식으로 저장되며, 새 EBS 볼륨 생성이나 복원에 사용됩니다. → [📖 EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots)
 
-**(B)** : 이미지(AMI)는 인스턴스 전체를 백업하는 개념이며, EBS 볼륨 백업의 기본 용어가 아닙니다.
+**(B)** : 이미지(AMI)는 인스턴스 전체를 백업하는 개념이며, EBS 볼륨 백업의 기본 용어가 아닙니다. → [📖 AMI Amazon Machine Image](/section/05-ec2-instance-storage#ami-amazon-machine-image)
 
 **(C)** : 인스턴스 백업은 공식 AWS 용어가 아닙니다.
 
 **(D)** : 미러는 RAID 구성 등에서 사용하는 개념으로 EBS 백업 용어가 아닙니다.
 
 **핵심 개념:** EBS 스냅샷 — 볼륨 백업
+
+**관련 노트:** [EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots), [AMI Amazon Machine Image](/section/05-ec2-instance-storage#ami-amazon-machine-image)
 
 ---
 
@@ -1167,15 +1233,17 @@
 | C | 새 ELB와 호스트 기반 WAF를 실행하는 EC2 인스턴스 Auto Scaling 그룹으로 WAF 티어를 추가합니다. Route 53이 새 WAF 티어 ELB를 가리키도록 변경합니다. WAF 티어는 현재 웹 티어로 트래픽을 전달합니다. 웹 티어 보안 그룹은 WAF 티어 보안 그룹의 트래픽만 허용하도록 업데이트합니다. |
 | D | 웹 티어 ELB에서 TLS 1.2만 허용하고 고급 프로토콜 필터링을 활성화합니다. 이를 통해 ELB 자체에서 WAF 기능을 수행합니다. |
 
-**(A)** : DirectConnect 연결 및 하드웨어 WAF는 비용이 매우 높고 확장성이 낮습니다.
+**(A)** : DirectConnect 연결 및 하드웨어 WAF는 비용이 매우 높고 확장성이 낮습니다. → [📖 Direct Connect DX](/section/25-vpc#direct-connect-dx)
 
-**(B)** : NACL IP 차단은 알려진 IP에만 효과적이고, 새로운 공격 IP에 대응하기 어려우며 확장성이 부족합니다.
+**(B)** : NACL IP 차단은 알려진 IP에만 효과적이고, 새로운 공격 IP에 대응하기 어려우며 확장성이 부족합니다. → [📖 NACL Network Access Control List](/section/25-vpc#nacl-network-access-control-list)
 
-**(C) 정답** : 소프트웨어 WAF 티어를 Auto Scaling 그룹으로 구성하면 확장 가능하고 비용 효율적이며, 웹 티어를 WAF 뒤로 숨겨 보안이 강화됩니다.
+**(C) 정답** : 소프트웨어 WAF 티어를 Auto Scaling 그룹으로 구성하면 확장 가능하고 비용 효율적이며, 웹 티어를 WAF 뒤로 숨겨 보안이 강화됩니다. → [📖 AWS WAF Web Application Firewall](/section/24-security-encryption#aws-waf-web-application-firewall)
 
-**(D)** : ELB는 TLS 프로토콜 필터링은 가능하지만 WAF 기능(SQL 인젝션, XSS 방어 등)을 제공하지 않습니다.
+**(D)** : ELB는 TLS 프로토콜 필터링은 가능하지만 WAF 기능(SQL 인젝션, XSS 방어 등)을 제공하지 않습니다. → [📖 Elastic Load Balancer ELB](/section/06-high-availability-scalability#elastic-load-balancer-elb)
 
 **핵심 개념:** WAF 티어 구성 — Auto Scaling, 보안 그룹 기반 접근 제어
+
+**관련 노트:** [AWS WAF Web Application Firewall](/section/24-security-encryption#aws-waf-web-application-firewall), [Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg), [Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹)
 
 ---
 
@@ -1200,15 +1268,17 @@
 | C | 두 개의 기본 라우트가 있는 단일 라우팅 테이블을 구성합니다: 하나는 인터넷 게이트웨이, 다른 하나는 VPN 게이트웨이를 통한 온프레미스 네트워크로. VPC의 모든 서브넷에 이 라우팅 테이블을 사용합니다. |
 | D | 두 개의 라우팅 테이블을 구성합니다: 하나는 인터넷 게이트웨이를 통한 기본 라우트, 다른 하나는 VPN 게이트웨이를 통한 기본 라우트. 두 라우팅 테이블을 각 VPC 서브넷에 연결합니다. |
 
-**(A) 정답** : 인터넷 게이트웨이를 기본 라우트로 설정하고, Direct Connect에서 BGP로 기본 라우트를 전파하면 온프레미스에서 온 트래픽도 인터넷 게이트웨이 기본 라우트와 함께 처리됩니다. 단일 라우팅 테이블로 인터넷 및 온프레미스 접근을 모두 지원합니다.
+**(A) 정답** : 인터넷 게이트웨이를 기본 라우트로 설정하고, Direct Connect에서 BGP로 기본 라우트를 전파하면 온프레미스에서 온 트래픽도 인터넷 게이트웨이 기본 라우트와 함께 처리됩니다. 단일 라우팅 테이블로 인터넷 및 온프레미스 접근을 모두 지원합니다. → [📖 Direct Connect DX](/section/25-vpc#direct-connect-dx)
 
-**(B)** : 특정 라우트 전파는 온프레미스 네트워크로의 라우팅에는 유효하지만, 이 방식에서는 인터넷 기본 라우트와 온프레미스 특정 라우트가 공존합니다. A가 더 간단하고 효과적입니다.
+**(B)** : 특정 라우트 전파는 온프레미스 네트워크로의 라우팅에는 유효하지만, 이 방식에서는 인터넷 기본 라우트와 온프레미스 특정 라우트가 공존합니다. A가 더 간단하고 효과적입니다. → [📖 Direct Connect DX](/section/25-vpc#direct-connect-dx)
 
-**(C)** : 하나의 라우팅 테이블에 두 개의 기본 라우트(0.0.0.0/0)는 설정할 수 없습니다.
+**(C)** : 하나의 라우팅 테이블에 두 개의 기본 라우트(0.0.0.0/0)는 설정할 수 없습니다. → [📖 서브넷 Subnet](/section/25-vpc#서브넷-subnet)
 
-**(D)** : 서브넷에 두 개의 라우팅 테이블을 동시에 연결하는 것은 불가능합니다.
+**(D)** : 서브넷에 두 개의 라우팅 테이블을 동시에 연결하는 것은 불가능합니다. → [📖 서브넷 Subnet](/section/25-vpc#서브넷-subnet)
 
 **핵심 개념:** VPC 라우팅 테이블, Direct Connect BGP 라우트 전파
+
+**관련 노트:** [Direct Connect DX](/section/25-vpc#direct-connect-dx), [VPC 기본 사항](/section/25-vpc#vpc-기본-사항)
 
 ---
 
@@ -1233,15 +1303,17 @@
 | C | 여러 고객 게이트웨이를 가진 가상 퍼블릭 게이트웨이를 생성하되, 각각 고유한 프라이빗 서브넷을 사용합니다. |
 | D | 여러 고객 게이트웨이를 가진 가상 프라이빗 게이트웨이를 생성하되, 각각 고유한 서브넷 ID를 사용합니다. |
 
-**(A) 정답** : AWS VPN CloudHub는 단일 가상 프라이빗 게이트웨이(VGW)에 여러 고객 게이트웨이(CGW)를 연결하여 사이트 간 통신을 허용합니다. 각 CGW는 고유한 BGP ASN을 가져야 라우팅이 올바르게 동작합니다.
+**(A) 정답** : AWS VPN CloudHub는 단일 가상 프라이빗 게이트웨이(VGW)에 여러 고객 게이트웨이(CGW)를 연결하여 사이트 간 통신을 허용합니다. 각 CGW는 고유한 BGP ASN을 가져야 라우팅이 올바르게 동작합니다. → [📖 AWS VPN CloudHub](/section/25-vpc#aws-vpn-cloudhub)
 
-**(B)** : 키 세트는 VPN 터널 인증에 필요하지만, CloudHub 설정의 핵심 요구 사항은 고유한 BGP ASN입니다.
+**(B)** : 키 세트는 VPN 터널 인증에 필요하지만, CloudHub 설정의 핵심 요구 사항은 고유한 BGP ASN입니다. → [📖 Site-to-Site VPN](/section/25-vpc#sitetosite-vpn)
 
 **(C)** : 가상 퍼블릭 게이트웨이는 존재하지 않는 개념입니다.
 
 **(D)** : 고유한 서브넷 ID는 CloudHub 설정 요건이 아닙니다.
 
 **핵심 개념:** AWS VPN CloudHub — 가상 프라이빗 게이트웨이, 고유 BGP ASN
+
+**관련 노트:** [AWS VPN CloudHub](/section/25-vpc#aws-vpn-cloudhub)
 
 ---
 
@@ -1268,13 +1340,15 @@
 
 **(A)** : 데이터 다운로드는 당연히 네트워크 I/O에 영향을 미칩니다.
 
-**(B)** : Auto Scaling 정책은 네트워크 I/O 기반으로 설정할 수 있습니다.
+**(B)** : Auto Scaling 정책은 네트워크 I/O 기반으로 설정할 수 있습니다. → [📖 Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
-**(C)** : Auto Scaling 정책이 구성되어 있더라도 스케일링 활동을 일시 중지할 수 있습니다.
+**(C)** : Auto Scaling 정책이 구성되어 있더라도 스케일링 활동을 일시 중지할 수 있습니다. → [📖 Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
-**(D) 정답** : Auto Scaling의 스케일링 프로세스 일시 중지(Suspend Scaling) 기능을 사용하면 일시적으로 스케일링 이벤트를 막을 수 있습니다.
+**(D) 정답** : Auto Scaling의 스케일링 프로세스 일시 중지(Suspend Scaling) 기능을 사용하면 일시적으로 스케일링 이벤트를 막을 수 있습니다. → [📖 Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
 **핵심 개념:** Auto Scaling 스케일링 일시 중지(Suspend Scaling)
+
+**관련 노트:** [Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
 ---
 
@@ -1309,6 +1383,8 @@
 
 **핵심 개념:** Amazon EC2 SOAP API — WSDL 기반 웹 서비스
 
+**관련 노트:** [EC2 구성 요소](/section/03-ec2-basics#ec2-구성-요소)
+
 ---
 
 ### Q90. Which of the following are true regarding encrypted Amazon Elastic Block Store (EBS) volumes? (Choose 2 answers)
@@ -1334,17 +1410,19 @@
 | D | 기존 볼륨을 암호화할 수 있습니다. |
 | E | 공유 볼륨을 암호화할 수 있습니다. |
 
-**(A) 정답** : EBS 암호화는 gp2, gp3, io1, io2, st1, sc1, 마그네틱 등 모든 EBS 볼륨 유형에서 지원됩니다.
+**(A) 정답** : EBS 암호화는 gp2, gp3, io1, io2, st1, sc1, 마그네틱 등 모든 EBS 볼륨 유형에서 지원됩니다. → [📖 EBS Encryption](/section/05-ec2-instance-storage#ebs-encryption)
 
-**(B) 정답** : 암호화된 EBS 볼륨의 스냅샷은 자동으로 암호화되며, 암호화된 스냅샷으로 복원된 볼륨도 자동으로 암호화됩니다.
+**(B) 정답** : 암호화된 EBS 볼륨의 스냅샷은 자동으로 암호화되며, 암호화된 스냅샷으로 복원된 볼륨도 자동으로 암호화됩니다. → [📖 EBS Encryption](/section/05-ec2-instance-storage#ebs-encryption)
 
-**(C)** : EBS 암호화는 일부 이전 인스턴스 유형에서는 지원되지 않습니다. 모든 인스턴스 유형에서 사용 가능한 것이 아닙니다.
+**(C)** : EBS 암호화는 일부 이전 인스턴스 유형에서는 지원되지 않습니다. 모든 인스턴스 유형에서 사용 가능한 것이 아닙니다. → [📖 EBS Encryption](/section/05-ec2-instance-storage#ebs-encryption)
 
-**(D)** : 기존(비암호화) EBS 볼륨을 직접 암호화로 전환할 수 없습니다. 스냅샷을 통한 복사로 새 암호화 볼륨을 만들어야 합니다.
+**(D)** : 기존(비암호화) EBS 볼륨을 직접 암호화로 전환할 수 없습니다. 스냅샷을 통한 복사로 새 암호화 볼륨을 만들어야 합니다. → [📖 EBS Encryption](/section/05-ec2-instance-storage#ebs-encryption)
 
-**(E)** : 공유 볼륨 암호화는 별도의 고려 사항이 필요하며, 이 문맥에서는 정답이 아닙니다.
+**(E)** : 공유 볼륨 암호화는 별도의 고려 사항이 필요하며, 이 문맥에서는 정답이 아닙니다. → [📖 EBS Encryption](/section/05-ec2-instance-storage#ebs-encryption)
 
 **핵심 개념:** EBS 암호화 — 볼륨 유형 지원, 스냅샷 자동 암호화
+
+**관련 노트:** [EBS Encryption](/section/05-ec2-instance-storage#ebs-encryption), [EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots)
 
 ---
 
@@ -1369,15 +1447,17 @@
 | C | 아니오. |
 | D | VPC에서만 지원됩니다. |
 
-**(A)** : Oracle RDS와 MySQL의 Federated Storage Engine은 별개 개념입니다.
+**(A)** : Oracle RDS와 MySQL의 Federated Storage Engine은 별개 개념입니다. → [📖 Amazon RDS](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
-**(B)** : Amazon RDS for MySQL은 Federated Storage Engine을 지원하지 않습니다.
+**(B)** : Amazon RDS for MySQL은 Federated Storage Engine을 지원하지 않습니다. → [📖 Amazon RDS](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
-**(C) 정답** : Amazon RDS for MySQL은 Federated Storage Engine을 지원하지 않습니다. RDS는 관리형 서비스 특성상 원격 서버 참조가 필요한 Federated Engine을 비활성화합니다.
+**(C) 정답** : Amazon RDS for MySQL은 Federated Storage Engine을 지원하지 않습니다. RDS는 관리형 서비스 특성상 원격 서버 참조가 필요한 Federated Engine을 비활성화합니다. → [📖 Amazon RDS](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
-**(D)** : VPC 여부와 관계없이 Amazon RDS for MySQL에서 Federated Storage Engine은 지원되지 않습니다.
+**(D)** : VPC 여부와 관계없이 Amazon RDS for MySQL에서 Federated Storage Engine은 지원되지 않습니다. → [📖 Amazon RDS](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
 **핵심 개념:** Amazon RDS MySQL — 지원되지 않는 기능(Federated Storage Engine)
+
+**관련 노트:** [Amazon RDS Relational Database Service](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
 ---
 
@@ -1402,15 +1482,17 @@
 | C | DeploySnapshot. |
 | D | CreateSnapshot. |
 
-**(A)** : MakeSnapShot은 존재하지 않는 AWS API 액션입니다.
+**(A)** : MakeSnapShot은 존재하지 않는 AWS API 액션입니다. → [📖 EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots)
 
-**(B)** : FreshSnapshot은 존재하지 않는 AWS API 액션입니다.
+**(B)** : FreshSnapshot은 존재하지 않는 AWS API 액션입니다. → [📖 EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots)
 
-**(C)** : DeploySnapshot은 존재하지 않는 AWS API 액션입니다.
+**(C)** : DeploySnapshot은 존재하지 않는 AWS API 액션입니다. → [📖 EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots)
 
-**(D) 정답** : EBS 스냅샷 생성 API 액션은 CreateSnapshot입니다. AWS CLI 기준으로는 aws ec2 create-snapshot 명령을 사용합니다.
+**(D) 정답** : EBS 스냅샷 생성 API 액션은 CreateSnapshot입니다. AWS CLI 기준으로는 aws ec2 create-snapshot 명령을 사용합니다. → [📖 EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots)
 
 **핵심 개념:** EBS 스냅샷 생성 API — CreateSnapshot
+
+**관련 노트:** [EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots)
 
 ---
 
@@ -1435,15 +1517,17 @@
 | C | 로드 밸런서에 Amazon CloudWatch Logs 에이전트를 설치합니다. |
 | D | 로드 밸런서에 Amazon CloudWatch 지표를 활성화합니다. |
 
-**(A) 정답** : ELB의 액세스 로그(클라이언트 연결 정보)를 캡처하려면 Access Logs 기능을 사용해야 합니다. CloudTrail은 API 호출을 기록하며 클라이언트 연결 정보를 제공하지 않습니다.
+**(A) 정답** : ELB의 액세스 로그(클라이언트 연결 정보)를 캡처하려면 Access Logs 기능을 사용해야 합니다. CloudTrail은 API 호출을 기록하며 클라이언트 연결 정보를 제공하지 않습니다. → [📖 AWS CloudTrail](/section/22-monitoring-audit-performance#aws-cloudtrail)
 
-**(B)** : ELB 액세스 로그는 클라이언트 IP, 요청 경로, 응답 코드 등 모든 클라이언트 연결 정보를 S3에 저장합니다. 5분 또는 60분 간격으로 설정 가능합니다.
+**(B)** : ELB 액세스 로그는 클라이언트 IP, 요청 경로, 응답 코드 등 모든 클라이언트 연결 정보를 S3에 저장합니다. 5분 또는 60분 간격으로 설정 가능합니다. → [📖 Elastic Load Balancer ELB](/section/06-high-availability-scalability#elastic-load-balancer-elb)
 
-**(C)** : CloudWatch Logs 에이전트는 EC2 인스턴스에 설치하는 것으로, ELB 자체의 연결 로그와는 다릅니다.
+**(C)** : CloudWatch Logs 에이전트는 EC2 인스턴스에 설치하는 것으로, ELB 자체의 연결 로그와는 다릅니다. → [📖 CloudWatch Logs](/section/22-monitoring-audit-performance#cloudwatch-logs)
 
-**(D)** : CloudWatch 지표는 집계된 통계(요청 수, 지연 시간 등)를 제공하지만 개별 클라이언트 연결 정보는 제공하지 않습니다.
+**(D)** : CloudWatch 지표는 집계된 통계(요청 수, 지연 시간 등)를 제공하지만 개별 클라이언트 연결 정보는 제공하지 않습니다. → [📖 Amazon CloudWatch Metrics](/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics)
 
 **핵심 개념:** ELB 액세스 로그 — 클라이언트 연결 정보 캡처
+
+**관련 노트:** [Elastic Load Balancer ELB](/section/06-high-availability-scalability#elastic-load-balancer-elb), [CloudWatch Logs](/section/22-monitoring-audit-performance#cloudwatch-logs), [Amazon CloudWatch Metrics](/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics)
 
 ---
 
@@ -1468,15 +1552,17 @@
 | C | 시작 시 구성된 경우에만 그렇습니다. |
 | D | 아니오. |
 
-**(A)** : Multi-AZ 스탠바이는 모든 RDS 엔진에서 동일 리전에 위치합니다.
+**(A)** : Multi-AZ 스탠바이는 모든 RDS 엔진에서 동일 리전에 위치합니다. → [📖 RDS Multi-AZ 재해 복구](/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구)
 
-**(B) 정답** : RDS Multi-AZ 구성에서 스탠바이 인스턴스는 항상 기본 인스턴스와 같은 리전 내 다른 가용 영역에 배치됩니다.
+**(B) 정답** : RDS Multi-AZ 구성에서 스탠바이 인스턴스는 항상 기본 인스턴스와 같은 리전 내 다른 가용 영역에 배치됩니다. → [📖 RDS Multi-AZ 재해 복구](/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구)
 
-**(C)** : Multi-AZ 스탠바이는 항상 같은 리전에 위치하며, 다른 리전에 배치할 수 없습니다.
+**(C)** : Multi-AZ 스탠바이는 항상 같은 리전에 위치하며, 다른 리전에 배치할 수 없습니다. → [📖 RDS Multi-AZ 재해 복구](/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구)
 
-**(D)** : 스탠바이는 항상 같은 리전 내에 있습니다. 다른 리전 복제는 읽기 복제본(Cross-Region Read Replica)으로 구현합니다.
+**(D)** : 스탠바이는 항상 같은 리전 내에 있습니다. 다른 리전 복제는 읽기 복제본(Cross-Region Read Replica)으로 구현합니다. → [📖 RDS Read Replicas](/section/07-rds-aurora-elasticache#rds-read-replicas)
 
 **핵심 개념:** RDS Multi-AZ — 스탠바이는 동일 리전 다른 AZ
+
+**관련 노트:** [RDS Multi-AZ 재해 복구](/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구)
 
 ---
 
@@ -1501,15 +1587,17 @@
 | C | One. |
 | D | Reserved. |
 
-**(A) 정답** : 테넌시 속성을 'dedicated'로 설정하면 해당 인스턴스는 단일 테넌트(전용) 하드웨어에서 실행됩니다. 다른 고객과 물리적 서버를 공유하지 않습니다.
+**(A) 정답** : 테넌시 속성을 'dedicated'로 설정하면 해당 인스턴스는 단일 테넌트(전용) 하드웨어에서 실행됩니다. 다른 고객과 물리적 서버를 공유하지 않습니다. → [📖 EC2 구매 옵션 시험 핵심!](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
 **(B)** : Isolated는 EC2 테넌시 유효 값이 아닙니다.
 
 **(C)** : One은 EC2 테넌시 유효 값이 아닙니다.
 
-**(D)** : Reserved는 구매 옵션(예약 인스턴스)을 의미하며 테넌시 속성 값이 아닙니다.
+**(D)** : Reserved는 구매 옵션(예약 인스턴스)을 의미하며 테넌시 속성 값이 아닙니다. → [📖 EC2 구매 옵션 시험 핵심!](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
 **핵심 개념:** EC2 전용 인스턴스(Dedicated Instance) — 테넌시 속성
+
+**관련 노트:** [EC2 구매 옵션 시험 핵심!](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
 ---
 
@@ -1567,15 +1655,17 @@
 | C | 더 큰 용량의 EBS를 생성합니다. |
 | D | EBS에 정기적으로 접근합니다. |
 
-**(A) 정답** : EBS 볼륨을 정기적으로 스냅샷으로 백업하면 데이터 손실 시 복원이 가능하여 내구성과 가용성이 향상됩니다. 스냅샷은 S3에 저장되어 높은 내구성을 보장합니다.
+**(A) 정답** : EBS 볼륨을 정기적으로 스냅샷으로 백업하면 데이터 손실 시 복원이 가능하여 내구성과 가용성이 향상됩니다. 스냅샷은 S3에 저장되어 높은 내구성을 보장합니다. → [📖 EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots)
 
-**(B)** : AMI는 인스턴스 전체 이미지로, EBS 볼륨 내구성 향상과 직접적인 관련이 없습니다.
+**(B)** : AMI는 인스턴스 전체 이미지로, EBS 볼륨 내구성 향상과 직접적인 관련이 없습니다. → [📖 AMI Amazon Machine Image](/section/05-ec2-instance-storage#ami-amazon-machine-image)
 
-**(C)** : 용량을 늘리는 것은 내구성이나 가용성 향상과 관련이 없습니다.
+**(C)** : 용량을 늘리는 것은 내구성이나 가용성 향상과 관련이 없습니다. → [📖 EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store)
 
 **(D)** : 정기적 접근은 내구성 향상과 관련이 없습니다.
 
 **핵심 개념:** EBS 내구성 향상 — 정기 스냅샷
+
+**관련 노트:** [EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots), [AMI Amazon Machine Image](/section/05-ec2-instance-storage#ami-amazon-machine-image)
 
 ---
 
@@ -1600,15 +1690,17 @@
 | C | 아무 의미 없음. |
 | D | Regional Database Service. |
 
-**(A)** : Regional Data Server는 RDS의 실제 의미가 아닙니다.
+**(A)** : Regional Data Server는 RDS의 실제 의미가 아닙니다. → [📖 Amazon RDS](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
-**(B) 정답** : RDS는 Relational Database Service의 약자로, AWS의 관계형 데이터베이스 관리형 서비스입니다.
+**(B) 정답** : RDS는 Relational Database Service의 약자로, AWS의 관계형 데이터베이스 관리형 서비스입니다. → [📖 Amazon RDS](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
-**(C)** : RDS는 명확한 의미를 가진 서비스명입니다.
+**(C)** : RDS는 명확한 의미를 가진 서비스명입니다. → [📖 Amazon RDS](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
-**(D)** : Regional Database Service는 RDS의 실제 의미가 아닙니다.
+**(D)** : Regional Database Service는 RDS의 실제 의미가 아닙니다. → [📖 Amazon RDS](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
 **핵심 개념:** Amazon RDS — Relational Database Service
+
+**관련 노트:** [Amazon RDS Relational Database Service](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
 ---
 
@@ -1633,15 +1725,17 @@
 | C | 리소스 활용, 애플리케이션 성능, 운영 상태에 대한 시스템 전체 가시성. |
 | D | 애플리케이션과 서비스가 생성하는 사용자 정의 지표. |
 
-**(A)** : CloudWatch Logs를 통해 애플리케이션 로그 파일을 모니터링할 수 있습니다.
+**(A)** : CloudWatch Logs를 통해 애플리케이션 로그 파일을 모니터링할 수 있습니다. → [📖 CloudWatch Logs](/section/22-monitoring-audit-performance#cloudwatch-logs)
 
-**(B) 정답** : CloudWatch는 로그 파일, 시스템 지표, 사용자 정의 지표 등 나열된 모든 항목을 모니터링할 수 있습니다.
+**(B) 정답** : CloudWatch는 로그 파일, 시스템 지표, 사용자 정의 지표 등 나열된 모든 항목을 모니터링할 수 있습니다. → [📖 Amazon CloudWatch Metrics](/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics)
 
-**(C)** : CloudWatch는 리소스 활용, 애플리케이션 성능, 운영 상태 가시성을 제공합니다.
+**(C)** : CloudWatch는 리소스 활용, 애플리케이션 성능, 운영 상태 가시성을 제공합니다. → [📖 Amazon CloudWatch Metrics](/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics)
 
-**(D)** : CloudWatch는 사용자 정의 지표(Custom Metrics) 수집도 지원합니다.
+**(D)** : CloudWatch는 사용자 정의 지표(Custom Metrics) 수집도 지원합니다. → [📖 Amazon CloudWatch Metrics](/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics)
 
 **핵심 개념:** Amazon CloudWatch — 로그, 지표, 사용자 정의 지표 모니터링
+
+**관련 노트:** [CloudWatch Logs](/section/22-monitoring-audit-performance#cloudwatch-logs), [Amazon CloudWatch Metrics](/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics)
 
 ---
 
@@ -1666,14 +1760,16 @@
 | C | DynamoDB는 한도 없이 확장되도록 설계되었지만, 10,000을 초과하면 AWS에 먼저 문의해야 합니다. |
 | D | 10,000 쓰기 용량 유닛. |
 
-**(A)** : 1,000 WCU는 DynamoDB의 실제 최댓값이 아닙니다.
+**(A)** : 1,000 WCU는 DynamoDB의 실제 최댓값이 아닙니다. → [📖 Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb)
 
-**(B)** : 100,000 WCU가 정해진 상한선이 아닙니다.
+**(B)** : 100,000 WCU가 정해진 상한선이 아닙니다. → [📖 Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb)
 
-**(C) 정답** : DynamoDB는 이론적으로 무제한 확장이 가능하도록 설계되었습니다. 단, 기본 서비스 한도를 초과하려면 AWS 지원 팀에 한도 증가를 요청해야 합니다.
+**(C) 정답** : DynamoDB는 이론적으로 무제한 확장이 가능하도록 설계되었습니다. 단, 기본 서비스 한도를 초과하려면 AWS 지원 팀에 한도 증가를 요청해야 합니다. → [📖 Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb)
 
-**(D)** : 10,000 WCU는 기본 소프트 한도이지만, 요청을 통해 증가시킬 수 있습니다.
+**(D)** : 10,000 WCU는 기본 소프트 한도이지만, 요청을 통해 증가시킬 수 있습니다. → [📖 Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb)
 
 **핵심 개념:** DynamoDB 쓰기 용량 유닛(WCU) 한도 — 무제한 확장 설계
+
+**관련 노트:** [Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb)
 
 ---

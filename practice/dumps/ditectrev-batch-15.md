@@ -25,15 +25,17 @@
 | C | AWS Systems Manager Parameter Store에 패스워드를 저장합니다. 패스워드를 교체하는 AWS Lambda 함수를 작성합니다. |
 | D | AWS Key Management Service(AWS KMS)에 패스워드를 저장합니다. 고객 마스터 키(CMK)에 자동 교체를 활성화합니다. |
 
-**(A) 정답** : AWS Secrets Manager는 RDS 데이터베이스와의 통합을 기본 제공하며, 자동 교체 기능을 활성화하면 추가 코드 없이 패스워드를 자동으로 교체해줍니다. 운영 오버헤드가 가장 적습니다.
+**(A) 정답** : AWS Secrets Manager는 RDS 데이터베이스와의 통합을 기본 제공하며, 자동 교체 기능을 활성화하면 추가 코드 없이 패스워드를 자동으로 교체해줍니다. 운영 오버헤드가 가장 적습니다. → [📖 AWS Secrets Manager — RDS 통합 자동 패스워드 교체](/section/24-security-encryption#aws-secrets-manager)
 
-**(B)** : Systems Manager Parameter Store는 자동 교체 기능을 기본으로 제공하지 않습니다. RDS 통합 자동 교체는 Secrets Manager의 전용 기능입니다.
+**(B)** : Systems Manager Parameter Store는 자동 교체 기능을 기본으로 제공하지 않습니다. RDS 통합 자동 교체는 Secrets Manager의 전용 기능입니다. → [📖 SSM Parameter Store — 자동 교체 기본 미제공](/section/24-security-encryption#ssm-parameter-store)
 
 **(C)** : Lambda 함수를 직접 작성해 교체 로직을 구현해야 하므로 운영 오버헤드가 높습니다.
 
-**(D)** : KMS CMK의 자동 교체는 암호화 키 자체를 교체하는 기능으로, 데이터베이스 패스워드 교체와는 무관합니다.
+**(D)** : KMS CMK의 자동 교체는 암호화 키 자체를 교체하는 기능으로, 데이터베이스 패스워드 교체와는 무관합니다. → [📖 KMS CMK 자동 교체 — 암호화 키 교체, DB 패스워드 무관](/section/24-security-encryption#aws-kms-key-management-service)
 
 **핵심 개념:** AWS Secrets Manager의 RDS 통합 자동 패스워드 교체 기능
+
+**관련 노트:** [AWS Secrets Manager](/section/24-security-encryption#aws-secrets-manager), [SSM Parameter Store vs Secrets Manager 비교](/section/24-security-encryption#ssm-parameter-store-vs-secrets-manager-비교)
 
 ---
 
@@ -58,15 +60,17 @@
 | C | AWS DMS를 사용해 Amazon DynamoDB로 마이그레이션합니다. 서드파티 기능을 지원하도록 새 데이터베이스 설정을 커스터마이징합니다. |
 | D | AWS DMS를 사용해 Amazon RDS for PostgreSQL로 마이그레이션합니다. 서드파티 기능 의존성을 제거하도록 애플리케이션 코드를 재작성합니다. |
 
-**(A)** : 표준 RDS for Oracle은 OS 및 데이터베이스 엔진에 대한 특권 접근을 허용하지 않으므로, 서드파티 기능을 지원할 수 없습니다.
+**(A)** : 표준 RDS for Oracle은 OS 및 데이터베이스 엔진에 대한 특권 접근을 허용하지 않으므로, 서드파티 기능을 지원할 수 없습니다. → [📖 RDS for Oracle — OS/DB 특권 접근 불허](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
-**(B) 정답** : RDS Custom for Oracle은 OS 및 데이터베이스 엔진에 대한 특권 접근을 허용하므로 서드파티 기능을 유지할 수 있습니다. BYOL 모델도 지원하여 비용 효율적입니다.
+**(B) 정답** : RDS Custom for Oracle은 OS 및 데이터베이스 엔진에 대한 특권 접근을 허용하므로 서드파티 기능을 유지할 수 있습니다. BYOL 모델도 지원하여 비용 효율적입니다. → [📖 RDS Custom for Oracle — OS/DB 특권 접근 허용, BYOL](/section/07-rds-aurora-elasticache#rds-custom)
 
-**(C)** : DynamoDB는 관계형 데이터베이스가 아닌 NoSQL 서비스로, Oracle 기능과 호환되지 않으며 마이그레이션이 불가능합니다.
+**(C)** : DynamoDB는 관계형 데이터베이스가 아닌 NoSQL 서비스로, Oracle 기능과 호환되지 않으며 마이그레이션이 불가능합니다. → [📖 DynamoDB — NoSQL, Oracle 호환 불가](/section/17-serverless-overview#amazon-dynamodb)
 
 **(D)** : 애플리케이션 코드 재작성은 높은 비용과 시간이 필요하며, 서드파티 기능 제거는 요구사항에 맞지 않습니다.
 
 **핵심 개념:** Amazon RDS Custom for Oracle — OS 및 데이터베이스 엔진 커스터마이징, BYOL 지원
+
+**관련 노트:** [RDS Custom](/section/07-rds-aurora-elasticache#rds-custom), [Amazon RDS Relational Database Service](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
 ---
 
@@ -93,13 +97,15 @@
 
 **(A)** : Lambda 함수 작성, Config 규칙 설정, 태그 적용 교육 등 여러 구성 요소가 필요해 운영 오버헤드가 높습니다.
 
-**(B) 정답** : AWS Budgets는 예산 설정, 알림, 자동 액션(DenyAll 정책 적용)을 통합 제공하여 최소한의 설정으로 비용 초과를 실질적으로 차단할 수 있습니다. 운영 오버헤드가 가장 적습니다.
+**(B) 정답** : AWS Budgets는 예산 설정, 알림, 자동 액션(DenyAll 정책 적용)을 통합 제공하여 최소한의 설정으로 비용 초과를 실질적으로 차단할 수 있습니다. 운영 오버헤드가 가장 적습니다. → [📖 AWS Budgets — 예산 알림 및 자동 액션(DenyAll)](/section/28-other-services#cost-explorer)
 
 **(C)** : 비용을 모니터링하고 알림을 보낼 뿐, 실제로 비용 초과를 방지하는 기능이 없습니다.
 
 **(D)** : 계정마다 Lambda 함수를 생성하고 관리해야 하므로 운영 오버헤드가 매우 높습니다.
 
 **핵심 개념:** AWS Budgets 액션 — 예산 초과 시 IAM 정책 자동 적용으로 리소스 생성 차단
+
+**관련 노트:** [AWS Control Tower](/section/23-advanced-identity#aws-control-tower), [AWS Config](/section/22-monitoring-audit-performance#aws-config)
 
 ---
 
@@ -124,15 +130,17 @@
 | C | S3 Standard에 저장 후 30일 뒤 S3 One Zone-IA로 전환하는 수명 주기 규칙을 설정합니다. |
 | D | S3 Intelligent-Tiering에 저장 후 30일 뒤 S3 Standard-IA로 전환하는 수명 주기 규칙을 설정합니다. |
 
-**(A)** : S3 Glacier는 즉시 접근이 불가능하며(복원 시간 필요), "언제든지 즉시 접근 가능" 요구사항을 충족하지 못합니다.
+**(A)** : S3 Glacier는 즉시 접근이 불가능하며(복원 시간 필요), "언제든지 즉시 접근 가능" 요구사항을 충족하지 못합니다. → [📖 S3 Glacier — 즉시 접근 불가, 복원 시간 필요](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
-**(B) 정답** : S3 Standard는 높은 내구성(99.999999999%)과 즉시 접근성을 제공하며, 30일 후 Standard-IA로 전환하면 내구성 유지 및 비용 절감이 가능합니다. Standard-IA도 즉시 접근이 가능합니다.
+**(B) 정답** : S3 Standard는 높은 내구성(99.999999999%)과 즉시 접근성을 제공하며, 30일 후 Standard-IA로 전환하면 내구성 유지 및 비용 절감이 가능합니다. Standard-IA도 즉시 접근이 가능합니다. → [📖 S3 Standard → Standard-IA 수명주기 전환](/section/11-s3-advanced#s3-lifecycle-rules-수명주기-규칙)
 
-**(C)** : S3 One Zone-IA는 단일 가용 영역에만 저장되므로 최대 내구성 요구사항을 충족하지 못합니다. 가용 영역 장애 시 데이터 손실 위험이 있습니다.
+**(C)** : S3 One Zone-IA는 단일 가용 영역에만 저장되므로 최대 내구성 요구사항을 충족하지 못합니다. 가용 영역 장애 시 데이터 손실 위험이 있습니다. → [📖 S3 One Zone-IA — 단일 AZ, 최대 내구성 미충족](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
-**(D)** : Intelligent-Tiering은 접근 패턴을 모니터링하는 추가 비용이 발생하며, 이미 30일 기준으로 접근 패턴이 명확하므로 불필요한 복잡성이 추가됩니다.
+**(D)** : Intelligent-Tiering은 접근 패턴을 모니터링하는 추가 비용이 발생하며, 이미 30일 기준으로 접근 패턴이 명확하므로 불필요한 복잡성이 추가됩니다. → [📖 S3 Intelligent-Tiering — 접근 패턴 모니터링 추가 비용](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
 **핵심 개념:** S3 스토리지 클래스 — Standard vs Standard-IA vs One Zone-IA vs Glacier의 내구성과 가용성 비교, S3 수명 주기 규칙
+
+**관련 노트:** [S3 Storage Classes 스토리지 클래스](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스), [S3 Lifecycle Rules 수명주기 규칙](/section/11-s3-advanced#s3-lifecycle-rules-수명주기-규칙), [스토리지 클래스 비교표](/section/10-amazon-s3#스토리지-클래스-비교표)
 
 ---
 
@@ -159,17 +167,19 @@
 | D | 데이터베이스 계층 보안 그룹이 웹 계층 보안 그룹으로의 아웃바운드 HTTPS 및 SQL Server 트래픽을 허용하도록 구성합니다. |
 | E | 애플리케이션 계층 보안 그룹이 웹 계층 보안 그룹의 인바운드 HTTPS 트래픽을 허용하도록 구성합니다. |
 
-**(A) 정답** : 웹 계층은 ALB로부터만 트래픽을 수신해야 합니다. ALB 보안 그룹을 소스로 지정하면 최소 권한 원칙을 준수합니다.
+**(A) 정답** : 웹 계층은 ALB로부터만 트래픽을 수신해야 합니다. ALB 보안 그룹을 소스로 지정하면 최소 권한 원칙을 준수합니다. → [📖 웹 계층 보안 그룹 — ALB 소스 지정, 최소 권한](/section/03-ec2-basics#security-groups-보안-그룹)
 
 **(B)** : 0.0.0.0/0으로의 아웃바운드 허용은 불필요하게 넓은 범위이며 보안 우선 원칙에 위배됩니다. 웹 계층에서 나가는 트래픽은 애플리케이션 계층으로만 허용해야 합니다.
 
-**(C) 정답** : 데이터베이스 계층은 애플리케이션 계층으로부터만 SQL Server 트래픽(포트 1433)을 수신해야 합니다. 최소 권한 원칙을 준수합니다.
+**(C) 정답** : 데이터베이스 계층은 애플리케이션 계층으로부터만 SQL Server 트래픽(포트 1433)을 수신해야 합니다. 최소 권한 원칙을 준수합니다. → [📖 DB 계층 보안 그룹 — 애플리케이션 계층 소스, 포트 1433](/section/03-ec2-basics#security-groups-보안-그룹)
 
-**(D)** : 데이터베이스 계층에서 웹 계층으로의 아웃바운드는 불필요하며 보안 위험을 초래합니다. 데이터베이스는 응답만 반환하면 됩니다.
+**(D)** : 데이터베이스 계층에서 웹 계층으로의 아웃바운드는 불필요하며 보안 위험을 초래합니다. 데이터베이스는 응답만 반환하면 됩니다. → [📖 DB 아웃바운드 — 웹 계층으로 불필요, 보안 위험](/section/03-ec2-basics#security-groups-보안-그룹)
 
-**(E) 정답** : 애플리케이션 계층은 웹 계층으로부터만 HTTPS 트래픽을 수신해야 합니다. 웹 계층 보안 그룹을 소스로 지정하면 최소 권한 원칙을 준수합니다.
+**(E) 정답** : 애플리케이션 계층은 웹 계층으로부터만 HTTPS 트래픽을 수신해야 합니다. 웹 계층 보안 그룹을 소스로 지정하면 최소 권한 원칙을 준수합니다. → [📖 애플리케이션 계층 보안 그룹 — 웹 계층 소스 지정](/section/03-ec2-basics#security-groups-보안-그룹)
 
 **핵심 개념:** 3계층 아키텍처의 보안 그룹 최소 권한 원칙 — 각 계층은 인접 계층의 보안 그룹만 소스/대상으로 허용
+
+**관련 노트:** [Security Group vs NACL](/section/25-vpc#security-group-vs-nacl), [Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹)
 
 ---
 
@@ -196,17 +206,19 @@
 | D | Compute Savings Plan을 Lambda, Fargate, EC2에 구매합니다. |
 | E | EC2 Instance Savings Plan을 EC2 및 Fargate에 구매합니다. |
 
-**(A)** : EC2 Instance Savings Plan은 SageMaker를 커버하지 않습니다. EC2 전용 절감 계획입니다.
+**(A)** : EC2 Instance Savings Plan은 SageMaker를 커버하지 않습니다. EC2 전용 절감 계획입니다. → [📖 EC2 Instance Savings Plan — EC2 전용, SageMaker 미커버](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
-**(B)** : Compute Savings Plan은 SageMaker를 커버하지 않습니다. EC2, Lambda, Fargate만 커버합니다.
+**(B)** : Compute Savings Plan은 SageMaker를 커버하지 않습니다. EC2, Lambda, Fargate만 커버합니다. → [📖 Compute Savings Plan — EC2/Lambda/Fargate 커버, SageMaker 미커버](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
 **(C) 정답** : SageMaker Savings Plan은 SageMaker 전용 절감 계획으로, Compute Savings Plan이 커버하지 못하는 SageMaker를 처리합니다.
 
-**(D) 정답** : Compute Savings Plan은 EC2, Lambda, Fargate를 모두 커버하므로 3개 서비스를 하나의 계획으로 처리할 수 있습니다. 가장 넓은 커버리지를 제공합니다.
+**(D) 정답** : Compute Savings Plan은 EC2, Lambda, Fargate를 모두 커버하므로 3개 서비스를 하나의 계획으로 처리할 수 있습니다. 가장 넓은 커버리지를 제공합니다. → [📖 Compute Savings Plan — EC2 + Lambda + Fargate 통합 커버](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
-**(E)** : EC2 Instance Savings Plan은 Fargate를 커버하지 않습니다. Fargate는 Compute Savings Plan에서만 커버됩니다.
+**(E)** : EC2 Instance Savings Plan은 Fargate를 커버하지 않습니다. Fargate는 Compute Savings Plan에서만 커버됩니다. → [📖 EC2 Instance Savings Plan — Fargate 미커버](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
 **핵심 개념:** AWS Savings Plans 종류 — Compute Savings Plan(EC2+Lambda+Fargate), EC2 Instance Savings Plan(EC2 전용), SageMaker Savings Plan(SageMaker 전용)
+
+**관련 노트:** [EC2 구매 옵션 시험 핵심!](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
 ---
 
@@ -233,17 +245,19 @@
 | D | Amazon RDS Proxy를 사용해 애플리케이션을 Aurora PostgreSQL에 연결합니다. |
 | E | AWS DMS를 사용해 애플리케이션의 SQL 쿼리를 재작성합니다. |
 
-**(A)** : SCT는 스키마 변환 도구로 애플리케이션 코드 내 SQL 쿼리를 재작성하지 않습니다. 애플리케이션 코드 변경을 최소화해야 하는 요구사항에도 맞지 않습니다.
+**(A)** : SCT는 스키마 변환 도구로 애플리케이션 코드 내 SQL 쿼리를 재작성하지 않습니다. 애플리케이션 코드 변경을 최소화해야 하는 요구사항에도 맞지 않습니다. → [📖 AWS SCT — 스키마 변환, 애플리케이션 코드 미변경](/section/26-disaster-recovery-migrations#aws-schema-conversion-tool-sct)
 
-**(B) 정답** : Babelfish for Aurora PostgreSQL은 SQL Server의 T-SQL 방언을 이해하므로, 애플리케이션 코드를 거의 변경하지 않고도 기존 SQL Server 쿼리를 실행할 수 있습니다.
+**(B) 정답** : Babelfish for Aurora PostgreSQL은 SQL Server의 T-SQL 방언을 이해하므로, 애플리케이션 코드를 거의 변경하지 않고도 기존 SQL Server 쿼리를 실행할 수 있습니다. → [📖 Babelfish for Aurora PostgreSQL — T-SQL 호환, 코드 변경 최소](/section/07-rds-aurora-elasticache#babelfish-for-aurora-postgresql)
 
-**(C) 정답** : AWS SCT와 DMS를 함께 사용하면 SQL Server의 스키마를 PostgreSQL 호환 형식으로 변환하고, 데이터를 Aurora PostgreSQL로 마이그레이션할 수 있습니다.
+**(C) 정답** : AWS SCT와 DMS를 함께 사용하면 SQL Server의 스키마를 PostgreSQL 호환 형식으로 변환하고, 데이터를 Aurora PostgreSQL로 마이그레이션할 수 있습니다. → [📖 DMS — 데이터 마이그레이션](/section/26-disaster-recovery-migrations#dms-database-migration-service-데이터베이스-마이그레이션-서비스)
 
-**(D)** : RDS Proxy는 데이터베이스 연결 풀링을 위한 서비스로, 마이그레이션 자체와는 직접적인 관련이 없습니다.
+**(D)** : RDS Proxy는 데이터베이스 연결 풀링을 위한 서비스로, 마이그레이션 자체와는 직접적인 관련이 없습니다. → [📖 RDS Proxy — 연결 풀링, 마이그레이션 무관](/section/07-rds-aurora-elasticache#amazon-rds-proxy)
 
-**(E)** : DMS는 데이터 마이그레이션 서비스로, 애플리케이션의 SQL 쿼리를 재작성하는 기능을 제공하지 않습니다.
+**(E)** : DMS는 데이터 마이그레이션 서비스로, 애플리케이션의 SQL 쿼리를 재작성하는 기능을 제공하지 않습니다. → [📖 DMS — SQL 쿼리 재작성 기능 없음](/section/26-disaster-recovery-migrations#dms-database-migration-service-데이터베이스-마이그레이션-서비스)
 
 **핵심 개념:** Babelfish for Aurora PostgreSQL — SQL Server T-SQL 호환성 제공으로 애플리케이션 코드 변경 최소화, AWS SCT + DMS 조합의 데이터베이스 마이그레이션
+
+**관련 노트:** [Babelfish for Aurora PostgreSQL](/section/07-rds-aurora-elasticache#babelfish-for-aurora-postgresql), [DMS Database Migration Service, 데이터베이스 마이그레이션 서비스](/section/26-disaster-recovery-migrations#dms-database-migration-service-데이터베이스-마이그레이션-서비스), [AWS Schema Conversion Tool SCT](/section/26-disaster-recovery-migrations#aws-schema-conversion-tool-sct)
 
 ---
 
@@ -270,13 +284,15 @@
 
 **(A)** : EC2 계정 수준의 "EBS 암호화 기본값" 설정은 실제로 존재하며 효과적이지만, 이 설정만으로는 암호화되지 않은 볼륨 생성을 완전히 방지할 수 없고 정책적 강제가 어렵습니다.
 
-**(B) 정답** : AWS Config의 `encrypted-volumes` 규칙을 사용하면 암호화되지 않은 EBS 볼륨을 감지하고, Config 교정 액션을 통해 암호화를 강제할 수 있습니다. 기본 KMS 키 적용으로 기본 암호화도 보장됩니다.
+**(B) 정답** : AWS Config의 `encrypted-volumes` 규칙을 사용하면 암호화되지 않은 EBS 볼륨을 감지하고, Config 교정 액션을 통해 암호화를 강제할 수 있습니다. 기본 KMS 키 적용으로 기본 암호화도 보장됩니다. → [📖 AWS Config encrypted-volumes 규칙 — EBS 암호화 감지 및 강제](/section/22-monitoring-audit-performance#aws-config)
 
 **(C)** : Systems Manager는 EBS 볼륨 암호화 기본값 설정이나 생성 방지를 직접 수행하지 않습니다. 사후 대응적 접근으로 요구사항을 완전히 충족하지 못합니다.
 
-**(D)** : AWS Migration Hub는 마이그레이션 추적 서비스로, EBS 볼륨 암호화 정책 적용과는 무관합니다.
+**(D)** : AWS Migration Hub는 마이그레이션 추적 서비스로, EBS 볼륨 암호화 정책 적용과는 무관합니다. → [📖 AWS Migration Hub — 마이그레이션 추적, 암호화 정책 무관](/section/26-disaster-recovery-migrations#dms-database-migration-service-데이터베이스-마이그레이션-서비스)
 
 **핵심 개념:** AWS Config `encrypted-volumes` 규칙 — EBS 볼륨 암호화 정책 강제 및 비준수 리소스 감지
+
+**관련 노트:** [EBS Encryption](/section/05-ec2-instance-storage#ebs-encryption), [AWS Config](/section/22-monitoring-audit-performance#aws-config), [AWS KMS Key Management Service](/section/24-security-encryption#aws-kms-key-management-service)
 
 ---
 
@@ -301,14 +317,16 @@
 | C | Amazon Kinesis Video Streams를 사용해 클릭스트림 데이터를 캡처합니다. AWS Glue를 사용해 데이터를 실시간으로 처리합니다. |
 | D | Amazon Managed Service for Apache Flink를 사용해 클릭스트림 데이터를 캡처합니다. AWS Lambda를 사용해 데이터를 실시간으로 처리합니다. |
 
-**(A) 정답** : Kinesis Data Streams의 온디맨드 모드는 트래픽 변동에 자동으로 확장/축소되므로 별도의 샤드 관리가 불필요합니다. Lambda와 함께 사용하면 실시간 처리가 가능합니다.
+**(A) 정답** : Kinesis Data Streams의 온디맨드 모드는 트래픽 변동에 자동으로 확장/축소되므로 별도의 샤드 관리가 불필요합니다. Lambda와 함께 사용하면 실시간 처리가 가능합니다. → [📖 Kinesis Data Streams 온디맨드 모드 + Lambda — 실시간 처리](/section/15-integration-messaging#amazon-kinesis-data-streams)
 
-**(B)** : Kinesis Data Firehose는 데이터를 S3, Redshift 등으로 전달하는 서비스로, 실시간 처리가 아닌 근실시간(near-real-time) 전달에 적합합니다. Glue도 실시간 스트리밍 처리보다는 배치 ETL에 적합합니다.
+**(B)** : Kinesis Data Firehose는 데이터를 S3, Redshift 등으로 전달하는 서비스로, 실시간 처리가 아닌 근실시간(near-real-time) 전달에 적합합니다. Glue도 실시간 스트리밍 처리보다는 배치 ETL에 적합합니다. → [📖 Kinesis Data Firehose — 근실시간 전달, 배치 ETL](/section/15-integration-messaging#amazon-data-firehose-구-kinesis-data-firehose)
 
 **(C)** : Kinesis Video Streams는 비디오 스트리밍 전용 서비스로, 텍스트 기반 클릭스트림 데이터 수집에 적합하지 않습니다.
 
-**(D)** : Amazon Managed Service for Apache Flink는 데이터 처리 및 분석 서비스이지, 데이터 수집(캡처) 서비스가 아닙니다. 데이터 캡처 역할을 수행하지 않습니다.
+**(D)** : Amazon Managed Service for Apache Flink는 데이터 처리 및 분석 서비스이지, 데이터 수집(캡처) 서비스가 아닙니다. 데이터 캡처 역할을 수행하지 않습니다. → [📖 Amazon Managed Service for Apache Flink — 분석 서비스, 수집 아님](/section/20-data-analytics#amazon-managed-service-for-apache-flink)
 
 **핵심 개념:** Amazon Kinesis Data Streams 온디맨드 모드 — 자동 확장으로 변동 트래픽에 대응, Lambda를 통한 실시간 스트림 처리
+
+**관련 노트:** [Amazon Kinesis Data Streams](/section/15-integration-messaging#amazon-kinesis-data-streams), [AWS Lambda](/section/17-serverless-overview#aws-lambda)
 
 ---

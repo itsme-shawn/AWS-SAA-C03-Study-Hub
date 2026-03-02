@@ -26,15 +26,17 @@
 | C | General Purpose SSD. |
 | D | Magnetic 또는 Provisioned IOPS SSD. |
 
-**(A) 정답** : Magnetic(HDD) 볼륨은 가장 저렴한 EBS 옵션으로, 자주 접근하지 않는 데이터와 낮은 워크로드 환경에 적합합니다. 비용 최우선인 경우 이상적입니다.
+**(A) 정답** : Magnetic(HDD) 볼륨은 가장 저렴한 EBS 옵션으로, 자주 접근하지 않는 데이터와 낮은 워크로드 환경에 적합합니다. 비용 최우선인 경우 이상적입니다. → [📖 Magnetic(HDD) 볼륨은 자주 접근하지 않는 데이터에 적합](/section/05-ec2-instance-storage#ebs-volume-types-6가지)
 
 **(B)** : EBS 볼륨 유형에 따라 성능과 비용이 다릅니다.
 
 **(C)** : GP SSD는 Magnetic보다 비용이 높습니다.
 
-**(D)** : Provisioned IOPS는 고성능 워크로드용으로 비용이 가장 높습니다.
+**(D)** : Provisioned IOPS는 고성능 워크로드용으로 비용이 가장 높습니다. → [📖 Provisioned IOPS는 고성능 워크로드용](/section/05-ec2-instance-storage#ebs-volume-types-6가지)
 
 **핵심 개념:** EBS 볼륨 유형별 비용 및 용도 — Magnetic: 저비용 비빈번 접근 / GP SSD: 일반 / PIOPS: 고성능
+
+**관련 노트:** [EBS Volume Types 6가지](/section/05-ec2-instance-storage#ebs-volume-types-6가지), [EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store)
 
 ---
 
@@ -59,15 +61,17 @@
 | C | EBS 백업 AMI 생성 + 1시간마다 DB 백업 스크립트로 S3에 암호화 업로드. |
 | D | 컴퓨팅 최적화 EC2 인스턴스 + Direct Connect로 DB 동기 복제. |
 
-**(A) 정답** : CloudFormation 템플릿과 AMI를 준비하면 RTO 4시간 내 복구가 가능합니다. VPN을 통한 비동기 DB 복제로 RPO 1시간을 달성할 수 있습니다. 비용 효율적이면서 2주 내 구현 가능합니다.
+**(A) 정답** : CloudFormation 템플릿과 AMI를 준비하면 RTO 4시간 내 복구가 가능합니다. VPN을 통한 비동기 DB 복제로 RPO 1시간을 달성할 수 있습니다. 비용 효율적이면서 2주 내 구현 가능합니다. → [📖 CloudFormation 템플릿과 AMI를 준비하면 RTO 4시간 내 복구 가능](/section/26-disaster-recovery-migrations#4가지-dr-전략-빠른-rto-순)
 
 **(B)** : AMI와 CloudFormation 없이 수동 배포는 RTO 4시간을 충족하기 어렵습니다.
 
 **(C)** : S3 백업만으로는 RTO 4시간 내 복구가 어렵습니다. 복구 시 데이터 로드 시간이 필요합니다.
 
-**(D)** : Direct Connect 설치는 2주 내 불가능하며, 동기 복제는 20Mbps 연결에서 성능 문제가 발생합니다.
+**(D)** : Direct Connect 설치는 2주 내 불가능하며, 동기 복제는 20Mbps 연결에서 성능 문제가 발생합니다. → [📖 Direct Connect 설치는 2주 내 불가능](/section/25-vpc#direct-connect-dx)
 
 **핵심 개념:** DR 계획 — RTO/RPO 요건 충족을 위한 AMI + CloudFormation + VPN DB 복제 조합
+
+**관련 노트:** [4가지 DR 전략 빠른 RTO 순](/section/26-disaster-recovery-migrations#4가지-dr-전략-빠른-rto-순), [RPO와 RTO](/section/26-disaster-recovery-migrations#rpo와-rto), [AMI Amazon Machine Image](/section/05-ec2-instance-storage#ami-amazon-machine-image)
 
 ---
 
@@ -96,19 +100,21 @@
 | E | 게이트웨이 스냅샷에서 EBS 볼륨을 생성하고 EC2 인스턴스에 마운트한다. |
 | F | 지사에서 Storage Gateway 가상 iSCSI 장치를 시작하고 게이트웨이 스냅샷에서 복원한다. |
 
-**(A)** : S3 버킷에 직접 HTTPS GET은 Storage Gateway 암호화/형식 때문에 데이터를 직접 읽을 수 없습니다.
+**(A)** : S3 버킷에 직접 HTTPS GET은 Storage Gateway 암호화/형식 때문에 데이터를 직접 읽을 수 없습니다. → [📖 Storage Gateway 암호화/형식 때문에 S3에서 직접 읽을 수 없음](/section/14-storage-extras#aws-storage-gateway)
 
 **(B)** : 수명 주기 정책은 데이터 접근을 위한 방법이 아닙니다.
 
 **(C)** : Gateway-cached 볼륨 데이터는 Glacier가 아닌 S3에 저장됩니다.
 
-**(D) 정답** : EC2에서 새 Storage Gateway를 시작하고 스냅샷으로 복원하면 데이터에 접근할 수 있습니다.
+**(D) 정답** : EC2에서 새 Storage Gateway를 시작하고 스냅샷으로 복원하면 데이터에 접근할 수 있습니다. → [📖 EC2에서 새 Storage Gateway를 시작하고 스냅샷으로 복원](/section/14-storage-extras#aws-storage-gateway)
 
-**(E) 정답** : 게이트웨이 스냅샷에서 EBS 볼륨을 생성하고 EC2에 마운트하면 데이터에 직접 접근 가능합니다.
+**(E) 정답** : 게이트웨이 스냅샷에서 EBS 볼륨을 생성하고 EC2에 마운트하면 데이터에 직접 접근 가능합니다. → [📖 게이트웨이 스냅샷에서 EBS 볼륨 생성하고 EC2에 마운트](/section/05-ec2-instance-storage#ebs-snapshots)
 
-**(F) 정답** : 지사에서 가상 iSCSI Storage Gateway를 시작하고 스냅샷으로 복원하면 데이터에 접근할 수 있습니다.
+**(F) 정답** : 지사에서 가상 iSCSI Storage Gateway를 시작하고 스냅샷으로 복원하면 데이터에 접근할 수 있습니다. → [📖 지사에서 가상 iSCSI Storage Gateway를 시작하고 스냅샷으로 복원](/section/14-storage-extras#aws-storage-gateway)
 
 **핵심 개념:** Storage Gateway 재해 복구 — 스냅샷 기반 복원 방법 (EC2 Storage Gateway, EBS 볼륨, 가상 iSCSI)
+
+**관련 노트:** [AWS Storage Gateway](/section/14-storage-extras#aws-storage-gateway), [EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots), [AMI Amazon Machine Image](/section/05-ec2-instance-storage#ami-amazon-machine-image)
 
 ---
 
@@ -133,15 +139,17 @@
 | C | CloudTrail로 커스텀 로그를 수신하고 EMR로 분석. |
 | D | EC2 syslogd 서버에 로그 수집, S3에 저장, EMR로 분석. |
 
-**(A)** : SQS는 실시간 스트리밍 분석보다는 메시지 큐에 적합하며, 12시간 데이터 재처리가 어렵습니다.
+**(A)** : SQS는 실시간 스트리밍 분석보다는 메시지 큐에 적합하며, 12시간 데이터 재처리가 어렵습니다. → [📖 SQS는 실시간 스트리밍 분석보다는 메시지 큐에 적합](/section/15-integration-messaging#amazon-sqs-simple-queue-service)
 
-**(B) 정답** : Amazon Kinesis는 실시간 로그 스트리밍 및 분석에 최적화되어 있으며, 최대 24시간(기본값)의 데이터 보존으로 12시간 데이터 재검증이 가능합니다.
+**(B) 정답** : Amazon Kinesis는 실시간 로그 스트리밍 및 분석에 최적화되어 있으며, 최대 24시간(기본값)의 데이터 보존으로 12시간 데이터 재검증이 가능합니다. → [📖 Amazon Kinesis는 실시간 로그 스트리밍 및 분석에 최적화](/section/15-integration-messaging#amazon-kinesis-data-streams)
 
-**(C)** : CloudTrail은 AWS API 이벤트 로깅용이며 커스텀 로그 수집에 적합하지 않습니다.
+**(C)** : CloudTrail은 AWS API 이벤트 로깅용이며 커스텀 로그 수집에 적합하지 않습니다. → [📖 CloudTrail은 AWS API 이벤트 로깅용](/section/22-monitoring-audit-performance#aws-cloudtrail)
 
-**(D)** : EMR은 배치 처리에 적합하며 실시간 분석에는 지연이 있습니다.
+**(D)** : EMR은 배치 처리에 적합하며 실시간 분석에는 지연이 있습니다. → [📖 EMR은 배치 처리에 적합하며 실시간 분석에는 지연](/section/20-data-analytics#amazon-emr-elastic-mapreduce)
 
 **핵심 개념:** Amazon Kinesis — 실시간 로그 스트리밍 및 분석, 데이터 보존(12~24시간)을 통한 재처리
+
+**관련 노트:** [Amazon Kinesis Data Streams](/section/15-integration-messaging#amazon-kinesis-data-streams), [Amazon SQS Simple Queue Service](/section/15-integration-messaging#amazon-sqs-simple-queue-service)
 
 ---
 
@@ -166,7 +174,7 @@
 | C | 예. |
 | D | S3에서만 가능하고 EC2는 불가합니다. |
 
-**(A) 정답** : AWS 태그 키는 'aws:' 접두사를 사용할 수 없습니다. 이 접두사는 AWS 시스템에서 예약된 것으로, 사용자가 이 접두사로 시작하는 태그를 생성하면 오류가 발생합니다.
+**(A) 정답** : AWS 태그 키는 'aws:' 접두사를 사용할 수 없습니다. 이 접두사는 AWS 시스템에서 예약된 것으로, 사용자가 이 접두사로 시작하는 태그를 생성하면 오류가 발생합니다. → [📖 AWS 태그 키는 'aws:' 접두사를 사용할 수 없음](/section/23-advanced-identity#aws-organizations-tag-policies)
 
 **(B)** : 서비스에 관계없이 'aws:' 접두사는 예약되어 있습니다.
 
@@ -175,6 +183,8 @@
 **(D)** : 서비스에 관계없이 불가합니다.
 
 **핵심 개념:** AWS 태그 키 제약 — 'aws:' 접두사는 AWS 예약 접두사로 사용자 태그에 사용 불가
+
+**관련 노트:** [개요](/section/02-iam#개요)
 
 ---
 
@@ -199,15 +209,17 @@
 | C | Amazon EC2 인스턴스 스토리지. |
 | D | Amazon DynamoDB. |
 
-**(A)** : ElastiCache Memcached는 낮은 지연 시간을 제공하지만 데이터 내구성이 없습니다(노드 장애 시 데이터 손실).
+**(A)** : ElastiCache Memcached는 낮은 지연 시간을 제공하지만 데이터 내구성이 없습니다(노드 장애 시 데이터 손실). → [📖 ElastiCache Memcached는 데이터 내구성이 없음](/section/07-rds-aurora-elasticache#redis-vs-memcached)
 
-**(B) 정답** : 이 문제의 정답은 S3로 표시되어 있습니다. S3는 높은 내구성(11 9s)을 제공하는 공유 스토리지입니다. 단, 실제 세션 저장에는 DynamoDB나 ElastiCache Redis가 더 적합한 경우가 많습니다.
+**(B) 정답** : 이 문제의 정답은 S3로 표시되어 있습니다. S3는 높은 내구성(11 9s)을 제공하는 공유 스토리지입니다. 단, 실제 세션 저장에는 DynamoDB나 ElastiCache Redis가 더 적합한 경우가 많습니다. → [📖 S3는 높은 내구성(11 9s)을 제공하는 공유 스토리지](/section/10-amazon-s3#s3-사용-사례)
 
-**(C)** : EC2 인스턴스 스토리지는 인스턴스 종료 시 소실되며 다른 인스턴스와 공유 불가합니다.
+**(C)** : EC2 인스턴스 스토리지는 인스턴스 종료 시 소실되며 다른 인스턴스와 공유 불가합니다. → [📖 EC2 인스턴스 스토리지는 인스턴스 종료 시 소실](/section/05-ec2-instance-storage#ec2-instance-store)
 
-**(D)** : DynamoDB도 내구성과 낮은 지연 시간을 제공하지만, 이 문제에서는 S3가 정답입니다.
+**(D)** : DynamoDB도 내구성과 낮은 지연 시간을 제공하지만, 이 문제에서는 S3가 정답입니다. → [📖 DynamoDB도 내구성과 낮은 지연 시간을 제공](/section/19-databases#amazon-dynamodb)
 
 **핵심 개념:** Auto Scaling 환경에서의 상태 저장소 — 외부 공유 스토리지 사용 필요
+
+**관련 노트:** [Case Study 2: MyClothes.com Stateful](/section/09-classic-solutions-architecture#case-study-2-myclothescom-stateful), [Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
 ---
 
@@ -238,9 +250,11 @@
 
 **(C)** : 라우트 테이블 업데이트만으로는 충분하지 않습니다.
 
-**(D) 정답** : Direct Connect 라우터를 먼저 구성하고 VPC 라우트 테이블을 업데이트한 후, VPN을 백업으로 유지하면서 Direct Connect 트래픽을 검증합니다. 이렇게 하면 원활한 전환과 동시에 백업 연결을 유지할 수 있습니다.
+**(D) 정답** : Direct Connect 라우터를 먼저 구성하고 VPC 라우트 테이블을 업데이트한 후, VPN을 백업으로 유지하면서 Direct Connect 트래픽을 검증합니다. 이렇게 하면 원활한 전환과 동시에 백업 연결을 유지할 수 있습니다. → [📖 Direct Connect 라우터를 먼저 구성하고 VPN을 백업으로 유지](/section/25-vpc#direct-connect-dx)
 
 **핵심 개념:** VPN에서 Direct Connect로의 원활한 전환 — 라우트 테이블 업데이트 및 BGP 우선순위 조정, 검증 후 VPN 삭제
+
+**관련 노트:** [Site-to-Site VPN](/section/25-vpc#sitetosite-vpn), [Direct Connect DX](/section/25-vpc#direct-connect-dx)
 
 ---
 
@@ -265,15 +279,17 @@
 | C | 위의 모든 항목이 데이터베이스 성능 및 상태를 추적합니다. |
 | D | RDS 콘솔 또는 API를 통해 DB 로그 파일 조회, 다운로드, 확인. |
 
-**(A)** : RDS 이벤트 구독은 유효한 모니터링 방법이지만 단독으로는 불완전합니다.
+**(A)** : RDS 이벤트 구독은 유효한 모니터링 방법이지만 단독으로는 불완전합니다. → [📖 RDS 이벤트 구독은 유효한 모니터링 방법](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
-**(B)** : CloudWatch는 유효한 모니터링 방법이지만 단독으로는 불완전합니다.
+**(B)** : CloudWatch는 유효한 모니터링 방법이지만 단독으로는 불완전합니다. → [📖 CloudWatch는 유효한 RDS 모니터링 방법](/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics)
 
-**(C) 정답** : RDS 이벤트 구독, CloudWatch 메트릭 모니터링, DB 로그 파일 조회 모두 RDS 성능 및 상태를 추적하는 유효한 방법입니다.
+**(C) 정답** : RDS 이벤트 구독, CloudWatch 메트릭 모니터링, DB 로그 파일 조회 모두 RDS 성능 및 상태를 추적하는 유효한 방법입니다. → [📖 RDS 이벤트 구독, CloudWatch 메트릭 모니터링, DB 로그 파일 조회](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
 **(D)** : 로그 파일 조회는 유효한 방법이지만 단독으로는 불완전합니다.
 
 **핵심 개념:** RDS 모니터링 방법 — 이벤트 구독 + CloudWatch + 로그 파일 조합
+
+**관련 노트:** [Amazon RDS Relational Database Service](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service), [Amazon CloudWatch Metrics](/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics), [AWS CloudTrail](/section/22-monitoring-audit-performance#aws-cloudtrail)
 
 ---
 
@@ -300,15 +316,17 @@
 | D | Elastic Beanstalk 'Rebuild Environment' 옵션을 사용한다. |
 | E | Elastic Beanstalk 'Restart App server(s)' 옵션을 사용한다. |
 
-**(A) 정답** : CloudFront를 추가하면 대부분의 요청이 CloudFront 엣지에서 처리되어 원본 서버(Elastic Beanstalk)에 도달하지 않습니다. 따라서 Elastic Beanstalk 로그에는 CloudFront가 캐시에서 처리한 요청이 기록되지 않습니다. CloudFront의 액세스 로그를 S3에 활성화하고 EMR 입력으로 사용해야 전체 트래픽을 정확히 분석할 수 있습니다.
+**(A) 정답** : CloudFront를 추가하면 대부분의 요청이 CloudFront 엣지에서 처리되어 원본 서버(Elastic Beanstalk)에 도달하지 않습니다. 따라서 Elastic Beanstalk 로그에는 CloudFront가 캐시에서 처리한 요청이 기록되지 않습니다. CloudFront의 액세스 로그를 S3에 활성화하고 EMR 입력으로 사용해야 전체 트래픽을 정확히 분석할 수 있습니다. → [📖 CloudFront의 액세스 로그를 S3에 활성화하고 EMR 입력으로 사용](/section/13-cloudfront-global-accelerator#cloudfront-기본-개념)
 
-**(B)** : CloudTrail은 API 호출 로그이며 웹 트래픽 분석에 적합하지 않습니다.
+**(B)** : CloudTrail은 API 호출 로그이며 웹 트래픽 분석에 적합하지 않습니다. → [📖 CloudTrail은 API 호출 로그이며 웹 트래픽 분석에 적합하지 않음](/section/22-monitoring-audit-performance#aws-cloudtrail)
 
 **(C)** : ELB 메트릭은 CloudFront 앞단 트래픽을 포함하지 않습니다.
 
 **(D, E)** : Elastic Beanstalk 재시작/재구축은 로그 소스 문제를 해결하지 못합니다.
 
 **핵심 개념:** CloudFront 도입 후 로그 분석 — CloudFront 액세스 로그를 S3에 활성화하여 실제 트래픽 분석
+
+**관련 노트:** [CloudFront 기본 개념](/section/13-cloudfront-global-accelerator#cloudfront-기본-개념), [S3 Access Logs 액세스 로그](/section/12-s3-security#s3-access-logs-액세스-로그)
 
 ---
 
@@ -335,13 +353,15 @@
 
 **(A)** : EMR S3DistCp는 복잡한 설정이 필요하며 비용 효율적이지 않습니다.
 
-**(B) 정답** : BASE 모델은 최종 일관성을 허용하므로, SQS 큐에 쓰기를 버퍼링하고 워커 프로세스가 순차적으로 DB에 플러시하는 방식이 적합합니다. SQS는 비용이 낮고 설정이 간단합니다.
+**(B) 정답** : BASE 모델은 최종 일관성을 허용하므로, SQS 큐에 쓰기를 버퍼링하고 워커 프로세스가 순차적으로 DB에 플러시하는 방식이 적합합니다. SQS는 비용이 낮고 설정이 간단합니다. → [📖 SQS 큐에 쓰기를 버퍼링하고 워커 프로세스가 순차적으로 DB에 플러시](/section/15-integration-messaging#amazon-sqs-simple-queue-service)
 
 **(C)** : DynamoDB + EMR 조합은 복잡하고 불필요한 비용이 발생합니다.
 
-**(D)** : RDS Read Replica는 읽기 부하 분산용이며 쓰기 부하 감소에 직접 도움이 되지 않습니다.
+**(D)** : RDS Read Replica는 읽기 부하 분산용이며 쓰기 부하 감소에 직접 도움이 되지 않습니다. → [📖 RDS Read Replica는 읽기 부하 분산용](/section/07-rds-aurora-elasticache#rds-read-replicas)
 
 **핵심 개념:** SQS를 이용한 쓰기 버퍼링 — BASE 모델 애플리케이션의 DB 쓰기 부하 감소
+
+**관련 노트:** [Amazon SQS Simple Queue Service](/section/15-integration-messaging#amazon-sqs-simple-queue-service)
 
 ---
 
@@ -366,7 +386,7 @@
 | C | AWS CloudTrail로 계정의 S3 로그파일 기록을 조회할 수 있습니다. |
 | D | AWS CloudTrail로 계정에서 사용된 CloudFormation JSON 스크립트 기록을 조회할 수 있습니다. |
 
-**(A) 정답** : AWS CloudTrail은 AWS 계정에서 발생한 모든 API 호출을 기록하는 서비스입니다. 누가 어떤 API를 언제, 어디서 호출했는지 추적할 수 있어 보안 감사와 컴플라이언스에 필수적입니다.
+**(A) 정답** : AWS CloudTrail은 AWS 계정에서 발생한 모든 API 호출을 기록하는 서비스입니다. 누가 어떤 API를 언제, 어디서 호출했는지 추적할 수 있어 보안 감사와 컴플라이언스에 필수적입니다. → [📖 AWS CloudTrail은 AWS 계정에서 발생한 모든 API 호출을 기록](/section/22-monitoring-audit-performance#aws-cloudtrail)
 
 **(B)** : IAM 사용자 기록이 아닌 API 호출 기록입니다.
 
@@ -375,6 +395,8 @@
 **(D)** : CloudFormation 스크립트 기록이 아닙니다.
 
 **핵심 개념:** AWS CloudTrail — AWS API 호출 감사 로깅 서비스, 보안 및 컴플라이언스
+
+**관련 노트:** [AWS CloudTrail](/section/22-monitoring-audit-performance#aws-cloudtrail)
 
 ---
 
@@ -401,9 +423,11 @@
 
 **(B)** : 전체 권한으로 시작하지 않습니다.
 
-**(C) 정답** : IAM에서 새로 생성된 사용자는 기본적으로 아무 권한도 없습니다. 명시적으로 정책을 연결해야만 AWS 리소스에 접근할 수 있습니다. 이는 최소 권한 원칙(Principle of Least Privilege)을 따릅니다.
+**(C) 정답** : IAM에서 새로 생성된 사용자는 기본적으로 아무 권한도 없습니다. 명시적으로 정책을 연결해야만 AWS 리소스에 접근할 수 있습니다. 이는 최소 권한 원칙(Principle of Least Privilege)을 따릅니다. → [📖 IAM에서 새로 생성된 사용자는 기본적으로 아무 권한도 없음](/section/02-iam#users-groups)
 
 **핵심 개념:** IAM 최소 권한 원칙 — 새 사용자는 기본 권한 없음, 명시적 권한 부여 필요
+
+**관련 노트:** [핵심 개념](/section/02-iam#핵심-개념)
 
 ---
 
@@ -430,13 +454,15 @@
 
 **(A)** : 리전 이동은 접근 권한 변경과 무관합니다.
 
-**(B) 정답** : 버킷 정책을 사용하면 버킷 전체에 대한 공개 읽기 접근을 한 번에 설정할 수 있습니다. 개별 파일 권한을 변경할 필요가 없습니다.
+**(B) 정답** : 버킷 정책을 사용하면 버킷 전체에 대한 공개 읽기 접근을 한 번에 설정할 수 있습니다. 개별 파일 권한을 변경할 필요가 없습니다. → [📖 버킷 정책을 사용하면 버킷 전체에 대한 공개 읽기 접근을 한 번에 설정](/section/10-amazon-s3#s3-bucket-policy)
 
 **(C)** : 새 버킷으로 이동해도 같은 문제가 발생합니다.
 
 **(D)** : EBS는 공개 접근에 적합하지 않습니다.
 
 **핵심 개념:** S3 버킷 정책 — 버킷 전체에 대한 일괄 접근 제어
+
+**관련 노트:** [S3 Bucket Policy](/section/10-amazon-s3#s3-bucket-policy), [S3 보안](/section/10-amazon-s3#s3-보안)
 
 ---
 
@@ -461,15 +487,17 @@
 | C | ELB를 HTTPS 리스너로 구성하고 웹 서버를 뒤에 배치한다. |
 | D | 웹 서버를 CloudFront 배포의 오리진으로 구성하고 커스텀 SSL 인증서를 사용한다. |
 
-**(A) 정답** : 클라이언트 인증서 인증은 ELB가 SSL을 종료하지 않아야 합니다. TCP 리스너(패스스루 모드)를 사용하면 SSL 협상이 웹 서버까지 전달되어 클라이언트 인증서 검증이 가능합니다.
+**(A) 정답** : 클라이언트 인증서 인증은 ELB가 SSL을 종료하지 않아야 합니다. TCP 리스너(패스스루 모드)를 사용하면 SSL 협상이 웹 서버까지 전달되어 클라이언트 인증서 검증이 가능합니다. → [📖 TCP 리스너(패스스루 모드)를 사용하면 SSL 협상이 웹 서버까지 전달](/section/06-high-availability-scalability#ssltls-인증서)
 
-**(B) 정답** : EIP와 Route 53 헬스 체크를 사용하면 복원력을 제공하면서 각 웹 서버가 SSL을 직접 종료하여 클라이언트 인증서를 검증할 수 있습니다.
+**(B) 정답** : EIP와 Route 53 헬스 체크를 사용하면 복원력을 제공하면서 각 웹 서버가 SSL을 직접 종료하여 클라이언트 인증서를 검증할 수 있습니다. → [📖 EIP와 Route 53 헬스 체크를 사용하면 복원력 제공](/section/08-route-53#health-checks-헬스-체크)
 
-**(C)** : HTTPS 리스너는 ELB에서 SSL을 종료하므로 클라이언트 인증서가 웹 서버에 전달되지 않습니다.
+**(C)** : HTTPS 리스너는 ELB에서 SSL을 종료하므로 클라이언트 인증서가 웹 서버에 전달되지 않습니다. → [📖 HTTPS 리스너는 ELB에서 SSL을 종료하므로 클라이언트 인증서가 전달되지 않음](/section/06-high-availability-scalability#ssltls-인증서)
 
-**(D)** : CloudFront는 클라이언트 인증서 인증을 지원하지 않습니다.
+**(D)** : CloudFront는 클라이언트 인증서 인증을 지원하지 않습니다. → [📖 CloudFront는 클라이언트 인증서 인증을 지원하지 않음](/section/13-cloudfront-global-accelerator#cloudfront-기본-개념)
 
 **핵심 개념:** 클라이언트 인증서 인증 — ELB TCP 패스스루 또는 직접 웹 서버 SSL 종료 필요
+
+**관련 노트:** [NLB Network Load Balancer 상세](/section/06-high-availability-scalability#nlb-network-load-balancer-상세), [SSL/TLS 인증서](/section/06-high-availability-scalability#ssltls-인증서)
 
 ---
 
@@ -498,19 +526,21 @@
 | E | 관계형 조인 및 복잡한 업데이트 실행. |
 | F | 자주 접근하지 않는 대용량 데이터 저장. |
 
-**(A)** : DynamoDB 아이템 크기는 최대 400KB로 대용량 BLOB 데이터 저장에 부적합합니다.
+**(A)** : DynamoDB 아이템 크기는 최대 400KB로 대용량 BLOB 데이터 저장에 부적합합니다. → [📖 DynamoDB 아이템 크기는 최대 400KB로 대용량 BLOB 데이터 저장에 부적합](/section/17-serverless-overview#amazon-dynamodb)
 
-**(B) 정답** : DynamoDB는 낮은 지연 시간과 자동 TTL 기능으로 웹 세션 관리에 이상적입니다.
+**(B) 정답** : DynamoDB는 낮은 지연 시간과 자동 TTL 기능으로 웹 세션 관리에 이상적입니다. → [📖 DynamoDB는 낮은 지연 시간과 자동 TTL 기능으로 웹 세션 관리에 이상적](/section/17-serverless-overview#amazon-dynamodb)
 
-**(C) 정답** : DynamoDB는 JSON 형식의 문서를 네이티브로 저장하고 조회할 수 있습니다.
+**(C) 정답** : DynamoDB는 JSON 형식의 문서를 네이티브로 저장하고 조회할 수 있습니다. → [📖 DynamoDB는 JSON 형식의 문서를 네이티브로 저장하고 조회](/section/17-serverless-overview#amazon-dynamodb)
 
-**(D) 정답** : S3 객체의 메타데이터를 DynamoDB에 저장하면 빠른 검색이 가능합니다.
+**(D) 정답** : S3 객체의 메타데이터를 DynamoDB에 저장하면 빠른 검색이 가능합니다. → [📖 S3 객체의 메타데이터를 DynamoDB에 저장하면 빠른 검색 가능](/section/17-serverless-overview#amazon-dynamodb)
 
-**(E)** : DynamoDB는 NoSQL 데이터베이스로 복잡한 관계형 조인을 지원하지 않습니다.
+**(E)** : DynamoDB는 NoSQL 데이터베이스로 복잡한 관계형 조인을 지원하지 않습니다. → [📖 DynamoDB는 복잡한 관계형 조인을 지원하지 않음](/section/17-serverless-overview#amazon-dynamodb)
 
-**(F)** : 자주 접근하지 않는 대용량 데이터는 S3나 Glacier가 더 적합합니다.
+**(F)** : 자주 접근하지 않는 대용량 데이터는 S3나 Glacier가 더 적합합니다. → [📖 자주 접근하지 않는 대용량 데이터는 S3나 Glacier가 더 적합](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
 **핵심 개념:** DynamoDB 적합한 사용 사례 — 세션 관리, JSON 문서, 메타데이터 저장
+
+**관련 노트:** [Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb), [Amazon DynamoDB](/section/19-databases#amazon-dynamodb)
 
 ---
 
@@ -535,15 +565,17 @@
 | C | AWS Storage Gateway. |
 | D | Amazon Glacier. |
 
-**(A)** : S3는 객체 스토리지로 데이터베이스의 빈번한 블록 단위 업데이트에 부적합합니다.
+**(A)** : S3는 객체 스토리지로 데이터베이스의 빈번한 블록 단위 업데이트에 부적합합니다. → [📖 S3는 객체 스토리지로 데이터베이스의 빈번한 블록 단위 업데이트에 부적합](/section/05-ec2-instance-storage#ebs-vs-efs-vs-instance-store-비교-시험-핵심)
 
-**(B) 정답** : Amazon EBS는 블록 스토리지로 데이터베이스의 빈번하고 세밀한 읽기/쓰기 작업에 최적화되어 있습니다. EC2 인스턴스에 연결하여 데이터베이스 스토리지로 사용하는 표준 방법입니다.
+**(B) 정답** : Amazon EBS는 블록 스토리지로 데이터베이스의 빈번하고 세밀한 읽기/쓰기 작업에 최적화되어 있습니다. EC2 인스턴스에 연결하여 데이터베이스 스토리지로 사용하는 표준 방법입니다. → [📖 Amazon EBS는 블록 스토리지로 데이터베이스 스토리지에 최적화](/section/05-ec2-instance-storage#ebs-elastic-block-store)
 
-**(C)** : Storage Gateway는 하이브리드 클라우드 스토리지 솔루션으로 데이터베이스 스토리지에 적합하지 않습니다.
+**(C)** : Storage Gateway는 하이브리드 클라우드 스토리지 솔루션으로 데이터베이스 스토리지에 적합하지 않습니다. → [📖 Storage Gateway는 하이브리드 클라우드 스토리지 솔루션](/section/14-storage-extras#aws-storage-gateway)
 
 **(D)** : Glacier는 아카이브용 콜드 스토리지로 빈번한 접근에 부적합합니다.
 
 **핵심 개념:** EC2 기반 데이터베이스 스토리지 — EBS 블록 스토리지
+
+**관련 노트:** [EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store), [Amazon RDS Relational Database Service](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
 ---
 
@@ -572,11 +604,13 @@
 
 **(B)** : 클라이언트 IP도 포함되지만 단독으로는 불완전합니다.
 
-**(C) 정답** : X-Forwarded-For 헤더는 요청이 통과한 모든 프록시/로드 밸런서의 IP 주소를 기록합니다. 세 개의 IP가 있다면 클라이언트 IP, 중간 프록시 IP, 로드 밸런서 IP가 모두 포함될 수 있습니다.
+**(C) 정답** : X-Forwarded-For 헤더는 요청이 통과한 모든 프록시/로드 밸런서의 IP 주소를 기록합니다. 세 개의 IP가 있다면 클라이언트 IP, 중간 프록시 IP, 로드 밸런서 IP가 모두 포함될 수 있습니다. → [📖 X-Forwarded-For 헤더는 요청이 통과한 모든 프록시/로드 밸런서의 IP 주소를 기록](/section/06-high-availability-scalability#alb-application-load-balancer-상세)
 
 **(D)** : 로드 밸런서 IP도 포함되지만 단독으로는 불완전합니다.
 
 **핵심 개념:** X-Forwarded-For 헤더 — 요청 경로상의 모든 IP 주소 기록
+
+**관련 노트:** [Elastic Load Balancer ELB](/section/06-high-availability-scalability#elastic-load-balancer-elb)
 
 ---
 
@@ -601,15 +635,17 @@
 | C | Google ID로 등록할 때마다 IAM 사용자를 생성하고 IAM으로 파일을 업로드한다. |
 | D | 로그인 ID에 Google 부분이 있으면 누구나 업로드할 수 있는 조건의 버킷 정책을 생성한다. |
 
-**(A) 정답** : AWS Web Identity Federation(Cognito 또는 STS AssumeRoleWithWebIdentity)을 사용하면 Google, Facebook 등의 외부 IdP 인증을 통해 임시 AWS 자격증명을 발급받아 S3에 접근할 수 있습니다.
+**(A) 정답** : AWS Web Identity Federation(Cognito 또는 STS AssumeRoleWithWebIdentity)을 사용하면 Google, Facebook 등의 외부 IdP 인증을 통해 임시 AWS 자격증명을 발급받아 S3에 접근할 수 있습니다. → [📖 Web Identity Federation을 통해 외부 IdP 인증으로 임시 AWS 자격증명 발급](/section/17-serverless-overview#amazon-cognito)
 
 **(B)** : Web Identity Federation을 통해 가능합니다.
 
-**(C)** : 사용자마다 IAM 사용자를 생성하는 것은 확장성이 없고 보안상 좋지 않습니다.
+**(C)** : 사용자마다 IAM 사용자를 생성하는 것은 확장성이 없고 보안상 좋지 않습니다. → [📖 사용자마다 IAM 사용자를 생성하는 것은 확장성이 없음](/section/02-iam#users-groups)
 
 **(D)** : 이런 버킷 정책 조건은 지원되지 않으며 보안상 위험합니다.
 
 **핵심 개념:** Web Identity Federation — 소셜 IdP(Google/Facebook)를 통한 AWS 임시 자격증명 발급
+
+**관련 노트:** [IAM Roles 역할](/section/02-iam#iam-roles-역할), [Amazon Cognito](/section/17-serverless-overview#amazon-cognito)
 
 ---
 
@@ -640,9 +676,11 @@
 
 **(C)** : 50이 아닙니다.
 
-**(D) 정답** : RDS 스토리지 크기는 최소 10% 증분으로 늘려야 합니다. 또는 특정 스토리지 유형에서 10GB 단위로 증가해야 합니다. 문제 맥락에 따라 10이 정답입니다.
+**(D) 정답** : RDS 스토리지 크기는 최소 10% 증분으로 늘려야 합니다. 또는 특정 스토리지 유형에서 10GB 단위로 증가해야 합니다. 문제 맥락에 따라 10이 정답입니다. → [📖 RDS 스토리지 크기는 최소 10% 증분으로 늘려야 함](/section/07-rds-aurora-elasticache#rds-storage-auto-scaling)
 
 **핵심 개념:** RDS 스토리지 확장 — 최소 증분 단위 제한
+
+**관련 노트:** [RDS Storage Auto Scaling](/section/07-rds-aurora-elasticache#rds-storage-auto-scaling), [Amazon RDS Relational Database Service](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
 ---
 
@@ -669,13 +707,15 @@
 
 **(A)** : Directory Service는 디렉터리 관리 서비스로 SSL 인증서와 무관합니다.
 
-**(B) 정답** : SSL/TLS 서버 인증서는 IAM에 업로드하고 관리합니다(또는 AWS Certificate Manager를 사용). IAM은 인증서 저장소 역할을 합니다.
+**(B) 정답** : SSL/TLS 서버 인증서는 IAM에 업로드하고 관리합니다(또는 AWS Certificate Manager를 사용). IAM은 인증서 저장소 역할을 합니다. → [📖 SSL/TLS 서버 인증서는 IAM에 업로드하고 관리](/section/24-security-encryption#aws-certificate-manager-acm)
 
 **(C)** : CloudFormation은 인프라 프로비저닝 서비스입니다.
 
-**(D)** : Route 53은 DNS 서비스입니다.
+**(D)** : Route 53은 DNS 서비스입니다. → [📖 Route 53은 DNS 서비스](/section/08-route-53#route-53-특징)
 
 **핵심 개념:** SSL 인증서 관리 — IAM 또는 AWS Certificate Manager(ACM)
+
+**관련 노트:** [AWS Certificate Manager ACM](/section/24-security-encryption#aws-certificate-manager-acm), [SSL/TLS 인증서](/section/06-high-availability-scalability#ssltls-인증서)
 
 ---
 
@@ -702,13 +742,15 @@
 
 **(A)** : 올바른 제한 사항 설명입니다.
 
-**(B) 정답** : 잘못된 설명입니다. 클러스터 배치 그룹(Cluster Placement Group)은 단일 AZ 내에서만 인스턴스를 배치합니다. 배치 그룹은 여러 AZ에 걸쳐 있을 수 없습니다(스프레드/파티션 배치 그룹은 다수 AZ 가능하지만 클러스터는 불가).
+**(B) 정답** : 잘못된 설명입니다. 클러스터 배치 그룹(Cluster Placement Group)은 단일 AZ 내에서만 인스턴스를 배치합니다. 배치 그룹은 여러 AZ에 걸쳐 있을 수 없습니다(스프레드/파티션 배치 그룹은 다수 AZ 가능하지만 클러스터는 불가). → [📖 클러스터 배치 그룹은 단일 AZ 내에서만 인스턴스를 배치](/section/04-ec2-associate#placement-groups-배치-그룹)
 
-**(C)** : 올바른 제한 사항 설명입니다. 기존 인스턴스를 배치 그룹으로 이동하려면 중지 후 AMI 생성 후 새로 시작해야 합니다.
+**(C)** : 올바른 제한 사항 설명입니다. 기존 인스턴스를 배치 그룹으로 이동하려면 중지 후 AMI 생성 후 새로 시작해야 합니다. → [📖 기존 인스턴스를 배치 그룹으로 이동하려면 중지 후 AMI 생성 후 새로 시작](/section/04-ec2-associate#placement-groups-배치-그룹)
 
 **(D)** : 올바른 설명입니다. 배치 그룹은 피어링된 VPC에 걸쳐 있을 수 있습니다.
 
 **핵심 개념:** EC2 배치 그룹 제한 — 클러스터 배치 그룹은 단일 AZ 내로 제한
+
+**관련 노트:** [Placement Groups 배치 그룹](/section/04-ec2-associate#placement-groups-배치-그룹)
 
 ---
 
@@ -729,11 +771,13 @@
 | A | 참. |
 | B | 거짓. |
 
-**(A) 정답** : RDS에서 스냅샷으로 복원하거나 포인트 인 타임 복원을 수행하면 기존 인스턴스를 덮어쓰지 않고 새로운 DB 인스턴스가 새로운 엔드포인트와 함께 생성됩니다. 애플리케이션의 연결 문자열을 업데이트해야 합니다.
+**(A) 정답** : RDS에서 스냅샷으로 복원하거나 포인트 인 타임 복원을 수행하면 기존 인스턴스를 덮어쓰지 않고 새로운 DB 인스턴스가 새로운 엔드포인트와 함께 생성됩니다. 애플리케이션의 연결 문자열을 업데이트해야 합니다. → [📖 RDS 복원 시 새로운 DB 인스턴스가 새로운 엔드포인트와 함께 생성](/section/07-rds-aurora-elasticache#rds-aurora-복원)
 
 **(B)** : 틀렸습니다.
 
 **핵심 개념:** RDS 복원 동작 — 새 DB 인스턴스와 새 엔드포인트 생성, 애플리케이션 연결 문자열 업데이트 필요
+
+**관련 노트:** [RDS & Aurora 백업](/section/07-rds-aurora-elasticache#rds-aurora-백업), [Amazon RDS Relational Database Service](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
 ---
 
@@ -758,7 +802,7 @@
 | C | 특정 관할권 외부의 파일 복사본을 삭제할 수 있습니다. |
 | D | 전혀 존재하지 않습니다. |
 
-**(A) 정답** : S3 RRS(Reduced Redundancy Storage)는 표준 S3보다 낮은 중복성(내구성 99.99%)을 제공하는 대신 비용이 저렴합니다. 쉽게 재생성할 수 있는 데이터에 적합합니다.
+**(A) 정답** : S3 RRS(Reduced Redundancy Storage)는 표준 S3보다 낮은 중복성(내구성 99.99%)을 제공하는 대신 비용이 저렴합니다. 쉽게 재생성할 수 있는 데이터에 적합합니다. → [📖 S3 RRS는 표준 S3보다 낮은 중복성을 제공하는 대신 비용이 저렴](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
 **(B)** : S3에 존재합니다.
 
@@ -767,6 +811,8 @@
 **(D)** : 실제로 존재하는 스토리지 클래스입니다.
 
 **핵심 개념:** S3 RRS — 낮은 내구성(99.99%)과 낮은 비용, 재생성 가능한 데이터에 적합
+
+**관련 노트:** [S3 Storage Classes 스토리지 클래스](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
 ---
 
@@ -793,13 +839,15 @@
 
 **(A)** : 10개의 프라이빗 IP를 자동으로 받지 않습니다.
 
-**(B) 정답** : 기본 서브넷에서 시작하는 인스턴스는 자동으로 공개 IP 주소(퍼블릭 IPv4)와 프라이빗 IP 주소를 모두 받습니다.
+**(B) 정답** : 기본 서브넷에서 시작하는 인스턴스는 자동으로 공개 IP 주소(퍼블릭 IPv4)와 프라이빗 IP 주소를 모두 받습니다. → [📖 기본 서브넷에서 시작하는 인스턴스는 자동으로 공개 IP와 프라이빗 IP를 모두 받음](/section/25-vpc#서브넷-subnet)
 
 **(C)** : 자동으로 IP가 할당됩니다.
 
 **(D)** : 5개의 프라이빗 IP를 자동으로 받지 않습니다.
 
 **핵심 개념:** VPC 기본 서브넷 — 퍼블릭 IP + 프라이빗 IP 자동 할당
+
+**관련 노트:** [서브넷 Subnet](/section/25-vpc#서브넷-subnet)
 
 ---
 
@@ -826,7 +874,7 @@
 | D | 비디오 트랜스코딩 작업 실행을 트리거하는 SNS 엔드포인트로 사용. |
 | E | 웹 애플리케이션을 위한 분산 세션 저장소로 사용. |
 
-**(A)** : 센서 데이터 수집은 Kinesis가 더 적합합니다.
+**(A)** : 센서 데이터 수집은 Kinesis가 더 적합합니다. → [📖 센서 데이터 수집은 Kinesis가 더 적합](/section/15-integration-messaging#amazon-kinesis-data-streams)
 
 **(B) 정답** : SWF는 다단계 결정 프로세스를 조정하는 데 이상적입니다. 전자상거래 체크아웃의 복잡한 워크플로(결제 검증, 재고 확인, 배송 등)를 관리할 수 있습니다.
 
@@ -834,9 +882,11 @@
 
 **(D)** : SNS 기반 비디오 트랜스코딩은 SQS/Lambda가 더 적합합니다.
 
-**(E)** : 세션 저장소는 ElastiCache나 DynamoDB가 더 적합합니다.
+**(E)** : 세션 저장소는 ElastiCache나 DynamoDB가 더 적합합니다. → [📖 세션 저장소는 ElastiCache나 DynamoDB가 더 적합](/section/07-rds-aurora-elasticache#amazon-elasticache)
 
 **핵심 개념:** Amazon SWF 사용 사례 — 복잡한 다단계 워크플로 조정, 분산 비즈니스 프로세스 감사
+
+**관련 노트:** [AWS Step Functions](/section/17-serverless-overview#aws-step-functions), [Amazon SQS Simple Queue Service](/section/15-integration-messaging#amazon-sqs-simple-queue-service)
 
 ---
 
@@ -863,9 +913,9 @@
 | D | 컴퓨팅 최적화 C3. |
 | E | 스토리지 최적화 I2. |
 
-**(A) 정답** : T2 인스턴스는 인스턴스 스토리지를 지원하지 않으며 EBS 전용입니다.
+**(A) 정답** : T2 인스턴스는 인스턴스 스토리지를 지원하지 않으며 EBS 전용입니다. → [📖 T2 인스턴스는 인스턴스 스토어를 지원하지 않으며 EBS 전용](/section/05-ec2-instance-storage#ec2-instance-store)
 
-**(B)** : M3는 EBS 및 인스턴스 스토리지 모두 지원합니다.
+**(B)** : M3는 EBS 및 인스턴스 스토리지 모두 지원합니다. → [📖 M3는 EBS 및 인스턴스 스토리지 모두 지원](/section/05-ec2-instance-storage#ec2-instance-store)
 
 **(C)** : C4는 EBS 전용이지만 이 문제에서는 D가 정답입니다.
 
@@ -874,6 +924,8 @@
 **(E)** : I2는 인스턴스 스토리지(SSD)를 포함합니다.
 
 **핵심 개념:** EC2 인스턴스 유형별 스토리지 지원 — T2는 EBS 전용
+
+**관련 노트:** [EC2 인스턴스 타입](/section/03-ec2-basics#ec2-인스턴스-타입), [EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store)
 
 ---
 
@@ -894,11 +946,13 @@
 | A | 참. |
 | B | 거짓. |
 
-**(A) 정답** : AWS IAM 없이는 개별 사용자나 시스템에 대한 세밀한 접근 제어가 불가능합니다. IAM은 AWS 리소스에 대한 접근을 제어하는 핵심 서비스입니다.
+**(A) 정답** : AWS IAM 없이는 개별 사용자나 시스템에 대한 세밀한 접근 제어가 불가능합니다. IAM은 AWS 리소스에 대한 접근을 제어하는 핵심 서비스입니다. → [📖 IAM은 AWS 리소스에 대한 접근을 제어하는 핵심 서비스](/section/02-iam#iam-policies-정책)
 
 **(B)** : 틀렸습니다.
 
 **핵심 개념:** AWS IAM의 필수성 — AWS 리소스 접근 제어의 핵심 서비스
+
+**관련 노트:** [개요](/section/02-iam#개요), [핵심 개념](/section/02-iam#핵심-개념)
 
 ---
 
@@ -929,9 +983,11 @@
 
 **(C)** : Encrypted가 아닌 Elastic입니다.
 
-**(D) 정답** : ELB는 Elastic Load Balancing의 약자입니다.
+**(D) 정답** : ELB는 Elastic Load Balancing의 약자입니다. → [📖 ELB는 Elastic Load Balancing의 약자](/section/06-high-availability-scalability#elastic-load-balancer-elb)
 
 **핵심 개념:** AWS 서비스 명칭 — ELB = Elastic Load Balancing
+
+**관련 노트:** [Elastic Load Balancer ELB](/section/06-high-availability-scalability#elastic-load-balancer-elb)
 
 ---
 
@@ -956,15 +1012,17 @@
 | C | Stateful 웹/앱 티어 + CloudWatch Auto Scaling + Multi-AZ RDS. |
 | D | Stateless 웹/앱 티어 + ElastiCache Memcached + CloudWatch Auto Scaling + Multi-AZ RDS. |
 
-**(A) 정답** : 읽기 전용 사이트에는 세션을 ElastiCache에 저장하는 Stateless 인스턴스(Auto Scaling 친화적)와 읽기 부하를 분산하는 Read Replicas가 최적입니다.
+**(A) 정답** : 읽기 전용 사이트에는 세션을 ElastiCache에 저장하는 Stateless 인스턴스(Auto Scaling 친화적)와 읽기 부하를 분산하는 Read Replicas가 최적입니다. → [📖 ElastiCache에 세션 저장하는 Stateless 인스턴스와 Read Replicas](/section/07-rds-aurora-elasticache#rds-read-replicas)
 
-**(B)** : Stateful 인스턴스는 Auto Scaling 시 세션 손실 위험이 있습니다.
+**(B)** : Stateful 인스턴스는 Auto Scaling 시 세션 손실 위험이 있습니다. → [📖 Stateful 인스턴스는 Auto Scaling 시 세션 손실 위험](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
-**(C)** : Multi-AZ는 가용성을 위한 것으로 읽기 성능 향상에 도움이 안 됩니다.
+**(C)** : Multi-AZ는 가용성을 위한 것으로 읽기 성능 향상에 도움이 안 됩니다. → [📖 Multi-AZ는 가용성을 위한 것으로 읽기 성능 향상에 도움이 안 됨](/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구)
 
 **(D)** : Stateless이지만 읽기 전용 사이트에 Multi-AZ보다 Read Replicas가 더 적합합니다.
 
 **핵심 개념:** 읽기 전용 웹 애플리케이션 확장 — Stateless + ElastiCache + Read Replica 조합
+
+**관련 노트:** [RDS Read Replicas](/section/07-rds-aurora-elasticache#rds-read-replicas), [Amazon ElastiCache](/section/07-rds-aurora-elasticache#amazon-elasticache), [Case Study 1: WhatIsTheTime.com Stateless](/section/09-classic-solutions-architecture#case-study-1-whatisthetimecom-stateless)
 
 ---
 
@@ -991,13 +1049,15 @@
 
 **(A)** : SDK에만 사용되지 않습니다.
 
-**(B) 정답** : AWS 키 페어는 주로 EC2 인스턴스 SSH 접근과 CloudFront 서명된 URL/쿠키에 사용됩니다.
+**(B) 정답** : AWS 키 페어는 주로 EC2 인스턴스 SSH 접근과 CloudFront 서명된 URL/쿠키에 사용됩니다. → [📖 AWS 키 페어는 주로 EC2 인스턴스 SSH 접근에 사용](/section/03-ec2-basics#ec2-instance-connect)
 
 **(C)** : ELB와 IAM에만 사용되지 않습니다.
 
 **(D)** : 모든 서비스에 사용되지 않습니다.
 
 **핵심 개념:** AWS 키 페어 사용 범위 — EC2(SSH 접근)와 CloudFront(서명된 URL)
+
+**관련 노트:** [EC2 구매 옵션 시험 핵심!](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심), [CloudFront 기본 개념](/section/13-cloudfront-global-accelerator#cloudfront-기본-개념)
 
 ---
 
@@ -1026,11 +1086,13 @@
 
 **(B)** : 단순한 메모리 서버가 아닌 완전 관리형 서비스입니다.
 
-**(C) 정답** : Amazon ElastiCache는 Redis 또는 Memcached를 기반으로 하는 완전 관리형 인메모리 캐싱 서비스입니다. 데이터베이스 부하를 줄이고 애플리케이션 성능을 향상시킵니다.
+**(C) 정답** : Amazon ElastiCache는 Redis 또는 Memcached를 기반으로 하는 완전 관리형 인메모리 캐싱 서비스입니다. 데이터베이스 부하를 줄이고 애플리케이션 성능을 향상시킵니다. → [📖 Amazon ElastiCache는 Redis 또는 Memcached 기반 완전 관리형 인메모리 캐싱 서비스](/section/07-rds-aurora-elasticache#amazon-elasticache)
 
 **(D)** : ElastiCache는 단순히 Memcached가 설치된 EC2가 아닌 완전 관리형 서비스입니다.
 
 **핵심 개념:** Amazon ElastiCache — Redis/Memcached 기반 완전 관리형 인메모리 캐시 서비스
+
+**관련 노트:** [Amazon ElastiCache](/section/07-rds-aurora-elasticache#amazon-elasticache)
 
 ---
 
@@ -1061,9 +1123,11 @@
 
 **(C)** : 단일 유형만 언급하고 있습니다.
 
-**(D) 정답** : AWS IAM에서는 사용자/그룹/역할에 연결하는 자격 증명 기반(Identity-based, 사용자 기반) 정책과 S3 버킷 정책, SQS 큐 정책 등 리소스에 직접 연결하는 리소스 기반(Resource-based) 정책의 두 가지 유형이 있습니다.
+**(D) 정답** : AWS IAM에서는 사용자/그룹/역할에 연결하는 자격 증명 기반(Identity-based, 사용자 기반) 정책과 S3 버킷 정책, SQS 큐 정책 등 리소스에 직접 연결하는 리소스 기반(Resource-based) 정책의 두 가지 유형이 있습니다. → [📖 자격 증명 기반(Identity-based) 정책과 리소스 기반(Resource-based) 정책 두 가지](/section/23-advanced-identity#iam-roles-vs-resourcebased-policies)
 
 **핵심 개념:** IAM 정책 유형 — Identity-based(사용자 기반) vs Resource-based(리소스 기반)
+
+**관련 노트:** [IAM Policies 정책](/section/02-iam#iam-policies-정책), [IAM Roles vs Resource-Based Policies](/section/23-advanced-identity#iam-roles-vs-resourcebased-policies)
 
 ---
 
@@ -1090,13 +1154,15 @@
 
 **(A)** : 존재하지 않는 제품입니다.
 
-**(B) 정답** : Luna Backup HSM을 구매하면 Luna SA HSM 파티션의 원격 백업 및 복원이 가능합니다.
+**(B) 정답** : Luna Backup HSM을 구매하면 Luna SA HSM 파티션의 원격 백업 및 복원이 가능합니다. → [📖 Luna Backup HSM을 구매하면 Luna SA HSM 파티션의 원격 백업 및 복원 가능](/section/24-security-encryption#cloudhsm)
 
 **(C)** : 정확한 제품명이 아닙니다.
 
 **(D)** : Luna SA HS는 백업 장치가 아닙니다.
 
 **핵심 개념:** AWS CloudHSM — Luna Backup HSM을 통한 HSM 파티션 원격 백업
+
+**관련 노트:** [CloudHSM](/section/24-security-encryption#cloudhsm)
 
 ---
 
@@ -1121,15 +1187,17 @@
 | C | 버킷 버전 관리. |
 | D | 데이터 복제. |
 
-**(A)** : MFA 삭제는 중요 데이터 보호에 유용한 보안 기능입니다.
+**(A)** : MFA 삭제는 중요 데이터 보호에 유용한 보안 기능입니다. → [📖 MFA 삭제는 중요 데이터 보호에 유용한 보안 기능](/section/12-s3-security#mfa-delete)
 
-**(B)** : 클라이언트 사이드 암호화는 저장 데이터 보호의 핵심 방법입니다.
+**(B)** : 클라이언트 사이드 암호화는 저장 데이터 보호의 핵심 방법입니다. → [📖 클라이언트 사이드 암호화는 저장 데이터 보호의 핵심 방법](/section/12-s3-security#s3-객체-암호화-4가지-방법)
 
-**(C)** : 버킷 버전 관리는 우발적 삭제/수정으로부터 데이터를 보호합니다.
+**(C)** : 버킷 버전 관리는 우발적 삭제/수정으로부터 데이터를 보호합니다. → [📖 버킷 버전 관리는 우발적 삭제/수정으로부터 데이터를 보호](/section/10-amazon-s3#s3-versioning-버저닝)
 
-**(D) 정답** : 데이터 복제는 가용성과 내구성을 위한 것이지 저장 데이터 보안(암호화, 접근 제어)과는 직접 관련이 없습니다. 법적 저장 데이터 보호 요건을 충족하기 위해 반드시 필요한 것은 아닙니다.
+**(D) 정답** : 데이터 복제는 가용성과 내구성을 위한 것이지 저장 데이터 보안(암호화, 접근 제어)과는 직접 관련이 없습니다. 법적 저장 데이터 보호 요건을 충족하기 위해 반드시 필요한 것은 아닙니다. → [📖 데이터 복제는 저장 데이터 보안과는 직접 관련이 없음](/section/10-amazon-s3#s3-replication-복제)
 
 **핵심 개념:** S3 저장 데이터 보안 — 암호화(SSE/CSE), MFA 삭제, 버전 관리가 핵심. 복제는 보안이 아닌 내구성/가용성 목적
+
+**관련 노트:** [S3 객체 암호화 - 4가지 방법](/section/12-s3-security#s3-객체-암호화-4가지-방법), [MFA Delete](/section/12-s3-security#mfa-delete), [S3 Versioning 버저닝](/section/10-amazon-s3#s3-versioning-버저닝)
 
 ---
 
@@ -1156,13 +1224,15 @@
 
 **(A)** : 일별 Data Pipeline은 실시간 분석 요건을 충족하지 못합니다.
 
-**(B) 정답** : Kinesis는 실시간 스트리밍 데이터 수집에 최적화되어 있습니다. Kinesis 클라이언트로 실시간 분석 후 EMR을 통해 Redshift에 저장하면 데이터 마이닝 요건도 충족합니다.
+**(B) 정답** : Kinesis는 실시간 스트리밍 데이터 수집에 최적화되어 있습니다. Kinesis 클라이언트로 실시간 분석 후 EMR을 통해 Redshift에 저장하면 데이터 마이닝 요건도 충족합니다. → [📖 Kinesis는 실시간 스트리밍 데이터 수집에 최적화, EMR을 통해 Redshift에 저장](/section/15-integration-messaging#amazon-kinesis-data-streams)
 
-**(C)** : SQS는 실시간 스트리밍 분석에 적합하지 않으며 SQL Server는 대용량 데이터 마이닝에 부적합합니다.
+**(C)** : SQS는 실시간 스트리밍 분석에 적합하지 않으며 SQL Server는 대용량 데이터 마이닝에 부적합합니다. → [📖 SQS는 실시간 스트리밍 분석에 적합하지 않음](/section/15-integration-messaging#amazon-sqs-simple-queue-service)
 
 **(D)** : EMR을 데이터 수집 레이어로 사용하는 것은 부적절합니다.
 
 **핵심 개념:** IoT 실시간 데이터 수집 아키텍처 — Kinesis(수집) + Kinesis Analytics(분석) + Redshift(저장/마이닝)
+
+**관련 노트:** [Amazon Kinesis Data Streams](/section/15-integration-messaging#amazon-kinesis-data-streams), [Amazon Redshift](/section/20-data-analytics#amazon-redshift), [Big Data Ingestion Pipeline](/section/20-data-analytics#big-data-ingestion-pipeline)
 
 ---
 
@@ -1187,7 +1257,7 @@
 | C | 단일 스냅샷 유지; 최신 스냅샷이 증분이면서 완전합니다. |
 | D | 최신 스냅샷만 유지하고 원본과 증분은 Glacier에 아카이브합니다. |
 
-**(A) 정답** : EBS 스냅샷은 증분 방식으로 S3에 저장됩니다. 최초 스냅샷과 최신 증분 스냅샷 두 개를 유지하면 전체 복원이 가능하면서 중간 스냅샷을 삭제하여 비용을 절감할 수 있습니다.
+**(A) 정답** : EBS 스냅샷은 증분 방식으로 S3에 저장됩니다. 최초 스냅샷과 최신 증분 스냅샷 두 개를 유지하면 전체 복원이 가능하면서 중간 스냅샷을 삭제하여 비용을 절감할 수 있습니다. → [📖 EBS 스냅샷은 증분 방식으로 S3에 저장, 최초+최신 증분 두 개 유지로 비용 절감](/section/05-ec2-instance-storage#ebs-snapshots)
 
 **(B)** : EBS 스냅샷은 서로 덮어쓰지 않습니다.
 
@@ -1196,6 +1266,8 @@
 **(D)** : Glacier에 아카이브하는 것은 추가 비용과 복잡성을 초래합니다.
 
 **핵심 개념:** EBS 스냅샷 비용 최적화 — 증분 스냅샷 특성 이해 및 최소 스냅샷 유지 전략
+
+**관련 노트:** [EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots), [EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store), [S3 Storage Classes 스토리지 클래스](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
 ---
 
@@ -1220,15 +1292,17 @@
 | C | 전용 인스턴스. |
 | D | 온디맨드 인스턴스. |
 
-**(A)** : 예약 인스턴스는 장기적 워크로드에 적합하며, 임시 사용에는 비효율적입니다.
+**(A)** : 예약 인스턴스는 장기적 워크로드에 적합하며, 임시 사용에는 비효율적입니다. → [📖 예약 인스턴스는 장기적 워크로드에 적합하며, 임시 사용에는 비효율적](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
-**(B) 정답** : 애플리케이션이 인터럽트를 처리할 수 있고(다른 인스턴스가 재처리), 임시적으로만 필요하므로 스팟 인스턴스가 가장 비용 효율적입니다. 스팟은 온디맨드 대비 최대 90% 저렴합니다.
+**(B) 정답** : 애플리케이션이 인터럽트를 처리할 수 있고(다른 인스턴스가 재처리), 임시적으로만 필요하므로 스팟 인스턴스가 가장 비용 효율적입니다. 스팟은 온디맨드 대비 최대 90% 저렴합니다. → [📖 스팟 인스턴스가 가장 비용 효율적 - 온디맨드 대비 최대 90% 저렴](/section/03-ec2-basics#spot-instance-상세)
 
-**(C)** : 전용 인스턴스는 가장 비싸고 임시 사용에 부적합합니다.
+**(C)** : 전용 인스턴스는 가장 비싸고 임시 사용에 부적합합니다. → [📖 전용 인스턴스는 가장 비싸고 임시 사용에 부적합](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
-**(D)** : 온디맨드는 스팟보다 비용이 높습니다.
+**(D)** : 온디맨드는 스팟보다 비용이 높습니다. → [📖 온디맨드는 스팟보다 비용이 높음](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
 **핵심 개념:** 스팟 인스턴스 최적 사용 사례 — 내결함성 배치 작업, 임시 대규모 처리
+
+**관련 노트:** [Spot Instance 상세](/section/03-ec2-basics#spot-instance-상세)
 
 ---
 
@@ -1253,7 +1327,7 @@
 | C | 온프레미스 클라우드 스토리지를 제공하는 백업 솔루션. |
 | D | 클라우드 백업을 위한 암호화된 SSL 엔드포인트. |
 
-**(A) 정답** : AWS Storage Gateway는 온프레미스 애플리케이션이 AWS 클라우드 스토리지(S3, Glacier, EBS)와 원활하게 통합할 수 있도록 하는 하이브리드 스토리지 서비스입니다.
+**(A) 정답** : AWS Storage Gateway는 온프레미스 애플리케이션이 AWS 클라우드 스토리지(S3, Glacier, EBS)와 원활하게 통합할 수 있도록 하는 하이브리드 스토리지 서비스입니다. → [📖 AWS Storage Gateway는 온프레미스와 AWS 클라우드 스토리지를 통합하는 하이브리드 서비스](/section/14-storage-extras#aws-storage-gateway)
 
 **(B)** : Direct Connect와 혼동할 수 있지만 Storage Gateway의 주요 기능이 아닙니다.
 
@@ -1262,6 +1336,8 @@
 **(D)** : SSL 엔드포인트 제공이 주요 기능이 아닙니다.
 
 **핵심 개념:** AWS Storage Gateway — 온프레미스와 AWS 클라우드 스토리지 간 하이브리드 통합
+
+**관련 노트:** [AWS Storage Gateway](/section/14-storage-extras#aws-storage-gateway)
 
 ---
 
@@ -1290,11 +1366,13 @@
 
 **(B)** : DynamoDB + Redshift 조합은 유효하지만 C가 더 직접적인 솔루션입니다.
 
-**(C) 정답** : 100K 센서 × 1KB/분 × 2년 = 약 100TB 이상의 데이터가 필요합니다. Redshift 클러스터는 페타바이트 규모 데이터 웨어하우징에 적합하며 연간 비교 분석(OLAP)에 최적화되어 있습니다.
+**(C) 정답** : 100K 센서 × 1KB/분 × 2년 = 약 100TB 이상의 데이터가 필요합니다. Redshift 클러스터는 페타바이트 규모 데이터 웨어하우징에 적합하며 연간 비교 분석(OLAP)에 최적화되어 있습니다. → [📖 Redshift 클러스터는 페타바이트 규모 데이터 웨어하우징 및 OLAP에 최적화](/section/20-data-analytics#amazon-redshift)
 
-**(D)** : 100K 센서로 확장 시 RDS PostgreSQL은 IOPS와 저장 요건을 충족하기 어렵습니다.
+**(D)** : 100K 센서로 확장 시 RDS PostgreSQL은 IOPS와 저장 요건을 충족하기 어렵습니다. → [📖 100K 센서로 확장 시 RDS PostgreSQL은 IOPS와 저장 요건을 충족하기 어려움](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
 **핵심 개념:** 대규모 IoT 데이터 분석 — Redshift를 통한 페타바이트 규모 데이터 웨어하우징
+
+**관련 노트:** [Amazon Redshift](/section/20-data-analytics#amazon-redshift)
 
 ---
 
@@ -1319,7 +1397,7 @@
 | C | 비밀번호 교체 등 자격증명 수명 주기 요건의 영향을 감사하는 데 사용할 수 있습니다. |
 | D | 자격증명 보고서를 최소 4시간마다 한 번 생성할 수 있습니다. |
 
-**(A) 정답** : 잘못된 설명입니다. IAM 자격증명 보고서는 XML이 아닌 **CSV(쉼표로 구분된 값)** 형식으로 다운로드됩니다.
+**(A) 정답** : 잘못된 설명입니다. IAM 자격증명 보고서는 XML이 아닌 **CSV(쉼표로 구분된 값)** 형식으로 다운로드됩니다. → [📖 IAM 자격증명 보고서는 XML이 아닌 CSV 형식으로 다운로드](/section/02-iam#iam-security-tools)
 
 **(B)** : 올바른 설명입니다.
 
@@ -1328,6 +1406,8 @@
 **(D)** : 올바른 설명입니다.
 
 **핵심 개념:** IAM 자격증명 보고서 — CSV 형식 다운로드, 4시간마다 생성 가능
+
+**관련 노트:** [IAM Security Tools](/section/02-iam#iam-security-tools)
 
 ---
 
@@ -1354,7 +1434,7 @@
 
 **(A)** : 30분은 Business 플랜의 최대 응답 시간이 아닙니다.
 
-**(B) 정답** : AWS Business 지원 플랜의 프로덕션 시스템 장애(Production system down) 케이스의 최대 초기 응답 시간은 1시간입니다.
+**(B) 정답** : AWS Business 지원 플랜의 프로덕션 시스템 장애(Production system down) 케이스의 최대 초기 응답 시간은 1시간입니다. → [📖 AWS Business 지원 플랜의 프로덕션 시스템 장애 최대 초기 응답 시간은 1시간](/section/29-white-papers-architectures#aws-trusted-advisor)
 
 **(C)** : 12시간은 Business 플랜의 일반 시스템 장애 응답 시간입니다.
 
@@ -1389,7 +1469,7 @@
 
 **(A)** : AWS가 고객 요청으로 수행하지는 않습니다.
 
-**(B) 정답** : AWS는 자체적으로 인프라에 대한 보안 테스트(침투 테스트 포함)를 수행합니다. 현재 AWS 정책에서는 8가지 서비스에 대해 고객이 사전 승인 없이 침투 테스트를 수행할 수 있지만, 이 문제의 정답 기준에서는 B가 정답입니다.
+**(B) 정답** : AWS는 자체적으로 인프라에 대한 보안 테스트(침투 테스트 포함)를 수행합니다. 현재 AWS 정책에서는 8가지 서비스에 대해 고객이 사전 승인 없이 침투 테스트를 수행할 수 있지만, 이 문제의 정답 기준에서는 B가 정답입니다. → [📖 AWS는 자체적으로 인프라에 대한 보안 테스트(침투 테스트 포함)를 수행](/section/24-security-encryption#암호화-기본-개념)
 
 **(C)** : 고객도 특정 조건에서 침투 테스트를 수행할 수 있습니다.
 
@@ -1424,13 +1504,15 @@
 
 **(A)** : Oracle 데이터베이스 기능으로 EC2와 무관합니다.
 
-**(B) 정답** : EC2의 주요 기능은 인스턴스, AMI, 키 페어, EBS 볼륨, 보안 그룹(방화벽), Elastic IP, 태그, VPC 통합입니다.
+**(B) 정답** : EC2의 주요 기능은 인스턴스, AMI, 키 페어, EBS 볼륨, 보안 그룹(방화벽), Elastic IP, 태그, VPC 통합입니다. → [📖 EC2의 주요 기능은 인스턴스, AMI, 키 페어, EBS 볼륨, 보안 그룹, Elastic IP, 태그, VPC 통합](/section/03-ec2-basics#ec2-구성-요소)
 
 **(C)** : Oracle RAC와 잘못된 용어들이 포함되어 있습니다.
 
 **(D)** : Oracle 기능들로 EC2와 무관합니다.
 
 **핵심 개념:** Amazon EC2 핵심 구성 요소 — 인스턴스, AMI, EBS, 보안 그룹, EIP, VPC
+
+**관련 노트:** [EC2 구성 요소](/section/03-ec2-basics#ec2-구성-요소)
 
 ---
 
@@ -1451,11 +1533,13 @@
 | A | 참. |
 | B | 거짓. |
 
-**(A) 정답** : AWS 태그는 키-값 쌍으로 구성되며, 동일한 키로 태그를 추가하면 기존 값이 새 값으로 덮어씌워집니다. 이는 RDS를 포함한 모든 AWS 리소스에 적용됩니다.
+**(A) 정답** : AWS 태그는 키-값 쌍으로 구성되며, 동일한 키로 태그를 추가하면 기존 값이 새 값으로 덮어씌워집니다. 이는 RDS를 포함한 모든 AWS 리소스에 적용됩니다. → [📖 동일한 키로 태그를 추가하면 기존 값이 새 값으로 덮어씌워짐](/section/23-advanced-identity#aws-organizations-tag-policies)
 
 **(B)** : 틀렸습니다.
 
 **핵심 개념:** AWS 태그 동작 — 동일 키 태그 추가 시 값 덮어쓰기
+
+**관련 노트:** [핵심 개념](/section/02-iam#핵심-개념)
 
 ---
 
@@ -1484,11 +1568,13 @@
 
 **(B)** : 기본 한도가 있습니다.
 
-**(C) 정답** : AWS는 기본적으로 리전당 최대 20개의 Auto Scaling 그룹을 허용합니다. 더 많이 필요하면 AWS 지원을 통해 한도를 늘릴 수 있습니다.
+**(C) 정답** : AWS는 기본적으로 리전당 최대 20개의 Auto Scaling 그룹을 허용합니다. 더 많이 필요하면 AWS 지원을 통해 한도를 늘릴 수 있습니다. → [📖 AWS는 기본적으로 리전당 최대 20개의 Auto Scaling 그룹을 허용](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
 **(D)** : 2가 아닙니다.
 
 **핵심 개념:** Auto Scaling 그룹 기본 한도 — 리전당 20개 (증가 요청 가능)
+
+**관련 노트:** [Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
 ---
 
@@ -1517,11 +1603,13 @@
 
 **(B)** : 호환성 문제가 없습니다.
 
-**(C) 정답** : Auto Scaling은 EC2 헬스 체크와 ELB 헬스 체크 외에도 커스텀 헬스 체크를 지원합니다. 자체 헬스 체크 시스템의 결과를 CloudWatch에 전송하고 Auto Scaling이 이를 기반으로 인스턴스를 교체할 수 있습니다.
+**(C) 정답** : Auto Scaling은 EC2 헬스 체크와 ELB 헬스 체크 외에도 커스텀 헬스 체크를 지원합니다. 자체 헬스 체크 시스템의 결과를 CloudWatch에 전송하고 Auto Scaling이 이를 기반으로 인스턴스를 교체할 수 있습니다. → [📖 Auto Scaling은 커스텀 헬스 체크도 지원](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
 **(D)** : 리전 제한이 없습니다.
 
 **핵심 개념:** Auto Scaling 커스텀 헬스 체크 — CloudWatch를 통한 사용자 정의 헬스 정보 전송
+
+**관련 노트:** [Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg), [Amazon CloudWatch Metrics](/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics)
 
 ---
 
@@ -1546,15 +1634,17 @@
 | C | subnet-248bc44c에 배스천과 NAT 인스턴스를 생성하고 rtb-238bc44b에서 subnet-258bc44d로의 라우트를 추가한다. |
 | D | subnet-258bc44d에 배스천과 NAT 인스턴스를 생성하고 rtb-238bc44b에서 IGW로의 라우트와 새 NACL을 추가한다. |
 
-**(A) 정답** : 배스천 호스트와 NAT 인스턴스를 퍼블릭 웹 서브넷(subnet-258bc44d)에 배치하고, 프라이빗 서브넷의 라우트 테이블(rtb-238bc44b)에서 NAT 인스턴스로 라우팅합니다. 이렇게 하면 앱/DB 서버가 직접 인터넷에 노출되지 않으면서 NAT를 통해 아웃바운드 접근(업데이트)이 가능하고, 배스천을 통해 원격 관리가 가능합니다.
+**(A) 정답** : 배스천 호스트와 NAT 인스턴스를 퍼블릭 웹 서브넷(subnet-258bc44d)에 배치하고, 프라이빗 서브넷의 라우트 테이블(rtb-238bc44b)에서 NAT 인스턴스로 라우팅합니다. 이렇게 하면 앱/DB 서버가 직접 인터넷에 노출되지 않으면서 NAT를 통해 아웃바운드 접근(업데이트)이 가능하고, 배스천을 통해 원격 관리가 가능합니다. → [📖 배스천 호스트와 NAT 인스턴스를 퍼블릭 서브넷에 배치하고 라우팅 설정](/section/25-vpc#bastion-host)
 
-**(B)** : 프라이빗 서브넷의 라우트 테이블에서 IGW로 직접 라우팅하면 앱/DB 서버가 인터넷에 직접 노출됩니다.
+**(B)** : 프라이빗 서브넷의 라우트 테이블에서 IGW로 직접 라우팅하면 앱/DB 서버가 인터넷에 직접 노출됩니다. → [📖 프라이빗 서브넷 라우트 테이블에서 IGW로 직접 라우팅하면 서버가 인터넷에 노출](/section/25-vpc#internet-gateway-igw)
 
 **(C)** : 프라이빗 서브넷에 NAT를 배치하면 올바르지 않습니다.
 
 **(D)** : IGW로의 직접 라우팅은 요건에 어긋납니다.
 
 **핵심 개념:** VPC 배스천 호스트 + NAT 인스턴스 패턴 — 프라이빗 서브넷의 원격 관리 및 아웃바운드 인터넷 접근
+
+**관련 노트:** [Bastion Host](/section/25-vpc#bastion-host), [NAT Instance 레거시, 시험에 출제](/section/25-vpc#nat-instance-레거시-시험에-출제), [NAT Gateway](/section/25-vpc#nat-gateway)
 
 ---
 
@@ -1579,15 +1669,17 @@
 | C | CloudWatch Metrics. |
 | D | Hadoop Web Interfaces. |
 
-**(A) 정답** : Amazon Kinesis는 실시간 데이터 스트리밍 서비스로, EMR 클러스터 성능 모니터링 도구가 아닙니다.
+**(A) 정답** : Amazon Kinesis는 실시간 데이터 스트리밍 서비스로, EMR 클러스터 성능 모니터링 도구가 아닙니다. → [📖 Amazon Kinesis는 실시간 데이터 스트리밍 서비스로 EMR 모니터링 도구가 아님](/section/15-integration-messaging#amazon-kinesis-data-streams)
 
 **(B)** : Ganglia는 EMR 클러스터의 오픈소스 모니터링 시스템으로 클러스터 성능 추적에 사용됩니다.
 
-**(C)** : CloudWatch는 EMR 클러스터 메트릭을 수집하고 모니터링하는 데 사용됩니다.
+**(C)** : CloudWatch는 EMR 클러스터 메트릭을 수집하고 모니터링하는 데 사용됩니다. → [📖 CloudWatch는 EMR 클러스터 메트릭을 수집하고 모니터링](/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics)
 
-**(D)** : Hadoop Web Interfaces(ResourceManager, NameNode 등)는 EMR 클러스터 모니터링에 사용됩니다.
+**(D)** : Hadoop Web Interfaces(ResourceManager, NameNode 등)는 EMR 클러스터 모니터링에 사용됩니다. → [📖 Hadoop Web Interfaces는 EMR 클러스터 모니터링에 사용](/section/20-data-analytics#amazon-emr-elastic-mapreduce)
 
 **핵심 개념:** EMR 클러스터 모니터링 도구 — Ganglia, CloudWatch, Hadoop Web UI. Kinesis는 모니터링 도구가 아님
+
+**관련 노트:** [Amazon EMR Elastic MapReduce](/section/20-data-analytics#amazon-emr-elastic-mapreduce), [Amazon CloudWatch Metrics](/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics)
 
 ---
 
@@ -1614,13 +1706,15 @@
 
 **(A)** : 사용자는 접근을 수행하는 주체이지 개념 자체가 아닙니다.
 
-**(B) 정답** : 이 문제의 정답은 B(AWS Account)로 표시되어 있습니다. 단, 일반적인 AWS 개념으로는 '권한(permission)'이 이 설명에 더 적합합니다. AWS 계정은 모든 IAM 엔터티와 리소스를 포함하는 컨테이너로, 접근 제어의 최상위 개념입니다.
+**(B) 정답** : 이 문제의 정답은 B(AWS Account)로 표시되어 있습니다. 단, 일반적인 AWS 개념으로는 '권한(permission)'이 이 설명에 더 적합합니다. AWS 계정은 모든 IAM 엔터티와 리소스를 포함하는 컨테이너로, 접근 제어의 최상위 개념입니다. → [📖 AWS 계정은 모든 IAM 엔터티와 리소스를 포함하는 최상위 컨테이너](/section/02-iam#핵심-개념)
 
 **(C)** : 리소스는 접근 대상이지 접근 제어 개념이 아닙니다.
 
 **(D)** : 권한이 더 직접적인 답변이지만, 이 문제의 정답은 B입니다.
 
 **핵심 개념:** AWS 접근 제어 — AWS 계정 수준의 엔터티 접근 관리 개념
+
+**관련 노트:** [개요](/section/02-iam#개요), [IAM Policies 정책](/section/02-iam#iam-policies-정책)
 
 ---
 
@@ -1647,13 +1741,15 @@
 
 **(A)** : S3에 트랜잭션 로그를 전송하는 것은 복잡하고 실시간성이 떨어집니다.
 
-**(B)** : Multi-AZ 스탠바이는 자동 장애 조치용으로 보고서 쿼리에 사용할 수 없습니다(읽기 접근 불가).
+**(B)** : Multi-AZ 스탠바이는 자동 장애 조치용으로 보고서 쿼리에 사용할 수 없습니다(읽기 접근 불가). → [📖 Multi-AZ 스탠바이는 자동 장애 조치용으로 보고서 쿼리에 사용할 수 없음](/section/07-rds-aurora-elasticache#rds-multiaz-재해-복구)
 
-**(C) 정답** : Read Replica를 생성하면 보고 쿼리를 마스터 DB가 아닌 복제본으로 분산할 수 있어 마스터 DB에 미치는 영향을 최소화합니다. 이것이 읽기 쿼리 부하 분산의 표준 방법입니다.
+**(C) 정답** : Read Replica를 생성하면 보고 쿼리를 마스터 DB가 아닌 복제본으로 분산할 수 있어 마스터 DB에 미치는 영향을 최소화합니다. 이것이 읽기 쿼리 부하 분산의 표준 방법입니다. → [📖 Read Replica를 생성하면 보고 쿼리를 마스터 DB가 아닌 복제본으로 분산](/section/07-rds-aurora-elasticache#rds-read-replicas)
 
-**(D)** : ElastiCache는 전체 DB 데이터를 캐싱하지 않으며, 복잡한 집계 보고서 생성에 적합하지 않습니다.
+**(D)** : ElastiCache는 전체 DB 데이터를 캐싱하지 않으며, 복잡한 집계 보고서 생성에 적합하지 않습니다. → [📖 ElastiCache는 복잡한 집계 보고서 생성에 적합하지 않음](/section/07-rds-aurora-elasticache#amazon-elasticache)
 
 **핵심 개념:** RDS Read Replica — 보고/분석 쿼리 부하를 프라이머리 DB에서 분리하는 표준 방법
+
+**관련 노트:** [RDS Read Replicas](/section/07-rds-aurora-elasticache#rds-read-replicas)
 
 ---
 

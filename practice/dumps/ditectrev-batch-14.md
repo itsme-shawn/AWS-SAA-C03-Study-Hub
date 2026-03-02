@@ -26,15 +26,17 @@
 | C | 스팟 인스턴스로 시작 |
 | D | 온디맨드 용량 예약 구성 |
 
-**(A) 정답** : **클러스터 배치 그룹**은 인스턴스를 동일 AZ 내 물리적으로 가까운 위치에 배치하여 최저 레이턴시와 최고 처리량을 제공합니다. HPC 워크로드에 최적입니다.
+**(A) 정답** : **클러스터 배치 그룹**은 인스턴스를 동일 AZ 내 물리적으로 가까운 위치에 배치하여 최저 레이턴시와 최고 처리량을 제공합니다. HPC 워크로드에 최적입니다. → [📖 클러스터 배치 그룹 — 최저 레이턴시/최고 처리량](/section/04-ec2-associate#placement-groups-배치-그룹)
 
 **(B)** : 오답. 전용 인스턴스는 물리적 격리를 위한 것이며 네트워크 성능을 보장하지 않습니다.
 
-**(C)** : 오답. 스팟 인스턴스는 비용 절감용이며 HPC 네트워크 성능과 무관합니다.
+**(C)** : 오답. 스팟 인스턴스는 비용 절감용이며 HPC 네트워크 성능과 무관합니다. → [📖 스팟 인스턴스 — 비용 절감용](/section/03-ec2-basics#spot-instance-상세)
 
 **(D)** : 오답. 용량 예약은 가용성 보장이지 네트워크 성능 향상이 아닙니다.
 
 **핵심 개념:** Cluster Placement Group, HPC, 저지연 고처리량 네트워크
+
+**관련 노트:** [Placement Groups 배치 그룹](/section/04-ec2-associate#placement-groups-배치-그룹), [High Performance Computing HPC](/section/27-more-solutions-architecture#high-performance-computing-hpc)
 
 ---
 
@@ -63,11 +65,13 @@
 
 **(B)** : 오답. 동일 DX 위치와 동일 장치는 단일 장애점입니다.
 
-**(C) 정답** : **최대 복원력**을 위해 AWS는 두 데이터 센터 각각에서 2개의 Direct Connect 연결을 2개의 다른 DX 위치에 있는 별도 장치로 연결하도록 권장합니다. 이렇게 하면 단일 위치, 단일 장치, 단일 DC 장애에도 연결이 유지됩니다.
+**(C) 정답** : **최대 복원력**을 위해 AWS는 두 데이터 센터 각각에서 2개의 Direct Connect 연결을 2개의 다른 DX 위치에 있는 별도 장치로 연결하도록 권장합니다. 이렇게 하면 단일 위치, 단일 장치, 단일 DC 장애에도 연결이 유지됩니다. → [📖 Direct Connect 최대 복원력 구성](/section/25-vpc#direct-connect-dx)
 
 **(D)** : 오답. 각 DC에서 1개씩만 연결하면 충분한 이중화가 안 됩니다.
 
 **핵심 개념:** Direct Connect 최대 복원력 설계 — 다중 DX 위치, 다중 장치, 다중 데이터 센터
+
+**관련 노트:** [Direct Connect DX](/section/25-vpc#direct-connect-dx), [Transit Gateway](/section/25-vpc#transit-gateway)
 
 ---
 
@@ -94,17 +98,19 @@
 | D | RDS 유휴 DB 인스턴스 Trusted Advisor 검사 검토 |
 | E | 컴퓨팅 최적화 검사 검토 후 AWS Compute Optimizer 교차 확인 |
 
-**(A) 정답** : AWS Organizations의 관리 계정에서는 모든 멤버 계정을 포함한 통합 Trusted Advisor 권고 사항을 확인할 수 있습니다.
+**(A) 정답** : AWS Organizations의 관리 계정에서는 모든 멤버 계정을 포함한 통합 Trusted Advisor 권고 사항을 확인할 수 있습니다. → [📖 AWS Trusted Advisor 통합 권고 사항](/section/29-white-papers-architectures#aws-trusted-advisor)
 
 **(B)** : 오답. 멤버 계정보다 관리 계정에서 통합 뷰를 제공받는 것이 효율적입니다.
 
-**(C) 정답** : 높은 사용률의 On-Demand RDS는 Reserved Instance로 전환하면 비용을 절감할 수 있습니다. Trusted Advisor의 RDS RI 최적화 검사가 이를 권고합니다.
+**(C) 정답** : 높은 사용률의 On-Demand RDS는 Reserved Instance로 전환하면 비용을 절감할 수 있습니다. Trusted Advisor의 RDS RI 최적화 검사가 이를 권고합니다. → [📖 RDS Reserved Instance 비용 최적화](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
 **(D)** : 오답. 이미 높은 사용률이므로 유휴 DB 검사는 적합하지 않습니다.
 
 **(E)** : 오답. RDS는 Compute Optimizer 대상이 아닙니다.
 
 **핵심 개념:** Trusted Advisor RI 최적화, AWS Organizations 통합 관리
+
+**관련 노트:** [AWS Trusted Advisor](/section/29-white-papers-architectures#aws-trusted-advisor), [AWS Organizations](/section/23-advanced-identity#aws-organizations)
 
 ---
 
@@ -129,15 +135,17 @@
 | C | S3용 PrivateLink 인터페이스 엔드포인트 생성 |
 | D | 각 AZ마다 NAT 게이트웨이 생성 |
 
-**(A) 정답** : **S3 게이트웨이 엔드포인트**는 무료이며 VPC 내에서 S3에 직접 접근할 수 있게 합니다. 퍼블릭 인터넷이나 NAT 게이트웨이를 거치지 않아 데이터 전송 비용이 없습니다.
+**(A) 정답** : **S3 게이트웨이 엔드포인트**는 무료이며 VPC 내에서 S3에 직접 접근할 수 있게 합니다. 퍼블릭 인터넷이나 NAT 게이트웨이를 거치지 않아 데이터 전송 비용이 없습니다. → [📖 S3 게이트웨이 엔드포인트 — 무료, 인터넷 우회](/section/25-vpc#vpc-endpoints-aws-privatelink)
 
 **(B)** : 오답. NAT 게이트웨이를 통한 S3 접근은 처리 데이터 비용이 발생합니다.
 
-**(C)** : 오답. 인터페이스 엔드포인트(PrivateLink)는 S3에 사용할 수 있지만 비용이 발생합니다. 게이트웨이 엔드포인트가 S3/DynamoDB에는 무료입니다.
+**(C)** : 오답. 인터페이스 엔드포인트(PrivateLink)는 S3에 사용할 수 있지만 비용이 발생합니다. 게이트웨이 엔드포인트가 S3/DynamoDB에는 무료입니다. → [📖 인터페이스 엔드포인트(PrivateLink) — S3 접근 비용 발생](/section/25-vpc#vpc-endpoints-aws-privatelink)
 
 **(D)** : 오답. 여러 NAT 게이트웨이도 비용이 발생합니다.
 
 **핵심 개념:** S3 Gateway VPC 엔드포인트 — 무료, 데이터 전송 비용 없음
+
+**관련 노트:** [VPC Endpoints AWS PrivateLink](/section/25-vpc#vpc-endpoints-aws-privatelink), [네트워킹 비용](/section/25-vpc#네트워킹-비용)
 
 ---
 
@@ -162,15 +170,17 @@
 | C | DocumentDB 메모리 최적화 인스턴스 프로비저닝 |
 | D | EFS General Purpose 모드 + Provisioned Throughput으로 전환 |
 
-**(A) 정답** : **Provisioned IOPS SSD**는 일관된 높은 I/O 성능을 보장하여 대량 쓰기 작업에 적합합니다. CloudWatch로 모니터링하고 필요시 IOPS를 조정할 수 있습니다.
+**(A) 정답** : **Provisioned IOPS SSD**는 일관된 높은 I/O 성능을 보장하여 대량 쓰기 작업에 적합합니다. CloudWatch로 모니터링하고 필요시 IOPS를 조정할 수 있습니다. → [📖 Provisioned IOPS SSD — 일관된 높은 I/O 성능](/section/05-ec2-instance-storage#ebs-volume-types-6가지)
 
-**(B)** : 오답. ElastiCache는 읽기 캐싱에 적합하지만 쓰기 성능 문제를 해결하지 못합니다.
+**(B)** : 오답. ElastiCache는 읽기 캐싱에 적합하지만 쓰기 성능 문제를 해결하지 못합니다. → [📖 ElastiCache — 읽기 캐싱](/section/07-rds-aurora-elasticache#amazon-elasticache)
 
 **(C)** : 오답. DocumentDB는 NoSQL이며 MySQL 대체가 아닙니다.
 
-**(D)** : 오답. EFS는 파일 시스템으로 관계형 DB 스토리지로 적합하지 않습니다.
+**(D)** : 오답. EFS는 파일 시스템으로 관계형 DB 스토리지로 적합하지 않습니다. → [📖 EFS — 파일 시스템](/section/05-ec2-instance-storage#amazon-efs-elastic-file-system)
 
 **핵심 개념:** RDS Provisioned IOPS SSD, 고성능 쓰기 워크로드
+
+**관련 노트:** [Amazon RDS Relational Database Service](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service), [EBS Volume Types 6가지](/section/05-ec2-instance-storage#ebs-volume-types-6가지)
 
 ---
 
@@ -201,9 +211,11 @@
 
 **(C)** : 오답. 이중 레이어도 서버 측 암호화입니다.
 
-**(D) 정답** : **클라이언트 측 암호화(Client-Side Encryption)**를 KMS 키로 수행하면 데이터가 AWS에 전송되기 전에 이미 암호화됩니다. 제3자(AWS 포함)가 암호화되지 않은 데이터에 접근할 수 없습니다.
+**(D) 정답** : **클라이언트 측 암호화(Client-Side Encryption)**를 KMS 키로 수행하면 데이터가 AWS에 전송되기 전에 이미 암호화됩니다. 제3자(AWS 포함)가 암호화되지 않은 데이터에 접근할 수 없습니다. → [📖 클라이언트 측 암호화(Client-Side Encryption)](/section/12-s3-security#s3-객체-암호화-4가지-방법)
 
 **핵심 개념:** 클라이언트 측 암호화(CSE) vs 서버 측 암호화(SSE), 전송 전 암호화
+
+**관련 노트:** [S3 객체 암호화 - 4가지 방법](/section/12-s3-security#s3-객체-암호화-4가지-방법), [S3 암호화 방식 비교 SSE-S3 / SSE-KMS / SSE-C / Client-Side](/section/12-s3-security#s3-암호화-방식-비교-sses3-ssekms-ssec-clientside)
 
 ---
 
@@ -230,13 +242,15 @@
 
 **(A)** : 오답. Lambda 함수 작성 및 유지가 필요하여 운영 오버헤드가 있습니다.
 
-**(B) 정답** : RDS 자동 백업의 보존 기간을 **1~35일** 범위에서 설정할 수 있습니다. 30일로 설정하면 별도 코드 없이 자동으로 일일 백업을 30일간 유지합니다.
+**(B) 정답** : RDS 자동 백업의 보존 기간을 **1~35일** 범위에서 설정할 수 있습니다. 30일로 설정하면 별도 코드 없이 자동으로 일일 백업을 30일간 유지합니다. → [📖 RDS 자동 백업 보존 기간 1~35일](/section/07-rds-aurora-elasticache#rds-aurora-백업)
 
 **(C)** : 오답. Maintenance Windows는 DB 보존 기간을 직접 변경하는 용도가 아닙니다.
 
 **(D)** : 오답. 수동 스냅샷은 매일 실행해야 하므로 오버헤드가 높습니다.
 
 **핵심 개념:** RDS 자동 백업 보존 기간 (최대 35일), 규정 준수
+
+**관련 노트:** [RDS & Aurora 백업](/section/07-rds-aurora-elasticache#rds-aurora-백업)
 
 ---
 
@@ -267,9 +281,11 @@
 
 **(C)** : 오답. 고정 크기 업그레이드는 간헐적 트래픽 증가에 비효율적입니다.
 
-**(D) 정답** : **Aurora Auto Scaling**을 사용하면 읽기 트래픽에 따라 읽기 복제본 수를 자동으로 조정합니다. 트래픽 급증 시 복제본을 추가하고 감소 시 제거하여 비용 효율적으로 읽기 확장성을 확보합니다.
+**(D) 정답** : **Aurora Auto Scaling**을 사용하면 읽기 트래픽에 따라 읽기 복제본 수를 자동으로 조정합니다. 트래픽 급증 시 복제본을 추가하고 감소 시 제거하여 비용 효율적으로 읽기 확장성을 확보합니다. → [📖 Aurora Auto Scaling — 읽기 복제본 자동 조정](/section/07-rds-aurora-elasticache#aurora-고가용성-및-스토리지)
 
 **핵심 개념:** Aurora Auto Scaling (읽기 복제본 자동 조정)
+
+**관련 노트:** [Aurora 고가용성 및 스토리지](/section/07-rds-aurora-elasticache#aurora-고가용성-및-스토리지), [Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
 ---
 
@@ -296,13 +312,15 @@
 
 **(A)** : 오답. 별도 클러스터는 비용이 높고 복잡합니다.
 
-**(B)** : 오답. DAX는 DynamoDB용 캐시이며 Aurora에 사용할 수 없습니다.
+**(B)** : 오답. DAX는 DynamoDB용 캐시이며 Aurora에 사용할 수 없습니다. → [📖 DAX — DynamoDB 전용 캐시](/section/17-serverless-overview#amazon-dynamodb)
 
-**(C) 정답** : **Aurora 읽기 복제본**을 생성하고 읽기 쿼리는 복제본 엔드포인트로, 쓰기 쿼리는 클러스터(기본) 엔드포인트로 분리합니다. 이렇게 하면 기본 인스턴스의 쓰기 성능 저하를 방지하고 비용도 효율적입니다.
+**(C) 정답** : **Aurora 읽기 복제본**을 생성하고 읽기 쿼리는 복제본 엔드포인트로, 쓰기 쿼리는 클러스터(기본) 엔드포인트로 분리합니다. 이렇게 하면 기본 인스턴스의 쓰기 성능 저하를 방지하고 비용도 효율적입니다. → [📖 Aurora 읽기 복제본 엔드포인트 분리](/section/07-rds-aurora-elasticache#aurora-엔드포인트)
 
-**(D)** : 오답. Redshift는 OLAP 데이터 웨어하우스로 OLTP 애플리케이션 읽기 복제에 적합하지 않습니다.
+**(D)** : 오답. Redshift는 OLAP 데이터 웨어하우스로 OLTP 애플리케이션 읽기 복제에 적합하지 않습니다. → [📖 Redshift — OLAP 데이터 웨어하우스](/section/20-data-analytics#amazon-redshift)
 
 **핵심 개념:** Aurora 읽기 복제본, 읽기/쓰기 엔드포인트 분리
+
+**관련 노트:** [Aurora 엔드포인트](/section/07-rds-aurora-elasticache#aurora-엔드포인트), [Aurora 고가용성 및 스토리지](/section/07-rds-aurora-elasticache#aurora-고가용성-및-스토리지)
 
 ---
 
@@ -329,17 +347,19 @@
 | D | Auto Scaling 그룹의 EC2 인스턴스로 데이터 처리 |
 | E | ECS + AWS Fargate로 데이터 처리 |
 
-**(A) 정답** : Kinesis Data Firehose는 서버리스 스트리밍 데이터 수집 서비스로 확장성이 뛰어납니다.
+**(A) 정답** : Kinesis Data Firehose는 서버리스 스트리밍 데이터 수집 서비스로 확장성이 뛰어납니다. → [📖 Kinesis Data Firehose — 서버리스 스트리밍 수집](/section/15-integration-messaging#amazon-data-firehose-구-kinesis-data-firehose)
 
-**(B)** : 오답. Lambda는 최대 15분 실행 제한이 있어 30분 작업에 사용할 수 없습니다.
+**(B)** : 오답. Lambda는 최대 15분 실행 제한이 있어 30분 작업에 사용할 수 없습니다. → [📖 Lambda 최대 15분 실행 제한](/section/17-serverless-overview#aws-lambda)
 
-**(C)** : 오답. DMS는 데이터베이스 마이그레이션 서비스로 스트리밍 수집에 적합하지 않습니다.
+**(C)** : 오답. DMS는 데이터베이스 마이그레이션 서비스로 스트리밍 수집에 적합하지 않습니다. → [📖 DMS — 데이터베이스 마이그레이션 서비스](/section/26-disaster-recovery-migrations#dms-database-migration-service-데이터베이스-마이그레이션-서비스)
 
 **(D)** : 오답. EC2는 서버리스가 아닙니다.
 
-**(E) 정답** : **AWS Fargate + ECS**는 서버리스 컨테이너 플랫폼으로, 30분 이상의 장시간 처리 작업에 Lambda보다 적합합니다. 자동으로 확장됩니다.
+**(E) 정답** : **AWS Fargate + ECS**는 서버리스 컨테이너 플랫폼으로, 30분 이상의 장시간 처리 작업에 Lambda보다 적합합니다. 자동으로 확장됩니다. → [📖 AWS Fargate + ECS — 서버리스 컨테이너](/section/16-containers#amazon-ecs-elastic-container-service)
 
 **핵심 개념:** Kinesis Data Firehose 수집, Fargate ECS 서버리스 처리, Lambda 15분 제한
+
+**관련 노트:** [Amazon Data Firehose 구 Kinesis Data Firehose](/section/15-integration-messaging#amazon-data-firehose-구-kinesis-data-firehose), [Amazon ECS Elastic Container Service](/section/16-containers#amazon-ecs-elastic-container-service), [AWS Lambda](/section/17-serverless-overview#aws-lambda)
 
 ---
 
@@ -364,15 +384,17 @@
 | C | VPC 내부에 S3 버킷 배포 |
 | D | VPC와 S3 리전 엔드포인트 간 Direct Connect 연결 |
 
-**(A) 정답** : **S3 게이트웨이 VPC 엔드포인트**를 통해 VPC 내에서 퍼블릭 인터넷을 거치지 않고 AWS 내부 네트워크로 S3에 접근할 수 있습니다. 무료이며 설정이 간단합니다.
+**(A) 정답** : **S3 게이트웨이 VPC 엔드포인트**를 통해 VPC 내에서 퍼블릭 인터넷을 거치지 않고 AWS 내부 네트워크로 S3에 접근할 수 있습니다. 무료이며 설정이 간단합니다. → [📖 S3 게이트웨이 VPC 엔드포인트 — 내부 네트워크 접근](/section/25-vpc#vpc-endpoints-aws-privatelink)
 
 **(B)** : 오답. NLB는 S3를 직접 타겟으로 사용할 수 없습니다.
 
 **(C)** : 오답. S3는 리전 서비스로 VPC 내부에 배포할 수 없습니다.
 
-**(D)** : 오답. Direct Connect는 온프레미스 연결 용도이며 이 요구사항에 과도합니다.
+**(D)** : 오답. Direct Connect는 온프레미스 연결 용도이며 이 요구사항에 과도합니다. → [📖 Direct Connect — 온프레미스 연결](/section/25-vpc#direct-connect-dx)
 
 **핵심 개념:** S3 Gateway VPC 엔드포인트, 인터넷 우회 S3 접근
+
+**관련 노트:** [VPC Endpoints AWS PrivateLink](/section/25-vpc#vpc-endpoints-aws-privatelink)
 
 ---
 
@@ -397,15 +419,17 @@
 | C | CloudWatch 메트릭으로 EBS 볼륨 최적화 권고 |
 | D | AWS Compute Optimizer로 EBS 볼륨 최적화 권고 |
 
-**(A)** : 오답. Inspector는 보안 취약점 평가 서비스입니다.
+**(A)** : 오답. Inspector는 보안 취약점 평가 서비스입니다. → [📖 Amazon Inspector — 보안 취약점 평가](/section/24-security-encryption#amazon-inspector)
 
 **(B)** : 오답. Systems Manager는 인프라 관리 서비스로 비용 최적화 권고 기능이 없습니다.
 
 **(C)** : 오답. CloudWatch는 메트릭 모니터링이며 비용 최적화 권고를 제공하지 않습니다.
 
-**(D) 정답** : **AWS Compute Optimizer**는 EC2 인스턴스, EBS 볼륨, Lambda 함수에 대한 최적화 권고 사항을 제공하며, 예상 월간 절감액도 함께 제시합니다.
+**(D) 정답** : **AWS Compute Optimizer**는 EC2 인스턴스, EBS 볼륨, Lambda 함수에 대한 최적화 권고 사항을 제공하며, 예상 월간 절감액도 함께 제시합니다. → [📖 AWS Compute Optimizer — EC2/EBS/Lambda 최적화 권고](/section/28-other-services#aws-systems-manager-ssm)
 
 **핵심 개념:** AWS Compute Optimizer, EBS 볼륨 최적화 권고
+
+**관련 노트:** [EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store)
 
 ---
 
@@ -432,13 +456,15 @@
 
 **(A)** : 오답. AWS Config도 가능하지만 리전별로 설정해야 합니다.
 
-**(B) 정답** : **S3 Storage Lens**는 전체 AWS 계정, 리전, 버킷에 걸쳐 스토리지 사용 및 설정에 대한 통합 가시성을 제공합니다. 버전 관리 미적용 버킷을 리전 구분 없이 한 번에 식별할 수 있습니다.
+**(B) 정답** : **S3 Storage Lens**는 전체 AWS 계정, 리전, 버킷에 걸쳐 스토리지 사용 및 설정에 대한 통합 가시성을 제공합니다. 버전 관리 미적용 버킷을 리전 구분 없이 한 번에 식별할 수 있습니다. → [📖 S3 Storage Lens — 통합 스토리지 가시성](/section/11-s3-advanced#s3-storage-lens)
 
 **(C)** : 오답. IAM Access Analyzer는 외부 접근 분석 도구입니다.
 
 **(D)** : 오답. Multi-Region Access Point는 다중 리전 접근 단순화 도구입니다.
 
 **핵심 개념:** S3 Storage Lens, 다중 리전 S3 가시성
+
+**관련 노트:** [S3 Storage Lens](/section/11-s3-advanced#s3-storage-lens), [S3 Versioning 버저닝](/section/10-amazon-s3#s3-versioning-버저닝)
 
 ---
 
@@ -463,15 +489,17 @@
 | C | AppFlow로 주문 전달, Lambda로 처리 |
 | D | X-Ray로 요청 추적, CloudWatch에서 처리 |
 
-**(A) 정답** : **SQS FIFO 큐**는 메시지가 정확히 한 번 처리됨(Exactly-Once Processing)을 보장합니다. Lambda를 소비자로 구성하면 자동 확장으로 트래픽 급증에도 대응합니다.
+**(A) 정답** : **SQS FIFO 큐**는 메시지가 정확히 한 번 처리됨(Exactly-Once Processing)을 보장합니다. Lambda를 소비자로 구성하면 자동 확장으로 트래픽 급증에도 대응합니다. → [📖 SQS FIFO 큐 — Exactly-Once Processing 보장](/section/15-integration-messaging#amazon-sqs-simple-queue-service)
 
-**(B)** : 오답. SNS는 중복 전달 가능성이 있으며 exactly-once를 보장하지 않습니다.
+**(B)** : 오답. SNS는 중복 전달 가능성이 있으며 exactly-once를 보장하지 않습니다. → [📖 SNS — 중복 전달 가능, exactly-once 미보장](/section/15-integration-messaging#amazon-sns-simple-notification-service)
 
 **(C)** : 오답. AppFlow는 SaaS 연동 서비스로 이 사용 사례에 적합하지 않습니다.
 
 **(D)** : 오답. X-Ray와 CloudWatch는 처리 솔루션이 아닙니다.
 
 **핵심 개념:** SQS FIFO 큐 — 순서 보장 및 Exactly-Once 처리
+
+**관련 노트:** [Amazon SQS Simple Queue Service](/section/15-integration-messaging#amazon-sqs-simple-queue-service), [언제 무엇을 쓰는가? SQS / SNS / Kinesis 한눈에 비교](/section/15-integration-messaging#언제-무엇을-쓰는가-sqs-sns-kinesis-한눈에-비교)
 
 ---
 
@@ -500,11 +528,13 @@
 
 **(B)** : 오답. IAM 역할은 개발 계정이 아닌 접근 대상인 프로덕션 계정에 생성해야 합니다.
 
-**(C) 정답** : 올바른 크로스 계정 패턴입니다. **프로덕션 계정**에 개발 계정(또는 개발 계정의 특정 사용자)을 신뢰하는 IAM 역할을 생성하고, 개발자들이 해당 역할을 assume하면 됩니다. 베타 단계에 접근 사용자를 추가하기도 쉽습니다.
+**(C) 정답** : 올바른 크로스 계정 패턴입니다. **프로덕션 계정**에 개발 계정(또는 개발 계정의 특정 사용자)을 신뢰하는 IAM 역할을 생성하고, 개발자들이 해당 역할을 assume하면 됩니다. 베타 단계에 접근 사용자를 추가하기도 쉽습니다. → [📖 크로스 계정 IAM 역할 — 프로덕션 계정에 역할 생성](/section/02-iam#iam-roles-역할)
 
 **(D)** : 오답. IAM 그룹을 신뢰 정책 프린시펄로 직접 사용할 수 없습니다.
 
 **핵심 개념:** 크로스 계정 IAM 역할, AssumeRole 신뢰 정책
+
+**관련 노트:** [IAM Roles 역할](/section/02-iam#iam-roles-역할), [IAM Roles vs Resource-Based Policies](/section/23-advanced-identity#iam-roles-vs-resourcebased-policies)
 
 ---
 
@@ -529,15 +559,17 @@
 | C | Cognito 인증 + Lambda 인가 + S3 Transfer Acceleration 배포 |
 | D | Directory Service 인증 + Lambda@Edge 인가 + Elastic Beanstalk 배포 |
 
-**(A) 정답** : **Cognito**는 서버리스 인증 서비스, **Lambda@Edge**는 CloudFront 엣지에서 실행되어 낮은 레이턴시 인가를 제공, **CloudFront**는 글로벌 콘텐츠 배포를 담당합니다. 세 가지가 완벽하게 조합됩니다.
+**(A) 정답** : **Cognito**는 서버리스 인증 서비스, **Lambda@Edge**는 CloudFront 엣지에서 실행되어 낮은 레이턴시 인가를 제공, **CloudFront**는 글로벌 콘텐츠 배포를 담당합니다. 세 가지가 완벽하게 조합됩니다. → [📖 CloudFront Functions & Lambda@Edge — 엣지 인가/낮은 레이턴시](/section/17-serverless-overview#cloudfront-functions-lambdaedge)
 
-**(B)** : 오답. ALB는 글로벌 배포에 적합하지 않으며 Directory Service는 서버리스가 아닙니다.
+**(B)** : 오답. ALB는 글로벌 배포에 적합하지 않으며 Directory Service는 서버리스가 아닙니다. → [📖 ALB — 글로벌 배포 부적합](/section/06-high-availability-scalability#alb-application-load-balancer-상세)
 
 **(C)** : 오답. Lambda(일반)는 엣지에서 실행되지 않아 레이턴시가 높습니다. S3 Transfer Acceleration은 업로드 최적화용입니다.
 
 **(D)** : 오답. Directory Service는 서버리스가 아니고 Elastic Beanstalk는 글로벌 배포가 아닙니다.
 
 **핵심 개념:** Cognito + Lambda@Edge + CloudFront 서버리스 인증/인가
+
+**관련 노트:** [Amazon Cognito](/section/17-serverless-overview#amazon-cognito), [CloudFront Functions & Lambda@Edge](/section/17-serverless-overview#cloudfront-functions-lambdaedge)
 
 ---
 
@@ -568,9 +600,11 @@
 
 **(C)** : 오답. 각 계정마다 IAM 역할을 만들어야 하므로 오버헤드가 높습니다.
 
-**(D) 정답** : **AWS Organizations SCP(Service Control Policy)**를 사용하면 하나의 정책으로 Organizations 내 모든 계정에 일괄 적용할 수 있습니다. 새 계정이 추가되어도 자동으로 적용됩니다.
+**(D) 정답** : **AWS Organizations SCP(Service Control Policy)**를 사용하면 하나의 정책으로 Organizations 내 모든 계정에 일괄 적용할 수 있습니다. 새 계정이 추가되어도 자동으로 적용됩니다. → [📖 AWS Organizations SCP — 모든 계정 일괄 정책 적용](/section/23-advanced-identity#service-control-policies-scp)
 
 **핵심 개념:** AWS Organizations SCP, 다중 계정 통제
+
+**관련 노트:** [Service Control Policies SCP](/section/23-advanced-identity#service-control-policies-scp), [AWS Organizations](/section/23-advanced-identity#aws-organizations)
 
 ---
 
@@ -597,13 +631,15 @@
 
 **(A)** : 오답. Security Hub는 보안 알림 집계 서비스이며 취약점 상세 리포트를 제공하지 않습니다.
 
-**(B) 정답** : **Systems Manager Patch Manager**는 OS 인벤토리 및 패치 자동화를 담당하고, **Amazon Inspector**는 EC2 인스턴스의 일반적인 취약점(CVE)을 스캔하여 월간 리포트를 생성할 수 있습니다.
+**(B) 정답** : **Systems Manager Patch Manager**는 OS 인벤토리 및 패치 자동화를 담당하고, **Amazon Inspector**는 EC2 인스턴스의 일반적인 취약점(CVE)을 스캔하여 월간 리포트를 생성할 수 있습니다. → [📖 Amazon Inspector — EC2 CVE 취약점 스캔](/section/24-security-encryption#amazon-inspector)
 
-**(C)** : 오답. Shield Advanced는 DDoS 방어 서비스이며 패치 관리가 아닙니다.
+**(C)** : 오답. Shield Advanced는 DDoS 방어 서비스이며 패치 관리가 아닙니다. → [📖 AWS Shield Advanced — DDoS 방어](/section/24-security-encryption#aws-shield)
 
-**(D)** : 오답. GuardDuty는 위협 감지 서비스이며 패치 관리가 아닙니다.
+**(D)** : 오답. GuardDuty는 위협 감지 서비스이며 패치 관리가 아닙니다. → [📖 GuardDuty — 위협 감지 서비스](/section/24-security-encryption#amazon-guardduty)
 
 **핵심 개념:** Systems Manager Patch Manager (패치 자동화) + Amazon Inspector (취약점 평가)
+
+**관련 노트:** [AWS Systems Manager SSM](/section/28-other-services#aws-systems-manager-ssm), [Amazon Inspector](/section/24-security-encryption#amazon-inspector)
 
 ---
 
@@ -628,7 +664,7 @@
 | C | CloudFormation으로 필요 시 EC2/LB 생성, DynamoDB 글로벌 테이블, DNS 페일오버 |
 | D | DR 리전에 사전 생성, DynamoDB 글로벌 테이블, CloudWatch + Lambda로 Route 53 업데이트 |
 
-**(A) 정답** : DR 리전에 인프라를 **사전 준비(Warm Standby)**하고 DynamoDB를 **글로벌 테이블**로 구성하면 즉시 페일오버가 가능하여 다운타임이 최소화됩니다. DNS 페일오버로 자동 전환됩니다.
+**(A) 정답** : DR 리전에 인프라를 **사전 준비(Warm Standby)**하고 DynamoDB를 **글로벌 테이블**로 구성하면 즉시 페일오버가 가능하여 다운타임이 최소화됩니다. DNS 페일오버로 자동 전환됩니다. → [📖 DynamoDB 글로벌 테이블 — 멀티 리전 복제](/section/17-serverless-overview#amazon-dynamodb)
 
 **(B)** : 오답. CloudFormation으로 실시간 생성하면 프로비저닝 시간(10~20분) 동안 다운타임 발생합니다.
 
@@ -637,6 +673,8 @@
 **(D)** : 오답. CloudWatch + Lambda 방식은 DNS 업데이트에 추가 지연이 있습니다.
 
 **핵심 개념:** Warm Standby DR, DynamoDB 글로벌 테이블, Route 53 DNS 페일오버
+
+**관련 노트:** [4가지 DR 전략 빠른 RTO 순](/section/26-disaster-recovery-migrations#4가지-dr-전략-빠른-rto-순), [라우팅 정책 Routing Policies](/section/08-route-53#라우팅-정책-routing-policies), [Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb)
 
 ---
 
@@ -661,15 +699,17 @@
 | C | S3 인터페이스 엔드포인트(PrivateLink) 배포 |
 | D | S3 게이트웨이 엔드포인트 배포 |
 
-**(A)** : 오답. NAT 게이트웨이는 데이터 처리 비용이 발생하고 여전히 퍼블릭 S3 엔드포인트를 사용합니다.
+**(A)** : 오답. NAT 게이트웨이는 데이터 처리 비용이 발생하고 여전히 퍼블릭 S3 엔드포인트를 사용합니다. → [📖 NAT 게이트웨이 — 데이터 처리 비용 발생](/section/25-vpc#nat-gateway)
 
 **(B)** : 오답. Storage Gateway는 복잡하고 이 요구 사항에 과도합니다.
 
-**(C)** : 오답. 인터페이스 엔드포인트(PrivateLink)는 시간당 비용이 발생합니다.
+**(C)** : 오답. 인터페이스 엔드포인트(PrivateLink)는 시간당 비용이 발생합니다. → [📖 인터페이스 엔드포인트(PrivateLink) — 시간당 비용 발생](/section/25-vpc#vpc-endpoints-aws-privatelink)
 
-**(D) 정답** : **S3 게이트웨이 엔드포인트**는 **무료**이며 VPC 라우팅 테이블에 엔트리를 추가하는 방식으로 퍼블릭 인터넷을 우회하여 S3에 접근합니다. 가장 비용 효율적입니다.
+**(D) 정답** : **S3 게이트웨이 엔드포인트**는 **무료**이며 VPC 라우팅 테이블에 엔트리를 추가하는 방식으로 퍼블릭 인터넷을 우회하여 S3에 접근합니다. 가장 비용 효율적입니다. → [📖 S3 게이트웨이 엔드포인트 — 무료, 라우팅 테이블 방식](/section/25-vpc#vpc-endpoints-aws-privatelink)
 
 **핵심 개념:** S3 게이트웨이 엔드포인트 (무료) vs 인터페이스 엔드포인트 (유료)
+
+**관련 노트:** [VPC Endpoints AWS PrivateLink](/section/25-vpc#vpc-endpoints-aws-privatelink), [네트워킹 비용](/section/25-vpc#네트워킹-비용)
 
 ---
 
@@ -698,15 +738,17 @@
 
 **(A)** : 오답. Route 53으로 다중 인스턴스에 트래픽을 분산할 수 있지만 NLB보다 비용 효율이 낮고 헬스 체크 기반 라우팅은 지연이 있습니다.
 
-**(B) 정답** : 전송 계층(Layer 4) 접근이므로 **NLB(Network Load Balancer)**가 적합합니다. NLB는 고가용성을 제공합니다.
+**(B) 정답** : 전송 계층(Layer 4) 접근이므로 **NLB(Network Load Balancer)**가 적합합니다. NLB는 고가용성을 제공합니다. → [📖 NLB — Layer 4, 고가용성](/section/06-high-availability-scalability#nlb-network-load-balancer-상세)
 
 **(C)** : 오답. 두 종류의 LB를 동시에 사용하면 불필요한 비용이 발생합니다.
 
-**(D) 정답** : **Multi-AZ Auto Scaling 그룹**으로 다수 AZ에 인스턴스를 분산하여 AZ 장애 시에도 가용성을 보장합니다. 헬스 체크로 비정상 인스턴스를 자동 교체합니다.
+**(D) 정답** : **Multi-AZ Auto Scaling 그룹**으로 다수 AZ에 인스턴스를 분산하여 AZ 장애 시에도 가용성을 보장합니다. 헬스 체크로 비정상 인스턴스를 자동 교체합니다. → [📖 Auto Scaling Group — 다중 AZ 분산, 헬스 체크 자동 교체](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
 **(E)** : 오답. CloudWatch 알람으로 인스턴스를 재시작하는 것은 AZ 장애에 대응할 수 없습니다.
 
 **핵심 개념:** NLB(Layer 4), Multi-AZ Auto Scaling, 고가용성
+
+**관련 노트:** [NLB Network Load Balancer 상세](/section/06-high-availability-scalability#nlb-network-load-balancer-상세), [Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
 ---
 
@@ -733,13 +775,15 @@
 
 **(A)** : 오답. ECS는 월 100회 이하 방문에 과도합니다.
 
-**(B) 정답** : **서버리스(API Gateway + Lambda + SNS)**는 사용한 만큼만 과금되므로 소규모 트래픽에 가장 비용 효율적입니다.
+**(B) 정답** : **서버리스(API Gateway + Lambda + SNS)**는 사용한 만큼만 과금되므로 소규모 트래픽에 가장 비용 효율적입니다. → [📖 API Gateway + Lambda — 서버리스 아키텍처](/section/17-serverless-overview#aws-api-gateway)
 
 **(C)** : 오답. Amplify도 가능하지만 B보다 비용이 더 발생할 수 있습니다.
 
 **(D)** : 오답. EC2 Windows Server는 지속 비용이 발생하고 과도합니다.
 
 **핵심 개념:** 서버리스 아키텍처(API Gateway + Lambda + SNS), 소규모 트래픽 비용 최적화
+
+**관련 노트:** [AWS API Gateway](/section/17-serverless-overview#aws-api-gateway), [AWS Lambda](/section/17-serverless-overview#aws-lambda), [Amazon SNS Simple Notification Service](/section/15-integration-messaging#amazon-sns-simple-notification-service)
 
 ---
 
@@ -774,6 +818,8 @@
 
 **핵심 개념:** AWS 루트 계정 이메일, 대체 연락처(Alternate Contacts), AWS Organizations
 
+**관련 노트:** [AWS Organizations](/section/23-advanced-identity#aws-organizations)
+
 ---
 
 ### Q674. A company runs an ecommerce application on AWS. Amazon EC2 instances process purchases and store the purchase details in an Amazon Aurora PostgreSQL DB cluster. Customers are experiencing application timeouts during times of peak usage. A solutions architect needs to rearchitect the application so that the application can scale to meet peak usage demands. Which combination of actions will meet these requirements MOST cost-effectively? (Choose two.)
@@ -799,17 +845,19 @@
 | D | Lambda로 구매 재시도 |
 | E | API Gateway 사용 계획 구성 |
 
-**(A) 정답** : **RDS Proxy**는 DB 연결 풀링을 제공하여 다수의 EC2 연결을 효율적으로 관리하고 Aurora 연결 과부하를 방지합니다. Auto Scaling으로 EC2를 확장합니다.
+**(A) 정답** : **RDS Proxy**는 DB 연결 풀링을 제공하여 다수의 EC2 연결을 효율적으로 관리하고 Aurora 연결 과부하를 방지합니다. Auto Scaling으로 EC2를 확장합니다. → [📖 RDS Proxy — DB 연결 풀링](/section/07-rds-aurora-elasticache#amazon-rds-proxy)
 
-**(B)** : 오답. ElastiCache는 읽기 캐싱용이며, 구매 처리(쓰기)의 타임아웃 문제를 해결하지 못합니다.
+**(B)** : 오답. ElastiCache는 읽기 캐싱용이며, 구매 처리(쓰기)의 타임아웃 문제를 해결하지 못합니다. → [📖 ElastiCache — 읽기 캐싱, 쓰기 타임아웃 미해결](/section/07-rds-aurora-elasticache#amazon-elasticache)
 
-**(C) 정답** : **SQS 큐**로 요청을 버퍼링하면 피크 트래픽에도 요청이 유실되지 않고, Auto Scaling EC2 그룹이 큐에서 순차적으로 처리합니다. 타임아웃 문제를 근본적으로 해결합니다.
+**(C) 정답** : **SQS 큐**로 요청을 버퍼링하면 피크 트래픽에도 요청이 유실되지 않고, Auto Scaling EC2 그룹이 큐에서 순차적으로 처리합니다. 타임아웃 문제를 근본적으로 해결합니다. → [📖 SQS 큐 — 요청 버퍼링, 피크 트래픽 처리](/section/15-integration-messaging#amazon-sqs-simple-queue-service)
 
 **(D)** : 오답. 재시도만으로는 근본 원인(과부하)을 해결하지 못합니다.
 
 **(E)** : 오답. API Gateway 사용 계획은 속도 제한용이며 확장성 솔루션이 아닙니다.
 
 **핵심 개념:** RDS Proxy (DB 연결 관리), SQS 큐 버퍼링, Auto Scaling
+
+**관련 노트:** [Amazon RDS Proxy](/section/07-rds-aurora-elasticache#amazon-rds-proxy), [Amazon SQS Simple Queue Service](/section/15-integration-messaging#amazon-sqs-simple-queue-service)
 
 ---
 
@@ -836,13 +884,15 @@
 
 **(A)** : 오답. DataSync는 데이터 전송 서비스이며 쿼리 도구가 아닙니다.
 
-**(B) 정답** : **Amazon Athena**로 S3의 Cost and Usage Report를 직접 SQL 쿼리할 수 있습니다. **QuickSight**는 Athena를 데이터 소스로 연결하여 커스텀 대시보드를 만들고 공유할 수 있습니다.
+**(B) 정답** : **Amazon Athena**로 S3의 Cost and Usage Report를 직접 SQL 쿼리할 수 있습니다. **QuickSight**는 Athena를 데이터 소스로 연결하여 커스텀 대시보드를 만들고 공유할 수 있습니다. → [📖 Amazon Athena + QuickSight — S3 CUR 쿼리 및 대시보드](/section/20-data-analytics#amazon-athena)
 
 **(C)** : 오답. CloudWatch는 S3 기반 CUR 쿼리용 커스텀 대시보드를 지원하지 않습니다.
 
 **(D)** : 오답. CloudWatch는 Athena와 연동하여 CUR 대시보드를 만들 수 없습니다.
 
 **핵심 개념:** Cost and Usage Report + Athena + QuickSight 대시보드 조합
+
+**관련 노트:** [Amazon Athena](/section/20-data-analytics#amazon-athena), [Amazon QuickSight](/section/20-data-analytics#amazon-quicksight)
 
 ---
 
@@ -869,7 +919,7 @@
 | D | Lambda@Edge로 Expires 헤더 추가 |
 | E | S3 객체에 Cache-Control max-age 24시간 설정, 배포 시 CloudFront 무효화 |
 
-**(A) 정답** : CloudFront TTL을 2분으로 설정하면 캐싱 성능을 높이면서도 콘텐츠 갱신이 2분 내에 반영됩니다.
+**(A) 정답** : CloudFront TTL을 2분으로 설정하면 캐싱 성능을 높이면서도 콘텐츠 갱신이 2분 내에 반영됩니다. → [📖 CloudFront TTL 설정 — 캐싱 성능과 갱신 주기](/section/13-cloudfront-global-accelerator#cloudfront-기본-개념)
 
 **(B)** : 오답. S3 버킷 자체에 TTL을 설정하는 기능은 없습니다.
 
@@ -877,9 +927,11 @@
 
 **(D)** : 오답. Expires 헤더를 추가하는 것이 TTL 설정보다 복잡하며 효율적이지 않습니다.
 
-**(E) 정답** : 객체에 24시간 TTL을 설정하면 높은 캐시 적중률을 얻을 수 있고, 배포 시 CloudFront **무효화(Invalidation)**로 변경된 파일만 즉시 갱신합니다.
+**(E) 정답** : 객체에 24시간 TTL을 설정하면 높은 캐시 적중률을 얻을 수 있고, 배포 시 CloudFront **무효화(Invalidation)**로 변경된 파일만 즉시 갱신합니다. → [📖 CloudFront 캐시 무효화(Invalidation) — 즉시 갱신](/section/13-cloudfront-global-accelerator#cloudfront-cache-invalidation-캐시-무효화)
 
 **핵심 개념:** CloudFront TTL, Cache-Control, CloudFront 무효화(Invalidation)
+
+**관련 노트:** [CloudFront Cache Invalidation 캐시 무효화](/section/13-cloudfront-global-accelerator#cloudfront-cache-invalidation-캐시-무효화), [캐싱 전략](/section/27-more-solutions-architecture#캐싱-전략)
 
 ---
 
@@ -904,15 +956,17 @@
 | C | Compute Savings Plan + Lambda를 프라이빗 서브넷에 연결 |
 | D | Compute Savings Plan + Lambda를 Lambda 서비스 VPC에 유지 |
 
-**(A)** : 오답. EC2 Instance Savings Plan은 EC2만 적용되고 Lambda에는 적용되지 않습니다.
+**(A)** : 오답. EC2 Instance Savings Plan은 EC2만 적용되고 Lambda에는 적용되지 않습니다. → [📖 EC2 Instance Savings Plan — EC2 전용](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
 **(B)** : 오답. EC2 Instance Savings Plan이 Lambda에 미적용되고, 퍼블릭 서브넷 연결은 불필요합니다.
 
-**(C) 정답** : **Compute Savings Plan**은 EC2와 Lambda 모두에 적용됩니다. Lambda를 EC2가 있는 **프라이빗 서브넷에 연결**하면 EC2와 직접 통신하여 낮은 레이턴시를 유지합니다.
+**(C) 정답** : **Compute Savings Plan**은 EC2와 Lambda 모두에 적용됩니다. Lambda를 EC2가 있는 **프라이빗 서브넷에 연결**하면 EC2와 직접 통신하여 낮은 레이턴시를 유지합니다. → [📖 Compute Savings Plan — EC2 + Lambda 커버, Lambda in VPC](/section/17-serverless-overview#lambda-in-vpc)
 
 **(D)** : 오답. Lambda를 기본 Lambda 서비스 VPC에 두면 EC2(프라이빗 서브넷)와 직접 통신이 불가합니다.
 
 **핵심 개념:** Compute Savings Plan (EC2 + Lambda 적용), Lambda VPC 연결
+
+**관련 노트:** [Lambda in VPC](/section/17-serverless-overview#lambda-in-vpc), [AWS Lambda](/section/17-serverless-overview#aws-lambda)
 
 ---
 
@@ -937,7 +991,7 @@
 | C | Glue 크롤러 + ETL + S3 리포트, 버킷 정책으로 접근 제한 |
 | D | Glue + Athena 페더레이티드 쿼리 + S3 리포트 |
 
-**(A) 정답** : QuickSight에서 S3와 RDS를 모두 데이터 소스로 연결하여 대시보드를 생성하고, **IAM 역할**로 접근을 세밀하게 제어할 수 있습니다. 관리팀과 일반 직원에게 다른 권한을 부여할 수 있습니다.
+**(A) 정답** : QuickSight에서 S3와 RDS를 모두 데이터 소스로 연결하여 대시보드를 생성하고, **IAM 역할**로 접근을 세밀하게 제어할 수 있습니다. 관리팀과 일반 직원에게 다른 권한을 부여할 수 있습니다. → [📖 QuickSight + IAM 역할 — 세밀한 접근 제어](/section/20-data-analytics#amazon-quicksight)
 
 **(B)** : 오답. QuickSight의 권한 관리는 IAM 역할이 아닌 QuickSight 사용자/그룹으로 하는 것이 더 적합합니다. A가 더 정확한 답입니다.
 
@@ -946,6 +1000,8 @@
 **(D)** : 오답. 시각화 기능이 없습니다.
 
 **핵심 개념:** Amazon QuickSight 데이터 시각화, 다중 데이터 소스, IAM 접근 제어
+
+**관련 노트:** [Amazon QuickSight](/section/20-data-analytics#amazon-quicksight)
 
 ---
 
@@ -974,11 +1030,13 @@
 
 **(B)** : 오답. RDS Single-AZ는 고가용성이 없습니다.
 
-**(C) 정답** : **Aurora Multi-AZ**는 고가용성을 제공하고, **Aurora Auto Scaling**은 읽기 복제본 수를 자동으로 조정하여 예측 불가능한 읽기 부하에 대응합니다. MySQL 8.0 호환도 지원합니다.
+**(C) 정답** : **Aurora Multi-AZ**는 고가용성을 제공하고, **Aurora Auto Scaling**은 읽기 복제본 수를 자동으로 조정하여 예측 불가능한 읽기 부하에 대응합니다. MySQL 8.0 호환도 지원합니다. → [📖 Aurora Multi-AZ + Aurora Auto Scaling](/section/07-rds-aurora-elasticache#aurora-고가용성-및-스토리지)
 
 **(D)** : 오답. Memcached는 캐시이며 데이터베이스 대체가 아닙니다.
 
 **핵심 개념:** Aurora Auto Scaling, Aurora Replicas, 읽기 확장성
+
+**관련 노트:** [Aurora 고가용성 및 스토리지](/section/07-rds-aurora-elasticache#aurora-고가용성-및-스토리지), [Amazon Aurora](/section/07-rds-aurora-elasticache#amazon-aurora)
 
 ---
 
@@ -1009,9 +1067,11 @@
 
 **(C)** : 오답. 단일 샤드 Kinesis는 초당 100,000개의 메시지 처리에 적합하지 않습니다.
 
-**(D) 정답** : **SNS + SQS 팬아웃 패턴**은 수십 개의 소비자가 각자의 SQS 큐에서 독립적으로 메시지를 처리할 수 있게 합니다. SNS와 SQS 모두 자동으로 확장되어 초당 100,000개 메시지도 처리 가능합니다.
+**(D) 정답** : **SNS + SQS 팬아웃 패턴**은 수십 개의 소비자가 각자의 SQS 큐에서 독립적으로 메시지를 처리할 수 있게 합니다. SNS와 SQS 모두 자동으로 확장되어 초당 100,000개 메시지도 처리 가능합니다. → [📖 SNS + SQS 팬아웃 패턴 — 독립적 소비자, 자동 확장](/section/27-more-solutions-architecture#fan-out-패턴)
 
 **핵심 개념:** SNS+SQS 팬아웃 패턴, 메시지 디커플링, 확장성
+
+**관련 노트:** [Amazon SNS Simple Notification Service](/section/15-integration-messaging#amazon-sns-simple-notification-service), [Fan Out 패턴](/section/27-more-solutions-architecture#fan-out-패턴), [언제 무엇을 쓰는가? SQS / SNS / Kinesis 한눈에 비교](/section/15-integration-messaging#언제-무엇을-쓰는가-sqs-sns-kinesis-한눈에-비교)
 
 ---
 
@@ -1038,9 +1098,9 @@
 | D | EC2 인스턴스로 SQS 모니터링, 텍스트 파일로 로그 |
 | E | EventBridge로 S3 모니터링, SNS로 관리자 이메일 전송 |
 
-**(A) 정답** : S3 이벤트 알림을 SQS에 전달하면 내구성 있는 메시지 큐가 생성됩니다. S3 업로드가 트리거되면 SQS에 메시지가 추가됩니다.
+**(A) 정답** : S3 이벤트 알림을 SQS에 전달하면 내구성 있는 메시지 큐가 생성됩니다. S3 업로드가 트리거되면 SQS에 메시지가 추가됩니다. → [📖 S3 이벤트 알림 → SQS — 내구성 있는 메시지 큐](/section/11-s3-advanced#s3-event-notifications-이벤트-알림)
 
-**(B) 정답** : Lambda를 SQS 이벤트 소스 매핑으로 구성하면 자동으로 메시지를 처리하고 성공 후 삭제합니다. 완전한 stateless 처리 파이프라인입니다.
+**(B) 정답** : Lambda를 SQS 이벤트 소스 매핑으로 구성하면 자동으로 메시지를 처리하고 성공 후 삭제합니다. 완전한 stateless 처리 파이프라인입니다. → [📖 Lambda SQS 이벤트 소스 매핑 — 자동 처리](/section/17-serverless-overview#aws-lambda)
 
 **(C)** : 오답. 메모리 텍스트 파일은 상태 저장(stateful)이며 내구성이 없습니다.
 
@@ -1049,6 +1109,8 @@
 **(E)** : 오답. 이메일 알림만으로는 자동 처리가 이루어지지 않습니다.
 
 **핵심 개념:** S3 → SQS → Lambda 이벤트 처리 파이프라인, 상태 비저장(Stateless) 아키텍처
+
+**관련 노트:** [S3 Event Notifications 이벤트 알림](/section/11-s3-advanced#s3-event-notifications-이벤트-알림), [Amazon SQS Simple Queue Service](/section/15-integration-messaging#amazon-sqs-simple-queue-service), [Lambda, SNS & SQS 패턴](/section/27-more-solutions-architecture#lambda-sns-sqs-패턴)
 
 ---
 
@@ -1077,11 +1139,13 @@
 
 **(B)** : 오답. ALB는 Layer 7이며 방화벽 어플라이언스 통합에 적합하지 않습니다.
 
-**(C)** : 오답. Transit Gateway는 VPC 간 라우팅이지만 어플라이언스 통합 자동화 기능이 없습니다.
+**(C)** : 오답. Transit Gateway는 VPC 간 라우팅이지만 어플라이언스 통합 자동화 기능이 없습니다. → [📖 Transit Gateway — VPC 간 라우팅](/section/25-vpc#transit-gateway)
 
-**(D) 정답** : **Gateway Load Balancer(GWLB)**는 서드파티 네트워크 어플라이언스를 투명하게 통합하도록 설계되었습니다. GWLB 엔드포인트를 통해 트래픽이 자동으로 어플라이언스를 경유하여 검사됩니다. 운영 오버헤드가 가장 적습니다.
+**(D) 정답** : **Gateway Load Balancer(GWLB)**는 서드파티 네트워크 어플라이언스를 투명하게 통합하도록 설계되었습니다. GWLB 엔드포인트를 통해 트래픽이 자동으로 어플라이언스를 경유하여 검사됩니다. 운영 오버헤드가 가장 적습니다. → [📖 Gateway Load Balancer — 서드파티 어플라이언스 투명 통합](/section/06-high-availability-scalability#gwlb-gateway-load-balancer-상세)
 
 **핵심 개념:** Gateway Load Balancer(GWLB), 가상 방화벽 어플라이언스 통합
+
+**관련 노트:** [GWLB Gateway Load Balancer 상세](/section/06-high-availability-scalability#gwlb-gateway-load-balancer-상세), [AWS Network Firewall](/section/25-vpc#aws-network-firewall)
 
 ---
 
@@ -1106,15 +1170,17 @@
 | C | EBS 스냅샷 → 새 볼륨 생성 및 초기화 후 복원 |
 | D | EBS 스냅샷 + Fast Snapshot Restore → 새 EBS 볼륨에 복원 |
 
-**(A)** : 오답. Instance Store는 영속성이 없고 스냅샷 복원 불가합니다.
+**(A)** : 오답. Instance Store는 영속성이 없고 스냅샷 복원 불가합니다. → [📖 Instance Store — 영속성 없음, 스냅샷 불가](/section/05-ec2-instance-storage#ec2-instance-store)
 
 **(B)** : 오답. 프로덕션 볼륨을 테스트에 직접 연결하면 데이터 수정이 프로덕션에 영향을 줄 수 있습니다.
 
-**(C)** : 오답. 일반 스냅샷 복원은 처음 I/O 시 지연(lazy loading)이 발생합니다.
+**(C)** : 오답. 일반 스냅샷 복원은 처음 I/O 시 지연(lazy loading)이 발생합니다. → [📖 EBS 스냅샷 복원 — lazy loading 지연 발생](/section/05-ec2-instance-storage#ebs-snapshots)
 
-**(D) 정답** : **EBS Fast Snapshot Restore**를 활성화하면 스냅샷에서 생성된 볼륨이 즉시 완전한 I/O 성능을 제공합니다(lazy loading 없음). 복제 시간을 최소화하고 고성능 I/O를 보장합니다.
+**(D) 정답** : **EBS Fast Snapshot Restore**를 활성화하면 스냅샷에서 생성된 볼륨이 즉시 완전한 I/O 성능을 제공합니다(lazy loading 없음). 복제 시간을 최소화하고 고성능 I/O를 보장합니다. → [📖 EBS Fast Snapshot Restore — 즉시 완전한 I/O 성능](/section/05-ec2-instance-storage#ebs-snapshots)
 
 **핵심 개념:** EBS Fast Snapshot Restore, 즉시 완전 I/O 성능
+
+**관련 노트:** [EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots), [EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store)
 
 ---
 
@@ -1145,9 +1211,11 @@
 
 **(C)** : 오답. EKS + RDS는 복잡하고 관리 오버헤드가 높습니다.
 
-**(D) 정답** : **완전 서버리스 아키텍처**: S3(정적) + CloudFront(글로벌 배포) + API Gateway + Lambda(서버리스 백엔드) + DynamoDB(서버리스 DB). 자동 확장, 밀리초 레이턴시, 최소 운영 오버헤드를 모두 달성합니다.
+**(D) 정답** : **완전 서버리스 아키텍처**: S3(정적) + CloudFront(글로벌 배포) + API Gateway + Lambda(서버리스 백엔드) + DynamoDB(서버리스 DB). 자동 확장, 밀리초 레이턴시, 최소 운영 오버헤드를 모두 달성합니다. → [📖 완전 서버리스 — API Gateway + Lambda + DynamoDB + CloudFront](/section/18-serverless-architectures#아키텍처-2-서버리스-웹사이트-myblogcom)
 
 **핵심 개념:** 서버리스 웹 아키텍처 — S3 + CloudFront + API Gateway + Lambda + DynamoDB
+
+**관련 노트:** [아키텍처 2: 서버리스 웹사이트 MyBlog.com](/section/18-serverless-architectures#아키텍처-2-서버리스-웹사이트-myblogcom), [Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb), [AWS API Gateway](/section/17-serverless-overview#aws-api-gateway)
 
 ---
 
@@ -1174,13 +1242,15 @@
 
 **(A)** : 오답. 거의 접근하지 않는 파일에 Standard는 비용이 높습니다.
 
-**(B) 정답** : **S3 Intelligent-Tiering**은 접근 패턴을 자동으로 모니터링하고 자주/드물게 접근 계층 간에 자동으로 이동합니다. 여러 AZ에 복제되어 AZ 손실에 내구성이 있습니다. 예측 불가능한 접근 패턴에 가장 비용 효율적입니다.
+**(B) 정답** : **S3 Intelligent-Tiering**은 접근 패턴을 자동으로 모니터링하고 자주/드물게 접근 계층 간에 자동으로 이동합니다. 여러 AZ에 복제되어 AZ 손실에 내구성이 있습니다. 예측 불가능한 접근 패턴에 가장 비용 효율적입니다. → [📖 S3 Intelligent-Tiering — 접근 패턴 자동 감지](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
-**(C)** : 오답. Standard-IA는 자주 접근하는 파일에 검색 비용이 발생합니다.
+**(C)** : 오답. Standard-IA는 자주 접근하는 파일에 검색 비용이 발생합니다. → [📖 S3 Standard-IA — 검색 비용 발생](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
-**(D)** : 오답. One Zone-IA는 단일 AZ에만 저장되어 AZ 손실에 취약합니다.
+**(D)** : 오답. One Zone-IA는 단일 AZ에만 저장되어 AZ 손실에 취약합니다. → [📖 S3 One Zone-IA — 단일 AZ, AZ 손실 취약](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
 **핵심 개념:** S3 Intelligent-Tiering, 예측 불가능한 접근 패턴 비용 최적화
+
+**관련 노트:** [S3 Storage Classes 스토리지 클래스](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스), [스토리지 클래스 비교표](/section/10-amazon-s3#스토리지-클래스-비교표)
 
 ---
 
@@ -1207,13 +1277,15 @@
 
 **(A)** : 오답. 1개월 후 완전히 접근하지 않는 명확한 패턴이 있으므로 Intelligent-Tiering보다 Lifecycle 정책이 더 비용 효율적입니다.
 
-**(B) 정답** : 1개월 후 **S3 Glacier Deep Archive**로 전환하면 가장 낮은 스토리지 비용(TB당 약 $0.00099/월)으로 파일을 무기한 보존할 수 있습니다. 이미 접근하지 않으므로 검색 비용 걱정이 없습니다.
+**(B) 정답** : 1개월 후 **S3 Glacier Deep Archive**로 전환하면 가장 낮은 스토리지 비용(TB당 약 $0.00099/월)으로 파일을 무기한 보존할 수 있습니다. 이미 접근하지 않으므로 검색 비용 걱정이 없습니다. → [📖 S3 Glacier Deep Archive — 가장 낮은 스토리지 비용](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
-**(C)** : 오답. Standard-IA는 Glacier보다 저장 비용이 높습니다.
+**(C)** : 오답. Standard-IA는 Glacier보다 저장 비용이 높습니다. → [📖 S3 Standard-IA — Glacier보다 저장 비용 높음](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
-**(D)** : 오답. One Zone-IA는 AZ 장애 시 데이터 손실 위험이 있습니다.
+**(D)** : 오답. One Zone-IA는 AZ 장애 시 데이터 손실 위험이 있습니다. → [📖 S3 One Zone-IA — AZ 장애 시 데이터 손실 위험](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
 **핵심 개념:** S3 Lifecycle 정책, S3 Glacier Deep Archive (최저 비용 장기 보존)
+
+**관련 노트:** [S3 Lifecycle Rules 수명주기 규칙](/section/11-s3-advanced#s3-lifecycle-rules-수명주기-규칙), [S3 Storage Classes 스토리지 클래스](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
 ---
 
@@ -1240,13 +1312,15 @@
 
 **(A)** : 오답. Budgets는 예산 알림용이며 세부 비용 분석 도구가 아닙니다.
 
-**(B) 정답** : **AWS Cost Explorer**는 인스턴스 타입, 리전, 서비스별로 비용을 시각화하고 세밀하게 필터링할 수 있습니다. 별도 설정 없이 즉시 사용 가능하여 운영 오버헤드가 가장 적습니다.
+**(B) 정답** : **AWS Cost Explorer**는 인스턴스 타입, 리전, 서비스별로 비용을 시각화하고 세밀하게 필터링할 수 있습니다. 별도 설정 없이 즉시 사용 가능하여 운영 오버헤드가 가장 적습니다. → [📖 AWS Cost Explorer — 인스턴스/리전/서비스별 비용 시각화](/section/28-other-services#cost-explorer)
 
 **(C)** : 오답. Billing 대시보드는 상위 수준 개요만 제공하며 세부 분석이 제한적입니다.
 
 **(D)** : 오답. CUR + S3 + QuickSight 설정에 상당한 오버헤드가 필요합니다.
 
 **핵심 개념:** AWS Cost Explorer 세분화 필터, EC2 비용 분석
+
+**관련 노트:** [Cost Explorer](/section/28-other-services#cost-explorer)
 
 ---
 
@@ -1277,9 +1351,11 @@
 
 **(C)** : 오답. SNS는 메시지 영속성이 없어 대량 데이터 로드 시 유실 위험이 있습니다.
 
-**(D) 정답** : 수신 Lambda와 DB 로드 Lambda를 **SQS 큐**로 연결하면 수신 Lambda는 빠르게 메시지를 큐에 넣고 응답하고, 로드 Lambda는 큐에서 순차적으로 데이터를 처리합니다. Lambda 동시성 할당량 문제를 해결하고 확장성이 향상됩니다.
+**(D) 정답** : 수신 Lambda와 DB 로드 Lambda를 **SQS 큐**로 연결하면 수신 Lambda는 빠르게 메시지를 큐에 넣고 응답하고, 로드 Lambda는 큐에서 순차적으로 데이터를 처리합니다. Lambda 동시성 할당량 문제를 해결하고 확장성이 향상됩니다. → [📖 SQS 큐 — 수신/처리 Lambda 디커플링, 확장성 향상](/section/15-integration-messaging#amazon-sqs-simple-queue-service)
 
 **핵심 개념:** SQS 큐 버퍼링, Lambda 동시성 관리, 비동기 처리 패턴
+
+**관련 노트:** [Amazon SQS Simple Queue Service](/section/15-integration-messaging#amazon-sqs-simple-queue-service), [AWS Lambda](/section/17-serverless-overview#aws-lambda)
 
 ---
 
@@ -1304,15 +1380,17 @@
 | C | 적절한 평가 템플릿으로 Amazon Inspector 활성화 |
 | D | S3 서버 액세스 로깅 활성화 + EventBridge 구성 |
 
-**(A) 정답** : **AWS Config**는 AWS 리소스 구성 변경을 지속적으로 모니터링하고 기록합니다. S3 관련 관리형 규칙(예: s3-bucket-public-read-prohibited)을 활성화하면 무단 구성 변경을 즉시 감지할 수 있습니다.
+**(A) 정답** : **AWS Config**는 AWS 리소스 구성 변경을 지속적으로 모니터링하고 기록합니다. S3 관련 관리형 규칙(예: s3-bucket-public-read-prohibited)을 활성화하면 무단 구성 변경을 즉시 감지할 수 있습니다. → [📖 AWS Config — 리소스 구성 변경 모니터링 및 규칙](/section/22-monitoring-audit-performance#aws-config)
 
-**(B)** : 오답. Trusted Advisor는 모범 사례 권고 도구이며 실시간 구성 변경 감지가 아닙니다.
+**(B)** : 오답. Trusted Advisor는 모범 사례 권고 도구이며 실시간 구성 변경 감지가 아닙니다. → [📖 Trusted Advisor — 모범 사례 권고, 실시간 감지 아님](/section/29-white-papers-architectures#aws-trusted-advisor)
 
-**(C)** : 오답. Inspector는 EC2/Lambda 취약점 스캔 서비스입니다.
+**(C)** : 오답. Inspector는 EC2/Lambda 취약점 스캔 서비스입니다. → [📖 Amazon Inspector — EC2/Lambda 취약점 스캔](/section/24-security-encryption#amazon-inspector)
 
 **(D)** : 오답. 서버 액세스 로깅은 접근 로그이며 구성 변경 감지가 아닙니다.
 
 **핵심 개념:** AWS Config 관리형 규칙, S3 구성 준수 모니터링
+
+**관련 노트:** [AWS Config](/section/22-monitoring-audit-performance#aws-config), [S3 보안](/section/10-amazon-s3#s3-보안)
 
 ---
 
@@ -1337,7 +1415,7 @@
 | C | 직원용 IAM 사용자 생성, ViewOnlyAccess 정책 연결 |
 | D | 퍼블릭 서브넷에 배스천 서버 배포, RDP 자격증명 공유 |
 
-**(A) 정답** : CloudWatch는 AWS 계정 없이도 **공유 링크**를 통해 대시보드를 볼 수 있는 기능을 제공합니다. AWS 계정이 없는 사용자에게 최소 권한으로 접근을 제공하는 가장 간단한 방법입니다.
+**(A) 정답** : CloudWatch는 AWS 계정 없이도 **공유 링크**를 통해 대시보드를 볼 수 있는 기능을 제공합니다. AWS 계정이 없는 사용자에게 최소 권한으로 접근을 제공하는 가장 간단한 방법입니다. → [📖 CloudWatch 대시보드 공유 링크 — AWS 계정 없이 접근](/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics)
 
 **(B)** : 오답. IAM 사용자 생성은 AWS 계정이 없는 사용자에게 AWS 콘솔 접근을 부여하지만, 최소 권한 원칙에서 대시보드만 볼 수 있는 공유 링크보다 과도합니다.
 
@@ -1346,6 +1424,8 @@
 **(D)** : 오답. 배스천 서버는 과도하게 복잡하고 비용이 발생합니다.
 
 **핵심 개념:** CloudWatch 대시보드 공유 링크, 최소 권한 원칙
+
+**관련 노트:** [Amazon CloudWatch Metrics](/section/22-monitoring-audit-performance#amazon-cloudwatch-metrics), [CloudWatch Alarms](/section/22-monitoring-audit-performance#cloudwatch-alarms)
 
 ---
 
@@ -1372,13 +1452,15 @@
 
 **(A)** : 오답. 단방향 신뢰는 충분한 인증 흐름을 제공하지 않습니다.
 
-**(B) 정답** : AWS IAM Identity Center(구 SSO)와 **AWS Managed Microsoft AD** 간 **양방향 포레스트 신뢰**를 구성하면 온프레미스 AD 사용자로 AWS 계정에 SSO 접근이 가능합니다.
+**(B) 정답** : AWS IAM Identity Center(구 SSO)와 **AWS Managed Microsoft AD** 간 **양방향 포레스트 신뢰**를 구성하면 온프레미스 AD 사용자로 AWS 계정에 SSO 접근이 가능합니다. → [📖 IAM Identity Center + AWS Managed Microsoft AD 양방향 신뢰](/section/23-advanced-identity#aws-iam-identity-center-aws-sso-후속)
 
 **(C)** : 오답. SSO가 없어 조직 전체 단일 로그온이 구현되지 않습니다.
 
 **(D)** : 오답. 온프레미스 IdP 배포는 추가 인프라와 관리 오버헤드가 필요합니다.
 
 **핵심 개념:** AWS IAM Identity Center(SSO), Managed AD, 양방향 포레스트 신뢰
+
+**관련 노트:** [AWS IAM Identity Center AWS SSO 후속](/section/23-advanced-identity#aws-iam-identity-center-aws-sso-후속), [AWS Directory Services](/section/23-advanced-identity#aws-directory-services), [Microsoft Active Directory AD](/section/23-advanced-identity#microsoft-active-directory-ad)
 
 ---
 
@@ -1403,15 +1485,17 @@
 | C | NLB + Route 53 레이턴시 레코드 + CloudFront 배포 |
 | D | ALB + Route 53 가중치 레코드 + CloudFront 배포 |
 
-**(A) 정답** : UDP 트래픽에는 Layer 4인 **NLB**가 적합합니다. **AWS Global Accelerator**는 Anycast IP를 통해 최저 레이턴시 리전으로 자동 라우팅하고 자동 페일오버를 제공합니다.
+**(A) 정답** : UDP 트래픽에는 Layer 4인 **NLB**가 적합합니다. **AWS Global Accelerator**는 Anycast IP를 통해 최저 레이턴시 리전으로 자동 라우팅하고 자동 페일오버를 제공합니다. → [📖 NLB(UDP) + AWS Global Accelerator — Anycast, 최저 레이턴시](/section/13-cloudfront-global-accelerator#aws-global-accelerator)
 
-**(B)** : 오답. ALB는 HTTP/HTTPS(Layer 7)만 처리하며 UDP를 지원하지 않습니다.
+**(B)** : 오답. ALB는 HTTP/HTTPS(Layer 7)만 처리하며 UDP를 지원하지 않습니다. → [📖 ALB — HTTP/HTTPS Layer 7, UDP 미지원](/section/06-high-availability-scalability#alb-application-load-balancer-상세)
 
-**(C)** : 오답. CloudFront는 UDP 트래픽을 지원하지 않습니다.
+**(C)** : 오답. CloudFront는 UDP 트래픽을 지원하지 않습니다. → [📖 CloudFront — UDP 미지원](/section/13-cloudfront-global-accelerator#cloudfront-기본-개념)
 
 **(D)** : 오답. ALB는 UDP 미지원, CloudFront는 UDP 미지원입니다.
 
 **핵심 개념:** AWS Global Accelerator + NLB, UDP 트래픽 지원, 최저 레이턴시 라우팅
+
+**관련 노트:** [AWS Global Accelerator](/section/13-cloudfront-global-accelerator#aws-global-accelerator), [NLB Network Load Balancer 상세](/section/06-high-availability-scalability#nlb-network-load-balancer-상세)
 
 ---
 
@@ -1440,11 +1524,13 @@
 
 **(B)** : 오답. RDS는 EC2처럼 Auto Scaling 정책을 직접 사용할 수 없습니다.
 
-**(C) 정답** : 테스트 완료 후 **스냅샷 생성**하고 **인스턴스 종료**하면 인스턴스 실행 비용이 발생하지 않습니다. 스냅샷 비용만 발생하며, 필요 시 동일 사양으로 즉시 복원할 수 있습니다.
+**(C) 정답** : 테스트 완료 후 **스냅샷 생성**하고 **인스턴스 종료**하면 인스턴스 실행 비용이 발생하지 않습니다. 스냅샷 비용만 발생하며, 필요 시 동일 사양으로 즉시 복원할 수 있습니다. → [📖 RDS 스냅샷 생성 후 인스턴스 종료 — 비용 절감](/section/07-rds-aurora-elasticache#rds-aurora-백업)
 
 **(D)** : 오답. 매번 인스턴스 크기를 수정하면 다운타임이 발생하고 번거롭습니다.
 
 **핵심 개념:** RDS 스냅샷 + 인스턴스 종료로 비용 절감, 월별 사용 패턴 최적화
+
+**관련 노트:** [RDS & Aurora 백업](/section/07-rds-aurora-elasticache#rds-aurora-백업), [Amazon RDS Relational Database Service](/section/07-rds-aurora-elasticache#amazon-rds-relational-database-service)
 
 ---
 
@@ -1469,7 +1555,7 @@
 | C | API 호출로 태그 확인 코드 작성, EC2 인스턴스에서 주기적 실행 |
 | D | API 호출 코드 작성, CloudWatch로 Lambda 예약 실행 |
 
-**(A) 정답** : **AWS Config 관리형 규칙**(예: required-tags)은 코드 없이 설정만으로 태그 미적용 리소스를 자동으로 감지하고 알립니다. 설정 및 운영 노력이 가장 적습니다.
+**(A) 정답** : **AWS Config 관리형 규칙**(예: required-tags)은 코드 없이 설정만으로 태그 미적용 리소스를 자동으로 감지하고 알립니다. 설정 및 운영 노력이 가장 적습니다. → [📖 AWS Config 관리형 규칙 — 태그 미적용 리소스 감지](/section/22-monitoring-audit-performance#aws-config)
 
 **(B)** : 오답. 수동 태그 부착은 오버헤드가 높습니다.
 
@@ -1478,6 +1564,8 @@
 **(D)** : 오답. 코드 작성 및 Lambda 유지 관리가 필요합니다.
 
 **핵심 개념:** AWS Config 태그 컴플라이언스 규칙, 최소 운영 오버헤드
+
+**관련 노트:** [AWS Config](/section/22-monitoring-audit-performance#aws-config)
 
 ---
 
@@ -1506,11 +1594,13 @@
 
 **(B)** : 오답. Firehose는 실시간 스트리밍에는 부적합(배치 지향)하고 다른 앱이 S3에서 실시간 소비하기 어렵습니다.
 
-**(C) 정답** : **Kinesis Data Streams**는 실시간 스트리밍을 지원하고 여러 소비자가 독립적으로 데이터를 읽을 수 있습니다. **Lambda**로 민감 데이터를 제거하고 **DynamoDB**에 저장합니다. 다른 앱들은 Kinesis 스트림에서 직접 소비합니다.
+**(C) 정답** : **Kinesis Data Streams**는 실시간 스트리밍을 지원하고 여러 소비자가 독립적으로 데이터를 읽을 수 있습니다. **Lambda**로 민감 데이터를 제거하고 **DynamoDB**에 저장합니다. 다른 앱들은 Kinesis 스트림에서 직접 소비합니다. → [📖 Kinesis Data Streams + Lambda — 실시간 스트리밍 처리](/section/15-integration-messaging#amazon-kinesis-data-streams)
 
 **(D)** : 오답. 배치 처리로 실시간 요건을 충족하지 못합니다.
 
 **핵심 개념:** Kinesis Data Streams 다중 소비자, Lambda 데이터 변환, DynamoDB 저장
+
+**관련 노트:** [Amazon Kinesis Data Streams](/section/15-integration-messaging#amazon-kinesis-data-streams), [Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb), [AWS Lambda](/section/17-serverless-overview#aws-lambda)
 
 ---
 
@@ -1535,15 +1625,17 @@
 | C | AWS Shield 활성화 후 Route 53에 할당 |
 | D | AWS Shield Advanced 활성화 후 ELB에 할당 |
 
-**(A)** : 오답. GuardDuty는 위협 감지이지 DDoS 방어가 아닙니다.
+**(A)** : 오답. GuardDuty는 위협 감지이지 DDoS 방어가 아닙니다. → [📖 Amazon GuardDuty — 위협 감지, DDoS 방어 아님](/section/24-security-encryption#amazon-guardduty)
 
-**(B)** : 오답. Inspector는 취약점 평가 서비스입니다.
+**(B)** : 오답. Inspector는 취약점 평가 서비스입니다. → [📖 Amazon Inspector — 취약점 평가](/section/24-security-encryption#amazon-inspector)
 
 **(C)** : 오답. DNS가 서드파티이므로 Route 53에 할당하는 것은 의미가 없습니다. 또한 AWS Shield(기본)는 기본 DDoS 방어만 제공합니다.
 
-**(D) 정답** : **AWS Shield Advanced**는 대규모 DDoS 공격에 대한 고급 보호를 제공합니다. **ELB**에 할당하면 애플리케이션으로 향하는 트래픽을 보호합니다. 24/7 DDoS 대응 팀(DRT) 지원도 포함됩니다.
+**(D) 정답** : **AWS Shield Advanced**는 대규모 DDoS 공격에 대한 고급 보호를 제공합니다. **ELB**에 할당하면 애플리케이션으로 향하는 트래픽을 보호합니다. 24/7 DDoS 대응 팀(DRT) 지원도 포함됩니다. → [📖 AWS Shield Advanced — 고급 DDoS 방어 + DRT 지원](/section/24-security-encryption#aws-shield)
 
 **핵심 개념:** AWS Shield Advanced, ELB DDoS 보호
+
+**관련 노트:** [AWS Shield](/section/24-security-encryption#aws-shield), [DDoS 복원력 모범 사례](/section/24-security-encryption#ddos-복원력-모범-사례)
 
 ---
 
@@ -1568,15 +1660,17 @@
 | C | 각 리전에 KMS 키 + S3 생성, SSE-S3 암호화, 복제 |
 | D | 각 리전에 KMS 키 + S3 생성, SSE-KMS 암호화, 복제 |
 
-**(A)** : 오답. SSE-S3는 고객 관리 키가 아닌 AWS 관리 키를 사용합니다.
+**(A)** : 오답. SSE-S3는 고객 관리 키가 아닌 AWS 관리 키를 사용합니다. → [📖 SSE-S3 — AWS 관리 키, 고객 관리 키 아님](/section/12-s3-security#s3-객체-암호화-4가지-방법)
 
-**(B) 정답** : **KMS 다중 리전 키(Multi-Region Key)**를 생성하면 두 리전에 동일한 키가 복제됩니다. 클라이언트 측 암호화로 데이터를 암호화하면 두 리전에서 같은 키로 암호화/복호화가 가능합니다.
+**(B) 정답** : **KMS 다중 리전 키(Multi-Region Key)**를 생성하면 두 리전에 동일한 키가 복제됩니다. 클라이언트 측 암호화로 데이터를 암호화하면 두 리전에서 같은 키로 암호화/복호화가 가능합니다. → [📖 KMS 다중 리전 키 — 두 리전 동일 키 복제](/section/24-security-encryption#aws-kms-key-management-service)
 
 **(C)** : 오답. SSE-S3는 KMS 고객 관리 키를 사용하지 않습니다.
 
 **(D)** : 오답. 각 리전에 별도 KMS 키를 만들면 같은 키로 암호화/복호화하는 요건을 충족하지 못합니다.
 
 **핵심 개념:** KMS 다중 리전 키(Multi-Region Key), 다중 리전 암호화 전략
+
+**관련 노트:** [AWS KMS Key Management Service](/section/24-security-encryption#aws-kms-key-management-service), [S3 Replication 복제](/section/10-amazon-s3#s3-replication-복제)
 
 ---
 
@@ -1603,13 +1697,15 @@
 
 **(A)** : 오답. EC2 시리얼 콘솔은 비상 접근용으로 일반 관리에 적합하지 않습니다.
 
-**(B) 정답** : **AWS Systems Manager Session Manager**는 SSH 키나 배스천 호스트 없이 IAM 기반으로 EC2에 안전하게 접근합니다. Well-Architected Framework 권장 사항이며 운영 오버헤드가 최소입니다.
+**(B) 정답** : **AWS Systems Manager Session Manager**는 SSH 키나 배스천 호스트 없이 IAM 기반으로 EC2에 안전하게 접근합니다. Well-Architected Framework 권장 사항이며 운영 오버헤드가 최소입니다. → [📖 AWS Systems Manager Session Manager — SSH 없이 IAM 기반 접근](/section/28-other-services#aws-systems-manager-ssm)
 
 **(C)** : 오답. SSH 키 관리와 배스천 호스트 운영은 오버헤드가 높습니다.
 
-**(D)** : 오답. Site-to-Site VPN 설정과 유지 관리가 복잡합니다.
+**(D)** : 오답. Site-to-Site VPN 설정과 유지 관리가 복잡합니다. → [📖 Site-to-Site VPN — 온프레미스 연결, 복잡한 설정](/section/25-vpc#sitetosite-vpn)
 
 **핵심 개념:** Systems Manager Session Manager, SSH 없는 EC2 접근, 최소 운영 오버헤드
+
+**관련 노트:** [AWS Systems Manager SSM](/section/28-other-services#aws-systems-manager-ssm), [Bastion Host](/section/25-vpc#bastion-host)
 
 ---
 
@@ -1636,13 +1732,15 @@
 
 **(A)** : 오답. Fargate는 컨테이너 실행 비용이 발생하며 정적 사이트에 과도합니다.
 
-**(B) 정답** : **Amazon S3 정적 웹사이트 호스팅**은 서버 비용 없이 저렴한 스토리지 요금과 데이터 전송 요금만 발생합니다. HTML, CSS, JS, 이미지 같은 정적 콘텐츠에 가장 비용 효율적입니다.
+**(B) 정답** : **Amazon S3 정적 웹사이트 호스팅**은 서버 비용 없이 저렴한 스토리지 요금과 데이터 전송 요금만 발생합니다. HTML, CSS, JS, 이미지 같은 정적 콘텐츠에 가장 비용 효율적입니다. → [📖 S3 정적 웹사이트 호스팅 — 서버 비용 없음](/section/10-amazon-s3#s3-정적-웹사이트-호스팅)
 
 **(C)** : 오답. EC2 인스턴스는 지속적인 실행 비용이 발생합니다.
 
 **(D)** : 오답. ALB + Lambda는 정적 사이트에 과도하고 비용이 높습니다.
 
 **핵심 개념:** S3 정적 웹사이트 호스팅, 정적 콘텐츠 최저 비용 솔루션
+
+**관련 노트:** [S3 정적 웹사이트 호스팅](/section/10-amazon-s3#s3-정적-웹사이트-호스팅)
 
 ---
 
@@ -1673,9 +1771,11 @@
 
 **(C)** : 오답. 유지 관리 창은 예약된 시간에 실행되므로 즉각적이지 않습니다.
 
-**(D) 정답** : **AWS Systems Manager Run Command**는 즉시 1,000개 인스턴스에 커스텀 명령을 동시에 실행할 수 있습니다. 서드파티 소프트웨어 패치 명령을 즉시 실행하는 데 가장 적합합니다.
+**(D) 정답** : **AWS Systems Manager Run Command**는 즉시 1,000개 인스턴스에 커스텀 명령을 동시에 실행할 수 있습니다. 서드파티 소프트웨어 패치 명령을 즉시 실행하는 데 가장 적합합니다. → [📖 AWS Systems Manager Run Command — 즉시 다수 인스턴스 명령 실행](/section/28-other-services#aws-systems-manager-ssm)
 
 **핵심 개념:** Systems Manager Run Command, 즉시 다수 인스턴스 명령 실행
+
+**관련 노트:** [AWS Systems Manager SSM](/section/28-other-services#aws-systems-manager-ssm)
 
 ---
 
