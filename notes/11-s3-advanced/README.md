@@ -274,15 +274,17 @@ S3의 고급 기능을 다루는 섹션으로, Lifecycle Rules, 성능 최적화
 | C | 30일 후 S3 Glacier로 전환하고 120일 후 삭제하는 수명주기 규칙을 생성한다 |
 | D | 처음부터 모든 로그를 S3 One Zone-IA에 저장한다 |
 
-**(A)** : Intelligent-Tiering은 접근 패턴을 자동으로 분석하지만 소액의 월별 모니터링 비용이 추가 발생한다. 접근 패턴(30일 활발, 이후 드문 접근)이 이미 명확히 알려져 있으므로 불필요한 비용이다.
+**(A)** : Intelligent-Tiering은 접근 패턴을 자동으로 분석하지만 소액의 월별 모니터링 비용이 추가 발생한다. 접근 패턴(30일 활발, 이후 드문 접근)이 이미 명확히 알려져 있으므로 불필요한 비용이다. → [📖 S3 Storage Classes 스토리지 클래스](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
-**(B) 정답** : 로그가 30일 후에도 드물게 접근되므로 빠른 접근이 가능한 Standard-IA가 적합하다. 120일(30+90) 후 Expiration Action으로 자동 삭제하는 Lifecycle Rule을 설정하면 가장 비용 효율적이다.
+**(B) 정답** : 로그가 30일 후에도 드물게 접근되므로 빠른 접근이 가능한 Standard-IA가 적합하다. 120일(30+90) 후 Expiration Action으로 자동 삭제하는 Lifecycle Rule을 설정하면 가장 비용 효율적이다. → [📖 S3 Lifecycle Rules 수명주기 규칙](/section/11-s3-advanced#s3-lifecycle-rules-수명주기-규칙)
 
-**(C)** : Glacier로 전환하면 스토리지 비용은 더 낮지만 검색 시간이 최소 1분에서 최대 12시간이므로 드물지만 접근이 필요한 90일 기간에 부적합하다.
+**(C)** : Glacier로 전환하면 스토리지 비용은 더 낮지만 검색 시간이 최소 1분에서 최대 12시간이므로 드물지만 접근이 필요한 90일 기간에 부적합하다. → [📖 스토리지 클래스 비교표](/section/10-amazon-s3#스토리지-클래스-비교표)
 
-**(D)** : One Zone-IA에 처음부터 저장하면 처음 30일간의 빈번한 접근에 검색 비용이 추가 발생하여 비효율적이다. 또한 단일 AZ 저장으로 가용성도 낮다.
+**(D)** : One Zone-IA에 처음부터 저장하면 처음 30일간의 빈번한 접근에 검색 비용이 추가 발생하여 비효율적이다. 또한 단일 AZ 저장으로 가용성도 낮다. → [📖 S3 Storage Classes 스토리지 클래스](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
 **핵심 개념:** S3 Lifecycle Rules
+
+**관련 노트:** [S3 Lifecycle Rules 수명주기 규칙](/section/11-s3-advanced#s3-lifecycle-rules-수명주기-규칙), [Lifecycle Rules 시나리오](/section/11-s3-advanced#lifecycle-rules-시나리오)
 
 ---
 
@@ -306,15 +308,17 @@ S3의 고급 기능을 다루는 섹션으로, Lifecycle Rules, 성능 최적화
 | C | Amazon SQS를 사용하여 업로드 이벤트를 대기열에 넣고 EC2로 처리한다 |
 | D | AWS Step Functions를 사용하여 썸네일 생성을 오케스트레이션한다 |
 
-**(A) 정답** : S3 Event Notification으로 S3:ObjectCreated 이벤트를 Lambda 함수에 직접 연결하면 사진 업로드 시 자동으로 Lambda가 호출되어 썸네일을 생성한다. Lambda는 서버리스이므로 인프라 관리가 필요 없고 운영 오버헤드가 가장 적다.
+**(A) 정답** : S3 Event Notification으로 S3:ObjectCreated 이벤트를 Lambda 함수에 직접 연결하면 사진 업로드 시 자동으로 Lambda가 호출되어 썸네일을 생성한다. Lambda는 서버리스이므로 인프라 관리가 필요 없고 운영 오버헤드가 가장 적다. → [📖 S3 Event Notifications 이벤트 알림](/section/11-s3-advanced#s3-event-notifications-이벤트-알림)
 
 **(B)** : EC2 폴링 방식은 EC2 인스턴스를 지속적으로 운영하고 관리해야 하며 폴링 스크립트 개발 및 유지보수가 필요하다. 이벤트 기반도 아니고 운영 오버헤드가 가장 크다.
 
 **(C)** : SQS + EC2 방식도 SQS 큐 관리와 EC2 인스턴스 운영이 필요하여 운영 부담이 크다. A에 비해 구성이 복잡하다.
 
-**(D)** : Step Functions는 복잡한 워크플로우 오케스트레이션에 적합하지만, 단순한 이벤트 기반 썸네일 생성에는 과도한 솔루션이다. 추가 비용과 구성 복잡도가 발생한다.
+**(D)** : Step Functions는 복잡한 워크플로우 오케스트레이션에 적합하지만, 단순한 이벤트 기반 썸네일 생성에는 과도한 솔루션이다. 추가 비용과 구성 복잡도가 발생한다. → [📖 AWS Step Functions](/section/17-serverless-overview#aws-step-functions)
 
 **핵심 개념:** S3 Event Notifications
+
+**관련 노트:** [S3 Event Notifications 이벤트 알림](/section/11-s3-advanced#s3-event-notifications-이벤트-알림)
 
 ---
 
@@ -338,15 +342,17 @@ S3의 고급 기능을 다루는 섹션으로, Lifecycle Rules, 성능 최적화
 | C | S3 버저닝을 활성화한다 |
 | D | S3 Express One Zone으로 전환한다 |
 
-**(A)** : Transfer Acceleration은 원거리에서 S3로의 전송 속도를 높이는 기능이다. 초당 요청 수 제한 문제와는 무관하다.
+**(A)** : Transfer Acceleration은 원거리에서 S3로의 전송 속도를 높이는 기능이다. 초당 요청 수 제한 문제와는 무관하다. → [📖 S3 Performance 최적화](/section/11-s3-advanced#s3-performance-최적화)
 
-**(B) 정답** : S3는 접두사(prefix)당 5,500 GET/HEAD 요청/초를 지원한다. 20,000 GET/초를 처리하려면 최소 4개 접두사에 객체를 분산해야 한다(4 x 5,500 = 22,000). 각 접두사가 독립적으로 성능 한도를 가지므로 전체 처리량이 증가한다.
+**(B) 정답** : S3는 접두사(prefix)당 5,500 GET/HEAD 요청/초를 지원한다. 20,000 GET/초를 처리하려면 최소 4개 접두사에 객체를 분산해야 한다(4 x 5,500 = 22,000). 각 접두사가 독립적으로 성능 한도를 가지므로 전체 처리량이 증가한다. → [📖 S3 Baseline Performance 기본 성능](/section/11-s3-advanced#s3-baseline-performance-기본-성능)
 
-**(C)** : 버저닝은 객체 버전 관리 기능이다. 성능 향상과는 전혀 관련이 없다.
+**(C)** : 버저닝은 객체 버전 관리 기능이다. 성능 향상과는 전혀 관련이 없다. → [📖 S3 Versioning 버저닝](/section/10-amazon-s3#s3-versioning-버저닝)
 
-**(D)** : Express One Zone은 10배 성능을 제공하지만 기존 아키텍처를 Directory Bucket으로 전환해야 하며 단일 AZ에만 저장된다. 접두사 분산이 더 간단하고 효과적인 해결책이다.
+**(D)** : Express One Zone은 10배 성능을 제공하지만 기존 아키텍처를 Directory Bucket으로 전환해야 하며 단일 AZ에만 저장된다. 접두사 분산이 더 간단하고 효과적인 해결책이다. → [📖 S3 Express One Zone](/section/10-amazon-s3#s3-express-one-zone)
 
 **핵심 개념:** S3 Baseline Performance / Prefix
+
+**관련 노트:** [S3 Baseline Performance 기본 성능](/section/11-s3-advanced#s3-baseline-performance-기본-성능), [S3 Performance 최적화](/section/11-s3-advanced#s3-performance-최적화)
 
 ---
 
@@ -370,15 +376,17 @@ S3의 고급 기능을 다루는 섹션으로, Lifecycle Rules, 성능 최적화
 | C | Amazon EventBridge와의 S3 Event Notification |
 | D | 커스텀 라우팅을 위한 Lambda로의 S3 Event Notification |
 
-**(A)** : SNS는 메시지 필터링을 지원하지만 S3 이벤트의 메타데이터 기반 고급 필터링 수준에는 미치지 못한다. 또한 Step Functions이나 Kinesis Firehose로의 직접 전달을 지원하지 않는다.
+**(A)** : SNS는 메시지 필터링을 지원하지만 S3 이벤트의 메타데이터 기반 고급 필터링 수준에는 미치지 못한다. 또한 Step Functions이나 Kinesis Firehose로의 직접 전달을 지원하지 않는다. → [📖 Amazon SNS Simple Notification Service](/section/15-integration-messaging#amazon-sns-simple-notification-service)
 
-**(B)** : SQS는 단일 소비자 모델이며 다중 대상 라우팅에 적합하지 않다. 여러 서비스에 동시에 이벤트를 전달하는 용도로는 부적합하다.
+**(B)** : SQS는 단일 소비자 모델이며 다중 대상 라우팅에 적합하지 않다. 여러 서비스에 동시에 이벤트를 전달하는 용도로는 부적합하다. → [📖 Amazon SQS Simple Queue Service](/section/15-integration-messaging#amazon-sqs-simple-queue-service)
 
-**(C) 정답** : Amazon EventBridge는 JSON 규칙 기반의 고급 필터링(메타데이터, 객체 크기, 이름 등)을 지원하고, Step Functions, Kinesis Streams/Firehose 등 18개 이상의 AWS 서비스를 대상으로 직접 라우팅할 수 있다. 이벤트 아카이브, 재생, 안정적 전달 등 고급 기능도 제공한다.
+**(C) 정답** : Amazon EventBridge는 JSON 규칙 기반의 고급 필터링(메타데이터, 객체 크기, 이름 등)을 지원하고, Step Functions, Kinesis Streams/Firehose 등 18개 이상의 AWS 서비스를 대상으로 직접 라우팅할 수 있다. 이벤트 아카이브, 재생, 안정적 전달 등 고급 기능도 제공한다. → [📖 Amazon EventBridge CloudWatch Events 후속](/section/22-monitoring-audit-performance#amazon-eventbridge-cloudwatch-events-후속)
 
-**(D)** : Lambda로 커스텀 라우팅을 구현하면 기술적으로 가능하지만, Lambda 함수의 코드 작성, 유지보수, 에러 처리 등 추가 운영 부담이 발생한다. EventBridge보다 복잡한 해결책이다.
+**(D)** : Lambda로 커스텀 라우팅을 구현하면 기술적으로 가능하지만, Lambda 함수의 코드 작성, 유지보수, 에러 처리 등 추가 운영 부담이 발생한다. EventBridge보다 복잡한 해결책이다. → [📖 AWS Lambda](/section/17-serverless-overview#aws-lambda)
 
 **핵심 개념:** S3 Event Notifications with EventBridge
+
+**관련 노트:** [S3 Event Notifications 이벤트 알림](/section/11-s3-advanced#s3-event-notifications-이벤트-알림), [Amazon EventBridge CloudWatch Events 후속](/section/22-monitoring-audit-performance#amazon-eventbridge-cloudwatch-events-후속)
 
 ---
 
@@ -404,13 +412,15 @@ S3의 고급 기능을 다루는 섹션으로, Lifecycle Rules, 성능 최적화
 
 **(A)** : 스크립트로 각 객체를 다운로드 후 재업로드하는 방식은 수백만 객체에 대해 비효율적이다. 에러 처리, 재시도 로직, 동시성 관리 등을 직접 구현해야 하며 운영 부담이 크다.
 
-**(B) 정답** : S3 Batch Operations은 단일 요청으로 수백만 개의 기존 객체에 대한 대량 암호화 작업을 효율적으로 수행할 수 있다. S3 Inventory로 객체 목록을 획득하고 Athena로 필터링한 후 적용하면 된다. 재시도 관리, 진행 추적, 완료 알림, 보고서 생성 등 운영 기능도 내장되어 있다.
+**(B) 정답** : S3 Batch Operations은 단일 요청으로 수백만 개의 기존 객체에 대한 대량 암호화 작업을 효율적으로 수행할 수 있다. S3 Inventory로 객체 목록을 획득하고 Athena로 필터링한 후 적용하면 된다. 재시도 관리, 진행 추적, 완료 알림, 보고서 생성 등 운영 기능도 내장되어 있다. → [📖 S3 Batch Operations](/section/11-s3-advanced#s3-batch-operations)
 
-**(C)** : 기본 암호화 활성화는 새로 업로드되는 객체에만 적용된다. 이미 존재하는 수백만 개의 기존 객체는 자동으로 암호화되지 않는다.
+**(C)** : 기본 암호화 활성화는 새로 업로드되는 객체에만 적용된다. 이미 존재하는 수백만 개의 기존 객체는 자동으로 암호화되지 않는다. → [📖 Default Encryption vs Bucket Policy](/section/12-s3-security#default-encryption-vs-bucket-policy)
 
-**(D)** : 새 버킷으로 전체 복사는 수백만 객체에 대한 불필요한 데이터 전송 비용이 발생하고, 버킷 이름 변경으로 인한 애플리케이션 수정도 필요하다. 불필요하게 복잡한 방법이다.
+**(D)** : 새 버킷으로 전체 복사는 수백만 객체에 대한 불필요한 데이터 전송 비용이 발생하고, 버킷 이름 변경으로 인한 애플리케이션 수정도 필요하다. 불필요하게 복잡한 방법이다. → [📖 S3 Replication 복제](/section/10-amazon-s3#s3-replication-복제)
 
 **핵심 개념:** S3 Batch Operations
+
+**관련 노트:** [S3 Batch Operations](/section/11-s3-advanced#s3-batch-operations)
 
 ---
 
@@ -434,15 +444,17 @@ S3의 고급 기능을 다루는 섹션으로, Lifecycle Rules, 성능 최적화
 | C | S3 Pre-Signed URL |
 | D | 각 파트너를 위한 S3 Access Points |
 
-**(A)** : CRR은 파트너의 버킷에 데이터 복사본을 생성하는 것으로 복제 전송 비용과 파트너 버킷의 스토리지 비용이 별도로 발생한다. 비용 분담 메커니즘이 아니다.
+**(A)** : CRR은 파트너의 버킷에 데이터 복사본을 생성하는 것으로 복제 전송 비용과 파트너 버킷의 스토리지 비용이 별도로 발생한다. 비용 분담 메커니즘이 아니다. → [📖 S3 Replication 복제](/section/10-amazon-s3#s3-replication-복제)
 
-**(B) 정답** : Requester Pays를 활성화하면 데이터 요청 및 다운로드 비용을 요청자(파트너)가 부담하고 버킷 소유자는 스토리지 비용만 지불한다. 단, 요청자는 반드시 AWS에 인증된 사용자여야 하며 익명 접근은 불가능하다.
+**(B) 정답** : Requester Pays를 활성화하면 데이터 요청 및 다운로드 비용을 요청자(파트너)가 부담하고 버킷 소유자는 스토리지 비용만 지불한다. 단, 요청자는 반드시 AWS에 인증된 사용자여야 하며 익명 접근은 불가능하다. → [📖 S3 Requester Pays 요청자 지불](/section/11-s3-advanced#s3-requester-pays-요청자-지불)
 
-**(C)** : Pre-Signed URL은 임시 접근 권한을 부여하지만 데이터 전송 비용은 여전히 버킷 소유자가 부담한다. 비용 분담 기능이 없다.
+**(C)** : Pre-Signed URL은 임시 접근 권한을 부여하지만 데이터 전송 비용은 여전히 버킷 소유자가 부담한다. 비용 분담 기능이 없다. → [📖 S3 Pre-Signed URLs](/section/12-s3-security#s3-presigned-urls)
 
-**(D)** : Access Points는 부서별/사용자별 접근 관리를 단순화하는 보안 기능이다. 전송 비용 분담과는 전혀 무관하다.
+**(D)** : Access Points는 부서별/사용자별 접근 관리를 단순화하는 보안 기능이다. 전송 비용 분담과는 전혀 무관하다. → [📖 S3 Access Points](/section/12-s3-security#s3-access-points)
 
 **핵심 개념:** S3 Requester Pays
+
+**관련 노트:** [S3 Requester Pays 요청자 지불](/section/11-s3-advanced#s3-requester-pays-요청자-지불)
 
 ---
 
@@ -466,15 +478,17 @@ S3의 고급 기능을 다루는 섹션으로, Lifecycle Rules, 성능 최적화
 | C | S3 Analytics |
 | D | S3 Inventory |
 
-**(A)** : Free Metrics는 약 28개의 사용량 메트릭을 제공하지만 데이터 보존 기간이 14일로 제한된다. CloudWatch 게시 기능도 지원하지 않는다.
+**(A)** : Free Metrics는 약 28개의 사용량 메트릭을 제공하지만 데이터 보존 기간이 14일로 제한된다. CloudWatch 게시 기능도 지원하지 않는다. → [📖 S3 Storage Lens](/section/11-s3-advanced#s3-storage-lens)
 
-**(B) 정답** : Advanced Metrics and Recommendations(유료 티어)는 15개월 데이터 보존과 CloudWatch 게시 기능을 제공한다. 추가로 접두사 수준 집계, Activity 메트릭, Detailed Status Code 메트릭 등도 포함된다.
+**(B) 정답** : Advanced Metrics and Recommendations(유료 티어)는 15개월 데이터 보존과 CloudWatch 게시 기능을 제공한다. 추가로 접두사 수준 집계, Activity 메트릭, Detailed Status Code 메트릭 등도 포함된다. → [📖 S3 Storage Lens](/section/11-s3-advanced#s3-storage-lens)
 
-**(C)** : S3 Analytics는 Standard와 Standard-IA 간 스토리지 클래스 전환 시기를 추천하는 별도의 기능이다. S3 Storage Lens와는 다른 서비스이다.
+**(C)** : S3 Analytics는 Standard와 Standard-IA 간 스토리지 클래스 전환 시기를 추천하는 별도의 기능이다. S3 Storage Lens와는 다른 서비스이다. → [📖 S3 Analytics - Storage Class Analysis](/section/11-s3-advanced#s3-analytics-storage-class-analysis)
 
 **(D)** : S3 Inventory는 버킷 내 객체 목록과 메타데이터를 제공하는 기능이다. 스토리지 사용량 분석 대시보드와는 용도가 다르다.
 
 **핵심 개념:** S3 Storage Lens Free vs Paid
+
+**관련 노트:** [S3 Storage Lens](/section/11-s3-advanced#s3-storage-lens)
 
 ---
 
@@ -500,14 +514,16 @@ S3의 고급 기능을 다루는 섹션으로, Lifecycle Rules, 성능 최적화
 | D | S3 Requester Pays |
 | E | S3 Cross-Region Replication |
 
-**(A) 정답** : Multi-Part Upload는 대용량 파일을 여러 부분으로 나누어 병렬로 업로드하여 전송 속도를 크게 향상시킨다. 5GB 초과 시 필수이며 100MB 초과 시에도 권장된다.
+**(A) 정답** : Multi-Part Upload는 대용량 파일을 여러 부분으로 나누어 병렬로 업로드하여 전송 속도를 크게 향상시킨다. 5GB 초과 시 필수이며 100MB 초과 시에도 권장된다. → [📖 S3 Performance 최적화](/section/11-s3-advanced#s3-performance-최적화)
 
-**(B) 정답** : Transfer Acceleration은 아시아 사무실에서 가장 가까운 AWS Edge Location으로 파일을 전송한 후, AWS의 최적화된 프라이빗 네트워크를 통해 us-east-1의 S3 버킷으로 전달하여 장거리 전송 속도를 향상시킨다. Multi-Part Upload와 호환된다.
+**(B) 정답** : Transfer Acceleration은 아시아 사무실에서 가장 가까운 AWS Edge Location으로 파일을 전송한 후, AWS의 최적화된 프라이빗 네트워크를 통해 us-east-1의 S3 버킷으로 전달하여 장거리 전송 속도를 향상시킨다. Multi-Part Upload와 호환된다. → [📖 S3 Performance 최적화](/section/11-s3-advanced#s3-performance-최적화)
 
-**(C)** : Byte-Range Fetches는 다운로드(GET) 속도를 높이는 기능이다. 업로드와는 전혀 무관하다.
+**(C)** : Byte-Range Fetches는 다운로드(GET) 속도를 높이는 기능이다. 업로드와는 전혀 무관하다. → [📖 S3 Performance 최적화](/section/11-s3-advanced#s3-performance-최적화)
 
-**(D)** : Requester Pays는 데이터 전송 비용 분담 기능이다. 업로드 속도와는 관련이 없다.
+**(D)** : Requester Pays는 데이터 전송 비용 분담 기능이다. 업로드 속도와는 관련이 없다. → [📖 S3 Requester Pays 요청자 지불](/section/11-s3-advanced#s3-requester-pays-요청자-지불)
 
-**(E)** : Cross-Region Replication은 버킷 간 자동 복제 기능이다. 업로드 속도 최적화와는 목적이 다르다.
+**(E)** : Cross-Region Replication은 버킷 간 자동 복제 기능이다. 업로드 속도 최적화와는 목적이 다르다. → [📖 S3 Replication 복제](/section/10-amazon-s3#s3-replication-복제)
 
 **핵심 개념:** S3 Transfer Acceleration + Multi-Part Upload
+
+**관련 노트:** [S3 Performance 최적화](/section/11-s3-advanced#s3-performance-최적화), [S3 Baseline Performance 기본 성능](/section/11-s3-advanced#s3-baseline-performance-기본-성능)

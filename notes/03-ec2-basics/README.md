@@ -259,15 +259,17 @@ Spot Fleet 할당 전략 비교
 | C | Spot 인스턴스 |
 | D | Dedicated Hosts |
 
-**(A)** : On-Demand는 약정 없이 사용할 수 있지만 할인이 없어 비용이 높다. 비용 최적화 요구사항에 부적합하다.
+**(A)** : On-Demand는 약정 없이 사용할 수 있지만 할인이 없어 비용이 높다. 비용 최적화 요구사항에 부적합하다. → [📖 EC2 구매 옵션 시험 핵심!](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
-**(B)** : Reserved 인스턴스는 1~3년 장기 약정이 필요하며 배치 작업처럼 간헐적인 워크로드에는 비효율적이다. 안정적으로 지속 실행되는 워크로드에 적합하다.
+**(B)** : Reserved 인스턴스는 1~3년 장기 약정이 필요하며 배치 작업처럼 간헐적인 워크로드에는 비효율적이다. 안정적으로 지속 실행되는 워크로드에 적합하다. → [📖 EC2 구매 옵션 시험 핵심!](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
-**(C) 정답** : Spot 인스턴스는 최대 90% 할인으로 가장 비용 효율적이며, 배치 처리 작업처럼 중단 후 재시작이 가능한(fault-tolerant) 워크로드에 가장 적합하다.
+**(C) 정답** : Spot 인스턴스는 최대 90% 할인으로 가장 비용 효율적이며, 배치 처리 작업처럼 중단 후 재시작이 가능한(fault-tolerant) 워크로드에 가장 적합하다. → [📖 Spot Instance 상세](/section/03-ec2-basics#spot-instance-상세)
 
 **(D)** : Dedicated Host는 물리 서버 전체를 예약하는 가장 비싼 옵션이다. BYOL 라이선스 규제가 있을 때만 적합하며 배치 처리에는 과도한 선택이다.
 
 **핵심 개념:** EC2 Spot Instances
+
+**관련 노트:** [EC2 구매 옵션 시험 핵심!](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심), [Spot Instance 상세](/section/03-ec2-basics#spot-instance-상세)
 
 ### Q2. A user is trying to connect to an EC2 instance via SSH but the connection times out. What is the MOST likely cause?
 **Options:**
@@ -293,11 +295,13 @@ Spot Fleet 할당 전략 비교
 
 **(B)** : 인스턴스의 애플리케이션이 실행 중이 아닐 경우 "Connection Refused" 오류가 발생한다. Connection Timeout과는 다른 오류이다.
 
-**(C) 정답** : Connection Timeout은 보안 그룹 문제를 의미한다. 인바운드 규칙에서 포트 22(SSH)가 허용되지 않으면 트래픽이 인스턴스에 도달하지 못해 시간 초과가 발생한다.
+**(C) 정답** : Connection Timeout은 보안 그룹 문제를 의미한다. 인바운드 규칙에서 포트 22(SSH)가 허용되지 않으면 트래픽이 인스턴스에 도달하지 못해 시간 초과가 발생한다. → [📖 Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹)
 
 **(D)** : IAM 권한은 SSH 연결 자체가 아닌 AWS API 작업에 관련된 것이다. SSH 연결은 IAM 권한과 무관하게 OS 레벨 인증(키 페어)으로 이루어진다.
 
 **핵심 개념:** Security Groups 트러블슈팅
+
+**관련 노트:** [Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹)
 
 ### Q3. A company requires a physical server for their application due to software licensing that is based on per-socket and per-core metrics. Which EC2 option should they choose?
 **Options:**
@@ -321,13 +325,15 @@ Spot Fleet 할당 전략 비교
 
 **(A)** : Spot 인스턴스는 언제든 중단될 수 있어 라이선스 관리와 안정적인 서비스 운영에 부적합하다.
 
-**(B)** : Dedicated Instance는 전용 하드웨어를 사용하지만, 물리 서버 수준의 소켓/코어 가시성과 제어 기능이 없어 소켓·코어 기반 소프트웨어 라이선스 요건을 충족하지 못한다.
+**(B)** : Dedicated Instance는 전용 하드웨어를 사용하지만, 물리 서버 수준의 소켓/코어 가시성과 제어 기능이 없어 소켓·코어 기반 소프트웨어 라이선스 요건을 충족하지 못한다. → [📖 EC2 구매 옵션 시험 핵심!](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
-**(C) 정답** : Dedicated Host는 물리 서버 전체를 예약하여 소켓/코어 수에 대한 가시성을 제공하고, 기존 소프트웨어 라이선스(BYOL)를 적용할 수 있다. 소켓·코어 기반 라이선스 요건에 유일하게 적합하다.
+**(C) 정답** : Dedicated Host는 물리 서버 전체를 예약하여 소켓/코어 수에 대한 가시성을 제공하고, 기존 소프트웨어 라이선스(BYOL)를 적용할 수 있다. 소켓·코어 기반 라이선스 요건에 유일하게 적합하다. → [📖 EC2 구매 옵션 시험 핵심!](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
 **(D)** : Reserved Instance는 할인 구매 옵션일 뿐, 물리 서버 수준의 제어나 소켓/코어 가시성을 제공하지 않는다.
 
 **핵심 개념:** Dedicated Host vs Dedicated Instance
+
+**관련 노트:** [EC2 구매 옵션 시험 핵심!](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
 ### Q4. Which EC2 instance type family is BEST suited for an in-memory database workload?
 **Options:**
@@ -353,11 +359,13 @@ Spot Fleet 할당 전략 비교
 
 **(B)** : Compute Optimized(c 패밀리)는 고성능 CPU 집약적 작업(배치 처리, HPC, 게임 서버 등)에 최적화되어 있다. 메모리 위주의 워크로드에는 부적합하다.
 
-**(C) 정답** : Memory Optimized(r 패밀리)는 대용량 데이터셋을 메모리에서 처리하는 워크로드에 최적화되어 있다. 인메모리 데이터베이스, 고성능 관계형/비관계형 DB, BI 애플리케이션에 적합하다.
+**(C) 정답** : Memory Optimized(r 패밀리)는 대용량 데이터셋을 메모리에서 처리하는 워크로드에 최적화되어 있다. 인메모리 데이터베이스, 고성능 관계형/비관계형 DB, BI 애플리케이션에 적합하다. → [📖 EC2 인스턴스 타입](/section/03-ec2-basics#ec2-인스턴스-타입)
 
-**(D)** : Storage Optimized(i 패밀리)는 로컬 스토리지의 높은 I/O 성능이 필요한 워크로드(OLTP, NoSQL, 데이터 웨어하우스)에 적합하다. 메모리 최적화와는 다른 용도이다.
+**(D)** : Storage Optimized(i 패밀리)는 로컬 스토리지의 높은 I/O 성능이 필요한 워크로드(OLTP, NoSQL, 데이터 웨어하우스)에 적합하다. 메모리 최적화와는 다른 용도이다. → [📖 EC2 인스턴스 타입](/section/03-ec2-basics#ec2-인스턴스-타입)
 
 **핵심 개념:** EC2 Instance Types - Memory Optimized
+
+**관련 노트:** [EC2 인스턴스 타입](/section/03-ec2-basics#ec2-인스턴스-타입)
 
 ### Q5. A company plans to run a steady-state database workload for the next 3 years. They want to minimize costs. Which purchasing option provides the GREATEST discount?
 **Options:**
@@ -381,13 +389,15 @@ Spot Fleet 할당 전략 비교
 
 **(A)** : On-Demand는 할인이 전혀 없어 비용이 가장 높다. 장기 안정적 워크로드에는 매우 비효율적이다.
 
-**(B) 정답** : 3년 Reserved Instance에 All Upfront 결제를 하면 최대 72%의 할인을 받을 수 있다. 3년간 안정적인 DB 워크로드에 가장 큰 할인을 제공하는 옵션이다.
+**(B) 정답** : 3년 Reserved Instance에 All Upfront 결제를 하면 최대 72%의 할인을 받을 수 있다. 3년간 안정적인 DB 워크로드에 가장 큰 할인을 제공하는 옵션이다. → [📖 EC2 구매 옵션 시험 핵심!](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
 **(C)** : Spot 인스턴스는 최대 90% 할인이 가능하지만 언제든 중단될 수 있어 데이터베이스처럼 중단되어서는 안 되는 워크로드에는 절대 부적합하다.
 
 **(D)** : 1년 Savings Plan No Upfront는 기간이 짧고 선불 결제가 없어 3년 RI All Upfront보다 할인율이 낮다. 유연성은 높지만 비용 절감 효과가 적다.
 
 **핵심 개념:** EC2 Reserved Instances
+
+**관련 노트:** [EC2 구매 옵션 시험 핵심!](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
 ### Q6. What is the recommended Spot Fleet allocation strategy for most workloads?
 **Options:**
@@ -415,9 +425,11 @@ Spot Fleet 할당 전략 비교
 
 **(C)** : `capacityOptimized`는 용량이 가장 큰 풀을 선택하여 가격을 고려하지 않는다. 비용과 가용성의 균형을 맞추지 못하는 전략이다.
 
-**(D) 정답** : `priceCapacityOptimized`는 최고 용량이 가용한 풀 중 가장 저렴한 풀을 선택하는 전략으로, 비용과 가용성의 균형을 맞추어 대부분의 워크로드에 권장된다.
+**(D) 정답** : `priceCapacityOptimized`는 최고 용량이 가용한 풀 중 가장 저렴한 풀을 선택하는 전략으로, 비용과 가용성의 균형을 맞추어 대부분의 워크로드에 권장된다. → [📖 Spot Fleet](/section/03-ec2-basics#spot-fleet)
 
 **핵심 개념:** Spot Fleet 할당 전략
+
+**관련 노트:** [Spot Fleet](/section/03-ec2-basics#spot-fleet)
 
 ### Q7. Which of the following Security Group characteristics is correct?
 **Options:**
@@ -439,15 +451,17 @@ Spot Fleet 할당 전략 비교
 | C | Security Group은 stateless 방화벽이다 |
 | D | Security Group은 여러 EC2 인스턴스에 연결할 수 있다 |
 
-**(A)** : 보안 그룹은 Allow 규칙만 가질 수 있고 Deny 규칙은 없다. Deny 규칙은 NACL(Network ACL)에서만 설정 가능하다.
+**(A)** : 보안 그룹은 Allow 규칙만 가질 수 있고 Deny 규칙은 없다. Deny 규칙은 NACL(Network ACL)에서만 설정 가능하다. → [📖 Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹)
 
 **(B)** : 기본적으로 모든 인바운드 트래픽이 차단된다. 명시적으로 Allow 규칙을 추가해야만 인바운드 트래픽이 허용된다.
 
 **(C)** : 보안 그룹은 stateful 방화벽이다. 인바운드를 한 번 허용하면 해당 응답의 아웃바운드는 자동으로 허용된다. Stateless는 NACL의 특성이다.
 
-**(D) 정답** : 보안 그룹은 여러 EC2 인스턴스에 연결할 수 있으며, 하나의 인스턴스에도 여러 보안 그룹을 연결할 수 있다. 이것이 올바른 설명이다.
+**(D) 정답** : 보안 그룹은 여러 EC2 인스턴스에 연결할 수 있으며, 하나의 인스턴스에도 여러 보안 그룹을 연결할 수 있다. 이것이 올바른 설명이다. → [📖 Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹)
 
 **핵심 개념:** Security Groups
+
+**관련 노트:** [Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹)
 
 ### Q8. A company needs guaranteed EC2 capacity in a specific Availability Zone for an upcoming event lasting 2 days. They do not want a long-term commitment. Which option should they use?
 **Options:**
@@ -473,8 +487,10 @@ Spot Fleet 할당 전략 비교
 
 **(B)** : Spot Instance는 언제든 중단될 수 있어 용량을 보장하지 않는다. 이벤트처럼 용량이 반드시 보장되어야 하는 상황에는 부적합하다.
 
-**(C) 정답** : On-Demand Capacity Reservation은 특정 AZ에 용량을 예약하며 시간 약정이 없어 언제든 생성·취소할 수 있다. 할인은 없지만(On-Demand 가격) 용량을 보장하며 단기 이벤트에 적합하다.
+**(C) 정답** : On-Demand Capacity Reservation은 특정 AZ에 용량을 예약하며 시간 약정이 없어 언제든 생성·취소할 수 있다. 할인은 없지만(On-Demand 가격) 용량을 보장하며 단기 이벤트에 적합하다. → [📖 EC2 구매 옵션 시험 핵심!](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)
 
 **(D)** : Savings Plans도 1~3년 사용량 약정이 필요하다. 단기 이벤트에는 과도한 약정으로 부적합하다.
 
 **핵심 개념:** EC2 Capacity Reservations
+
+**관련 노트:** [EC2 구매 옵션 시험 핵심!](/section/03-ec2-basics#ec2-구매-옵션-시험-핵심)

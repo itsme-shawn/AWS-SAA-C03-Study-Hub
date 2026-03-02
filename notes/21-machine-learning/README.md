@@ -227,15 +227,17 @@ AWS는 다양한 관리형 ML 서비스를 제공하며, SAA-C03 시험에서는
 | C | Amazon Rekognition + Amazon Translate |
 | D | Amazon Comprehend + Amazon Polly |
 
-**(A)** : Polly는 텍스트를 음성으로 변환하는 서비스이다. 자막 생성(음성->텍스트)과 무관하다.
+**(A)** : Polly는 텍스트를 음성으로 변환하는 서비스이다. 자막 생성(음성->텍스트)과 무관하다. → [📖 Amazon Polly](/section/21-machine-learning#amazon-polly)
 
-**(B) 정답** : Amazon Transcribe는 음성을 텍스트로 변환(ASR)하여 자막을 생성하고, Amazon Translate는 생성된 텍스트를 다국어로 번역한다. 이 조합이 다국어 자막 생성에 적합하다.
+**(B) 정답** : Amazon Transcribe는 음성을 텍스트로 변환(ASR)하여 자막을 생성하고, Amazon Translate는 생성된 텍스트를 다국어로 번역한다. 이 조합이 다국어 자막 생성에 적합하다. → [📖 Amazon Transcribe](/section/21-machine-learning#amazon-transcribe)
 
-**(C)** : Rekognition은 이미지/비디오의 시각적 객체 인식 서비스이다. 음성 처리를 하지 않으므로 자막 생성에 적합하지 않다.
+**(C)** : Rekognition은 이미지/비디오의 시각적 객체 인식 서비스이다. 음성 처리를 하지 않으므로 자막 생성에 적합하지 않다. → [📖 Amazon Rekognition](/section/21-machine-learning#amazon-rekognition)
 
-**(D)** : Comprehend는 텍스트 감정/의미 분석용이며 Polly는 음성 합성 서비스이다. 둘 다 자막 생성(음성->텍스트)과 관련이 없다.
+**(D)** : Comprehend는 텍스트 감정/의미 분석용이며 Polly는 음성 합성 서비스이다. 둘 다 자막 생성(음성->텍스트)과 관련이 없다. → [📖 Amazon Comprehend](/section/21-machine-learning#amazon-comprehend)
 
 **핵심 개념:** Amazon Transcribe / Amazon Translate
+
+**관련 노트:** [Amazon Transcribe](/section/21-machine-learning#amazon-transcribe), [Amazon Translate](/section/21-machine-learning#amazon-translate)
 
 ### Q2. A company wants to build a cloud-based contact center that can automatically handle customer inquiries using conversational AI before routing to human agents. Which combination of AWS services provides this capability?
 **Options:**
@@ -259,13 +261,15 @@ AWS는 다양한 관리형 ML 서비스를 제공하며, SAA-C03 시험에서는
 
 **(A)** : Polly는 텍스트->음성 변환이고 SQS는 메시지 큐이다. 컨택 센터 기능과 무관하다.
 
-**(B) 정답** : Amazon Connect는 클라우드 기반 가상 컨택 센터 서비스이고, Amazon Lex는 Alexa와 동일한 기술의 대화형 AI 봇이다. Lex가 의도를 인식하고 Lambda로 비즈니스 로직을 수행한 후 필요시 사람 상담원에게 라우팅할 수 있다.
+**(B) 정답** : Amazon Connect는 클라우드 기반 가상 컨택 센터 서비스이고, Amazon Lex는 Alexa와 동일한 기술의 대화형 AI 봇이다. Lex가 의도를 인식하고 Lambda로 비즈니스 로직을 수행한 후 필요시 사람 상담원에게 라우팅할 수 있다. → [📖 Amazon Lex & Connect](/section/21-machine-learning#amazon-lex-connect)
 
 **(C)** : Comprehend는 텍스트 감정/의미 분석이고 SNS는 알림 서비스이다. 컨택 센터 자동화 기능이 아니다.
 
 **(D)** : Transcribe는 음성->텍스트 변환이고 SES는 이메일 서비스이다. 대화형 컨택 센터 자동화를 제공하지 않는다.
 
 **핵심 개념:** Amazon Lex & Connect
+
+**관련 노트:** [Amazon Lex & Connect](/section/21-machine-learning#amazon-lex-connect)
 
 ### Q3. A healthcare company needs to analyze medical records stored as unstructured text to extract Protected Health Information (PHI) for compliance purposes. Which service should they use?
 **Options:**
@@ -289,13 +293,15 @@ AWS는 다양한 관리형 ML 서비스를 제공하며, SAA-C03 시험에서는
 
 **(A)** : 일반 Comprehend는 범용 NLP 서비스이다. 의료 텍스트 특화가 아니며 PHI 탐지 기능이 없다.
 
-**(B) 정답** : Amazon Comprehend Medical은 비정형 임상 텍스트에서 PHI(Protected Health Information)를 탐지하는 전문 서비스이다. DetectPHI API를 제공하며 의료 데이터 규정 준수에 특화되어 있다.
+**(B) 정답** : Amazon Comprehend Medical은 비정형 임상 텍스트에서 PHI(Protected Health Information)를 탐지하는 전문 서비스이다. DetectPHI API를 제공하며 의료 데이터 규정 준수에 특화되어 있다. → [📖 Amazon Comprehend](/section/21-machine-learning#amazon-comprehend)
 
-**(C)** : Textract는 문서/이미지에서 텍스트와 데이터를 추출하는 서비스이다. 텍스트 내용을 분석하여 PHI를 식별하는 기능이 아니다.
+**(C)** : Textract는 문서/이미지에서 텍스트와 데이터를 추출하는 서비스이다. 텍스트 내용을 분석하여 PHI를 식별하는 기능이 아니다. → [📖 Amazon Textract](/section/21-machine-learning#amazon-textract)
 
-**(D)** : Kendra는 ML 기반 문서 검색 서비스이다. 의료 데이터 분석 및 PHI 탐지와 무관하다.
+**(D)** : Kendra는 ML 기반 문서 검색 서비스이다. 의료 데이터 분석 및 PHI 탐지와 무관하다. → [📖 Amazon Kendra](/section/21-machine-learning#amazon-kendra)
 
 **핵심 개념:** Amazon Comprehend Medical
+
+**관련 노트:** [Amazon Comprehend](/section/21-machine-learning#amazon-comprehend)
 
 ### Q4. A social media platform needs to automatically detect and flag inappropriate content in user-uploaded images. When the system is unsure, it should route the content for human review. Which approach should they take?
 **Options:**
@@ -319,13 +325,15 @@ AWS는 다양한 관리형 ML 서비스를 제공하며, SAA-C03 시험에서는
 
 **(A)** : Textract는 문서에서 텍스트/데이터를 추출하는 서비스이다. 이미지 콘텐츠 검열 기능이 아니다.
 
-**(B) 정답** : Amazon Rekognition의 Content Moderation 기능은 이미지/비디오에서 부적절한 콘텐츠를 탐지하고 최소 신뢰도 임계값을 설정할 수 있다. 불확실한 경우 Amazon Augmented AI(A2I)로 수동 리뷰를 위해 플래그할 수 있다.
+**(B) 정답** : Amazon Rekognition의 Content Moderation 기능은 이미지/비디오에서 부적절한 콘텐츠를 탐지하고 최소 신뢰도 임계값을 설정할 수 있다. 불확실한 경우 Amazon Augmented AI(A2I)로 수동 리뷰를 위해 플래그할 수 있다. → [📖 Amazon Rekognition](/section/21-machine-learning#amazon-rekognition)
 
 **(C)** : Comprehend는 텍스트 감정/의미 분석용 NLP 서비스이다. 이미지 콘텐츠 검열과 무관하다.
 
-**(D)** : SageMaker로 커스텀 모델을 구축하는 것은 Rekognition이 이미 제공하는 기능을 처음부터 만드는 것이다. 불필요하게 복잡하고 시간이 많이 걸린다.
+**(D)** : SageMaker로 커스텀 모델을 구축하는 것은 Rekognition이 이미 제공하는 기능을 처음부터 만드는 것이다. 불필요하게 복잡하고 시간이 많이 걸린다. → [📖 Amazon SageMaker AI](/section/21-machine-learning#amazon-sagemaker-ai)
 
 **핵심 개념:** Amazon Rekognition Content Moderation / A2I
+
+**관련 노트:** [Amazon Rekognition](/section/21-machine-learning#amazon-rekognition)
 
 ### Q5. A company wants to add a natural language search capability to their internal knowledge base. Users should be able to ask questions in plain English and get precise answers from documents stored in S3 and SharePoint. Which service is BEST suited?
 **Options:**
@@ -347,15 +355,17 @@ AWS는 다양한 관리형 ML 서비스를 제공하며, SAA-C03 시험에서는
 | C | Amazon Comprehend |
 | D | Amazon Athena |
 
-**(A)** : OpenSearch는 키워드 기반 범용 텍스트 검색이다. 자연어 질의응답(Q&A) 기능을 제공하지 않는다.
+**(A)** : OpenSearch는 키워드 기반 범용 텍스트 검색이다. 자연어 질의응답(Q&A) 기능을 제공하지 않는다. → [📖 Amazon OpenSearch Service](/section/20-data-analytics#amazon-opensearch-service)
 
-**(B) 정답** : Amazon Kendra는 ML 기반 문서 검색 서비스로 자연어 검색 기능을 제공한다. S3, SharePoint, Google Drive 등 다양한 데이터 소스에서 문서를 인덱싱하고 질문에 대한 정확한 답변을 추출하며 사용자 피드백을 통한 증분 학습도 지원한다.
+**(B) 정답** : Amazon Kendra는 ML 기반 문서 검색 서비스로 자연어 검색 기능을 제공한다. S3, SharePoint, Google Drive 등 다양한 데이터 소스에서 문서를 인덱싱하고 질문에 대한 정확한 답변을 추출하며 사용자 피드백을 통한 증분 학습도 지원한다. → [📖 Amazon Kendra](/section/21-machine-learning#amazon-kendra)
 
-**(C)** : Comprehend는 텍스트 감정/의미 분석 NLP 서비스이다. 검색 기능을 제공하지 않는다.
+**(C)** : Comprehend는 텍스트 감정/의미 분석 NLP 서비스이다. 검색 기능을 제공하지 않는다. → [📖 Amazon Comprehend](/section/21-machine-learning#amazon-comprehend)
 
 **(D)** : Athena는 S3 데이터에 대한 SQL 쿼리 서비스이다. 자연어 문서 검색과 무관하다.
 
 **핵심 개념:** Amazon Kendra
+
+**관련 노트:** [Amazon Kendra](/section/21-machine-learning#amazon-kendra)
 
 ### Q6. An e-commerce company wants to provide personalized product recommendations to users on their website. They want to use the same technology that Amazon.com uses. Which service should they implement?
 **Options:**
@@ -377,15 +387,17 @@ AWS는 다양한 관리형 ML 서비스를 제공하며, SAA-C03 시험에서는
 | C | Amazon Comprehend |
 | D | Amazon Kendra |
 
-**(A)** : SageMaker로 직접 추천 모델을 구축하는 것은 Personalize가 이미 제공하는 기능을 처음부터 개발하는 것이다. 불필요하게 복잡하고 시간이 많이 걸린다.
+**(A)** : SageMaker로 직접 추천 모델을 구축하는 것은 Personalize가 이미 제공하는 기능을 처음부터 개발하는 것이다. 불필요하게 복잡하고 시간이 많이 걸린다. → [📖 Amazon SageMaker AI](/section/21-machine-learning#amazon-sagemaker-ai)
 
-**(B) 정답** : Amazon Personalize는 Amazon.com과 동일한 기술을 사용하는 실시간 개인화 추천 ML 서비스이다. 기존 웹사이트, 앱, SMS, 이메일에 통합할 수 있으며 수일 만에 구현 가능하다.
+**(B) 정답** : Amazon Personalize는 Amazon.com과 동일한 기술을 사용하는 실시간 개인화 추천 ML 서비스이다. 기존 웹사이트, 앱, SMS, 이메일에 통합할 수 있으며 수일 만에 구현 가능하다. → [📖 Amazon Personalize](/section/21-machine-learning#amazon-personalize)
 
 **(C)** : Comprehend는 NLP(자연어 처리) 서비스이다. 상품 추천과 무관하다.
 
-**(D)** : Kendra는 ML 기반 문서 검색 서비스이다. 개인화 추천 기능이 아니다.
+**(D)** : Kendra는 ML 기반 문서 검색 서비스이다. 개인화 추천 기능이 아니다. → [📖 Amazon Kendra](/section/21-machine-learning#amazon-kendra)
 
 **핵심 개념:** Amazon Personalize
+
+**관련 노트:** [Amazon Personalize](/section/21-machine-learning#amazon-personalize)
 
 ### Q7. A government agency needs to process thousands of tax forms and extract structured data from them, including handwritten fields. Which AWS service should they use?
 **Options:**
@@ -407,12 +419,14 @@ AWS는 다양한 관리형 ML 서비스를 제공하며, SAA-C03 시험에서는
 | C | Amazon Textract |
 | D | Amazon Transcribe |
 
-**(A)** : Rekognition은 이미지/비디오의 시각적 객체(얼굴, 사물, 장면) 인식용이다. 문서의 구조화된 데이터 추출에 적합하지 않다.
+**(A)** : Rekognition은 이미지/비디오의 시각적 객체(얼굴, 사물, 장면) 인식용이다. 문서의 구조화된 데이터 추출에 적합하지 않다. → [📖 Amazon Rekognition](/section/21-machine-learning#amazon-rekognition)
 
-**(B)** : Comprehend는 텍스트의 의미/감정 분석 NLP 서비스이다. 문서 이미지에서 데이터를 추출하는 것이 아니다.
+**(B)** : Comprehend는 텍스트의 의미/감정 분석 NLP 서비스이다. 문서 이미지에서 데이터를 추출하는 것이 아니다. → [📖 Amazon Comprehend](/section/21-machine-learning#amazon-comprehend)
 
-**(C) 정답** : Amazon Textract는 AI/ML을 사용하여 스캔된 문서에서 텍스트, 필기, 폼 및 테이블 데이터를 자동 추출한다. 세금 양식, ID, 여권 등 공공 부문 문서 처리에 특화되어 있다.
+**(C) 정답** : Amazon Textract는 AI/ML을 사용하여 스캔된 문서에서 텍스트, 필기, 폼 및 테이블 데이터를 자동 추출한다. 세금 양식, ID, 여권 등 공공 부문 문서 처리에 특화되어 있다. → [📖 Amazon Textract](/section/21-machine-learning#amazon-textract)
 
-**(D)** : Transcribe는 음성을 텍스트로 변환하는 서비스이다. 문서 이미지 처리와 무관하다.
+**(D)** : Transcribe는 음성을 텍스트로 변환하는 서비스이다. 문서 이미지 처리와 무관하다. → [📖 Amazon Transcribe](/section/21-machine-learning#amazon-transcribe)
 
 **핵심 개념:** Amazon Textract
+
+**관련 노트:** [Amazon Textract](/section/21-machine-learning#amazon-textract)

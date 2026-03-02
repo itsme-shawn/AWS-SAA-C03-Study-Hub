@@ -234,13 +234,15 @@
 
 **(A)** : S3 이벤트 알림은 같은 이벤트 타입에 대해 하나의 대상만 설정할 수 있다. 여러 SQS 큐에 직접 전송이 제한적이다.
 
-**(B) 정답** : SNS 토픽에 S3 이벤트를 전송하고 여러 SQS 큐가 구독하면 각 소비자가 모든 메시지를 수신할 수 있다. Fan Out 패턴의 전형적인 사용 사례이다.
+**(B) 정답** : SNS 토픽에 S3 이벤트를 전송하고 여러 SQS 큐가 구독하면 각 소비자가 모든 메시지를 수신할 수 있다. Fan Out 패턴의 전형적인 사용 사례이다. → [📖 Fan Out 패턴](/section/27-more-solutions-architecture#fan-out-패턴)
 
-**(C)** : Lambda를 중간에 두어 각 SQS에 개별적으로 메시지를 전송하는 것은 가능하지만 불필요한 복잡성이 추가된다.
+**(C)** : Lambda를 중간에 두어 각 SQS에 개별적으로 메시지를 전송하는 것은 가능하지만 불필요한 복잡성이 추가된다. → [📖 Lambda, SNS & SQS 패턴](/section/27-more-solutions-architecture#lambda-sns-sqs-패턴)
 
-**(D)** : EventBridge도 기술적으로 가능하지만 단순한 팬아웃 시나리오에서는 SNS가 더 간단하고 직접적인 해결책이다.
+**(D)** : EventBridge도 기술적으로 가능하지만 단순한 팬아웃 시나리오에서는 SNS가 더 간단하고 직접적인 해결책이다. → [📖 S3 Event Notifications with Amazon EventBridge](/section/27-more-solutions-architecture#s3-event-notifications-with-amazon-eventbridge)
 
 **핵심 개념:** Fan Out Pattern - SNS + SQS
+
+**관련 노트:** [Fan Out 패턴](/section/27-more-solutions-architecture#fan-out-패턴), [Lambda, SNS & SQS 패턴](/section/27-more-solutions-architecture#lambda-sns-sqs-패턴)
 
 ---
 
@@ -264,15 +266,17 @@
 | C | CloudFront에 IP 기반 규칙이 있는 AWS WAF를 구성한다 |
 | D | EC2 인스턴스의 Security Group 규칙을 구성한다 |
 
-**(A)** : NACL은 CloudFront 뒤에서 무용하다. ALB가 받는 요청은 CloudFront의 Public IP에서 오기 때문에 원본 클라이언트 IP를 기반으로 차단할 수 없다.
+**(A)** : NACL은 CloudFront 뒤에서 무용하다. ALB가 받는 요청은 CloudFront의 Public IP에서 오기 때문에 원본 클라이언트 IP를 기반으로 차단할 수 없다. → [📖 NACL Network Access Control List](/section/25-vpc#nacl-network-access-control-list)
 
-**(B)** : Security Group은 Allow 규칙만 지원하고 Deny 규칙을 지원하지 않는다. ALB SG에서 특정 IP를 차단하는 것이 불가능하다.
+**(B)** : Security Group은 Allow 규칙만 지원하고 Deny 규칙을 지원하지 않는다. ALB SG에서 특정 IP를 차단하는 것이 불가능하다. → [📖 Security Group vs NACL](/section/25-vpc#security-group-vs-nacl)
 
-**(C) 정답** : AWS WAF를 CloudFront에 연결하면 엣지 레벨에서 원본 클라이언트 IP를 확인하고 필터링할 수 있다. IP 기반 규칙으로 특정 IP를 효과적으로 차단할 수 있다.
+**(C) 정답** : AWS WAF를 CloudFront에 연결하면 엣지 레벨에서 원본 클라이언트 IP를 확인하고 필터링할 수 있다. IP 기반 규칙으로 특정 IP를 효과적으로 차단할 수 있다. → [📖 AWS WAF Web Application Firewall](/section/24-security-encryption#aws-waf-web-application-firewall)
 
 **(D)** : Security Group은 Allow 규칙만 지원한다. EC2 인스턴스 SG에서 특정 IP를 Deny하는 것이 불가능하다.
 
 **핵심 개념:** CloudFront + WAF IP Filtering
+
+**관련 노트:** [IP 주소 차단 방법](/section/27-more-solutions-architecture#ip-주소-차단-방법), [AWS WAF Web Application Firewall](/section/24-security-encryption#aws-waf-web-application-firewall)
 
 ---
 
@@ -298,13 +302,15 @@
 
 **(A)** : Spread Placement Group은 인스턴스를 서로 다른 하드웨어에 분산하여 고가용성을 위한 것이다. 저지연 통신용이 아니다.
 
-**(B) 정답** : Cluster Placement Group은 인스턴스를 같은 Rack, 같은 AZ에 배치하여 10Gbps 네트워크와 최저 지연을 제공한다. EFA는 HPC 전용으로 MPI 표준을 활용하고 Linux OS를 우회하여 초저지연 노드 간 통신을 가능하게 한다.
+**(B) 정답** : Cluster Placement Group은 인스턴스를 같은 Rack, 같은 AZ에 배치하여 10Gbps 네트워크와 최저 지연을 제공한다. EFA는 HPC 전용으로 MPI 표준을 활용하고 Linux OS를 우회하여 초저지연 노드 간 통신을 가능하게 한다. → [📖 High Performance Computing HPC](/section/27-more-solutions-architecture#high-performance-computing-hpc)
 
 **(C)** : Partition Placement Group은 대규모 분산 워크로드(Hadoop, Cassandra 등)의 장애 격리용이다. 저지연 통신용이 아니다.
 
 **(D)** : ENA도 최대 100Gbps를 지원하지만 EFA가 HPC 워크로드에 더 특화되어 있다. EFA는 OS 우회 기능을 추가로 제공한다.
 
 **핵심 개념:** HPC - Cluster Placement Group + EFA
+
+**관련 노트:** [High Performance Computing HPC](/section/27-more-solutions-architecture#high-performance-computing-hpc)
 
 ---
 
@@ -330,13 +336,15 @@
 
 **(A)** : CloudWatch alarm은 같은 AZ 내에서만 복구가 가능하다. AZ 장애에 대응할 수 없다.
 
-**(B) 정답** : 여러 AZ에 걸친 ASG(1/1/1)는 AZ 장애 시 다른 AZ에서 자동으로 새 인스턴스를 시작한다. Lifecycle hook으로 EBS 스냅샷 생성 및 복원, Elastic IP 연결을 관리하여 세 가지 요구사항을 모두 충족한다.
+**(B) 정답** : 여러 AZ에 걸친 ASG(1/1/1)는 AZ 장애 시 다른 AZ에서 자동으로 새 인스턴스를 시작한다. Lifecycle hook으로 EBS 스냅샷 생성 및 복원, Elastic IP 연결을 관리하여 세 가지 요구사항을 모두 충족한다. → [📖 고가용성 EC2 구성](/section/27-more-solutions-architecture#고가용성-ec2-구성)
 
 **(C)** : EC2 Auto Recovery는 동일 호스트 또는 같은 AZ 내에서만 동작한다. AZ 장애 시 복구가 불가능하다.
 
 **(D)** : NLB는 고정 IP를 제공한다. 그러나 EBS 데이터 보존이나 AZ 장애 시 자동 복구 메커니즘을 제공하지 않는다.
 
 **핵심 개념:** Highly Available EC2 with ASG + EBS
+
+**관련 노트:** [고가용성 EC2 구성](/section/27-more-solutions-architecture#고가용성-ec2-구성)
 
 ---
 
@@ -364,11 +372,13 @@
 
 **(B)** : SNS에서 Step Functions으로의 직접 통합이 없다. 불가능한 구성이다.
 
-**(C) 정답** : Amazon EventBridge는 메타데이터, 객체 크기, 이름 등에 대한 고급 JSON 규칙 필터링을 지원하며 Step Functions을 포함한 18개 이상의 AWS 서비스에 직접 전송할 수 있다.
+**(C) 정답** : Amazon EventBridge는 메타데이터, 객체 크기, 이름 등에 대한 고급 JSON 규칙 필터링을 지원하며 Step Functions을 포함한 18개 이상의 AWS 서비스에 직접 전송할 수 있다. → [📖 S3 Event Notifications with Amazon EventBridge](/section/27-more-solutions-architecture#s3-event-notifications-with-amazon-eventbridge)
 
 **(D)** : Lambda를 중간에 두어 Step Functions으로 전달하는 것은 기술적으로 가능하다. 그러나 EventBridge가 제공하는 네이티브 통합에 비해 불필요한 복잡성과 관리 오버헤드를 추가한다.
 
 **핵심 개념:** S3 Event Notifications with EventBridge
+
+**관련 노트:** [S3 Event Notifications with Amazon EventBridge](/section/27-more-solutions-architecture#s3-event-notifications-with-amazon-eventbridge), [S3 Event Notifications](/section/27-more-solutions-architecture#s3-event-notifications)
 
 ---
 
@@ -396,8 +406,10 @@
 
 **(B)** : EBS io2 Block Express는 최대 256,000 IOPS로 수백만 IOPS에는 미치지 못한다. 단일 인스턴스에 연결되는 블록 스토리지이다.
 
-**(C) 정답** : FSx for Lustre는 HPC, ML, 미디어 처리 등 고성능 워크로드를 위해 설계된 분산 파일 시스템이다. 수백만 IOPS를 제공하고 S3로 백업된다.
+**(C) 정답** : FSx for Lustre는 HPC, ML, 미디어 처리 등 고성능 워크로드를 위해 설계된 분산 파일 시스템이다. 수백만 IOPS를 제공하고 S3로 백업된다. → [📖 High Performance Computing HPC](/section/27-more-solutions-architecture#high-performance-computing-hpc)
 
 **(D)** : S3는 객체 스토리지이지 파일 시스템이 아니다. HPC 워크로드에서 파일 시스템으로 직접 사용할 수 없다.
 
 **핵심 개념:** FSx for Lustre - HPC Storage
+
+**관련 노트:** [High Performance Computing HPC](/section/27-more-solutions-architecture#high-performance-computing-hpc)

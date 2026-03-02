@@ -452,15 +452,17 @@ AWS의 보안 및 암호화 서비스를 포괄적으로 다룬다. KMS, CloudHS
 | C | AWS Managed Keys를 사용한 AWS KMS |
 | D | S3 Managed Keys를 사용한 서버 측 암호화 (SSE-S3) |
 
-**(A)** : KMS Customer Managed Keys도 FIPS 140-2 Level 3이지만 Multi-Tenant 환경이고 AWS가 하드웨어를 관리한다. "전용 하드웨어"와 "완전한 키 관리" 요구사항을 충족하지 않는다.
+**(A)** : KMS Customer Managed Keys도 FIPS 140-2 Level 3이지만 Multi-Tenant 환경이고 AWS가 하드웨어를 관리한다. "전용 하드웨어"와 "완전한 키 관리" 요구사항을 충족하지 않는다. → [📖 AWS KMS Key Management Service](/section/24-security-encryption#aws-kms-key-management-service)
 
-**(B) 정답** : CloudHSM은 전용 하드웨어(Single-Tenant)에서 FIPS 140-2 Level 3 규정 준수를 제공한다. 사용자가 암호화 키를 완전히 관리한다.
+**(B) 정답** : CloudHSM은 전용 하드웨어(Single-Tenant)에서 FIPS 140-2 Level 3 규정 준수를 제공한다. 사용자가 암호화 키를 완전히 관리한다. → [📖 CloudHSM](/section/24-security-encryption#cloudhsm)
 
-**(C)** : AWS Managed Keys는 AWS가 키를 관리한다. 사용자가 키를 완전히 제어할 수 없다.
+**(C)** : AWS Managed Keys는 AWS가 키를 관리한다. 사용자가 키를 완전히 제어할 수 없다. → [📖 AWS KMS Key Management Service](/section/24-security-encryption#aws-kms-key-management-service)
 
-**(D)** : SSE-S3는 AWS가 키를 완전히 관리하는 가장 기본적인 암호화이다. 사용자의 키 제어가 불가하다.
+**(D)** : SSE-S3는 AWS가 키를 완전히 관리하는 가장 기본적인 암호화이다. 사용자의 키 제어가 불가하다. → [📖 암호화 기본 개념](/section/24-security-encryption#암호화-기본-개념)
 
 **핵심 개념:** CloudHSM vs KMS
+
+**관련 노트:** [CloudHSM](/section/24-security-encryption#cloudhsm), [AWS KMS Key Management Service](/section/24-security-encryption#aws-kms-key-management-service)
 
 ### Q2. A company wants to share an encrypted AMI with another AWS account. The AMI is encrypted with a Customer Managed KMS Key. What steps are required? (Select TWO)
 **Options:**
@@ -484,17 +486,19 @@ AWS의 보안 및 암호화 서비스를 포괄적으로 다룬다. KMS, CloudHS
 | D | AMI의 비암호화 복사본을 새로 생성하여 공유 |
 | E | 대상 계정에 추가 권한이 필요하지 않음 |
 
-**(A) 정답** : AMI에 대상 계정의 Launch Permission을 추가해야 한다. 이것이 AMI 공유의 첫 번째 필수 단계이다.
+**(A) 정답** : AMI에 대상 계정의 Launch Permission을 추가해야 한다. 이것이 AMI 공유의 첫 번째 필수 단계이다. → [📖 AWS KMS Key Management Service](/section/24-security-encryption#aws-kms-key-management-service)
 
 **(B)** : AWS Managed Key는 계정 간 공유가 불가능하다. 크로스 계정 공유에는 반드시 Customer Managed Key를 사용해야 한다.
 
-**(C) 정답** : AMI 암호화에 사용된 Customer Managed KMS Key를 KMS Key Policy를 통해 대상 계정과 공유해야 한다. 두 번째 필수 단계이다.
+**(C) 정답** : AMI 암호화에 사용된 Customer Managed KMS Key를 KMS Key Policy를 통해 대상 계정과 공유해야 한다. 두 번째 필수 단계이다. → [📖 AWS KMS Key Management Service](/section/24-security-encryption#aws-kms-key-management-service)
 
 **(D)** : 비암호화 복사본을 만들면 보안이 약해지며 암호화가 필요한 요구사항을 위반한다.
 
 **(E)** : 대상 계정에서는 DescribeKey, ReEncrypt, CreateGrant, Decrypt 등의 권한이 필요하다. 추가 권한이 반드시 필요하다.
 
 **핵심 개념:** AMI Sharing Process Encrypted via KMS
+
+**관련 노트:** [AWS KMS Key Management Service](/section/24-security-encryption#aws-kms-key-management-service)
 
 ### Q3. A company wants to protect their web application running behind an Application Load Balancer from SQL injection and cross-site scripting attacks. They also want to block requests from specific countries. Which service should they use?
 **Options:**
@@ -516,15 +520,17 @@ AWS의 보안 및 암호화 서비스를 포괄적으로 다룬다. KMS, CloudHS
 | C | AWS WAF |
 | D | Security Groups |
 
-**(A)** : Shield Standard는 Layer 3/4 DDoS 보호이다. HTTP 콘텐츠(SQL Injection, XSS)를 검사하지 않는다.
+**(A)** : Shield Standard는 Layer 3/4 DDoS 보호이다. HTTP 콘텐츠(SQL Injection, XSS)를 검사하지 않는다. → [📖 AWS Shield](/section/24-security-encryption#aws-shield)
 
-**(B)** : Network Firewall은 VPC 수준의 네트워크 방화벽이다. HTTP 애플리케이션 레벨 보호에 특화되어 있지 않다.
+**(B)** : Network Firewall은 VPC 수준의 네트워크 방화벽이다. HTTP 애플리케이션 레벨 보호에 특화되어 있지 않다. → [📖 AWS Network Firewall](/section/25-vpc#aws-network-firewall)
 
-**(C) 정답** : AWS WAF는 Layer 7(HTTP) 웹 애플리케이션 방화벽으로 SQL Injection, XSS 보호와 Geo-match(국가 차단)를 지원한다. ALB에 직접 배포할 수 있다.
+**(C) 정답** : AWS WAF는 Layer 7(HTTP) 웹 애플리케이션 방화벽으로 SQL Injection, XSS 보호와 Geo-match(국가 차단)를 지원한다. ALB에 직접 배포할 수 있다. → [📖 AWS WAF Web Application Firewall](/section/24-security-encryption#aws-waf-web-application-firewall)
 
 **(D)** : Security Groups는 IP/포트 기반의 네트워크 접근 제어이다. HTTP 요청 콘텐츠를 검사하지 않으므로 SQL Injection이나 XSS를 차단할 수 없다.
 
 **핵심 개념:** AWS WAF
+
+**관련 노트:** [AWS WAF Web Application Firewall](/section/24-security-encryption#aws-waf-web-application-firewall)
 
 ### Q4. A company frequently experiences DDoS attacks on their application. They need 24/7 access to AWS DDoS experts and automatic Layer 7 attack mitigation. They also want protection against DDoS-related billing spikes. Which solution should they choose?
 **Options:**
@@ -546,15 +552,17 @@ AWS의 보안 및 암호화 서비스를 포괄적으로 다룬다. KMS, CloudHS
 | C | AWS Firewall Manager |
 | D | Amazon GuardDuty |
 
-**(A)** : Shield Standard는 무료이고 기본 Layer 3/4 보호만 제공한다. WAF를 함께 사용해도 24/7 전문가 지원이나 요금 보호 기능이 없다.
+**(A)** : Shield Standard는 무료이고 기본 Layer 3/4 보호만 제공한다. WAF를 함께 사용해도 24/7 전문가 지원이나 요금 보호 기능이 없다. → [📖 AWS Shield](/section/24-security-encryption#aws-shield)
 
-**(B) 정답** : AWS Shield Advanced는 24/7 DDoS Response Team(DRP) 접근, Layer 7 공격 자동 완화(WAF 규칙 자동 생성/배포), DDoS로 인한 요금 급증 보호를 모두 제공한다.
+**(B) 정답** : AWS Shield Advanced는 24/7 DDoS Response Team(DRP) 접근, Layer 7 공격 자동 완화(WAF 규칙 자동 생성/배포), DDoS로 인한 요금 급증 보호를 모두 제공한다. → [📖 AWS Shield](/section/24-security-encryption#aws-shield)
 
-**(C)** : Firewall Manager는 Organization 전체에 보안 규칙을 배포하는 중앙 관리 도구이다. DDoS 전문 방어 서비스가 아니다.
+**(C)** : Firewall Manager는 Organization 전체에 보안 규칙을 배포하는 중앙 관리 도구이다. DDoS 전문 방어 서비스가 아니다. → [📖 AWS Firewall Manager](/section/24-security-encryption#aws-firewall-manager)
 
-**(D)** : GuardDuty는 ML 기반 위협 탐지 서비스이다. DDoS 방어 기능이 아니다.
+**(D)** : GuardDuty는 ML 기반 위협 탐지 서비스이다. DDoS 방어 기능이 아니다. → [📖 Amazon GuardDuty](/section/24-security-encryption#amazon-guardduty)
 
 **핵심 개념:** AWS Shield Advanced
+
+**관련 노트:** [AWS Shield](/section/24-security-encryption#aws-shield), [WAF / Shield / Firewall Manager 방어 계층](/section/24-security-encryption#waf-shield-firewall-manager-방어-계층)
 
 ### Q5. A company needs to automatically detect if any of their S3 buckets contain personally identifiable information (PII) such as credit card numbers or social security numbers. Which service should they use?
 **Options:**
@@ -576,15 +584,17 @@ AWS의 보안 및 암호화 서비스를 포괄적으로 다룬다. KMS, CloudHS
 | C | Amazon Macie |
 | D | AWS Config |
 
-**(A)** : GuardDuty는 CloudTrail/VPC Flow Logs/DNS 분석을 통한 위협 탐지 서비스이다. S3 데이터 내용(PII)을 분석하지 않는다.
+**(A)** : GuardDuty는 CloudTrail/VPC Flow Logs/DNS 분석을 통한 위협 탐지 서비스이다. S3 데이터 내용(PII)을 분석하지 않는다. → [📖 Amazon GuardDuty](/section/24-security-encryption#amazon-guardduty)
 
-**(B)** : Inspector는 EC2/ECR/Lambda의 소프트웨어 취약점(CVE)을 스캔하는 서비스이다. 데이터 내용 분석이 아니다.
+**(B)** : Inspector는 EC2/ECR/Lambda의 소프트웨어 취약점(CVE)을 스캔하는 서비스이다. 데이터 내용 분석이 아니다. → [📖 Amazon Inspector](/section/24-security-encryption#amazon-inspector)
 
-**(C) 정답** : Amazon Macie는 ML과 패턴 매칭을 사용하여 S3 버킷에서 PII(신용카드 번호, 주민등록번호 등)와 같은 민감한 데이터를 자동 탐지하고 보호한다.
+**(C) 정답** : Amazon Macie는 ML과 패턴 매칭을 사용하여 S3 버킷에서 PII(신용카드 번호, 주민등록번호 등)와 같은 민감한 데이터를 자동 탐지하고 보호한다. → [📖 Amazon Macie](/section/24-security-encryption#amazon-macie)
 
 **(D)** : AWS Config은 리소스 구성 규정 준수를 평가하는 서비스이다. S3 버킷 내 데이터 콘텐츠를 검사하지 않는다.
 
 **핵심 개념:** Amazon Macie
+
+**관련 노트:** [Amazon Macie](/section/24-security-encryption#amazon-macie), [GuardDuty vs Inspector vs Macie — 초보자 비유](/section/24-security-encryption#guardduty-vs-inspector-vs-macie-초보자-비유)
 
 ### Q6. A company stores secrets for their RDS database connections and needs automatic rotation of these secrets every 30 days. Which service is MOST appropriate?
 **Options:**
@@ -606,15 +616,17 @@ AWS의 보안 및 암호화 서비스를 포괄적으로 다룬다. KMS, CloudHS
 | C | AWS KMS |
 | D | AWS CloudHSM |
 
-**(A)** : SSM Parameter Store Advanced는 TTL(만료일) 정책은 있지만 자동 회전 기능은 Secrets Manager만큼 강력하지 않다. RDS 특화 통합도 없다.
+**(A)** : SSM Parameter Store Advanced는 TTL(만료일) 정책은 있지만 자동 회전 기능은 Secrets Manager만큼 강력하지 않다. RDS 특화 통합도 없다. → [📖 SSM Parameter Store](/section/24-security-encryption#ssm-parameter-store)
 
-**(B) 정답** : AWS Secrets Manager는 시크릿 자동 회전 기능을 제공하며 Lambda를 사용하여 X일마다 시크릿을 자동 생성한다. 특히 RDS(MySQL, PostgreSQL, Aurora)와의 통합이 특화되어 있어 DB 자격증명 관리에 최적이다.
+**(B) 정답** : AWS Secrets Manager는 시크릿 자동 회전 기능을 제공하며 Lambda를 사용하여 X일마다 시크릿을 자동 생성한다. 특히 RDS(MySQL, PostgreSQL, Aurora)와의 통합이 특화되어 있어 DB 자격증명 관리에 최적이다. → [📖 AWS Secrets Manager](/section/24-security-encryption#aws-secrets-manager)
 
-**(C)** : KMS는 암호화 키 관리 서비스이다. 시크릿(비밀번호, 자격증명) 저장 및 회전 서비스가 아니다.
+**(C)** : KMS는 암호화 키 관리 서비스이다. 시크릿(비밀번호, 자격증명) 저장 및 회전 서비스가 아니다. → [📖 AWS KMS Key Management Service](/section/24-security-encryption#aws-kms-key-management-service)
 
-**(D)** : CloudHSM은 전용 하드웨어 암호화 모듈이다. 시크릿 관리와 무관하다.
+**(D)** : CloudHSM은 전용 하드웨어 암호화 모듈이다. 시크릿 관리와 무관하다. → [📖 CloudHSM](/section/24-security-encryption#cloudhsm)
 
 **핵심 개념:** AWS Secrets Manager
+
+**관련 노트:** [AWS Secrets Manager](/section/24-security-encryption#aws-secrets-manager), [SSM Parameter Store vs Secrets Manager 비교](/section/24-security-encryption#ssm-parameter-store-vs-secrets-manager-비교)
 
 ### Q7. A company uses an edge-optimized API Gateway and needs to attach a TLS certificate from ACM. In which region must the ACM certificate be created?
 **Options:**
@@ -636,15 +648,17 @@ AWS의 보안 및 암호화 서비스를 포괄적으로 다룬다. KMS, CloudHS
 | C | ACM 인증서는 글로벌이므로 어떤 리전이든 가능 |
 | D | 대다수 사용자에게 가장 가까운 리전 |
 
-**(A)** : API Gateway와 동일한 리전에 인증서를 생성하는 것은 Regional API Gateway의 경우이다. edge-optimized에서는 us-east-1이 필요하다.
+**(A)** : API Gateway와 동일한 리전에 인증서를 생성하는 것은 Regional API Gateway의 경우이다. edge-optimized에서는 us-east-1이 필요하다. → [📖 AWS Certificate Manager ACM](/section/24-security-encryption#aws-certificate-manager-acm)
 
-**(B) 정답** : Edge-Optimized API Gateway는 CloudFront Edge 위치를 통해 요청을 라우팅하므로 TLS 인증서는 CloudFront와 동일한 리전인 us-east-1에 있어야 한다.
+**(B) 정답** : Edge-Optimized API Gateway는 CloudFront Edge 위치를 통해 요청을 라우팅하므로 TLS 인증서는 CloudFront와 동일한 리전인 us-east-1에 있어야 한다. → [📖 AWS Certificate Manager ACM](/section/24-security-encryption#aws-certificate-manager-acm)
 
-**(C)** : ACM 인증서는 글로벌이 아니라 리전별 서비스이다. 특정 리전에 생성해야 한다.
+**(C)** : ACM 인증서는 글로벌이 아니라 리전별 서비스이다. 특정 리전에 생성해야 한다. → [📖 AWS Certificate Manager ACM](/section/24-security-encryption#aws-certificate-manager-acm)
 
 **(D)** : 사용자 위치와 무관하게 edge-optimized API Gateway의 인증서는 반드시 us-east-1에 있어야 한다.
 
 **핵심 개념:** ACM + API Gateway Integration
+
+**관련 노트:** [AWS Certificate Manager ACM](/section/24-security-encryption#aws-certificate-manager-acm)
 
 ### Q8. A company wants to manage WAF rules, Shield Advanced protections, and security group configurations across all accounts in their AWS Organization. New accounts should automatically inherit these security rules. Which service should they use?
 **Options:**
@@ -666,12 +680,14 @@ AWS의 보안 및 암호화 서비스를 포괄적으로 다룬다. KMS, CloudHS
 | C | AWS Firewall Manager |
 | D | AWS Organizations SCP |
 
-**(A)** : AWS Config은 리소스 구성 규정 준수를 평가하는 서비스이다. 보안 규칙을 배포하는 것이 아니다.
+**(A)** : AWS Config은 리소스 구성 규정 준수를 평가하는 서비스이다. 보안 규칙을 배포하는 것이 아니다. → [📖 AWS WAF Web Application Firewall](/section/24-security-encryption#aws-waf-web-application-firewall)
 
-**(B)** : AWS WAF 자체에는 크로스 계정 규칙 배포 기능이 없다. 여러 계정에 규칙을 자동 적용하려면 Firewall Manager가 필요하다.
+**(B)** : AWS WAF 자체에는 크로스 계정 규칙 배포 기능이 없다. 여러 계정에 규칙을 자동 적용하려면 Firewall Manager가 필요하다. → [📖 AWS WAF Web Application Firewall](/section/24-security-encryption#aws-waf-web-application-firewall)
 
-**(C) 정답** : AWS Firewall Manager는 AWS Organization 전체 계정에서 WAF 규칙, Shield Advanced, Security Groups, Network Firewall 등의 보안 규칙을 중앙에서 관리한다. 새 리소스와 새 계정에 자동으로 규칙이 적용되어 규정 준수를 보장한다.
+**(C) 정답** : AWS Firewall Manager는 AWS Organization 전체 계정에서 WAF 규칙, Shield Advanced, Security Groups, Network Firewall 등의 보안 규칙을 중앙에서 관리한다. 새 리소스와 새 계정에 자동으로 규칙이 적용되어 규정 준수를 보장한다. → [📖 AWS Firewall Manager](/section/24-security-encryption#aws-firewall-manager)
 
 **(D)** : SCP는 IAM 수준의 권한 제한이다. WAF/Shield/보안 그룹 규칙을 배포하는 것이 아니다.
 
 **핵심 개념:** AWS Firewall Manager
+
+**관련 노트:** [AWS Firewall Manager](/section/24-security-encryption#aws-firewall-manager), [WAF / Shield / Firewall Manager 방어 계층](/section/24-security-encryption#waf-shield-firewall-manager-방어-계층)

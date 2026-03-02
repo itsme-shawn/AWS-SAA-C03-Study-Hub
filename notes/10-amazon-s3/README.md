@@ -309,15 +309,17 @@ Amazon S3(Simple Storage Service)는 AWS의 핵심 객체 스토리지 서비스
 | C | S3 Glacier Instant Retrieval |
 | D | S3 Glacier Flexible Retrieval |
 
-**(A)** : S3 Standard는 자주 접근하는 데이터에 적합하다. 분기 1회 접근 패턴에는 스토리지 비용이 불필요하게 높다.
+**(A)** : S3 Standard는 자주 접근하는 데이터에 적합하다. 분기 1회 접근 패턴에는 스토리지 비용이 불필요하게 높다. → [📖 S3 Storage Classes 스토리지 클래스](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
-**(B)** : Standard-IA도 드문 접근 데이터에 사용 가능하지만 Glacier Instant Retrieval보다 스토리지 비용이 높다. 비용 최적화 측면에서 열등하다.
+**(B)** : Standard-IA도 드문 접근 데이터에 사용 가능하지만 Glacier Instant Retrieval보다 스토리지 비용이 높다. 비용 최적화 측면에서 열등하다. → [📖 S3 Storage Classes 스토리지 클래스](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
-**(C) 정답** : S3 Glacier Instant Retrieval은 분기에 한 번 정도 접근하는 데이터에 최적화된 스토리지 클래스로, 밀리초 단위의 검색 성능을 제공하면서도 Standard-IA보다 낮은 스토리지 비용을 제공한다. 최소 보관 기간은 90일이다.
+**(C) 정답** : S3 Glacier Instant Retrieval은 분기에 한 번 정도 접근하는 데이터에 최적화된 스토리지 클래스로, 밀리초 단위의 검색 성능을 제공하면서도 Standard-IA보다 낮은 스토리지 비용을 제공한다. 최소 보관 기간은 90일이다. → [📖 스토리지 클래스 비교표](/section/10-amazon-s3#스토리지-클래스-비교표)
 
-**(D)** : Glacier Flexible Retrieval은 스토리지 비용은 더 낮지만 검색에 최소 1분에서 최대 12시간이 소요된다. "밀리초 이내 검색" 요구사항을 충족하지 못한다.
+**(D)** : Glacier Flexible Retrieval은 스토리지 비용은 더 낮지만 검색에 최소 1분에서 최대 12시간이 소요된다. "밀리초 이내 검색" 요구사항을 충족하지 못한다. → [📖 스토리지 클래스 비교표](/section/10-amazon-s3#스토리지-클래스-비교표)
 
 **핵심 개념:** S3 Glacier Instant Retrieval
+
+**관련 노트:** [S3 Storage Classes 스토리지 클래스](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스), [스토리지 클래스 비교표](/section/10-amazon-s3#스토리지-클래스-비교표)
 
 ---
 
@@ -343,17 +345,19 @@ Amazon S3(Simple Storage Service)는 AWS의 핵심 객체 스토리지 서비스
 | D | 두 버킷이 같은 스토리지 클래스를 사용해야 한다 |
 | E | 서버 측 암호화가 활성화되어야 한다 |
 
-**(A) 정답** : 소스와 대상 버킷 모두 버저닝이 활성화되어야 한다. 이것은 S3 복제의 필수 전제 조건이다.
+**(A) 정답** : 소스와 대상 버킷 모두 버저닝이 활성화되어야 한다. 이것은 S3 복제의 필수 전제 조건이다. → [📖 S3 Versioning 버저닝](/section/10-amazon-s3#s3-versioning-버저닝)
 
-**(B)** : S3 복제는 서로 다른 AWS 계정 간에도 가능하다. 같은 계정일 필요가 없다.
+**(B)** : S3 복제는 서로 다른 AWS 계정 간에도 가능하다. 같은 계정일 필요가 없다. → [📖 S3 Replication 복제](/section/10-amazon-s3#s3-replication-복제)
 
-**(C) 정답** : S3 복제 서비스가 소스 버킷에서 읽고 대상 버킷에 쓸 수 있는 적절한 IAM 권한이 설정되어야 한다. 이것도 필수 전제 조건이다.
+**(C) 정답** : S3 복제 서비스가 소스 버킷에서 읽고 대상 버킷에 쓸 수 있는 적절한 IAM 권한이 설정되어야 한다. 이것도 필수 전제 조건이다. → [📖 S3 Replication 복제](/section/10-amazon-s3#s3-replication-복제)
 
-**(D)** : 소스와 대상 버킷이 서로 다른 스토리지 클래스를 사용해도 복제가 가능하다. 복제 규칙에서 대상의 스토리지 클래스를 별도로 지정할 수도 있다.
+**(D)** : 소스와 대상 버킷이 서로 다른 스토리지 클래스를 사용해도 복제가 가능하다. 복제 규칙에서 대상의 스토리지 클래스를 별도로 지정할 수도 있다. → [📖 S3 Storage Classes 스토리지 클래스](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
-**(E)** : 서버 측 암호화는 복제의 필수 조건이 아니다. 암호화되지 않은 객체도 복제할 수 있다.
+**(E)** : 서버 측 암호화는 복제의 필수 조건이 아니다. 암호화되지 않은 객체도 복제할 수 있다. → [📖 S3 객체 암호화 - 4가지 방법](/section/12-s3-security#s3-객체-암호화-4가지-방법)
 
 **핵심 개념:** S3 Replication Prerequisites
+
+**관련 노트:** [S3 Replication 복제](/section/10-amazon-s3#s3-replication-복제), [S3 Versioning 버저닝](/section/10-amazon-s3#s3-versioning-버저닝)
 
 ---
 
@@ -377,15 +381,17 @@ Amazon S3(Simple Storage Service)는 AWS의 핵심 객체 스토리지 서비스
 | C | S3 버킷이 올바른 리전에 있지 않다 |
 | D | 객체가 SSE-KMS로 암호화되어 있다 |
 
-**(A)** : S3 버저닝은 정적 웹사이트 호스팅의 필수 요건이 아니며 403 에러와 무관하다. 버저닝 미활성화는 파일 버전 관리에만 영향을 준다.
+**(A)** : S3 버저닝은 정적 웹사이트 호스팅의 필수 요건이 아니며 403 에러와 무관하다. 버저닝 미활성화는 파일 버전 관리에만 영향을 준다. → [📖 S3 Versioning 버저닝](/section/10-amazon-s3#s3-versioning-버저닝)
 
-**(B) 정답** : S3 정적 웹사이트 호스팅에서 403 Forbidden 에러가 발생하는 가장 흔한 원인은 버킷 정책에서 공개 읽기(s3:GetObject)를 허용하지 않았거나, Block Public Access 설정이 활성화된 경우이다. 정적 웹사이트는 익명 사용자의 읽기 접근이 필요하므로 버킷 정책에서 Principal을 "*"로 설정하여 공개 읽기를 허용해야 한다.
+**(B) 정답** : S3 정적 웹사이트 호스팅에서 403 Forbidden 에러가 발생하는 가장 흔한 원인은 버킷 정책에서 공개 읽기(s3:GetObject)를 허용하지 않았거나, Block Public Access 설정이 활성화된 경우이다. 정적 웹사이트는 익명 사용자의 읽기 접근이 필요하므로 버킷 정책에서 Principal을 "*"로 설정하여 공개 읽기를 허용해야 한다. → [📖 S3 Bucket Policy](/section/10-amazon-s3#s3-bucket-policy)
 
 **(C)** : S3 버킷의 리전은 웹사이트 URL에 반영된다. 잘못된 리전 접근이라면 다른 에러(예: 404)가 발생하며 403 Forbidden의 주요 원인이 아니다.
 
-**(D)** : SSE-KMS 암호화가 특정 상황에서 403을 유발할 수 있지만, 정적 웹사이트에서 가장 일반적인 원인은 버킷 정책 미설정이다. 또한 정적 웹사이트는 보통 공개 객체를 사용하므로 SSE-KMS가 적용될 가능성이 낮다.
+**(D)** : SSE-KMS 암호화가 특정 상황에서 403을 유발할 수 있지만, 정적 웹사이트에서 가장 일반적인 원인은 버킷 정책 미설정이다. 또한 정적 웹사이트는 보통 공개 객체를 사용하므로 SSE-KMS가 적용될 가능성이 낮다. → [📖 S3 객체 암호화 - 4가지 방법](/section/12-s3-security#s3-객체-암호화-4가지-방법)
 
 **핵심 개념:** S3 Static Website Hosting
+
+**관련 노트:** [S3 정적 웹사이트 호스팅](/section/10-amazon-s3#s3-정적-웹사이트-호스팅), [S3 Bucket Policy](/section/10-amazon-s3#s3-bucket-policy)
 
 ---
 
@@ -409,15 +415,17 @@ Amazon S3(Simple Storage Service)는 AWS의 핵심 객체 스토리지 서비스
 | C | S3 Intelligent-Tiering |
 | D | S3 Glacier Flexible Retrieval |
 
-**(A)** : Standard-IA는 드문 접근 데이터용이지만, 처음부터 이 클래스에 저장하거나 Lifecycle Rule을 수동으로 설정해야 한다. 접근 패턴이 예측 불가능하면 비용이 최적화되지 않을 수 있다.
+**(A)** : Standard-IA는 드문 접근 데이터용이지만, 처음부터 이 클래스에 저장하거나 Lifecycle Rule을 수동으로 설정해야 한다. 접근 패턴이 예측 불가능하면 비용이 최적화되지 않을 수 있다. → [📖 S3 Storage Classes 스토리지 클래스](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
-**(B)** : One Zone-IA도 수동으로 Lifecycle Rule을 설정해야 하며, 단일 AZ에만 저장되어 가용성이 낮다. 예측 불가능한 접근 패턴에 자동으로 대응하지 못한다.
+**(B)** : One Zone-IA도 수동으로 Lifecycle Rule을 설정해야 하며, 단일 AZ에만 저장되어 가용성이 낮다. 예측 불가능한 접근 패턴에 자동으로 대응하지 못한다. → [📖 S3 Storage Classes 스토리지 클래스](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
-**(C) 정답** : S3 Intelligent-Tiering은 객체의 접근 패턴을 자동으로 모니터링하고 접근 빈도에 따라 Frequent Access, Infrequent Access(30일 미접근), Archive Instant Access(90일 미접근) 등 적절한 계층으로 자동 이동한다. 예측 불가능한 접근 패턴에 가장 적합하며, 검색 비용 없이 소액의 월별 모니터링 비용만 부과된다.
+**(C) 정답** : S3 Intelligent-Tiering은 객체의 접근 패턴을 자동으로 모니터링하고 접근 빈도에 따라 Frequent Access, Infrequent Access(30일 미접근), Archive Instant Access(90일 미접근) 등 적절한 계층으로 자동 이동한다. 예측 불가능한 접근 패턴에 가장 적합하며, 검색 비용 없이 소액의 월별 모니터링 비용만 부과된다. → [📖 스토리지 클래스 비교표](/section/10-amazon-s3#스토리지-클래스-비교표)
 
-**(D)** : Glacier Flexible Retrieval은 검색 시간이 1분에서 12시간으로 길어, 빠른 접근이 필요한 경우에는 부적합하다. 또한 자동 계층 이동 기능이 없다.
+**(D)** : Glacier Flexible Retrieval은 검색 시간이 1분에서 12시간으로 길어, 빠른 접근이 필요한 경우에는 부적합하다. 또한 자동 계층 이동 기능이 없다. → [📖 스토리지 클래스 비교표](/section/10-amazon-s3#스토리지-클래스-비교표)
 
 **핵심 개념:** S3 Intelligent-Tiering
+
+**관련 노트:** [S3 Storage Classes 스토리지 클래스](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스), [스토리지 클래스 비교표](/section/10-amazon-s3#스토리지-클래스-비교표)
 
 ---
 
@@ -441,15 +449,17 @@ Amazon S3(Simple Storage Service)는 AWS의 핵심 객체 스토리지 서비스
 | C | S3 Transfer Acceleration |
 | D | AWS Snowball |
 
-**(A)** : S3의 단일 PUT 작업은 최대 5GB까지만 지원한다. 10GB 파일은 단일 PUT으로 업로드할 수 없다.
+**(A)** : S3의 단일 PUT 작업은 최대 5GB까지만 지원한다. 10GB 파일은 단일 PUT으로 업로드할 수 없다. → [📖 S3 객체 Object](/section/10-amazon-s3#s3-객체-object)
 
-**(B) 정답** : Multi-Part Upload는 5GB 초과 시 필수이며 100MB 초과 시에도 권장된다. 파일을 여러 부분으로 나누어 병렬로 업로드하므로 전송 속도도 향상되고, 일부 파트 실패 시 해당 파트만 재전송할 수 있어 안정성도 높다.
+**(B) 정답** : Multi-Part Upload는 5GB 초과 시 필수이며 100MB 초과 시에도 권장된다. 파일을 여러 부분으로 나누어 병렬로 업로드하므로 전송 속도도 향상되고, 일부 파트 실패 시 해당 파트만 재전송할 수 있어 안정성도 높다. → [📖 S3 Performance 최적화](/section/11-s3-advanced#s3-performance-최적화)
 
-**(C)** : S3 Transfer Acceleration은 Edge Location을 경유하여 장거리 전송 속도를 높이는 기능이다. 10GB 파일 업로드 시 속도 향상에 도움이 되지만, 업로드 방법의 필수 요건은 아니다.
+**(C)** : S3 Transfer Acceleration은 Edge Location을 경유하여 장거리 전송 속도를 높이는 기능이다. 10GB 파일 업로드 시 속도 향상에 도움이 되지만, 업로드 방법의 필수 요건은 아니다. → [📖 S3 Performance 최적화](/section/11-s3-advanced#s3-performance-최적화)
 
-**(D)** : AWS Snowball은 테라바이트/페타바이트 규모의 대량 데이터 물리적 마이그레이션용이다. 10GB 파일 하나를 업로드하는 데는 과도한 방법이다.
+**(D)** : AWS Snowball은 테라바이트/페타바이트 규모의 대량 데이터 물리적 마이그레이션용이다. 10GB 파일 하나를 업로드하는 데는 과도한 방법이다. → [📖 AWS Snowball Snow Family](/section/14-storage-extras#aws-snowball-snow-family)
 
 **핵심 개념:** Multi-Part Upload
+
+**관련 노트:** [S3 Performance 최적화](/section/11-s3-advanced#s3-performance-최적화), [S3 Baseline Performance 기본 성능](/section/11-s3-advanced#s3-baseline-performance-기본-성능)
 
 ---
 
@@ -473,15 +483,17 @@ Amazon S3(Simple Storage Service)는 AWS의 핵심 객체 스토리지 서비스
 | C | Bucket A에만 |
 | D | 세 버킷 모두, 단 서로 다른 버전 ID를 가짐 |
 
-**(A)** : S3 복제는 체이닝을 지원하지 않으므로 Bucket A의 객체가 Bucket C까지 전달되지 않는다. A는 오답이다.
+**(A)** : S3 복제는 체이닝을 지원하지 않으므로 Bucket A의 객체가 Bucket C까지 전달되지 않는다. A는 오답이다. → [📖 S3 Replication 복제](/section/10-amazon-s3#s3-replication-복제)
 
-**(B) 정답** : S3 복제는 체이닝(chaining)을 지원하지 않는다. Bucket A에서 복제된 객체는 Bucket B에 도착하지만, Bucket B의 복제 규칙이 있어도 Bucket C로 다시 복제되지 않는다. 복제된 객체는 대상 버킷에서 새 복제 이벤트를 트리거하지 않도록 설계되어 있다.
+**(B) 정답** : S3 복제는 체이닝(chaining)을 지원하지 않는다. Bucket A에서 복제된 객체는 Bucket B에 도착하지만, Bucket B의 복제 규칙이 있어도 Bucket C로 다시 복제되지 않는다. 복제된 객체는 대상 버킷에서 새 복제 이벤트를 트리거하지 않도록 설계되어 있다. → [📖 S3 Replication 복제](/section/10-amazon-s3#s3-replication-복제)
 
-**(C)** : 복제 규칙이 설정되어 있으므로 객체는 Bucket B로도 복제된다. Bucket A에만 있다는 것은 오답이다.
+**(C)** : 복제 규칙이 설정되어 있으므로 객체는 Bucket B로도 복제된다. Bucket A에만 있다는 것은 오답이다. → [📖 S3 Replication 복제](/section/10-amazon-s3#s3-replication-복제)
 
-**(D)** : 복제 체이닝이 되지 않으므로 세 버킷 모두에 객체가 존재하지 않는다. 버전 ID가 달라지더라도 Bucket C에는 복제되지 않는다.
+**(D)** : 복제 체이닝이 되지 않으므로 세 버킷 모두에 객체가 존재하지 않는다. 버전 ID가 달라지더라도 Bucket C에는 복제되지 않는다. → [📖 S3 Replication 복제](/section/10-amazon-s3#s3-replication-복제)
 
 **핵심 개념:** S3 Replication Chaining
+
+**관련 노트:** [S3 Replication 복제](/section/10-amazon-s3#s3-replication-복제)
 
 ---
 
@@ -505,15 +517,17 @@ Amazon S3(Simple Storage Service)는 AWS의 핵심 객체 스토리지 서비스
 | C | S3 Glacier Deep Archive |
 | D | S3 Standard-IA |
 
-**(A)** : Glacier Instant Retrieval은 밀리초 단위 검색을 제공하지만 스토리지 비용이 Deep Archive보다 높다. 검색이 매우 드문 경우 불필요한 비용이 발생한다.
+**(A)** : Glacier Instant Retrieval은 밀리초 단위 검색을 제공하지만 스토리지 비용이 Deep Archive보다 높다. 검색이 매우 드문 경우 불필요한 비용이 발생한다. → [📖 스토리지 클래스 비교표](/section/10-amazon-s3#스토리지-클래스-비교표)
 
-**(B)** : Glacier Flexible Retrieval도 Deep Archive보다 스토리지 비용이 높다. 검색 속도 옵션이 더 빠르지만(1~12시간), 48시간 허용 요구사항에서는 굳이 이 클래스를 사용할 이유가 없다.
+**(B)** : Glacier Flexible Retrieval도 Deep Archive보다 스토리지 비용이 높다. 검색 속도 옵션이 더 빠르지만(1~12시간), 48시간 허용 요구사항에서는 굳이 이 클래스를 사용할 이유가 없다. → [📖 스토리지 클래스 비교표](/section/10-amazon-s3#스토리지-클래스-비교표)
 
-**(C) 정답** : S3 Glacier Deep Archive는 모든 S3 스토리지 클래스 중 가장 저렴한 비용을 제공하며 장기 아카이브에 최적화되어 있다. Standard(12시간)와 Bulk(48시간) 검색을 제공하므로 48시간 대기 허용 요구사항을 충족하고, 최소 보관 기간 180일로 7년 장기 보관에 적합하다.
+**(C) 정답** : S3 Glacier Deep Archive는 모든 S3 스토리지 클래스 중 가장 저렴한 비용을 제공하며 장기 아카이브에 최적화되어 있다. Standard(12시간)와 Bulk(48시간) 검색을 제공하므로 48시간 대기 허용 요구사항을 충족하고, 최소 보관 기간 180일로 7년 장기 보관에 적합하다. → [📖 스토리지 클래스 비교표](/section/10-amazon-s3#스토리지-클래스-비교표)
 
-**(D)** : Standard-IA는 즉시 접근이 가능한 스토리지로, 스토리지 비용이 Glacier 클래스보다 훨씬 높다. 7년 장기 아카이브 데이터에는 비용이 과도하게 든다.
+**(D)** : Standard-IA는 즉시 접근이 가능한 스토리지로, 스토리지 비용이 Glacier 클래스보다 훨씬 높다. 7년 장기 아카이브 데이터에는 비용이 과도하게 든다. → [📖 S3 Storage Classes 스토리지 클래스](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스)
 
 **핵심 개념:** S3 Glacier Deep Archive
+
+**관련 노트:** [S3 Storage Classes 스토리지 클래스](/section/10-amazon-s3#s3-storage-classes-스토리지-클래스), [스토리지 클래스 비교표](/section/10-amazon-s3#스토리지-클래스-비교표)
 
 ---
 
@@ -537,12 +551,14 @@ Amazon S3(Simple Storage Service)는 AWS의 핵심 객체 스토리지 서비스
 | C | 버저닝을 일시 중지하면 이전 버전이 모두 삭제된다 |
 | D | 버저닝은 모든 새 버킷에 기본적으로 활성화되어 있다 |
 
-**(A)** : 버저닝은 객체 수준이 아닌 버킷 수준에서 활성화/비활성화한다. 특정 객체에만 선택적으로 적용하는 것은 불가능하다.
+**(A)** : 버저닝은 객체 수준이 아닌 버킷 수준에서 활성화/비활성화한다. 특정 객체에만 선택적으로 적용하는 것은 불가능하다. → [📖 S3 Versioning 버저닝](/section/10-amazon-s3#s3-versioning-버저닝)
 
-**(B) 정답** : 버저닝이 활성화되기 전에 이미 버킷에 업로드되어 있던 파일은 버전 ID가 "null"로 표시된다. 이후 같은 키로 새 파일을 업로드하면 새로운 버전 ID가 부여되지만, 기존 파일은 "null" 버전으로 유지된다.
+**(B) 정답** : 버저닝이 활성화되기 전에 이미 버킷에 업로드되어 있던 파일은 버전 ID가 "null"로 표시된다. 이후 같은 키로 새 파일을 업로드하면 새로운 버전 ID가 부여되지만, 기존 파일은 "null" 버전으로 유지된다. → [📖 S3 Versioning 버저닝](/section/10-amazon-s3#s3-versioning-버저닝)
 
-**(C)** : 버저닝을 일시 중지(suspend)하면 새로운 버전 생성이 중단되지만, 이미 존재하는 이전 버전들은 삭제되지 않고 그대로 보존된다.
+**(C)** : 버저닝을 일시 중지(suspend)하면 새로운 버전 생성이 중단되지만, 이미 존재하는 이전 버전들은 삭제되지 않고 그대로 보존된다. → [📖 S3 Versioning 버저닝](/section/10-amazon-s3#s3-versioning-버저닝)
 
-**(D)** : S3 버킷은 기본적으로 버저닝이 비활성화된 상태로 생성된다. 사용자가 명시적으로 활성화해야 버저닝이 시작된다.
+**(D)** : S3 버킷은 기본적으로 버저닝이 비활성화된 상태로 생성된다. 사용자가 명시적으로 활성화해야 버저닝이 시작된다. → [📖 S3 Versioning 버저닝](/section/10-amazon-s3#s3-versioning-버저닝)
 
 **핵심 개념:** S3 Versioning
+
+**관련 노트:** [S3 Versioning 버저닝](/section/10-amazon-s3#s3-versioning-버저닝)

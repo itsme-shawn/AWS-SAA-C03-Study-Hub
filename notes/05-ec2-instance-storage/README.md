@@ -326,13 +326,15 @@ EBS vs EFS vs Instance Store 아키텍처 비교
 
 **(A)** : EBS Multi-Attach는 io1/io2 볼륨 타입에서만 지원되며 같은 AZ 내에서만 가능하다. Multi-AZ 공유 파일 시스템 요구사항을 충족하지 못한다.
 
-**(B) 정답** : Amazon EFS는 Multi-AZ에서 여러 EC2 인스턴스에 동시 마운트 가능한 관리형 NFS이며, Linux 인스턴스에서 사용 가능하다. Multi-AZ 공유 파일 시스템 요구사항에 정확히 부합한다.
+**(B) 정답** : Amazon EFS는 Multi-AZ에서 여러 EC2 인스턴스에 동시 마운트 가능한 관리형 NFS이며, Linux 인스턴스에서 사용 가능하다. Multi-AZ 공유 파일 시스템 요구사항에 정확히 부합한다. → [📖 Amazon EFS Elastic File System](/section/05-ec2-instance-storage#amazon-efs-elastic-file-system)
 
-**(C)** : S3는 객체 스토리지로 POSIX 파일 시스템이 아니다. 일반적인 파일 시스템으로 마운트할 수 없으며 EC2에서 직접 마운트하여 사용하는 공유 파일 시스템으로는 부적합하다.
+**(C)** : S3는 객체 스토리지로 POSIX 파일 시스템이 아니다. 일반적인 파일 시스템으로 마운트할 수 없으며 EC2에서 직접 마운트하여 사용하는 공유 파일 시스템으로는 부적합하다. → [📖 EBS vs EFS vs Instance Store 비교 시험 핵심!](/section/05-ec2-instance-storage#ebs-vs-efs-vs-instance-store-비교-시험-핵심)
 
 **(D)** : Instance Store는 인스턴스에 물리적으로 연결된 로컬 스토리지이다. 다른 인스턴스와 공유가 불가능하여 공유 파일 시스템 요구사항을 충족하지 못한다.
 
 **핵심 개념:** Amazon EFS vs EBS
+
+**관련 노트:** [Amazon EFS Elastic File System](/section/05-ec2-instance-storage#amazon-efs-elastic-file-system), [EBS vs EFS vs Instance Store 비교 시험 핵심!](/section/05-ec2-instance-storage#ebs-vs-efs-vs-instance-store-비교-시험-핵심)
 
 ### Q2. An application requires more than 64,000 IOPS with sub-millisecond latency. Which EBS volume type should be used?
 **Options:**
@@ -354,15 +356,17 @@ EBS vs EFS vs Instance Store 아키텍처 비교
 | C | io2 Block Express |
 | D | st1 |
 
-**(A)** : gp3는 범용 SSD로 최대 16,000 IOPS까지만 지원한다. 64,000 IOPS 요구사항에 크게 미달한다.
+**(A)** : gp3는 범용 SSD로 최대 16,000 IOPS까지만 지원한다. 64,000 IOPS 요구사항에 크게 미달한다. → [📖 EBS Volume Types 6가지](/section/05-ec2-instance-storage#ebs-volume-types-6가지)
 
 **(B)** : io1은 Nitro 인스턴스에서 최대 64,000 IOPS까지 지원하지만, "64,000 IOPS 이상"이라는 요구사항을 충족하지 못한다.
 
-**(C) 정답** : io2 Block Express는 최대 256,000 IOPS와 서브밀리초 지연을 제공하는 최고 성능 EBS 볼륨이다. 두 요구사항(64,000 IOPS 초과 + 서브밀리초 지연)을 모두 충족한다.
+**(C) 정답** : io2 Block Express는 최대 256,000 IOPS와 서브밀리초 지연을 제공하는 최고 성능 EBS 볼륨이다. 두 요구사항(64,000 IOPS 초과 + 서브밀리초 지연)을 모두 충족한다. → [📖 EBS Volume Types 6가지](/section/05-ec2-instance-storage#ebs-volume-types-6가지)
 
 **(D)** : st1은 HDD 기반으로 최대 500 IOPS에 불과하며 처리량 위주의 볼륨이다. 고성능 IOPS 요구사항에 전혀 부적합하다.
 
 **핵심 개념:** EBS Volume Types - io2 Block Express
+
+**관련 노트:** [EBS Volume Types 6가지](/section/05-ec2-instance-storage#ebs-volume-types-6가지)
 
 ### Q3. A Solutions Architect needs to reduce storage costs for EBS snapshots that are rarely accessed but must be retained for compliance. What should they do?
 **Options:**
@@ -386,13 +390,15 @@ EBS vs EFS vs Instance Store 아키텍처 비교
 
 **(A)** : 스냅샷을 삭제하면 규정 준수 요건에 위배된다. 또한 원본 데이터가 변경되었을 수 있어 동일한 스냅샷을 재생성하는 것도 불가능하다.
 
-**(B) 정답** : EBS Snapshot Archive는 아카이브 티어로 스냅샷을 이동하여 75% 비용을 절감한다. 복원에 24~72시간이 소요되지만, 거의 접근하지 않는 규정 준수용 스냅샷에 최적이다.
+**(B) 정답** : EBS Snapshot Archive는 아카이브 티어로 스냅샷을 이동하여 75% 비용을 절감한다. 복원에 24~72시간이 소요되지만, 거의 접근하지 않는 규정 준수용 스냅샷에 최적이다. → [📖 EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots)
 
 **(C)** : Fast Snapshot Restore는 첫 사용 시 지연을 제거하는 프리미엄 기능으로 오히려 비용이 크게 증가한다. 비용 절감이 아닌 반대 방향이다.
 
 **(D)** : 스냅샷을 HDD 볼륨으로 복원하면 추가 스토리지 비용이 발생한다. 비용 절감이 아니며 거의 접근하지 않는 데이터를 활성 볼륨으로 복원할 필요도 없다.
 
 **핵심 개념:** EBS Snapshot Archive
+
+**관련 노트:** [EBS Snapshots](/section/05-ec2-instance-storage#ebs-snapshots)
 
 ### Q4. Which EBS volume type has IOPS that scale automatically with volume size?
 **Options:**
@@ -416,13 +422,15 @@ EBS vs EFS vs Instance Store 아키텍처 비교
 
 **(A)** : gp3는 기본 3,000 IOPS를 제공하고 IOPS를 크기와 독립적으로 수동 설정할 수 있다. 크기에 따라 IOPS가 자동으로 증가하지 않는다.
 
-**(B) 정답** : gp2는 볼륨 크기에 비례하여 IOPS가 자동으로 증가한다(3 IOPS/GiB). 5,334 GiB에서 최대 16,000 IOPS에 도달하며, 크기와 IOPS가 연동된다.
+**(B) 정답** : gp2는 볼륨 크기에 비례하여 IOPS가 자동으로 증가한다(3 IOPS/GiB). 5,334 GiB에서 최대 16,000 IOPS에 도달하며, 크기와 IOPS가 연동된다. → [📖 EBS Volume Types 6가지](/section/05-ec2-instance-storage#ebs-volume-types-6가지)
 
 **(C)** : io1은 IOPS를 사용자가 직접 프로비저닝하는 방식으로 크기와 자동 연동되지 않는다. 독립적으로 IOPS를 설정할 수 있는 것이 특징이다.
 
 **(D)** : st1은 HDD 기반으로 IOPS 중심이 아닌 처리량(throughput) 중심의 볼륨이다. 빅데이터, 로그 처리 등 대용량 순차 읽기·쓰기에 적합하다.
 
 **핵심 개념:** gp2 vs gp3
+
+**관련 노트:** [EBS Volume Types 6가지](/section/05-ec2-instance-storage#ebs-volume-types-6가지)
 
 ### Q5. A company wants to encrypt an existing unencrypted EBS volume. What is the correct procedure?
 **Options:**
@@ -446,13 +454,15 @@ EBS vs EFS vs Instance Store 아키텍처 비교
 
 **(A)** : 기존 EBS 볼륨에 직접 암호화를 활성화하는 기능은 EBS에서 지원하지 않는다. 반드시 스냅샷을 통한 복사 방식을 사용해야 한다.
 
-**(B) 정답** : 올바른 절차는 스냅샷 생성 → 암호화를 활성화하여 스냅샷 복사 → 암호화된 스냅샷에서 새 볼륨 생성 → 인스턴스에 연결이다. AWS 공식 권장 방법이다.
+**(B) 정답** : 올바른 절차는 스냅샷 생성 → 암호화를 활성화하여 스냅샷 복사 → 암호화된 스냅샷에서 새 볼륨 생성 → 인스턴스에 연결이다. AWS 공식 권장 방법이다. → [📖 EBS Encryption](/section/05-ec2-instance-storage#ebs-encryption)
 
 **(C)** : 새 암호화 볼륨에 데이터를 수동으로 복사하는 것은 가능하지만 비효율적이다. 대용량 데이터의 경우 시간이 많이 소요되고 운영 부담이 크다.
 
 **(D)** : KMS로 기존 EBS 볼륨을 현재 위치에서 직접 암호화하는 것은 지원하지 않는 기능이다. KMS는 암호화 키 관리에 사용되지 볼륨 자체를 직접 암호화하지 않는다.
 
 **핵심 개념:** EBS Encryption
+
+**관련 노트:** [EBS Encryption](/section/05-ec2-instance-storage#ebs-encryption)
 
 ### Q6. Which storage option provides the HIGHEST I/O performance for an EC2 instance?
 **Options:**
@@ -478,11 +488,13 @@ EBS vs EFS vs Instance Store 아키텍처 비교
 
 **(B)** : io2 Block Express는 EBS 중 최고 성능이지만 여전히 네트워크 스토리지이다. 물리적으로 연결된 Instance Store의 I/O 속도에는 미치지 못한다.
 
-**(C) 정답** : EC2 Instance Store는 물리적으로 인스턴스에 연결된 로컬 디스크로, 네트워크 오버헤드 없이 최고의 I/O 성능을 제공한다. 단, 인스턴스 중지 시 데이터가 소멸되므로 임시 데이터(캐시, 버퍼)에만 적합하다.
+**(C) 정답** : EC2 Instance Store는 물리적으로 인스턴스에 연결된 로컬 디스크로, 네트워크 오버헤드 없이 최고의 I/O 성능을 제공한다. 단, 인스턴스 중지 시 데이터가 소멸되므로 임시 데이터(캐시, 버퍼)에만 적합하다. → [📖 EC2 Instance Store](/section/05-ec2-instance-storage#ec2-instance-store)
 
 **(D)** : EFS Max I/O는 네트워크 파일 시스템으로 처리량은 높지만 지연 시간이 더 길다. 단일 인스턴스의 최고 I/O 성능을 제공하지 않는다.
 
 **핵심 개념:** EC2 Instance Store
+
+**관련 노트:** [EC2 Instance Store](/section/05-ec2-instance-storage#ec2-instance-store), [EBS vs EFS vs Instance Store 비교 시험 핵심!](/section/05-ec2-instance-storage#ebs-vs-efs-vs-instance-store-비교-시험-핵심)
 
 ### Q7. A company runs a clustered Linux application (Teradata) that requires multiple EC2 instances to simultaneously read and write to the same storage volume in the same Availability Zone. Which solution should they use?
 **Options:**
@@ -508,11 +520,13 @@ EBS vs EFS vs Instance Store 아키텍처 비교
 
 **(B)** : gp3는 Multi-Attach를 지원하지 않는 볼륨 타입이다. Multi-Attach는 io1/io2 패밀리에서만 지원된다.
 
-**(C) 정답** : EBS Multi-Attach는 io1/io2 패밀리에서만 지원되며, 같은 AZ 내 최대 16개 EC2 인스턴스에 동시 연결할 수 있다. Teradata와 같은 클러스터 Linux 앱에 적합하다.
+**(C) 정답** : EBS Multi-Attach는 io1/io2 패밀리에서만 지원되며, 같은 AZ 내 최대 16개 EC2 인스턴스에 동시 연결할 수 있다. Teradata와 같은 클러스터 Linux 앱에 적합하다. → [📖 EBS Multi-Attach io1/io2](/section/05-ec2-instance-storage#ebs-multiattach-io1io2)
 
 **(D)** : S3는 객체 스토리지로 블록 수준의 동시 읽기/쓰기에는 적합하지 않다. POSIX 파일 시스템을 요구하는 클러스터 애플리케이션에는 부적합하다.
 
 **핵심 개념:** EBS Multi-Attach - io1/io2
+
+**관련 노트:** [EBS Multi-Attach io1/io2](/section/05-ec2-instance-storage#ebs-multiattach-io1io2)
 
 ### Q8. An EFS file system has files that are accessed frequently for the first 30 days but rarely after that. How can the company optimize storage costs?
 **Options:**
@@ -536,10 +550,12 @@ EBS vs EFS vs Instance Store 아키텍처 비교
 
 **(A)** : S3로 수동 이동은 운영 부담이 크고 자동화되지 않는다. EFS에서 S3로 직접 이동하는 기본 메커니즘도 없어 추가 작업이 필요하다.
 
-**(B) 정답** : EFS Lifecycle Policy를 설정하면 지정된 기간(예: 30일) 동안 접근되지 않은 파일을 자동으로 EFS-IA 계층으로 이동하여 저장 비용을 절감한다. 자동화되고 투명하게 처리된다.
+**(B) 정답** : EFS Lifecycle Policy를 설정하면 지정된 기간(예: 30일) 동안 접근되지 않은 파일을 자동으로 EFS-IA 계층으로 이동하여 저장 비용을 절감한다. 자동화되고 투명하게 처리된다. → [📖 Amazon EFS Elastic File System](/section/05-ec2-instance-storage#amazon-efs-elastic-file-system)
 
 **(C)** : 별도 EFS 파일 시스템 생성은 복잡하고 비효율적이다. 파일 시스템 간 이동을 수동으로 관리해야 하며 운영 부담이 크다.
 
 **(D)** : EBS 스냅샷은 EFS와 전혀 다른 스토리지 서비스이다. EFS 파일을 EBS 스냅샷으로 아카이브하는 것은 아키텍처적으로 맞지 않는 방법이다.
 
 **핵심 개념:** EFS Storage Classes & Lifecycle Policy
+
+**관련 노트:** [Amazon EFS Elastic File System](/section/05-ec2-instance-storage#amazon-efs-elastic-file-system)

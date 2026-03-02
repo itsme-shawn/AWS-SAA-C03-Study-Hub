@@ -315,15 +315,17 @@ AWS의 고급 자격 증명 및 접근 관리를 다룬다. AWS Organizations, S
 | C | us-west-1의 EC2 인스턴스를 탐지하는 AWS Config 규칙 사용 |
 | D | 개발 계정의 모든 사용자에 대해 Permission Boundary 생성 |
 
-**(A)** : 개별 IAM 정책은 모든 개발 계정에서 각각 관리해야 한다. 확장성이 떨어지고 누락될 위험이 있다.
+**(A)** : 개별 IAM 정책은 모든 개발 계정에서 각각 관리해야 한다. 확장성이 떨어지고 누락될 위험이 있다. → [📖 IAM Conditions](/section/23-advanced-identity#iam-conditions)
 
-**(B) 정답** : SCP를 Development OU에 적용하면 해당 OU 내 모든 계정의 모든 사용자/역할에게 us-west-1에서의 EC2 작업을 일괄 차단할 수 있다.
+**(B) 정답** : SCP를 Development OU에 적용하면 해당 OU 내 모든 계정의 모든 사용자/역할에게 us-west-1에서의 EC2 작업을 일괄 차단할 수 있다. → [📖 Service Control Policies SCP](/section/23-advanced-identity#service-control-policies-scp)
 
-**(C)** : AWS Config은 사후 탐지만 가능하다. 리소스 생성을 차단하지 않는다.
+**(C)** : AWS Config은 사후 탐지만 가능하다. 리소스 생성을 차단하지 않는다. → [📖 AWS Config](/section/22-monitoring-audit-performance#aws-config)
 
-**(D)** : Permission Boundary는 개별 사용자/역할에 하나씩 적용해야 한다. OU 수준의 일괄 제한에 비해 관리가 복잡하다.
+**(D)** : Permission Boundary는 개별 사용자/역할에 하나씩 적용해야 한다. OU 수준의 일괄 제한에 비해 관리가 복잡하다. → [📖 IAM Permission Boundaries](/section/23-advanced-identity#iam-permission-boundaries)
 
 **핵심 개념:** Service Control Policies (SCP)
+
+**관련 노트:** [Service Control Policies SCP](/section/23-advanced-identity#service-control-policies-scp), [AWS Organizations](/section/23-advanced-identity#aws-organizations)
 
 ### Q2. A user in Account A needs to scan a DynamoDB table in Account A and write the results to an S3 bucket in Account B. The user needs to maintain their DynamoDB permissions while accessing the S3 bucket. What is the BEST approach?
 **Options:**
@@ -345,15 +347,17 @@ AWS의 고급 자격 증명 및 접근 관리를 다룬다. AWS Organizations, S
 | C | Account B에 크로스 계정 IAM 사용자 생성 |
 | D | AWS Organizations 통합 접근 사용 |
 
-**(A)** : IAM Role을 assume하면 원래 권한을 포기하게 된다. Account A의 DynamoDB에 동시에 접근할 수 없어 요구사항을 충족하지 못한다.
+**(A)** : IAM Role을 assume하면 원래 권한을 포기하게 된다. Account A의 DynamoDB에 동시에 접근할 수 없어 요구사항을 충족하지 못한다. → [📖 IAM Roles vs Resource-Based Policies](/section/23-advanced-identity#iam-roles-vs-resourcebased-policies)
 
-**(B) 정답** : S3 버킷의 resource-based policy(버킷 정책)를 사용하여 Account A 사용자에게 접근을 허용하면 사용자가 원래 권한(Account A DynamoDB 접근)을 유지하면서 Account B의 S3에 접근할 수 있다.
+**(B) 정답** : S3 버킷의 resource-based policy(버킷 정책)를 사용하여 Account A 사용자에게 접근을 허용하면 사용자가 원래 권한(Account A DynamoDB 접근)을 유지하면서 Account B의 S3에 접근할 수 있다. → [📖 IAM Roles vs Resource-Based Policies](/section/23-advanced-identity#iam-roles-vs-resourcebased-policies)
 
 **(C)** : 크로스 계정 IAM 사용자라는 개념은 존재하지 않는다. IAM 사용자는 해당 계정 내에서만 생성된다.
 
 **(D)** : AWS Organizations의 통합 접근(consolidated access)이라는 기능은 존재하지 않는다.
 
 **핵심 개념:** IAM Roles vs Resource-Based Policies
+
+**관련 노트:** [IAM Roles vs Resource-Based Policies](/section/23-advanced-identity#iam-roles-vs-resourcebased-policies)
 
 ### Q3. A company wants to implement single sign-on for their employees to access multiple AWS accounts in their AWS Organization and third-party SaaS applications like Salesforce. Which service should they use?
 **Options:**
@@ -379,11 +383,13 @@ AWS의 고급 자격 증명 및 접근 관리를 다룬다. AWS Organizations, S
 
 **(B)** : 크로스 계정 IAM 역할은 개별 역할 전환이 필요하다. SSO 경험을 제공하지 않는다.
 
-**(C) 정답** : AWS IAM Identity Center(AWS SSO 후속)는 AWS Organizations의 여러 계정과 Salesforce 같은 SAML 2.0 비즈니스 앱에 대한 단일 로그인을 제공한다. Permission Sets로 각 계정에 대한 접근 권한을 중앙에서 관리할 수 있다.
+**(C) 정답** : AWS IAM Identity Center(AWS SSO 후속)는 AWS Organizations의 여러 계정과 Salesforce 같은 SAML 2.0 비즈니스 앱에 대한 단일 로그인을 제공한다. Permission Sets로 각 계정에 대한 접근 권한을 중앙에서 관리할 수 있다. → [📖 AWS IAM Identity Center AWS SSO 후속](/section/23-advanced-identity#aws-iam-identity-center-aws-sso-후속)
 
-**(D)** : Directory Service는 Active Directory 관리용이다. SSO 서비스가 아니다.
+**(D)** : Directory Service는 Active Directory 관리용이다. SSO 서비스가 아니다. → [📖 AWS Directory Services](/section/23-advanced-identity#aws-directory-services)
 
 **핵심 개념:** AWS IAM Identity Center
+
+**관련 노트:** [AWS IAM Identity Center AWS SSO 후속](/section/23-advanced-identity#aws-iam-identity-center-aws-sso-후속)
 
 ### Q4. A company has an on-premises Active Directory and wants to allow their users to authenticate against it when accessing AWS resources. They do NOT want to manage any AD infrastructure in AWS. Which AWS Directory Service option should they use?
 **Options:**
@@ -405,15 +411,17 @@ AWS의 고급 자격 증명 및 접근 관리를 다룬다. AWS Organizations, S
 | C | Simple AD |
 | D | Amazon Cognito User Pool |
 
-**(A)** : AWS Managed Microsoft AD는 AWS에 완전한 AD를 생성한다. AWS에서 AD 인프라를 관리해야 한다.
+**(A)** : AWS Managed Microsoft AD는 AWS에 완전한 AD를 생성한다. AWS에서 AD 인프라를 관리해야 한다. → [📖 Microsoft Active Directory AD](/section/23-advanced-identity#microsoft-active-directory-ad)
 
-**(B) 정답** : AD Connector는 온프레미스 AD로의 프록시(게이트웨이)이다. AWS에 AD 인프라를 생성하지 않고 온프레미스 AD로 인증 요청을 리다이렉트하므로 AWS에서 AD 관리가 불필요하다.
+**(B) 정답** : AD Connector는 온프레미스 AD로의 프록시(게이트웨이)이다. AWS에 AD 인프라를 생성하지 않고 온프레미스 AD로 인증 요청을 리다이렉트하므로 AWS에서 AD 관리가 불필요하다. → [📖 AWS Directory Services](/section/23-advanced-identity#aws-directory-services)
 
-**(C)** : Simple AD는 독립형 AD 호환 디렉터리이다. 온프레미스 AD와 연결이 불가하다.
+**(C)** : Simple AD는 독립형 AD 호환 디렉터리이다. 온프레미스 AD와 연결이 불가하다. → [📖 AWS Directory Services](/section/23-advanced-identity#aws-directory-services)
 
 **(D)** : Cognito User Pool은 모바일/웹 앱 사용자 인증용이다. 기업 AD 통합에 적합하지 않다.
 
 **핵심 개념:** AWS Directory Services / AD Connector
+
+**관련 노트:** [AWS Directory Services](/section/23-advanced-identity#aws-directory-services), [Microsoft Active Directory AD](/section/23-advanced-identity#microsoft-active-directory-ad)
 
 ### Q5. A company allows developers to create their own IAM policies. However, they want to ensure developers cannot escalate their privileges to administrator access. Which feature should they use?
 **Options:**
@@ -435,15 +443,17 @@ AWS의 고급 자격 증명 및 접근 관리를 다룬다. AWS Organizations, S
 | C | AWS Config Rules |
 | D | IAM Access Analyzer |
 
-**(A)** : SCP는 전체 계정/OU 수준의 제한이다. 개별 사용자의 권한 상승 방지에는 세밀하지 않다.
+**(A)** : SCP는 전체 계정/OU 수준의 제한이다. 개별 사용자의 권한 상승 방지에는 세밀하지 않다. → [📖 Service Control Policies SCP](/section/23-advanced-identity#service-control-policies-scp)
 
-**(B) 정답** : IAM Permission Boundaries는 IAM 엔티티(사용자/역할)의 최대 권한을 설정한다. 개발자가 자체 정책을 관리하더라도 경계를 넘는 권한을 획득할 수 없게 하며, 유효 권한은 IAM Policy와 Permission Boundary의 교집합만 적용된다.
+**(B) 정답** : IAM Permission Boundaries는 IAM 엔티티(사용자/역할)의 최대 권한을 설정한다. 개발자가 자체 정책을 관리하더라도 경계를 넘는 권한을 획득할 수 없게 하며, 유효 권한은 IAM Policy와 Permission Boundary의 교집합만 적용된다. → [📖 IAM Permission Boundaries](/section/23-advanced-identity#iam-permission-boundaries)
 
 **(C)** : AWS Config Rules는 리소스 구성 규정 준수 평가 도구이다. IAM 권한 상승 방지와 직접적으로 무관하다.
 
 **(D)** : IAM Access Analyzer는 외부 접근 분석 도구이다. 권한 상승을 방지하는 제어 수단이 아니다.
 
 **핵심 개념:** IAM Permission Boundaries
+
+**관련 노트:** [IAM Permission Boundaries](/section/23-advanced-identity#iam-permission-boundaries)
 
 ### Q6. An organization wants to restrict access to an S3 bucket so that only accounts within their AWS Organization can access it. Which IAM condition key should they use in the S3 bucket policy?
 **Options:**
@@ -469,11 +479,13 @@ AWS의 고급 자격 증명 및 접근 관리를 다룬다. AWS Organizations, S
 
 **(B)** : aws:RequestedRegion은 API 호출이 수행되는 리전을 제한하는 것이다. 계정 소속 여부 제한이 아니다.
 
-**(C) 정답** : aws:PrincipalOrgID 조건 키를 리소스 정책(S3 버킷 정책)에 사용하면 AWS Organization의 멤버 계정에서만 접근을 허용할 수 있다. 새로운 계정이 Organization에 추가되어도 자동으로 접근이 허용된다.
+**(C) 정답** : aws:PrincipalOrgID 조건 키를 리소스 정책(S3 버킷 정책)에 사용하면 AWS Organization의 멤버 계정에서만 접근을 허용할 수 있다. 새로운 계정이 Organization에 추가되어도 자동으로 접근이 허용된다. → [📖 IAM Conditions](/section/23-advanced-identity#iam-conditions)
 
 **(D)** : aws:MultiFactorAuthPresent는 MFA 인증 여부 확인 조건이다. Organization 소속 여부와 무관하다.
 
 **핵심 개념:** aws:PrincipalOrgID
+
+**관련 노트:** [IAM for S3](/section/23-advanced-identity#iam-for-s3), [IAM Conditions](/section/23-advanced-identity#iam-conditions)
 
 ### Q7. A company is setting up a new multi-account AWS environment and wants to automate the provisioning of accounts with guardrails for security and compliance. They need both preventive controls (blocking certain actions) and detective controls (identifying non-compliant resources). Which service should they use?
 **Options:**
@@ -495,12 +507,14 @@ AWS의 고급 자격 증명 및 접근 관리를 다룬다. AWS Organizations, S
 | C | AWS CloudFormation과 함께 AWS Config |
 | D | AWS IAM Identity Center |
 
-**(A)** : AWS Organizations에 SCP만 사용하면 예방적 제어는 가능하다. 그러나 탐지적 제어(비준수 리소스 식별)가 부족하다.
+**(A)** : AWS Organizations에 SCP만 사용하면 예방적 제어는 가능하다. 그러나 탐지적 제어(비준수 리소스 식별)가 부족하다. → [📖 Service Control Policies SCP](/section/23-advanced-identity#service-control-policies-scp)
 
-**(B) 정답** : AWS Control Tower는 다중 계정 AWS 환경을 자동 구축하고 Preventive Guardrails(SCP 기반 차단)와 Detective Guardrails(AWS Config 기반 탐지)를 모두 제공한다. 규정 준수 대시보드로 전체 환경을 모니터링할 수 있다.
+**(B) 정답** : AWS Control Tower는 다중 계정 AWS 환경을 자동 구축하고 Preventive Guardrails(SCP 기반 차단)와 Detective Guardrails(AWS Config 기반 탐지)를 모두 제공한다. 규정 준수 대시보드로 전체 환경을 모니터링할 수 있다. → [📖 AWS Control Tower](/section/23-advanced-identity#aws-control-tower)
 
 **(C)** : AWS Config + CloudFormation 조합으로 유사한 기능을 구현할 수 있지만 Control Tower보다 설정과 관리가 훨씬 복잡하다.
 
 **(D)** : IAM Identity Center는 SSO(단일 로그인) 서비스이다. 계정 프로비저닝이나 가드레일과 무관하다.
 
 **핵심 개념:** AWS Control Tower / Guardrails
+
+**관련 노트:** [AWS Control Tower](/section/23-advanced-identity#aws-control-tower), [Service Control Policies SCP](/section/23-advanced-identity#service-control-policies-scp)

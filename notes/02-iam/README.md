@@ -215,15 +215,17 @@ AWS 접근 방법 3가지
 | C | IAM 사용자를 생성하고 애플리케이션에 자격 증명을 하드코딩 |
 | D | EC2 인스턴스에서 루트 계정 자격 증명 사용 |
 
-**(A)** : 환경 변수에 액세스 키를 저장하면 키가 노출될 위험이 있다. 하드코딩보다는 낫지만 IAM Role에 비해 안전하지 않다.
+**(A)** : 환경 변수에 액세스 키를 저장하면 키가 노출될 위험이 있다. 하드코딩보다는 낫지만 IAM Role에 비해 안전하지 않다. → [📖 AWS 접근 방법](/section/02-iam#aws-접근-방법)
 
-**(B) 정답** : IAM Role은 임시 자격 증명을 자동으로 발급·순환시켜 키 관리가 필요 없다. EC2에서 AWS 서비스에 접근하는 가장 안전한 방법이다.
+**(B) 정답** : IAM Role은 임시 자격 증명을 자동으로 발급·순환시켜 키 관리가 필요 없다. EC2에서 AWS 서비스에 접근하는 가장 안전한 방법이다. → [📖 IAM Roles 역할](/section/02-iam#iam-roles-역할)
 
 **(C)** : 자격 증명을 소스 코드에 하드코딩하면 소스 코드 유출 시 민감 정보가 함께 노출된다. 가장 위험한 방법이다.
 
 **(D)** : 루트 계정은 모든 권한을 가지므로 일반 작업에 사용하면 최소 권한 원칙에 위배된다. 절대 사용해서는 안 된다.
 
 **핵심 개념:** IAM Roles for Services
+
+**관련 노트:** [IAM Roles 역할](/section/02-iam#iam-roles-역할)
 
 ### Q2. Which IAM security tool provides a report that lists all IAM users and the status of their various credentials?
 **Options:**
@@ -245,15 +247,17 @@ AWS 접근 방법 3가지
 | C | AWS CloudTrail |
 | D | AWS Config |
 
-**(A)** : IAM Access Advisor는 사용자 수준에서 서비스별 마지막 접근 시간을 보여주는 도구로, 최소 권한 원칙 적용에 활용된다. 모든 사용자의 자격 증명 상태 목록을 제공하지는 않는다.
+**(A)** : IAM Access Advisor는 사용자 수준에서 서비스별 마지막 접근 시간을 보여주는 도구로, 최소 권한 원칙 적용에 활용된다. 모든 사용자의 자격 증명 상태 목록을 제공하지는 않는다. → [📖 IAM Security Tools](/section/02-iam#iam-security-tools)
 
-**(B) 정답** : IAM Credentials Report는 계정 수준의 보고서로, 모든 사용자와 비밀번호·액세스 키·MFA 등 자격 증명 상태를 나열한다.
+**(B) 정답** : IAM Credentials Report는 계정 수준의 보고서로, 모든 사용자와 비밀번호·액세스 키·MFA 등 자격 증명 상태를 나열한다. → [📖 IAM Security Tools](/section/02-iam#iam-security-tools)
 
 **(C)** : CloudTrail은 AWS API 호출 이력을 감사하는 서비스이다. 자격 증명 상태 보고서가 아닌 API 활동 기록을 제공한다.
 
 **(D)** : AWS Config는 AWS 리소스의 구성 변경을 추적하고 감사하는 서비스이다. IAM 자격 증명 상태 보고와는 용도가 다르다.
 
 **핵심 개념:** IAM Security Tools
+
+**관련 노트:** [IAM Security Tools](/section/02-iam#iam-security-tools)
 
 ### Q3. An IAM user belongs to two groups. Group A has a policy that allows S3 read access, and Group B has a policy that denies all S3 access. What happens when the user tries to read from S3?
 **Options:**
@@ -277,13 +281,15 @@ AWS 접근 방법 3가지
 
 **(A)** : Allow가 우선한다는 설명은 IAM 정책 평가 규칙과 정반대이다. IAM에서는 명시적 Deny가 항상 Allow보다 우선한다.
 
-**(B) 정답** : Deny는 항상 Allow보다 우선하므로 그룹 B의 Deny 정책으로 인해 S3 읽기 접근이 거부된다. IAM은 모든 정책을 합산 평가하여 Deny가 하나라도 있으면 해당 작업을 거부한다.
+**(B) 정답** : Deny는 항상 Allow보다 우선하므로 그룹 B의 Deny 정책으로 인해 S3 읽기 접근이 거부된다. IAM은 모든 정책을 합산 평가하여 Deny가 하나라도 있으면 해당 작업을 거부한다. → [📖 IAM Policies 정책](/section/02-iam#iam-policies-정책)
 
 **(C)** : 그룹 생성 순서는 정책 평가에 전혀 영향을 미치지 않는다. IAM은 어떤 그룹이 먼저 생성되었는지와 무관하게 모든 정책을 합산 평가한다.
 
 **(D)** : 정책 충돌 오류라는 개념은 IAM에 존재하지 않는다. IAM은 오류를 반환하는 것이 아니라 명시적 Deny 우선 규칙에 따라 최종 결과를 결정한다.
 
 **핵심 개념:** IAM Policy Evaluation - Deny 우선
+
+**관련 노트:** [IAM Policies 정책](/section/02-iam#iam-policies-정책), [정책 상속](/section/02-iam#정책-상속)
 
 ### Q4. Which of the following statements about IAM Groups is correct?
 **Options:**
@@ -309,11 +315,13 @@ AWS 접근 방법 3가지
 
 **(B)** : 사용자는 어떤 그룹에도 속하지 않아도 된다. 최소 하나의 그룹 소속 요건은 없으며, 인라인 정책만으로도 권한을 부여받을 수 있다.
 
-**(C) 정답** : IAM 그룹에는 IAM 사용자만 포함할 수 있으며, 다른 그룹을 중첩하는 것은 불가능하다. 이것이 IAM 그룹의 핵심 제약 사항이다.
+**(C) 정답** : IAM 그룹에는 IAM 사용자만 포함할 수 있으며, 다른 그룹을 중첩하는 것은 불가능하다. 이것이 IAM 그룹의 핵심 제약 사항이다. → [📖 Users & Groups](/section/02-iam#users-groups)
 
 **(D)** : 그룹에 역할(Role)을 포함하는 것은 불가능하다. IAM Role은 그룹에 속하는 것이 아니라 서비스나 사용자가 직접 assume하는 독립적인 엔티티이다.
 
 **핵심 개념:** IAM Users & Groups
+
+**관련 노트:** [Users & Groups](/section/02-iam#users-groups)
 
 ### Q5. A Solutions Architect wants to review which AWS services an IAM user has accessed to apply the least privilege principle. Which tool should they use?
 **Options:**
@@ -339,11 +347,13 @@ AWS 접근 방법 3가지
 
 **(B)** : CloudTrail은 AWS API 호출 이력을 기록하지만, 최소 권한 적용을 위한 서비스별 마지막 접근 시간 요약을 제공하지는 않는다.
 
-**(C) 정답** : IAM Access Advisor는 사용자 수준에서 부여된 서비스 권한과 마지막 접근 시간을 보여준다. 사용하지 않는 권한을 확인하고 정책을 축소하는 데 최적의 도구이다.
+**(C) 정답** : IAM Access Advisor는 사용자 수준에서 부여된 서비스 권한과 마지막 접근 시간을 보여준다. 사용하지 않는 권한을 확인하고 정책을 축소하는 데 최적의 도구이다. → [📖 IAM Security Tools](/section/02-iam#iam-security-tools)
 
 **(D)** : Trusted Advisor는 비용 최적화, 보안, 성능 등 전반적인 모범 사례를 점검하는 서비스이다. IAM 사용자별 서비스 접근 내역을 제공하지 않는다.
 
 **핵심 개념:** IAM Access Advisor, 최소 권한 원칙
+
+**관련 노트:** [IAM Security Tools](/section/02-iam#iam-security-tools)
 
 ### Q6. Which of the following is a valid MFA device option for AWS?
 **Options:**
@@ -369,11 +379,13 @@ AWS 접근 방법 3가지
 
 **(B)** : 이메일 인증 코드는 AWS IAM MFA 방식으로 지원되지 않는다. AWS는 이메일 기반 OTP를 MFA 장치로 인정하지 않는다.
 
-**(C) 정답** : YubiKey와 같은 U2F 보안 키는 AWS에서 공식 지원하는 MFA 장치이다. 하나의 키로 여러 루트/IAM 사용자를 지원할 수 있다.
+**(C) 정답** : YubiKey와 같은 U2F 보안 키는 AWS에서 공식 지원하는 MFA 장치이다. 하나의 키로 여러 루트/IAM 사용자를 지원할 수 있다. → [📖 MFA Multi Factor Authentication](/section/02-iam#mfa-multi-factor-authentication)
 
 **(D)** : 생체 지문 스캐너는 AWS IAM MFA 옵션에 포함되지 않는다. AWS가 지원하는 MFA 장치는 Virtual MFA, U2F 보안 키, Hardware Key Fob 등이다.
 
 **핵심 개념:** MFA devices options
+
+**관련 노트:** [MFA Multi Factor Authentication](/section/02-iam#mfa-multi-factor-authentication)
 
 ### Q7. What are the components of an IAM Policy Statement? (Select the REQUIRED components)
 **Options:**
@@ -395,7 +407,7 @@ AWS 접근 방법 3가지
 | C | Version, Id, Statement |
 | D | Principal, Sid, Condition |
 
-**(A) 정답** : Effect(Allow/Deny), Action(작업 목록), Resource(리소스 목록)가 IAM Policy Statement의 핵심 필수 구성요소이다. 이 세 가지가 없으면 Statement를 정의할 수 없다.
+**(A) 정답** : Effect(Allow/Deny), Action(작업 목록), Resource(리소스 목록)가 IAM Policy Statement의 핵심 필수 구성요소이다. 이 세 가지가 없으면 Statement를 정의할 수 없다. → [📖 IAM Policies 정책](/section/02-iam#iam-policies-정책)
 
 **(B)** : Sid와 Condition은 선택사항이므로 "필수 구성요소" 조합으로는 부적합하다. Effect, Action, Resource는 올바르지만 불필요한 선택 요소가 포함되어 있다.
 
@@ -404,3 +416,5 @@ AWS 접근 방법 3가지
 **(D)** : Principal은 리소스 기반 정책에서만 필수이며, Sid와 Condition은 모두 선택사항이다. 세 요소 모두 Statement의 필수 구성요소가 아니다.
 
 **핵심 개념:** IAM Policies Structure
+
+**관련 노트:** [IAM Policies 정책](/section/02-iam#iam-policies-정책)

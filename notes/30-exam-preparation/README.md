@@ -210,13 +210,15 @@ SAA-C03 시험의 구조, 팁, 학습 전략, 자격증 경로 등을 다루는 
 
 **(B) 정답** : Well-Architected Framework은 용량 추측을 중단하고 Auto Scaling을 사용하여 실제 수요에 따라 리소스를 자동 조정할 것을 권장한다.
 
-**(C)** : 개발 환경에서만 테스트하는 것은 "프로덕션 규모에서 시스템 테스트" 원칙에 반한다.
+**(C)** : 개발 환경에서만 테스트하는 것은 "프로덕션 규모에서 시스템 테스트" 원칙에 반한다. → [📖 Well-Architected Framework 일반 원칙](/section/29-white-papers-architectures#wellarchitected-framework-일반-원칙)
 
 **(D) 정답** : Well-Architected Framework은 데이터를 기반으로 아키텍처 결정을 내릴 것("Make decisions based on data")을 강조한다.
 
 **(E)** : 고정 아키텍처는 "진화하는 아키텍처 허용(변화하는 요구사항 기반 설계)" 원칙에 반한다.
 
 **핵심 개념:** Well-Architected Framework General Principles
+
+**관련 노트:** [Well-Architected Framework 일반 원칙](/section/29-white-papers-architectures#wellarchitected-framework-일반-원칙)
 
 ---
 
@@ -250,6 +252,8 @@ SAA-C03 시험의 구조, 팁, 학습 전략, 자격증 경로 등을 다루는 
 
 **핵심 개념:** Exam Strategy - Proceed by Elimination
 
+**관련 노트:** [시험 전략](/section/30-exam-preparation#시험-전략)
+
 ---
 
 ### Q3. A solutions architect needs to evaluate their organization's AWS account for potential security vulnerabilities, cost savings opportunities, and service limit issues. They need programmatic access to these recommendations. Which combination is required?
@@ -274,13 +278,15 @@ SAA-C03 시험의 구조, 팁, 학습 전략, 자격증 경로 등을 다루는 
 
 **(A)** : Well-Architected Tool은 워크로드별 구조화된 검토 도구이다. 계정 수준의 자동 권장사항을 제공하지 않는다. Basic Support Plan은 Trusted Advisor의 제한된 체크만 제공한다.
 
-**(B)** : Developer Support Plan은 Trusted Advisor의 전체 체크와 API 접근을 제공하지 않는다.
+**(B)** : Developer Support Plan은 Trusted Advisor의 전체 체크와 API 접근을 제공하지 않는다. → [📖 AWS Trusted Advisor](/section/29-white-papers-architectures#aws-trusted-advisor)
 
 **(C) 정답** : Trusted Advisor는 6가지 카테고리의 계정 수준 권장사항을 제공한다. 전체 체크와 AWS Support API를 통한 프로그래밍 접근은 Business 또는 Enterprise Support Plan에서만 가능하다.
 
 **(D)** : AWS Config는 리소스 구성 추적 서비스이다. 비용 절감이나 서비스 한도 권장사항을 제공하지 않는다.
 
 **핵심 개념:** Trusted Advisor + Business/Enterprise Support Plan
+
+**관련 노트:** [AWS Trusted Advisor](/section/29-white-papers-architectures#aws-trusted-advisor)
 
 ---
 
@@ -306,7 +312,7 @@ SAA-C03 시험의 구조, 팁, 학습 전략, 자격증 경로 등을 다루는 
 | D | AWS 가격 계산기만 |
 | E | 개별 EC2 인스턴스 사양 |
 
-**(A) 정답** : AWS Architecture Center는 다양한 참조 아키텍처 다이어그램과 모범 사례를 제공한다. 서비스 간 통합 패턴을 이해하는 데 최적이다.
+**(A) 정답** : AWS Architecture Center는 다양한 참조 아키텍처 다이어그램과 모범 사례를 제공한다. 서비스 간 통합 패턴을 이해하는 데 최적이다. → [📖 참조 아키텍처](/section/29-white-papers-architectures#참조-아키텍처)
 
 **(B) 정답** : AWS Solutions는 사전 구축된 솔루션과 구현 가이드를 제공한다. 서버리스 아키텍처 패턴을 이해하는 데 유용하다.
 
@@ -317,6 +323,8 @@ SAA-C03 시험의 구조, 팁, 학습 전략, 자격증 경로 등을 다루는 
 **(E)** : EC2 인스턴스 사양은 개별 인스턴스의 하드웨어 스펙만 다룬다. 서비스 간 통합 아키텍처와 관련이 없다.
 
 **핵심 개념:** AWS Reference Architectures
+
+**관련 노트:** [참조 아키텍처](/section/29-white-papers-architectures#참조-아키텍처)
 
 ---
 
@@ -340,7 +348,7 @@ SAA-C03 시험의 구조, 팁, 학습 전략, 자격증 경로 등을 다루는 
 | C | 750/1000, 75문항 |
 | D | 720/1000, 75문항 |
 
-**(A)** : 합격 점수(700)와 문항 수(50) 모두 틀렸다.
+**(A)** : 합격 점수(700)와 문항 수(50) 모두 틀렸다. → [📖 시험 기본 정보](/section/30-exam-preparation#시험-기본-정보)
 
 **(B) 정답** : SAA-C03 시험은 65문항이며 합격 점수는 1000점 만점 중 720점이다. 시험 시간은 130분(문항당 약 2분)이며 불합격 시 14일 후에 재응시할 수 있다.
 
@@ -349,3 +357,5 @@ SAA-C03 시험의 구조, 팁, 학습 전략, 자격증 경로 등을 다루는 
 **(D)** : 합격 점수(720)는 맞지만 문항 수(75)가 틀렸다. 실제 문항 수는 65개이다.
 
 **핵심 개념:** SAA-C03 Exam Structure
+
+**관련 노트:** [시험 기본 정보](/section/30-exam-preparation#시험-기본-정보)

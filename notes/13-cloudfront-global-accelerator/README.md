@@ -185,15 +185,17 @@ Amazon CloudFront는 AWS의 CDN(Content Delivery Network) 서비스이고, AWS G
 | C | ALB를 엔드포인트로 하여 AWS Global Accelerator 사용 |
 | D | 모든 AWS 리전에 추가 ALB 배포 |
 
-**(A)** : S3 Cross-Region Replication은 S3 객체만 해당된다. 동적 API 응답에는 적용할 수 없다.
+**(A)** : S3 Cross-Region Replication은 S3 객체만 해당된다. 동적 API 응답에는 적용할 수 없다. → [📖 S3 Replication 복제](/section/10-amazon-s3#s3-replication-복제)
 
-**(B) 정답** : CloudFront는 정적 콘텐츠(캐싱)와 동적 콘텐츠(API 가속) 모두에 대해 성능을 향상시킨다. ALB를 Origin으로 설정하면 두 유형의 콘텐츠 모두를 최적화할 수 있다.
+**(B) 정답** : CloudFront는 정적 콘텐츠(캐싱)와 동적 콘텐츠(API 가속) 모두에 대해 성능을 향상시킨다. ALB를 Origin으로 설정하면 두 유형의 콘텐츠 모두를 최적화할 수 있다. → [📖 CloudFront Origins 원본 소스](/section/13-cloudfront-global-accelerator#cloudfront-origins-원본-소스)
 
-**(C)** : Global Accelerator도 성능을 개선할 수 있지만 캐싱 기능이 없어 정적 콘텐츠에 대한 최적화가 부족하다.
+**(C)** : Global Accelerator도 성능을 개선할 수 있지만 캐싱 기능이 없어 정적 콘텐츠에 대한 최적화가 부족하다. → [📖 AWS Global Accelerator](/section/13-cloudfront-global-accelerator#aws-global-accelerator)
 
 **(D)** : 모든 리전에 ALB를 배포하는 것은 운영 오버헤드가 크고 비현실적이다. 비용도 매우 높다.
 
 **핵심 개념:** CloudFront Origins, 동적/정적 콘텐츠 전송
+
+**관련 노트:** [CloudFront Origins 원본 소스](/section/13-cloudfront-global-accelerator#cloudfront-origins-원본-소스), [CloudFront vs S3 Cross Region Replication](/section/13-cloudfront-global-accelerator#cloudfront-vs-s3-cross-region-replication)
 
 ### Q2. A company stores confidential documents in an S3 bucket and wants to distribute them globally via CloudFront. The documents must NOT be accessible directly from the S3 bucket URL. What should the solutions architect do?
 **Options:**
@@ -215,15 +217,17 @@ Amazon CloudFront는 AWS의 CDN(Content Delivery Network) 서비스이고, AWS G
 | C | S3 Transfer Acceleration을 활성화하고 사전 서명된 URL 공유 |
 | D | S3 버킷을 가리키는 AWS Global Accelerator 사용 |
 
-**(A)** : S3 정적 웹사이트 호스팅은 퍼블릭 접근이 필요하다. 기밀 문서를 직접 접근 차단해야 하는 요구사항에 부적합하다.
+**(A)** : S3 정적 웹사이트 호스팅은 퍼블릭 접근이 필요하다. 기밀 문서를 직접 접근 차단해야 하는 요구사항에 부적합하다. → [📖 S3 정적 웹사이트 호스팅](/section/10-amazon-s3#s3-정적-웹사이트-호스팅)
 
-**(B) 정답** : OAC(Origin Access Control)를 설정하고 S3 버킷 정책을 CloudFront 배포에서만 접근하도록 업데이트하면 S3 URL 직접 접근이 차단된다. CloudFront를 통해서만 기밀 문서에 접근할 수 있다.
+**(B) 정답** : OAC(Origin Access Control)를 설정하고 S3 버킷 정책을 CloudFront 배포에서만 접근하도록 업데이트하면 S3 URL 직접 접근이 차단된다. CloudFront를 통해서만 기밀 문서에 접근할 수 있다. → [📖 CloudFront Origins 원본 소스](/section/13-cloudfront-global-accelerator#cloudfront-origins-원본-소스)
 
-**(C)** : S3 Transfer Acceleration은 업로드 가속화 용도이다. S3 URL 직접 접근을 차단하지 않으며 CloudFront를 사용하지도 않는다.
+**(C)** : S3 Transfer Acceleration은 업로드 가속화 용도이다. S3 URL 직접 접근을 차단하지 않으며 CloudFront를 사용하지도 않는다. → [📖 S3 Performance 최적화](/section/11-s3-advanced#s3-performance-최적화)
 
-**(D)** : Global Accelerator는 S3 콘텐츠 배포용 서비스가 아니다. S3를 Origin으로 사용할 수 없다.
+**(D)** : Global Accelerator는 S3 콘텐츠 배포용 서비스가 아니다. S3를 Origin으로 사용할 수 없다. → [📖 AWS Global Accelerator](/section/13-cloudfront-global-accelerator#aws-global-accelerator)
 
 **핵심 개념:** CloudFront OAC, S3 버킷 정책
+
+**관련 노트:** [CloudFront Origins 원본 소스](/section/13-cloudfront-global-accelerator#cloudfront-origins-원본-소스), [CloudFront 배포 구조](/section/13-cloudfront-global-accelerator#cloudfront-배포-구조)
 
 ### Q3. A gaming company is deploying a multiplayer game that uses UDP protocol. Players around the world experience high latency. The company needs a solution that provides static IP addresses and fast regional failover. Which AWS service should they use?
 **Options:**
@@ -245,15 +249,17 @@ Amazon CloudFront는 AWS의 CDN(Content Delivery Network) 서비스이고, AWS G
 | C | AWS Global Accelerator |
 | D | 크로스 존 로드 밸런싱이 적용된 Application Load Balancer |
 
-**(A)** : CloudFront는 HTTP/HTTPS에 최적화되어 있다. UDP 프로토콜을 지원하지 않는다.
+**(A)** : CloudFront는 HTTP/HTTPS에 최적화되어 있다. UDP 프로토콜을 지원하지 않는다. → [📖 CloudFront 기본 개념](/section/13-cloudfront-global-accelerator#cloudfront-기본-개념)
 
 **(B)** : Route 53은 DNS 기반이므로 클라이언트 DNS 캐시 문제로 빠른 장애 조치가 어렵다. 고정 IP도 제공하지 않는다.
 
-**(C) 정답** : Global Accelerator는 UDP와 같은 비HTTP 프로토콜을 지원하며 2개의 고정 Anycast IP와 빠른 리전 장애 조치를 제공한다. 멀티플레이어 게임의 UDP 프로토콜 및 고정 IP 요구사항을 모두 충족한다.
+**(C) 정답** : Global Accelerator는 UDP와 같은 비HTTP 프로토콜을 지원하며 2개의 고정 Anycast IP와 빠른 리전 장애 조치를 제공한다. 멀티플레이어 게임의 UDP 프로토콜 및 고정 IP 요구사항을 모두 충족한다. → [📖 AWS Global Accelerator](/section/13-cloudfront-global-accelerator#aws-global-accelerator)
 
-**(D)** : ALB는 단일 리전 서비스이며 UDP 프로토콜을 지원하지 않는다.
+**(D)** : ALB는 단일 리전 서비스이며 UDP 프로토콜을 지원하지 않는다. → [📖 ALB Application Load Balancer 상세](/section/06-high-availability-scalability#alb-application-load-balancer-상세)
 
 **핵심 개념:** Global Accelerator, 비HTTP 프로토콜 (UDP, MQTT, VoIP)
+
+**관련 노트:** [AWS Global Accelerator](/section/13-cloudfront-global-accelerator#aws-global-accelerator), [CloudFront vs Global Accelerator](/section/13-cloudfront-global-accelerator#cloudfront-vs-global-accelerator)
 
 ### Q4. A company has deployed a new version of their website. CloudFront is serving stale content from the previous version. The TTL is set to 24 hours. What is the FASTEST way to ensure users see the updated content?
 **Options:**
@@ -275,15 +281,17 @@ Amazon CloudFront는 AWS의 CDN(Content Delivery Network) 서비스이고, AWS G
 | C | CloudFront 캐시 무효화 수행 |
 | D | TTL을 0초로 줄이기 |
 
-**(A)** : TTL이 만료될 때까지 24시간을 기다려야 한다. "가장 빠른 방법"이라는 요구사항에 맞지 않는다.
+**(A)** : TTL이 만료될 때까지 24시간을 기다려야 한다. "가장 빠른 방법"이라는 요구사항에 맞지 않는다. → [📖 CloudFront 기본 개념](/section/13-cloudfront-global-accelerator#cloudfront-기본-개념)
 
 **(B)** : 새 CloudFront 배포 생성은 불필요한 재배포로 기존 설정을 다시 구성해야 하는 비효율적인 방법이다.
 
-**(C) 정답** : Cache Invalidation을 수행하면 TTL을 우회하여 즉시 모든 Edge Location의 캐시를 갱신할 수 있다. 전체(`/*`) 또는 특정 경로(`/images/*`)를 무효화할 수 있다.
+**(C) 정답** : Cache Invalidation을 수행하면 TTL을 우회하여 즉시 모든 Edge Location의 캐시를 갱신할 수 있다. 전체(`/*`) 또는 특정 경로(`/images/*`)를 무효화할 수 있다. → [📖 CloudFront Cache Invalidation 캐시 무효화](/section/13-cloudfront-global-accelerator#cloudfront-cache-invalidation-캐시-무효화)
 
-**(D)** : TTL을 0으로 설정하면 향후 모든 요청에 캐싱이 적용되지 않는다. Origin에 대한 부하가 증가하고 성능이 저하되므로 권장되지 않는다.
+**(D)** : TTL을 0으로 설정하면 향후 모든 요청에 캐싱이 적용되지 않는다. Origin에 대한 부하가 증가하고 성능이 저하되므로 권장되지 않는다. → [📖 CloudFront 기본 개념](/section/13-cloudfront-global-accelerator#cloudfront-기본-개념)
 
 **핵심 개념:** CloudFront Cache Invalidation
+
+**관련 노트:** [CloudFront Cache Invalidation 캐시 무효화](/section/13-cloudfront-global-accelerator#cloudfront-cache-invalidation-캐시-무효화)
 
 ### Q5. A company wants to deliver content from applications hosted in private subnets of their VPC through CloudFront, without exposing them to the internet. Which CloudFront feature should they use?
 **Options:**
@@ -305,15 +313,17 @@ Amazon CloudFront는 AWS의 CDN(Content Delivery Network) 서비스이고, AWS G
 | C | VPC Origin |
 | D | AWS PrivateLink |
 
-**(A)** : OAC(Origin Access Control)는 S3 Origin 보안용이다. VPC 내 프라이빗 애플리케이션과는 무관하다.
+**(A)** : OAC(Origin Access Control)는 S3 Origin 보안용이다. VPC 내 프라이빗 애플리케이션과는 무관하다. → [📖 CloudFront Origins 원본 소스](/section/13-cloudfront-global-accelerator#cloudfront-origins-원본-소스)
 
-**(B)** : Signed URLs은 특정 사용자의 콘텐츠 접근 제어를 위한 것이다. 프라이빗 서브넷 접근 기능이 아니다.
+**(B)** : Signed URLs은 특정 사용자의 콘텐츠 접근 제어를 위한 것이다. 프라이빗 서브넷 접근 기능이 아니다. → [📖 S3 Pre-Signed URLs](/section/12-s3-security#s3-presigned-urls)
 
-**(C) 정답** : CloudFront VPC Origin을 사용하면 VPC 프라이빗 서브넷의 Private ALB, NLB, EC2에 인터넷에 노출하지 않고 접근할 수 있다. 내부 서버를 인터넷에 공개하지 않아도 CloudFront를 통해 콘텐츠를 전달할 수 있다.
+**(C) 정답** : CloudFront VPC Origin을 사용하면 VPC 프라이빗 서브넷의 Private ALB, NLB, EC2에 인터넷에 노출하지 않고 접근할 수 있다. 내부 서버를 인터넷에 공개하지 않아도 CloudFront를 통해 콘텐츠를 전달할 수 있다. → [📖 CloudFront와 퍼블릭 네트워크를 통한 ALB/EC2 연결](/section/13-cloudfront-global-accelerator#cloudfront와-퍼블릭-네트워크를-통한-albec2-연결)
 
-**(D)** : AWS PrivateLink는 AWS 서비스 간 프라이빗 연결을 제공한다. CloudFront와의 직접 통합 기능이 아니다.
+**(D)** : AWS PrivateLink는 AWS 서비스 간 프라이빗 연결을 제공한다. CloudFront와의 직접 통합 기능이 아니다. → [📖 VPC Endpoints AWS PrivateLink](/section/25-vpc#vpc-endpoints-aws-privatelink)
 
 **핵심 개념:** CloudFront VPC Origin
+
+**관련 노트:** [CloudFront와 퍼블릭 네트워크를 통한 ALB/EC2 연결](/section/13-cloudfront-global-accelerator#cloudfront와-퍼블릭-네트워크를-통한-albec2-연결)
 
 ### Q6. A solutions architect needs to improve the availability of a global application. The application must have fast failover (less than 1 minute) and the company's firewall only allows whitelisting a small number of static IP addresses. Which solution meets these requirements?
 **Options:**
@@ -335,12 +345,14 @@ Amazon CloudFront는 AWS의 CDN(Content Delivery Network) 서비스이고, AWS G
 | C | 헬스 체크와 장애 조치 라우팅이 있는 Amazon Route 53 |
 | D | 크로스 리전 로드 밸런싱이 적용된 Application Load Balancer |
 
-**(A)** : CloudFront는 수백 개의 Edge Location IP를 사용한다. 소수의 IP만 화이트리스트하는 방화벽 요구사항에 부적합하다.
+**(A)** : CloudFront는 수백 개의 Edge Location IP를 사용한다. 소수의 IP만 화이트리스트하는 방화벽 요구사항에 부적합하다. → [📖 CloudFront 기본 개념](/section/13-cloudfront-global-accelerator#cloudfront-기본-개념)
 
-**(B) 정답** : Global Accelerator는 2개의 고정 Anycast IP를 제공하여 방화벽 화이트리스트가 용이하고, Health Check로 1분 미만의 빠른 장애 조치가 가능하다. 두 가지 요구사항을 모두 충족한다.
+**(B) 정답** : Global Accelerator는 2개의 고정 Anycast IP를 제공하여 방화벽 화이트리스트가 용이하고, Health Check로 1분 미만의 빠른 장애 조치가 가능하다. 두 가지 요구사항을 모두 충족한다. → [📖 Global Accelerator 동작 구조](/section/13-cloudfront-global-accelerator#global-accelerator-동작-구조)
 
-**(C)** : Route 53은 DNS 기반이므로 DNS TTL 때문에 1분 미만의 빠른 장애 조치가 보장되지 않는다.
+**(C)** : Route 53은 DNS 기반이므로 DNS TTL 때문에 1분 미만의 빠른 장애 조치가 보장되지 않는다. → [📖 Health Checks 헬스 체크](/section/08-route-53#health-checks-헬스-체크)
 
-**(D)** : ALB는 크로스 리전 로드 밸런싱을 직접 지원하지 않는다. 단일 리전 서비스이다.
+**(D)** : ALB는 크로스 리전 로드 밸런싱을 직접 지원하지 않는다. 단일 리전 서비스이다. → [📖 ALB Application Load Balancer 상세](/section/06-high-availability-scalability#alb-application-load-balancer-상세)
 
 **핵심 개념:** Global Accelerator, 고정 IP, Health Check
+
+**관련 노트:** [AWS Global Accelerator](/section/13-cloudfront-global-accelerator#aws-global-accelerator), [Global Accelerator 동작 구조](/section/13-cloudfront-global-accelerator#global-accelerator-동작-구조)

@@ -174,11 +174,13 @@ Region 선택 의사결정 흐름
 
 **(B)** : 최신 서비스 가용성은 기능적 고려사항이다. 규정 준수 요건이 없을 때 고려하는 항목이다.
 
-**(C) 정답** : 데이터 레지던시 법률이 있는 경우 Compliance(규정 준수)가 Region 선택의 최우선 기준이다. AWS에서는 명시적 허가 없이 데이터가 리전을 벗어나지 않으므로, 법적 요건을 충족하는 국가의 리전을 반드시 선택해야 한다.
+**(C) 정답** : 데이터 레지던시 법률이 있는 경우 Compliance(규정 준수)가 Region 선택의 최우선 기준이다. AWS에서는 명시적 허가 없이 데이터가 리전을 벗어나지 않으므로, 법적 요건을 충족하는 국가의 리전을 반드시 선택해야 한다. → [📖 Region 선택 기준 시험 중요!](/section/01-getting-started#region-선택-기준-시험-중요)
 
-**(D)** : 가격(Pricing)은 비용 최적화 관점의 고려사항이다. 법적 요구사항이 있는 경우 Compliance를 먼저 충족해야 한다.
+**(D)** : 가격(Pricing)은 비용 최적화 관점의 고려사항이다. 법적 요구사항이 있는 경우 Compliance를 먼저 충족해야 한다. → [📖 Region 선택 기준 시험 중요!](/section/01-getting-started#region-선택-기준-시험-중요)
 
 **핵심 개념:** AWS Region 선택 기준
+
+**관련 노트:** [Region 선택 기준 시험 중요!](/section/01-getting-started#region-선택-기준-시험-중요)
 
 ### Q2. Which of the following AWS services is a Global service, NOT scoped to a specific Region?
 **Options:**
@@ -204,11 +206,13 @@ Region 선택 의사결정 흐름
 
 **(B)** : Lambda도 특정 리전에 함수를 배포하는 리전 서비스다.
 
-**(C) 정답** : Route 53은 DNS 서비스로, 리전에 종속되지 않는 글로벌 서비스다. IAM, CloudFront, WAF도 같은 글로벌 서비스 범주에 속한다.
+**(C) 정답** : Route 53은 DNS 서비스로, 리전에 종속되지 않는 글로벌 서비스다. IAM, CloudFront, WAF도 같은 글로벌 서비스 범주에 속한다. → [📖 글로벌 서비스 vs 리전 서비스](/section/01-getting-started#글로벌-서비스-vs-리전-서비스)
 
 **(D)** : RDS는 리전 내에서 데이터베이스 인스턴스를 생성하는 리전 서비스다.
 
 **핵심 개념:** 글로벌 서비스 vs 리전 서비스
+
+**관련 노트:** [글로벌 서비스 vs 리전 서비스](/section/01-getting-started#글로벌-서비스-vs-리전-서비스)
 
 ### Q3. A Solutions Architect needs to design a highly available architecture. What is the minimum number of Availability Zones in any AWS Region?
 **Options:**
@@ -234,11 +238,13 @@ Region 선택 의사결정 흐름
 
 **(B)** : 2개도 AWS 리전의 실제 최솟값보다 적다. 흔히 착각하기 쉬운 오답이다.
 
-**(C) 정답** : 모든 AWS 리전은 최소 3개의 AZ를 가지며, 최대 6개까지 존재한다. 고가용성 설계 시 최소 2개 AZ에 걸쳐 배포하는 것이 기본 패턴이다.
+**(C) 정답** : 모든 AWS 리전은 최소 3개의 AZ를 가지며, 최대 6개까지 존재한다. 고가용성 설계 시 최소 2개 AZ에 걸쳐 배포하는 것이 기본 패턴이다. → [📖 AWS 글로벌 인프라](/section/01-getting-started#aws-글로벌-인프라)
 
 **(D)** : 6개는 리전이 가질 수 있는 최댓값이지, 최솟값이 아니다.
 
 **핵심 개념:** Availability Zone
+
+**관련 노트:** [AWS 글로벌 인프라](/section/01-getting-started#aws-글로벌-인프라)
 
 ### Q4. What is the primary purpose of AWS Edge Locations?
 **Options:**
@@ -262,13 +268,15 @@ Region 선택 의사결정 흐름
 
 **(A)** : EC2 인스턴스 호스팅은 리전 내 AZ에서 이루어진다. Edge Location은 컴퓨팅 자원을 제공하지 않는다.
 
-**(B) 정답** : Edge Location은 CloudFront CDN의 콘텐츠 캐싱 포인트다. 전 세계 400개 이상 위치에서 최종 사용자에게 낮은 지연 시간으로 콘텐츠를 전달하는 것이 주 목적이다.
+**(B) 정답** : Edge Location은 CloudFront CDN의 콘텐츠 캐싱 포인트다. 전 세계 400개 이상 위치에서 최종 사용자에게 낮은 지연 시간으로 콘텐츠를 전달하는 것이 주 목적이다. → [📖 AWS 글로벌 인프라](/section/01-getting-started#aws-글로벌-인프라)
 
 **(C)** : AZ는 리전 내에 존재하며, Edge Location과는 완전히 별개의 개념이다. Edge Location이 AZ를 추가하지는 않는다.
 
 **(D)** : EBS 스냅샷은 리전 내 S3에 저장된다. Edge Location과 무관하다.
 
 **핵심 개념:** Edge Location / Points of Presence
+
+**관련 노트:** [AWS 글로벌 인프라](/section/01-getting-started#aws-글로벌-인프라)
 
 ### Q5. An application serving users globally is experiencing high latency for users in Asia. The application is currently deployed only in the us-east-1 Region. What is the MOST effective way to reduce latency for Asian users?
 **Options:**
@@ -294,8 +302,10 @@ Region 선택 의사결정 흐름
 
 **(B)** : 인스턴스 크기를 늘리면 처리 성능(CPU·메모리)이 높아질 뿐, 네트워크 지연 시간(Latency)에는 영향이 없다.
 
-**(C) 정답** : 지연 시간을 줄이려면 사용자와 물리적으로 가까운 리전에 배포해야 한다. 아시아 사용자라면 ap-northeast-1(도쿄), ap-southeast-1(싱가포르) 등 인근 리전을 선택하는 것이 핵심이다.
+**(C) 정답** : 지연 시간을 줄이려면 사용자와 물리적으로 가까운 리전에 배포해야 한다. 아시아 사용자라면 ap-northeast-1(도쿄), ap-southeast-1(싱가포르) 등 인근 리전을 선택하는 것이 핵심이다. → [📖 Region 선택 기준 시험 중요!](/section/01-getting-started#region-선택-기준-시험-중요)
 
 **(D)** : Edge Location의 위치와 수는 AWS가 직접 관리하며, 사용자가 특정 리전에 Edge Location을 추가하거나 늘릴 수 없다.
 
 **핵심 개념:** Region 선택 - Proximity (지연 시간)
+
+**관련 노트:** [Region 선택 기준 시험 중요!](/section/01-getting-started#region-선택-기준-시험-중요)

@@ -375,13 +375,15 @@
 
 **(A)** : 타임아웃 증가는 실행 시간이 2분으로 이미 충분하므로 스로틀링 문제와 무관하다. 타임아웃이 아니라 동시 실행 제한이 문제이다.
 
-**(B) 정답** : ThrottleError 429는 동시 실행 제한(기본 리전당 1,000)에 도달했음을 의미한다. AWS Support에 동시성 제한 증가를 요청하거나 Reserved Concurrency/Provisioned Concurrency를 설정해야 한다.
+**(B) 정답** : ThrottleError 429는 동시 실행 제한(기본 리전당 1,000)에 도달했음을 의미한다. AWS Support에 동시성 제한 증가를 요청하거나 Reserved Concurrency/Provisioned Concurrency를 설정해야 한다. → [📖 AWS Lambda](/section/17-serverless-overview#aws-lambda)
 
 **(C)** : EC2 전환은 서버리스의 자동 스케일링, 사용량 기반 과금 등의 이점을 포기하는 것이다. 근본적 해결책이 아니다.
 
 **(D)** : 메모리 감소는 오히려 처리 시간을 늘려 동시 실행을 더 많이 사용하게 되어 문제를 악화시킬 수 있다.
 
 **핵심 개념:** Lambda Concurrency, Throttling
+
+**관련 노트:** [AWS Lambda](/section/17-serverless-overview#aws-lambda), [서버리스란?](/section/17-serverless-overview#서버리스란)
 
 ### Q2. A company needs to run a data processing job that takes 30 minutes to complete. They want a serverless solution. Which service should they use?
 **Options:**
@@ -403,15 +405,17 @@
 | C | Amazon EC2 Spot 인스턴스 |
 | D | EC2 기반 AWS Batch |
 
-**(A)** : Lambda의 최대 실행 시간은 15분이다. 30분 작업을 실행할 수 없다.
+**(A)** : Lambda의 최대 실행 시간은 15분이다. 30분 작업을 실행할 수 없다. → [📖 AWS Lambda](/section/17-serverless-overview#aws-lambda)
 
-**(B) 정답** : Fargate + ECS는 서버리스이면서 실행 시간 제한이 없다. 30분 이상의 긴 작업을 서버리스로 처리할 수 있는 적합한 솔루션이다.
+**(B) 정답** : Fargate + ECS는 서버리스이면서 실행 시간 제한이 없다. 30분 이상의 긴 작업을 서버리스로 처리할 수 있는 적합한 솔루션이다. → [📖 서버리스란?](/section/17-serverless-overview#서버리스란)
 
 **(C)** : EC2 Spot 인스턴스는 서버리스가 아니다. 인스턴스를 직접 관리해야 한다.
 
 **(D)** : AWS Batch on EC2도 서버리스가 아닌 EC2 기반이다. 서버리스 요구사항을 충족하지 못한다.
 
 **핵심 개념:** Lambda 최대 실행 시간 15분 제한
+
+**관련 노트:** [AWS Lambda](/section/17-serverless-overview#aws-lambda), [서버리스란?](/section/17-serverless-overview#서버리스란)
 
 ### Q3. A company has a DynamoDB table that is used globally. Users in the US and Europe need low-latency read and write access. What feature should they enable?
 **Options:**
@@ -433,15 +437,17 @@
 | C | DynamoDB On-Demand 용량 모드 |
 | D | DynamoDB Point-in-Time Recovery |
 
-**(A)** : DAX는 단일 리전 인메모리 캐시이다. 다른 리전 사용자에게 저지연 접근을 제공하지 못한다.
+**(A)** : DAX는 단일 리전 인메모리 캐시이다. 다른 리전 사용자에게 저지연 접근을 제공하지 못한다. → [📖 Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb)
 
-**(B) 정답** : DynamoDB Global Tables는 다중 리전에서 Active-Active 복제를 제공하여 US와 Europe 사용자 모두 가장 가까운 리전에서 저지연 읽기/쓰기가 가능하다. DynamoDB Streams 활성화가 사전 조건이다.
+**(B) 정답** : DynamoDB Global Tables는 다중 리전에서 Active-Active 복제를 제공하여 US와 Europe 사용자 모두 가장 가까운 리전에서 저지연 읽기/쓰기가 가능하다. DynamoDB Streams 활성화가 사전 조건이다. → [📖 Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb)
 
 **(C)** : On-Demand 용량 모드는 트래픽 예측이 어려울 때의 용량 관리 방식이다. 글로벌 접근과는 무관하다.
 
 **(D)** : PITR(Point-in-Time Recovery)은 데이터 백업/복구 기능이다. 글로벌 저지연 접근과 무관하다.
 
 **핵심 개념:** DynamoDB Global Tables, Active-Active 복제
+
+**관련 노트:** [Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb)
 
 ### Q4. A company has a public-facing REST API using API Gateway. They need to authenticate mobile app users. The users sign up with email/password and can also log in with their Facebook accounts. Which service should they use for authentication?
 **Options:**
@@ -465,13 +471,15 @@
 
 **(A)** : IAM Users/Groups는 AWS 내부 사용자용이다. 모바일 앱의 수많은 외부 사용자 관리에 적합하지 않으며 소셜 로그인을 지원하지 않는다.
 
-**(B) 정답** : Cognito User Pools는 이메일/비밀번호 로그인과 Facebook, Google 등 소셜 로그인(페더레이션 인증)을 지원하며 API Gateway와 직접 통합된다. 두 요구사항을 모두 충족한다.
+**(B) 정답** : Cognito User Pools는 이메일/비밀번호 로그인과 Facebook, Google 등 소셜 로그인(페더레이션 인증)을 지원하며 API Gateway와 직접 통합된다. 두 요구사항을 모두 충족한다. → [📖 Amazon Cognito](/section/17-serverless-overview#amazon-cognito)
 
 **(C)** : API Keys는 인증이 아닌 API 사용량 제어/추적용이다. 사용자 신원 확인 기능이 없다.
 
-**(D)** : IAM Identity Center(SSO)는 기업 내부 직원의 AWS 서비스 접근을 위한 것이다. 외부 모바일 사용자 인증용이 아니다.
+**(D)** : IAM Identity Center(SSO)는 기업 내부 직원의 AWS 서비스 접근을 위한 것이다. 외부 모바일 사용자 인증용이 아니다. → [📖 AWS IAM Identity Center AWS SSO 후속](/section/23-advanced-identity#aws-iam-identity-center-aws-sso-후속)
 
 **핵심 개념:** Cognito User Pools, 페더레이션 인증
+
+**관련 노트:** [Amazon Cognito](/section/17-serverless-overview#amazon-cognito)
 
 ### Q5. A mobile application needs to allow authenticated users to upload files directly to their own folder in an S3 bucket. Users authenticate through Cognito User Pools. How should the solutions architect provide S3 access?
 **Options:**
@@ -495,13 +503,15 @@
 
 **(A)** : 각 모바일 앱 사용자를 위해 IAM 사용자를 생성하는 것은 수백만 명의 사용자에 대해 확장이 불가능하다. 장기 자격증명 관리 부담도 크다.
 
-**(B) 정답** : Cognito Identity Pools는 Cognito User Pools로 인증된 사용자에게 임시 AWS 자격증명을 제공한다. user_id 기반으로 S3 폴더 접근 권한을 세밀하게 제어할 수 있어 "자신의 폴더에만 접근" 요구사항에 적합하다.
+**(B) 정답** : Cognito Identity Pools는 Cognito User Pools로 인증된 사용자에게 임시 AWS 자격증명을 제공한다. user_id 기반으로 S3 폴더 접근 권한을 세밀하게 제어할 수 있어 "자신의 폴더에만 접근" 요구사항에 적합하다. → [📖 Amazon Cognito](/section/17-serverless-overview#amazon-cognito)
 
 **(C)** : Pre-signed URLs도 가능하지만 Lambda 등의 백엔드가 필요하다. Cognito Identity Pools가 더 직접적이고 확장 가능한 솔루션이다.
 
 **(D)** : 퍼블릭 버킷으로 설정하는 것은 심각한 보안 위험이다. 모든 사람이 다른 사용자의 파일에도 접근할 수 있게 된다.
 
 **핵심 개념:** Cognito Identity Pools, 임시 AWS 자격증명
+
+**관련 노트:** [Amazon Cognito](/section/17-serverless-overview#amazon-cognito)
 
 ### Q6. A company wants to customize CloudFront responses by adding security headers to every response. The function must handle millions of requests per second with sub-millisecond latency. Which solution is MOST appropriate?
 **Options:**
@@ -523,15 +533,17 @@
 | C | CloudFront의 AWS WAF 커스텀 규칙 |
 | D | 헤더를 추가하는 오리진 서버 미들웨어 |
 
-**(A)** : Lambda@Edge도 Viewer Response에서 헤더를 추가할 수 있지만 처리량이 낮고 실행 시간이 길어 비용이 CloudFront Functions보다 약 6배 높다. "수백만 요청/초" 요구사항에 비용 효율적이지 않다.
+**(A)** : Lambda@Edge도 Viewer Response에서 헤더를 추가할 수 있지만 처리량이 낮고 실행 시간이 길어 비용이 CloudFront Functions보다 약 6배 높다. "수백만 요청/초" 요구사항에 비용 효율적이지 않다. → [📖 CloudFront Functions & Lambda@Edge](/section/17-serverless-overview#cloudfront-functions-lambdaedge)
 
-**(B) 정답** : CloudFront Functions는 수백만 요청/초를 sub-ms 지연으로 처리할 수 있다. 보안 헤더 추가와 같은 헤더 조작은 CloudFront Functions의 대표적 사용 사례로 비용 효율적이다.
+**(B) 정답** : CloudFront Functions는 수백만 요청/초를 sub-ms 지연으로 처리할 수 있다. 보안 헤더 추가와 같은 헤더 조작은 CloudFront Functions의 대표적 사용 사례로 비용 효율적이다. → [📖 CloudFront Functions & Lambda@Edge](/section/17-serverless-overview#cloudfront-functions-lambdaedge)
 
 **(C)** : WAF는 요청 필터링/차단용이다. 응답 헤더 추가 기능이 없다.
 
 **(D)** : 오리진 서버 미들웨어는 모든 요청이 오리진까지 도달해야 한다. Edge 캐싱의 이점이 없고 지연이 증가한다.
 
 **핵심 개념:** CloudFront Functions, Viewer Response, 헤더 조작
+
+**관련 노트:** [CloudFront Functions & Lambda@Edge](/section/17-serverless-overview#cloudfront-functions-lambdaedge)
 
 ### Q7. A Lambda function needs to connect to an RDS PostgreSQL database in a VPC. During traffic spikes, the database becomes overwhelmed with too many connections. What is the BEST solution?
 **Options:**
@@ -555,13 +567,15 @@
 
 **(A)** : RDS 인스턴스 크기 증가는 비용이 높고 연결 수 문제를 근본적으로 해결하지 못한다. 연결이 많으면 큰 인스턴스도 결국 한계에 도달한다.
 
-**(B) 정답** : RDS Proxy는 연결 풀링/공유로 DB 연결 수를 대폭 줄이고 장애 조치 시간을 66% 감소시킨다. Lambda는 VPC에 배포되어야 하며 RDS Proxy는 퍼블릭 접근이 불가능하다.
+**(B) 정답** : RDS Proxy는 연결 풀링/공유로 DB 연결 수를 대폭 줄이고 장애 조치 시간을 66% 감소시킨다. Lambda는 VPC에 배포되어야 하며 RDS Proxy는 퍼블릭 접근이 불가능하다. → [📖 Lambda in VPC](/section/17-serverless-overview#lambda-in-vpc)
 
 **(C)** : DynamoDB 전환은 기존 관계형 데이터 모델의 재설계가 필요하다. 현실적이지 않은 선택이다.
 
 **(D)** : Lambda 코드 내 연결 캐싱은 각 Lambda 인스턴스가 독립적이므로 인스턴스마다 별도 연결을 생성한다. 효과가 매우 제한적이다.
 
 **핵심 개념:** Lambda + RDS Proxy, VPC 배포
+
+**관련 노트:** [Lambda in VPC](/section/17-serverless-overview#lambda-in-vpc), [AWS Lambda](/section/17-serverless-overview#aws-lambda)
 
 ### Q8. A DynamoDB table has many read operations but few write operations. The application requires microsecond latency for read operations. Which caching solution should be used?
 **Options:**
@@ -583,12 +597,14 @@
 | C | Amazon CloudFront |
 | D | API Gateway 캐싱 |
 
-**(A)** : ElastiCache Redis도 캐싱을 제공하지만 DynamoDB API와 직접 호환되지 않아 코드 변경이 필요하다. 집계 결과 저장에 더 적합한 솔루션이다.
+**(A)** : ElastiCache Redis도 캐싱을 제공하지만 DynamoDB API와 직접 호환되지 않아 코드 변경이 필요하다. 집계 결과 저장에 더 적합한 솔루션이다. → [📖 Amazon ElastiCache](/section/19-databases#amazon-elasticache)
 
-**(B) 정답** : DAX는 DynamoDB 전용 인메모리 캐시로 마이크로초 지연을 제공한다. 기존 DynamoDB API와 완벽히 호환되어 앱 코드 변경 없이 사용할 수 있다.
+**(B) 정답** : DAX는 DynamoDB 전용 인메모리 캐시로 마이크로초 지연을 제공한다. 기존 DynamoDB API와 완벽히 호환되어 앱 코드 변경 없이 사용할 수 있다. → [📖 Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb)
 
 **(C)** : CloudFront는 HTTP 응답을 Edge에서 캐싱하는 CDN이다. DynamoDB DB 레벨 캐싱이 아니다.
 
 **(D)** : API Gateway 캐싱은 API 응답 레벨 캐싱이다. DynamoDB 읽기를 직접 최적화하지 않는다.
 
 **핵심 개념:** DynamoDB Accelerator (DAX), 마이크로초 캐시
+
+**관련 노트:** [Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb), [Amazon DynamoDB](/section/19-databases#amazon-dynamodb)

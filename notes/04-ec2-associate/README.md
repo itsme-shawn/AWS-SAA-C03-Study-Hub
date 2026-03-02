@@ -241,15 +241,17 @@ EC2 Hibernate vs Stop 동작 비교
 | C | Cluster |
 | D | Default (배치 그룹 없음) |
 
-**(A)** : Spread는 각 인스턴스를 별도 하드웨어에 분산하여 가용성을 높이는 전략이다. 성능보다 장애 격리에 초점이 맞춰져 있어 HPC의 극도의 저지연 요구사항에는 부적합하다.
+**(A)** : Spread는 각 인스턴스를 별도 하드웨어에 분산하여 가용성을 높이는 전략이다. 성능보다 장애 격리에 초점이 맞춰져 있어 HPC의 극도의 저지연 요구사항에는 부적합하다. → [📖 Placement Groups 배치 그룹](/section/04-ec2-associate#placement-groups-배치-그룹)
 
 **(B)** : Partition은 HDFS, Cassandra 등 대규모 분산 시스템을 위한 전략으로 파티션(랙) 단위 분산에 초점이 있다. HPC의 초저지연 요구사항에는 부적합하다.
 
-**(C) 정답** : Cluster Placement Group은 단일 AZ 내에서 인스턴스를 근접한 하드웨어에 그룹화하여 10Gbps 대역폭과 최저 지연을 제공한다. HPC처럼 극도의 네트워크 성능이 필요한 워크로드에 최적이다.
+**(C) 정답** : Cluster Placement Group은 단일 AZ 내에서 인스턴스를 근접한 하드웨어에 그룹화하여 10Gbps 대역폭과 최저 지연을 제공한다. HPC처럼 극도의 네트워크 성능이 필요한 워크로드에 최적이다. → [📖 Placement Groups 배치 그룹](/section/04-ec2-associate#placement-groups-배치-그룹)
 
 **(D)** : 배치 그룹 없음은 AWS가 인스턴스를 임의로 배치하므로 저지연을 보장하지 않는다. 성능 요구사항이 있는 워크로드에는 부적합하다.
 
 **핵심 개념:** Placement Groups - Cluster
+
+**관련 노트:** [Placement Groups 배치 그룹](/section/04-ec2-associate#placement-groups-배치-그룹)
 
 ### Q2. An application requires high availability where each EC2 instance must be isolated from hardware failure of other instances. The application runs on 6 instances across 3 Availability Zones. Which placement group strategy is MOST appropriate?
 **Options:**
@@ -273,13 +275,15 @@ EC2 Hibernate vs Stop 동작 비교
 
 **(A)** : Cluster는 단일 AZ에 근접 배치하여 AZ 장애 시 전체 실패 위험이 있다. 고가용성보다 성능에 초점이 맞춰져 있어 고가용성 요구사항에 부적합하다.
 
-**(B) 정답** : Spread Placement Group은 각 인스턴스를 서로 다른 하드웨어에 배치하여 개별 인스턴스의 하드웨어 장애를 격리한다. AZ당 최대 7개 인스턴스 제한이 있으므로 3개 AZ에 6개(AZ당 2개)는 제한 내에서 충분하다.
+**(B) 정답** : Spread Placement Group은 각 인스턴스를 서로 다른 하드웨어에 배치하여 개별 인스턴스의 하드웨어 장애를 격리한다. AZ당 최대 7개 인스턴스 제한이 있으므로 3개 AZ에 6개(AZ당 2개)는 제한 내에서 충분하다. → [📖 Placement Groups 배치 그룹](/section/04-ec2-associate#placement-groups-배치-그룹)
 
 **(C)** : Partition은 파티션(랙 그룹) 단위 분산으로 개별 인스턴스 수준이 아닌 파티션 수준의 격리를 제공한다. 개별 인스턴스 간 장애 격리 요구사항에는 Spread가 더 적합하다.
 
 **(D)** : 배치 그룹 없음은 하드웨어 장애 격리를 보장하지 않는다. AWS가 임의로 인스턴스를 배치하므로 동일 하드웨어에 여러 인스턴스가 배치될 수 있다.
 
 **핵심 개념:** Placement Groups - Spread
+
+**관련 노트:** [Placement Groups 배치 그룹](/section/04-ec2-associate#placement-groups-배치-그룹)
 
 ### Q3. A Solutions Architect needs to preserve the in-memory state of an EC2 instance to speed up subsequent boots. Which feature should they use?
 **Options:**
@@ -303,13 +307,15 @@ EC2 Hibernate vs Stop 동작 비교
 
 **(A)** : User Data 스크립트는 인스턴스 최초 시작 시에만 한 번 실행된다. RAM 상태를 보존하는 기능이 없으므로 부팅 속도 향상에 기여하지 않는다.
 
-**(B) 정답** : EC2 Hibernate는 RAM 상태를 암호화된 Root EBS 볼륨에 저장하고, 재시작 시 OS를 재부팅하지 않고 RAM을 복원하여 빠르게 이전 상태로 돌아간다.
+**(B) 정답** : EC2 Hibernate는 RAM 상태를 암호화된 Root EBS 볼륨에 저장하고, 재시작 시 OS를 재부팅하지 않고 RAM을 복원하여 빠르게 이전 상태로 돌아간다. → [📖 EC2 Hibernate 최대 절전 모드](/section/04-ec2-associate#ec2-hibernate-최대-절전-모드)
 
 **(C)** : EBS Snapshot은 디스크 데이터만 백업하며 RAM 내용은 포함하지 않는다. 재시작 시 OS를 처음부터 재부팅해야 한다.
 
 **(D)** : AMI 생성도 디스크 상태(OS, 소프트웨어, 설정)만 캡처하고 실행 중인 메모리 상태는 저장하지 않는다. 빠른 부팅에는 도움이 되지만 인메모리 상태 보존은 불가능하다.
 
 **핵심 개념:** EC2 Hibernate
+
+**관련 노트:** [EC2 Hibernate 최대 절전 모드](/section/04-ec2-associate#ec2-hibernate-최대-절전-모드)
 
 ### Q4. What is a prerequisite for using EC2 Hibernate?
 **Options:**
@@ -333,13 +339,15 @@ EC2 Hibernate vs Stop 동작 비교
 
 **(A)** : Instance Store는 Hibernate에서 사용할 수 없다. Hibernate는 RAM 내용을 영구 스토리지에 저장해야 하므로 반드시 EBS 루트 볼륨이 필요하다.
 
-**(B) 정답** : EC2 Hibernate를 사용하려면 Root EBS 볼륨이 암호화되어야 한다. RAM 내용이 EBS에 저장되므로 보안을 위해 암호화가 필수 전제 조건이다.
+**(B) 정답** : EC2 Hibernate를 사용하려면 Root EBS 볼륨이 암호화되어야 한다. RAM 내용이 EBS에 저장되므로 보안을 위해 암호화가 필수 전제 조건이다. → [📖 EC2 Hibernate 최대 절전 모드](/section/04-ec2-associate#ec2-hibernate-최대-절전-모드)
 
 **(C)** : RAM 150GB는 최소가 아닌 최대 제한이다. RAM이 150GB 미만이어야 Hibernate를 사용할 수 있다. 150GB 이상의 인스턴스는 Hibernate를 지원하지 않는다.
 
 **(D)** : Bare Metal 인스턴스는 Hibernate를 지원하지 않는다. Hibernate는 특정 인스턴스 패밀리에서만 지원된다.
 
 **핵심 개념:** EC2 Hibernate 요구사항
+
+**관련 노트:** [EC2 Hibernate 최대 절전 모드](/section/04-ec2-associate#ec2-hibernate-최대-절전-모드)
 
 ### Q5. An application requires a fixed public IP address that can be quickly remapped to another EC2 instance in case of failure. What should the Solutions Architect use?
 **Options:**
@@ -363,13 +371,15 @@ EC2 Hibernate vs Stop 동작 비교
 
 **(A)** : AWS가 자동 할당하는 Public IP는 인스턴스 중지 후 재시작 시 변경될 수 있다. 고정 IP가 아니므로 재매핑이 불가능하다.
 
-**(B) 정답** : Elastic IP는 고정 Public IPv4 주소로, 장애 시 다른 인스턴스로 빠르게 재매핑할 수 있다. 문제의 "고정 Public IP + 빠른 재매핑" 요구사항을 정확히 충족한다.
+**(B) 정답** : Elastic IP는 고정 Public IPv4 주소로, 장애 시 다른 인스턴스로 빠르게 재매핑할 수 있다. 문제의 "고정 Public IP + 빠른 재매핑" 요구사항을 정확히 충족한다. → [📖 Elastic IP](/section/04-ec2-associate#elastic-ip)
 
 **(C)** : NAT Gateway를 사용한 Private IP는 인바운드 연결을 직접 받을 수 없다. 외부에서 직접 접근하는 고정 Public IP 요구사항을 충족하지 못한다.
 
 **(D)** : ALB는 고정 Public IP를 제공하지 않고 DNS 기반 호스트명을 사용한다. 고정 IP가 필요한 경우 NLB + Elastic IP 조합이 더 적합하다.
 
 **핵심 개념:** Elastic IP
+
+**관련 노트:** [Elastic IP](/section/04-ec2-associate#elastic-ip), [IP 주소 IPv4](/section/04-ec2-associate#ip-주소-ipv4)
 
 ### Q6. A company is running a Cassandra database cluster on EC2 and needs to distribute instances across multiple isolated partitions to prevent correlated hardware failures. Which placement group strategy should they use?
 **Options:**
@@ -395,11 +405,13 @@ EC2 Hibernate vs Stop 동작 비교
 
 **(B)** : Spread는 AZ당 최대 7개 인스턴스 제한이 있어 수십~수백 개 노드로 구성되는 Cassandra 클러스터에는 부적합하다. 소규모 고가용성 배포에는 적합하지만 대규모 분산 시스템에는 한계가 있다.
 
-**(C) 정답** : Partition Placement Group은 인스턴스를 서로 다른 파티션(랙)에 분산하여 상관된 하드웨어 장애를 방지한다. Cassandra, Kafka, HDFS, HBase와 같은 대규모 분산 시스템에 설계된 전략이다.
+**(C) 정답** : Partition Placement Group은 인스턴스를 서로 다른 파티션(랙)에 분산하여 상관된 하드웨어 장애를 방지한다. Cassandra, Kafka, HDFS, HBase와 같은 대규모 분산 시스템에 설계된 전략이다. → [📖 Placement Groups 배치 그룹](/section/04-ec2-associate#placement-groups-배치-그룹)
 
 **(D)** : Default placement는 AWS가 임의로 인스턴스를 배치하므로 파티션 단위 하드웨어 장애 격리를 보장하지 않는다.
 
 **핵심 개념:** Placement Groups - Partition
+
+**관련 노트:** [Placement Groups 배치 그룹](/section/04-ec2-associate#placement-groups-배치-그룹)
 
 ### Q7. What happens to the public IP address of an EC2 instance when it is stopped and then started again?
 **Options:**
@@ -423,13 +435,15 @@ EC2 Hibernate vs Stop 동작 비교
 
 **(A)** : 일반 Public IP는 Elastic IP를 사용하지 않는 한 인스턴스 재시작 시 변경될 수 있다. 동일하게 유지된다는 설명은 틀렸다.
 
-**(B) 정답** : EC2 인스턴스를 중지 후 재시작하면 Public IP가 변경될 수 있다. Private IP는 유지된다. 고정 Public IP가 필요하면 Elastic IP를 사용해야 한다.
+**(B) 정답** : EC2 인스턴스를 중지 후 재시작하면 Public IP가 변경될 수 있다. Private IP는 유지된다. 고정 Public IP가 필요하면 Elastic IP를 사용해야 한다. → [📖 IP 주소 IPv4](/section/04-ec2-associate#ip-주소-ipv4)
 
 **(C)** : 인스턴스 재시작 시 Private IP는 유지된다. Public IP와 Private IP 모두 잃는다는 설명은 틀렸다.
 
 **(D)** : 실제로는 Private IP가 유지되고 Public IP가 변경될 수 있다. 이 선지는 반대로 설명하고 있어 틀렸다.
 
 **핵심 개념:** EC2 Public/Private IP
+
+**관련 노트:** [IP 주소 IPv4](/section/04-ec2-associate#ip-주소-ipv4), [Elastic IP](/section/04-ec2-associate#elastic-ip)
 
 ### Q8. An ENI (Elastic Network Interface) created in us-east-1a can be attached to an EC2 instance in which Availability Zone?
 **Options:**
@@ -453,10 +467,12 @@ EC2 Hibernate vs Stop 동작 비교
 
 **(A)** : ENI는 생성된 AZ에서만 사용 가능하다. us-east-1의 모든 AZ에 연결할 수 있다는 설명은 틀렸다.
 
-**(B) 정답** : ENI는 특정 AZ에 종속되므로, us-east-1a에서 생성된 ENI는 us-east-1a의 인스턴스에만 연결할 수 있다. AZ를 벗어나서는 이동할 수 없다.
+**(B) 정답** : ENI는 특정 AZ에 종속되므로, us-east-1a에서 생성된 ENI는 us-east-1a의 인스턴스에만 연결할 수 있다. AZ를 벗어나서는 이동할 수 없다. → [📖 Elastic Network Interface ENI](/section/04-ec2-associate#elastic-network-interface-eni)
 
 **(C)** : ENI는 리전은 물론 AZ에도 종속된다. 모든 Region의 모든 AZ에서 사용할 수 있다는 설명은 완전히 틀렸다.
 
 **(D)** : VPC가 여러 AZ에 걸칠 수 있지만 ENI는 여전히 생성된 특정 AZ에 종속된다. 같은 VPC라도 다른 AZ의 인스턴스에는 연결할 수 없다.
 
 **핵심 개념:** Elastic Network Interface (ENI) - AZ 종속
+
+**관련 노트:** [Elastic Network Interface ENI](/section/04-ec2-associate#elastic-network-interface-eni)

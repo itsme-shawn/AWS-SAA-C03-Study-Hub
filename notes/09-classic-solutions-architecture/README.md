@@ -300,15 +300,17 @@ Go, Java SE, Java with Tomcat, .NET Core on Linux, .NET on Windows, Node.js, PHP
 | C | Amazon EBS를 사용하여 세션 데이터를 저장한다 |
 | D | 세션 데이터를 Amazon S3에 저장한다 |
 
-**(A) 정답** : ELB Sticky Session은 ALB 설정만으로 같은 사용자를 항상 같은 EC2 인스턴스로 라우팅하여 세션을 유지한다. 애플리케이션 코드 변경이 필요 없어 "수정 없이" 조건을 충족한다.
+**(A) 정답** : ELB Sticky Session은 ALB 설정만으로 같은 사용자를 항상 같은 EC2 인스턴스로 라우팅하여 세션을 유지한다. 애플리케이션 코드 변경이 필요 없어 "수정 없이" 조건을 충족한다. → [📖 Sticky Sessions Session Affinity](/section/06-high-availability-scalability#sticky-sessions-session-affinity)
 
-**(B)** : ElastiCache에 세션을 저장하는 것이 아키텍처적으로 더 나은 솔루션이지만, 애플리케이션 코드에서 세션 저장소를 ElastiCache로 변경하는 수정이 필요하다. 조건 위반이다.
+**(B)** : ElastiCache에 세션을 저장하는 것이 아키텍처적으로 더 나은 솔루션이지만, 애플리케이션 코드에서 세션 저장소를 ElastiCache로 변경하는 수정이 필요하다. 조건 위반이다. → [📖 Amazon ElastiCache](/section/07-rds-aurora-elasticache#amazon-elasticache)
 
-**(C)** : EBS는 단일 EC2 인스턴스에 연결되는 블록 스토리지이다. 인스턴스 간 세션 데이터를 공유할 수 없어 문제 해결이 불가능하다.
+**(C)** : EBS는 단일 EC2 인스턴스에 연결되는 블록 스토리지이다. 인스턴스 간 세션 데이터를 공유할 수 없어 문제 해결이 불가능하다. → [📖 EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store)
 
 **(D)** : S3는 객체 스토리지로 세션 데이터의 빈번한 읽기/쓰기에 적합하지 않다. 코드 변경도 필요하여 조건을 위반한다.
 
 **핵심 개념:** ELB Sticky Sessions
+
+**관련 노트:** [Sticky Sessions Session Affinity](/section/06-high-availability-scalability#sticky-sessions-session-affinity)
 
 ---
 
@@ -334,13 +336,15 @@ Go, Java SE, Java with Tomcat, .NET Core on Linux, .NET on Windows, Node.js, PHP
 
 **(A)** : RDS가 퍼블릭 서브넷에 있으면 인터넷에서 접근 가능하게 되어 요구사항을 위반한다. 데이터베이스를 퍼블릭에 노출하는 것은 심각한 보안 위험이다.
 
-**(B) 정답** : 3-Tier 아키텍처의 모범 사례로 ALB는 퍼블릭 서브넷에, EC2는 프라이빗 서브넷에, RDS는 프라이빗/데이터 서브넷에 배치한다. 인터넷에서는 ALB만 접근 가능하여 보안이 강화된다.
+**(B) 정답** : 3-Tier 아키텍처의 모범 사례로 ALB는 퍼블릭 서브넷에, EC2는 프라이빗 서브넷에, RDS는 프라이빗/데이터 서브넷에 배치한다. 인터넷에서는 ALB만 접근 가능하여 보안이 강화된다. → [📖 3-Tier 웹 아키텍처](/section/09-classic-solutions-architecture#3tier-웹-아키텍처)
 
 **(C)** : ALB를 프라이빗 서브넷에 배치하면 인터넷 사용자가 웹 애플리케이션에 접근할 수 없게 된다. 웹 티어가 퍼블릭 서브넷에 있어야 한다는 요구사항을 위반한다.
 
 **(D)** : EC2 인스턴스가 퍼블릭 서브넷에 불필요하게 노출되어 보안 위험이 증가한다. 최소 권한 원칙에 부합하지 않는다.
 
 **핵심 개념:** 3-Tier Architecture
+
+**관련 노트:** [3-Tier 웹 아키텍처](/section/09-classic-solutions-architecture#3tier-웹-아키텍처), [서브넷 Subnet](/section/25-vpc#서브넷-subnet)
 
 ---
 
@@ -364,15 +368,17 @@ Go, Java SE, Java with Tomcat, .NET Core on Linux, .NET on Windows, Node.js, PHP
 | C | AWS CloudFormation을 사용하여 인프라를 프로비저닝한다 |
 | D | Golden AMI와 User Data 스크립트의 조합을 사용한다 |
 
-**(A)** : User Data 스크립트는 인스턴스 부팅 시 패키지 다운로드, 설치, 설정을 수행한다. 시작 완료까지 수 분이 추가로 소요되어 가장 빠른 시작 시간을 제공하지 않는다.
+**(A)** : User Data 스크립트는 인스턴스 부팅 시 패키지 다운로드, 설치, 설정을 수행한다. 시작 완료까지 수 분이 추가로 소요되어 가장 빠른 시작 시간을 제공하지 않는다. → [📖 EC2 User Data](/section/03-ec2-basics#ec2-user-data)
 
-**(B) 정답** : Golden AMI는 애플리케이션, OS 의존성, 설정 등이 모두 사전 설치된 이미지이다. 인스턴스 시작 시 추가 설치 시간이 필요 없어 가장 빠른 시작 시간을 제공한다.
+**(B) 정답** : Golden AMI는 애플리케이션, OS 의존성, 설정 등이 모두 사전 설치된 이미지이다. 인스턴스 시작 시 추가 설치 시간이 필요 없어 가장 빠른 시작 시간을 제공한다. → [📖 AMI Amazon Machine Image](/section/05-ec2-instance-storage#ami-amazon-machine-image)
 
-**(C)** : CloudFormation은 인프라 리소스를 코드로 프로비저닝하는 도구이다. EC2 내부의 애플리케이션 설치 속도와는 직접적 관련이 없다.
+**(C)** : CloudFormation은 인프라 리소스를 코드로 프로비저닝하는 도구이다. EC2 내부의 애플리케이션 설치 속도와는 직접적 관련이 없다. → [📖 AWS CloudFormation](/section/28-other-services#aws-cloudformation)
 
-**(D)** : Golden AMI + User Data 조합은 AMI에 대부분의 설정이 포함되어도 User Data의 동적 설정 실행 시간이 추가된다. 순수 Golden AMI보다는 느리다.
+**(D)** : Golden AMI + User Data 조합은 AMI에 대부분의 설정이 포함되어도 User Data의 동적 설정 실행 시간이 추가된다. 순수 Golden AMI보다는 느리다. → [📖 애플리케이션 빠른 시작 Instantiating Quickly](/section/09-classic-solutions-architecture#애플리케이션-빠른-시작-instantiating-quickly)
 
 **핵심 개념:** Golden AMI
+
+**관련 노트:** [애플리케이션 빠른 시작 Instantiating Quickly](/section/09-classic-solutions-architecture#애플리케이션-빠른-시작-instantiating-quickly), [AMI Amazon Machine Image](/section/05-ec2-instance-storage#ami-amazon-machine-image)
 
 ---
 
@@ -396,15 +402,17 @@ Go, Java SE, Java with Tomcat, .NET Core on Linux, .NET on Windows, Node.js, PHP
 | C | Amazon EFS |
 | D | Instance Store |
 
-**(A)** : EBS는 단일 인스턴스에만 연결 가능하며 AZ 간 공유가 불가능하다. 현재 문제의 원인이 바로 EBS를 사용하는 것이다.
+**(A)** : EBS는 단일 인스턴스에만 연결 가능하며 AZ 간 공유가 불가능하다. 현재 문제의 원인이 바로 EBS를 사용하는 것이다. → [📖 EBS Elastic Block Store](/section/05-ec2-instance-storage#ebs-elastic-block-store)
 
-**(B)** : S3도 공유 스토리지로 사용 가능하지만 WordPress의 파일 시스템 기반 구조와 직접 호환되지 않아 플러그인이나 코드 수정이 필요하다. EFS가 더 적합하다.
+**(B)** : S3도 공유 스토리지로 사용 가능하지만 WordPress의 파일 시스템 기반 구조와 직접 호환되지 않아 플러그인이나 코드 수정이 필요하다. EFS가 더 적합하다. → [📖 S3 사용 사례](/section/10-amazon-s3#s3-사용-사례)
 
-**(C) 정답** : Amazon EFS는 여러 AZ의 여러 EC2 인스턴스에서 동시에 마운트하여 접근할 수 있는 공유 파일 시스템(NFS)이다. WordPress는 파일 시스템 기반으로 이미지를 관리하므로 EFS를 마운트하면 모든 인스턴스에서 동일한 이미지에 접근할 수 있다.
+**(C) 정답** : Amazon EFS는 여러 AZ의 여러 EC2 인스턴스에서 동시에 마운트하여 접근할 수 있는 공유 파일 시스템(NFS)이다. WordPress는 파일 시스템 기반으로 이미지를 관리하므로 EFS를 마운트하면 모든 인스턴스에서 동일한 이미지에 접근할 수 있다. → [📖 Amazon EFS Elastic File System](/section/05-ec2-instance-storage#amazon-efs-elastic-file-system)
 
-**(D)** : Instance Store는 인스턴스 중지/종료 시 데이터가 손실되는 임시 스토리지이다. 인스턴스 간 공유도 불가능하여 요구사항에 전혀 부적합하다.
+**(D)** : Instance Store는 인스턴스 중지/종료 시 데이터가 손실되는 임시 스토리지이다. 인스턴스 간 공유도 불가능하여 요구사항에 전혀 부적합하다. → [📖 EC2 Instance Store](/section/05-ec2-instance-storage#ec2-instance-store)
 
 **핵심 개념:** EBS vs EFS
+
+**관련 노트:** [EBS vs EFS vs Instance Store 비교 시험 핵심!](/section/05-ec2-instance-storage#ebs-vs-efs-vs-instance-store-비교-시험-핵심), [Amazon EFS Elastic File System](/section/05-ec2-instance-storage#amazon-efs-elastic-file-system)
 
 ---
 
@@ -428,15 +436,17 @@ Go, Java SE, Java with Tomcat, .NET Core on Linux, .NET on Windows, Node.js, PHP
 | C | Amazon ECS |
 | D | AWS Lambda |
 
-**(A)** : EC2 + Auto Scaling은 가능하지만 ALB 설정, ASG 구성, 헬스 체크 설정, 배포 파이프라인 등을 모두 수동으로 구성해야 하므로 인프라 관리 부담이 크다.
+**(A)** : EC2 + Auto Scaling은 가능하지만 ALB 설정, ASG 구성, 헬스 체크 설정, 배포 파이프라인 등을 모두 수동으로 구성해야 하므로 인프라 관리 부담이 크다. → [📖 Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
-**(B) 정답** : Elastic Beanstalk은 Node.js를 네이티브로 지원하며, 코드만 업로드하면 ALB, ASG, EC2, 헬스 모니터링 등 모든 인프라를 자동으로 프로비저닝하고 관리한다. "최소한의 인프라 관리" 요구사항에 가장 정확히 부합한다.
+**(B) 정답** : Elastic Beanstalk은 Node.js를 네이티브로 지원하며, 코드만 업로드하면 ALB, ASG, EC2, 헬스 모니터링 등 모든 인프라를 자동으로 프로비저닝하고 관리한다. "최소한의 인프라 관리" 요구사항에 가장 정확히 부합한다. → [📖 Elastic Beanstalk](/section/09-classic-solutions-architecture#elastic-beanstalk)
 
-**(C)** : ECS는 컨테이너 오케스트레이션 서비스로 Docker 컨테이너 기반 배포에 적합하다. 기존 Node.js 웹앱을 컨테이너화해야 하는 추가 작업이 필요하다.
+**(C)** : ECS는 컨테이너 오케스트레이션 서비스로 Docker 컨테이너 기반 배포에 적합하다. 기존 Node.js 웹앱을 컨테이너화해야 하는 추가 작업이 필요하다. → [📖 Amazon ECS Elastic Container Service](/section/16-containers#amazon-ecs-elastic-container-service)
 
-**(D)** : Lambda는 서버리스 함수 서비스로 이벤트 기반 처리에 적합하다. 전통적인 웹 애플리케이션 배포에는 아키텍처 변경이 필요하다.
+**(D)** : Lambda는 서버리스 함수 서비스로 이벤트 기반 처리에 적합하다. 전통적인 웹 애플리케이션 배포에는 아키텍처 변경이 필요하다. → [📖 AWS Lambda](/section/17-serverless-overview#aws-lambda)
 
 **핵심 개념:** Elastic Beanstalk
+
+**관련 노트:** [Elastic Beanstalk](/section/09-classic-solutions-architecture#elastic-beanstalk)
 
 ---
 
@@ -460,15 +470,17 @@ Go, Java SE, Java with Tomcat, .NET Core on Linux, .NET on Windows, Node.js, PHP
 | C | Single Instance 배포 모드 |
 | D | Auto Scaling Group이 있는 Web Server Environment Tier |
 
-**(A)** : Web Server Tier는 HTTP 요청을 처리하기 위한 환경이다. 인스턴스 크기를 키워도 비동기 메시지 처리 아키텍처와 맞지 않으며 요청 시간 초과 문제가 발생할 수 있다.
+**(A)** : Web Server Tier는 HTTP 요청을 처리하기 위한 환경이다. 인스턴스 크기를 키워도 비동기 메시지 처리 아키텍처와 맞지 않으며 요청 시간 초과 문제가 발생할 수 있다. → [📖 Elastic Beanstalk](/section/09-classic-solutions-architecture#elastic-beanstalk)
 
-**(B) 정답** : Worker Environment Tier는 SQS 큐에서 메시지를 가져와 백그라운드에서 비동기적으로 처리하도록 설계되었다. SQS 큐의 메시지 수에 따라 자동으로 스케일링되며 메시지당 몇 분이 걸리는 무거운 연산 처리에 적합하다.
+**(B) 정답** : Worker Environment Tier는 SQS 큐에서 메시지를 가져와 백그라운드에서 비동기적으로 처리하도록 설계되었다. SQS 큐의 메시지 수에 따라 자동으로 스케일링되며 메시지당 몇 분이 걸리는 무거운 연산 처리에 적합하다. → [📖 Elastic Beanstalk](/section/09-classic-solutions-architecture#elastic-beanstalk)
 
 **(C)** : Single Instance는 개발/테스트 환경용 배포 모드이다. 프로덕션 수준의 비동기 메시지 처리에는 적합하지 않다.
 
 **(D)** : Web Server Tier + ASG도 HTTP 요청 처리용이다. 비동기 백그라운드 작업 처리를 위해서는 Worker Tier가 올바른 선택이다.
 
 **핵심 개념:** Beanstalk Worker Tier
+
+**관련 노트:** [Elastic Beanstalk](/section/09-classic-solutions-architecture#elastic-beanstalk)
 
 ---
 
@@ -492,12 +504,14 @@ Go, Java SE, Java with Tomcat, .NET Core on Linux, .NET on Windows, Node.js, PHP
 | C | ALB SG: 0.0.0.0/0에서 HTTP/HTTPS 허용; EC2 SG: 모든 트래픽 허용; RDS SG: 모든 트래픽 허용 |
 | D | ALB SG: 0.0.0.0/0에서 HTTP/HTTPS 허용; EC2 SG: 0.0.0.0/0에서 HTTP 허용; RDS SG: EC2 SG에서 트래픽 허용 |
 
-**(A)** : 모든 보안 그룹에서 모든 인바운드 트래픽을 허용하면 보안이 전혀 없는 상태이다. 최소 권한 원칙에 완전히 위배된다.
+**(A)** : 모든 보안 그룹에서 모든 인바운드 트래픽을 허용하면 보안이 전혀 없는 상태이다. 최소 권한 원칙에 완전히 위배된다. → [📖 Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹)
 
-**(B) 정답** : 보안 그룹 체이닝을 올바르게 구현한다. ALB는 인터넷(0.0.0.0/0)에서 HTTP/HTTPS만 허용하고, EC2는 ALB SG에서만 허용하며, RDS는 EC2 SG에서만 허용한다. 최소 권한 원칙에 부합한다.
+**(B) 정답** : 보안 그룹 체이닝을 올바르게 구현한다. ALB는 인터넷(0.0.0.0/0)에서 HTTP/HTTPS만 허용하고, EC2는 ALB SG에서만 허용하며, RDS는 EC2 SG에서만 허용한다. 최소 권한 원칙에 부합한다. → [📖 Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹)
 
 **(C)** : EC2와 RDS에 모든 트래픽을 허용하여 불필요한 접근이 가능해진다. 최소 권한 원칙에 위배된다.
 
 **(D)** : EC2가 인터넷(0.0.0.0/0)에서 직접 HTTP 트래픽을 허용하므로 ALB를 우회한 직접 접근이 가능해진다. 최소 권한 원칙에 위배된다.
 
 **핵심 개념:** Security Group Chaining
+
+**관련 노트:** [Security Groups 보안 그룹](/section/03-ec2-basics#security-groups-보안-그룹), [3-Tier 웹 아키텍처](/section/09-classic-solutions-architecture#3tier-웹-아키텍처)

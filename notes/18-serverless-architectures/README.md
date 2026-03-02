@@ -215,13 +215,15 @@ S3 -> trigger -> Lambda (썸네일 생성) -> S3 (썸네일 저장)
 
 **(A)** : IAM 사용자는 모바일 앱에서 수많은 사용자에 대해 확장이 불가능하다. 장기 자격증명 관리 부담도 크다.
 
-**(B) 정답** : Cognito User Pools로 사용자 인증 후 Cognito Identity Pools에서 임시 AWS 자격증명을 발급받아 user_id 기반으로 S3 폴더 접근 권한을 제한할 수 있다. AWS의 권장 서버리스 패턴이다.
+**(B) 정답** : Cognito User Pools로 사용자 인증 후 Cognito Identity Pools에서 임시 AWS 자격증명을 발급받아 user_id 기반으로 S3 폴더 접근 권한을 제한할 수 있다. AWS의 권장 서버리스 패턴이다. → [📖 Amazon Cognito](/section/17-serverless-overview#amazon-cognito)
 
 **(C)** : Lambda 프록시는 불필요한 복잡성을 추가한다. 모든 업로드 트래픽이 Lambda를 거쳐야 하므로 비효율적이다.
 
 **(D)** : CloudFront 서명된 URL은 S3 직접 업로드가 아닌 콘텐츠 다운로드 접근 제어에 사용된다. 업로드 요구사항에 맞지 않는다.
 
 **핵심 개념:** Cognito User Pools + Identity Pools, S3 직접 접근
+
+**관련 노트:** [아키텍처 1: 모바일 앱 MyTodoList](/section/18-serverless-architectures#아키텍처-1-모바일-앱-mytodolist), [Amazon Cognito](/section/17-serverless-overview#amazon-cognito)
 
 ### Q2. A serverless blog website uses DynamoDB as the database. Most operations are reads, and users report slow response times. The architecture uses API Gateway -> Lambda -> DynamoDB. What TWO caching strategies should be implemented to improve performance? (Select TWO)
 **Options:**
@@ -247,15 +249,17 @@ S3 -> trigger -> Lambda (썸네일 생성) -> S3 (썸네일 저장)
 
 **(A)** : ElastiCache Redis도 캐싱을 제공하지만 DynamoDB API와 직접 통합되지 않아 코드 변경이 필요하다. DAX가 더 적합하다.
 
-**(B) 정답** : DAX는 DynamoDB 전용 인메모리 캐시로 마이크로초 지연을 제공한다. DB 읽기 부하를 줄이고 기존 DynamoDB API와 호환되어 코드 변경이 불필요하다.
+**(B) 정답** : DAX는 DynamoDB 전용 인메모리 캐시로 마이크로초 지연을 제공한다. DB 읽기 부하를 줄이고 기존 DynamoDB API와 호환되어 코드 변경이 불필요하다. → [📖 Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb)
 
-**(C) 정답** : API Gateway 응답 캐싱은 API 레벨에서 반복 요청을 캐싱한다. DB까지 도달하는 요청 수 자체를 줄여준다.
+**(C) 정답** : API Gateway 응답 캐싱은 API 레벨에서 반복 요청을 캐싱한다. DB까지 도달하는 요청 수 자체를 줄여준다. → [📖 AWS API Gateway](/section/17-serverless-overview#aws-api-gateway)
 
 **(D)** : S3는 객체 스토리지이지 캐싱 레이어가 아니다. API 응답 캐싱에 적합하지 않다.
 
 **(E)** : RCU 증가는 캐싱보다 비용이 높고 지연 시간을 근본적으로 줄이지 못한다.
 
 **핵심 개념:** DAX + API Gateway 캐싱 (이중 캐싱)
+
+**관련 노트:** [아키텍처 2: 서버리스 웹사이트 MyBlog.com](/section/18-serverless-architectures#아키텍처-2-서버리스-웹사이트-myblogcom), [Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb), [AWS API Gateway](/section/17-serverless-overview#aws-api-gateway)
 
 ### Q3. A company wants to build a globally distributed serverless website. Static content (HTML, CSS, JS) must be served with low latency worldwide. The S3 bucket must not be publicly accessible. Which architecture should the solutions architect implement?
 **Options:**
@@ -279,13 +283,15 @@ S3 -> trigger -> Lambda (썸네일 생성) -> S3 (썸네일 저장)
 
 **(A)** : S3 퍼블릭 접근을 허용하면 S3 버킷이 퍼블릭이 된다. "공개 접근 불가" 요구사항에 위배된다.
 
-**(B) 정답** : CloudFront + S3 + OAC 조합은 서버리스 정적 웹사이트의 표준 패턴이다. OAC를 설정하면 S3 버킷은 퍼블릭이 아니면서 전 세계 Edge Location에서 저지연으로 콘텐츠를 제공할 수 있다.
+**(B) 정답** : CloudFront + S3 + OAC 조합은 서버리스 정적 웹사이트의 표준 패턴이다. OAC를 설정하면 S3 버킷은 퍼블릭이 아니면서 전 세계 Edge Location에서 저지연으로 콘텐츠를 제공할 수 있다. → [📖 아키텍처 2: 서버리스 웹사이트 MyBlog.com](/section/18-serverless-architectures#아키텍처-2-서버리스-웹사이트-myblogcom)
 
 **(C)** : Cross-Region Replication은 리전별로 S3 접근을 분산할 수 있지만 글로벌 저지연 CDN 기능이 없다.
 
 **(D)** : Global Accelerator는 S3 정적 웹사이트 배포용이 아니다. HTTP/비HTTP 애플리케이션 가속화용이다.
 
 **핵심 개념:** CloudFront + S3 + OAC, 정적 웹사이트
+
+**관련 노트:** [아키텍처 2: 서버리스 웹사이트 MyBlog.com](/section/18-serverless-architectures#아키텍처-2-서버리스-웹사이트-myblogcom)
 
 ### Q4. A company runs an application on EC2 instances that periodically distributes large software updates. During releases, the traffic spikes cause high EC2 costs. The company wants to reduce costs WITHOUT modifying the application. What should the solutions architect recommend?
 **Options:**
@@ -309,13 +315,15 @@ S3 -> trigger -> Lambda (썸네일 생성) -> S3 (썸네일 저장)
 
 **(A)** : Lambda로 마이그레이션은 앱 재작성이 필요하다. "앱 수정 없이" 요구사항에 위배된다.
 
-**(B) 정답** : CloudFront를 기존 앱 앞에 배치하면 정적 소프트웨어 업데이트 파일을 Edge에서 캐싱하여 EC2 부하를 크게 줄인다. 앱 변경이 필요 없으며 ASG 스케일링 감소로 비용이 절감된다.
+**(B) 정답** : CloudFront를 기존 앱 앞에 배치하면 정적 소프트웨어 업데이트 파일을 Edge에서 캐싱하여 EC2 부하를 크게 줄인다. 앱 변경이 필요 없으며 ASG 스케일링 감소로 비용이 절감된다. → [📖 아키텍처 4: 소프트웨어 업데이트 오프로딩](/section/18-serverless-architectures#아키텍처-4-소프트웨어-업데이트-오프로딩)
 
 **(C)** : S3 Transfer Acceleration은 S3 업로드 가속화 기능이다. EC2 기반 앱에는 적용되지 않는다.
 
 **(D)** : 스케일 업은 비용을 절감하는 것이 아니라 오히려 증가시킨다. 문제의 방향과 반대이다.
 
 **핵심 개념:** CloudFront 오프로딩, 기존 앱 변경 없이 비용 최적화
+
+**관련 노트:** [아키텍처 4: 소프트웨어 업데이트 오프로딩](/section/18-serverless-architectures#아키텍처-4-소프트웨어-업데이트-오프로딩)
 
 ### Q5. A serverless application uses DynamoDB Global Tables for multi-region data access. When a new user registers, the application should send a welcome email. What is the BEST serverless approach to trigger the email?
 **Options:**
@@ -339,13 +347,15 @@ S3 -> trigger -> Lambda (썸네일 생성) -> S3 (썸네일 저장)
 
 **(A)** : CloudWatch Event는 DynamoDB 테이블의 데이터 변경을 직접 감지하지 못한다. 관리 이벤트(API 호출 등)만 감지할 수 있다.
 
-**(B) 정답** : DynamoDB Streams는 테이블의 아이템 변경(생성/수정/삭제)을 순서대로 캡처한다. 새 사용자 등록(INSERT) 이벤트가 Stream에 기록되면 Lambda 함수가 트리거되어 Amazon SES를 통해 환영 이메일을 보낼 수 있다. 완전 서버리스 이벤트 기반 패턴이다.
+**(B) 정답** : DynamoDB Streams는 테이블의 아이템 변경(생성/수정/삭제)을 순서대로 캡처한다. 새 사용자 등록(INSERT) 이벤트가 Stream에 기록되면 Lambda 함수가 트리거되어 Amazon SES를 통해 환영 이메일을 보낼 수 있다. 완전 서버리스 이벤트 기반 패턴이다. → [📖 Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb)
 
 **(C)** : API Gateway 방식은 등록 로직과 이메일 전송이 결합되어 디커플링 원칙에 위배된다. DynamoDB Streams가 더 느슨한 결합을 제공한다.
 
 **(D)** : 주기적 스캔은 비효율적이고 실시간이 아니다. 불필요하게 RCU를 소비한다.
 
 **핵심 개념:** DynamoDB Streams -> Lambda -> SES
+
+**관련 노트:** [Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb), [아키텍처 1: 모바일 앱 MyTodoList](/section/18-serverless-architectures#아키텍처-1-모바일-앱-mytodolist)
 
 ### Q6. A company is designing a microservices architecture. Service A processes orders synchronously, Service B handles analytics asynchronously from order events, and Service C sends email notifications for each order. What is the BEST architecture?
 **Options:**
@@ -369,13 +379,15 @@ S3 -> trigger -> Lambda (썸네일 생성) -> S3 (썸네일 저장)
 
 **(A)** : Service A가 직접 연결하면 서비스 간 결합도가 높아진다. 하나의 서비스 장애가 전체에 영향을 미친다.
 
-**(B) 정답** : SNS + SQS Fan Out 패턴을 사용하면 Service A가 SNS에 한 번 publish하고 Service B와 C가 각각의 SQS 큐를 통해 독립적으로 처리한다. 완전 디커플링으로 서비스 추가/제거가 용이하고 SQS의 재시도/영속성도 활용할 수 있다.
+**(B) 정답** : SNS + SQS Fan Out 패턴을 사용하면 Service A가 SNS에 한 번 publish하고 Service B와 C가 각각의 SQS 큐를 통해 독립적으로 처리한다. 완전 디커플링으로 서비스 추가/제거가 용이하고 SQS의 재시도/영속성도 활용할 수 있다. → [📖 아키텍처 3: 마이크로서비스](/section/18-serverless-architectures#아키텍처-3-마이크로서비스)
 
 **(C)** : Kinesis는 실시간 스트리밍에 더 적합하다. 이 단순한 메시지 전달 시나리오에는 과도한 솔루션이다.
 
 **(D)** : S3 폴링은 실시간이 아니고 비효율적이다. 이벤트 기반 아키텍처와 맞지 않는다.
 
 **핵심 개념:** 마이크로서비스, SNS + SQS Fan Out
+
+**관련 노트:** [아키텍처 3: 마이크로서비스](/section/18-serverless-architectures#아키텍처-3-마이크로서비스)
 
 ### Q7. A company needs to process images uploaded to S3 by generating thumbnails. The processing takes about 30 seconds per image. During peak hours, thousands of images are uploaded per minute. Which serverless architecture is MOST appropriate?
 **Options:**
@@ -397,7 +409,7 @@ S3 -> trigger -> Lambda (썸네일 생성) -> S3 (썸네일 저장)
 | C | CloudWatch Events -> Step Functions -> Lambda |
 | D | S3 이벤트 알림 -> SNS -> 이메일 알림 |
 
-**(A) 정답** : S3 이벤트로 Lambda 함수를 트리거하여 썸네일을 생성하는 것이 표준 서버리스 패턴이다. 30초 실행 시간은 Lambda의 15분 제한 내이며 Lambda는 자동으로 수천 개의 동시 호출로 스케일링된다.
+**(A) 정답** : S3 이벤트로 Lambda 함수를 트리거하여 썸네일을 생성하는 것이 표준 서버리스 패턴이다. 30초 실행 시간은 Lambda의 15분 제한 내이며 Lambda는 자동으로 수천 개의 동시 호출로 스케일링된다. → [📖 AWS Lambda](/section/17-serverless-overview#aws-lambda)
 
 **(B)** : SQS + EC2는 서버리스가 아니다. EC2 인스턴스 관리가 필요하여 서버리스 요구사항을 충족하지 못한다.
 
@@ -406,3 +418,5 @@ S3 -> trigger -> Lambda (썸네일 생성) -> S3 (썸네일 저장)
 **(D)** : SNS + 이메일은 알림 전송만 한다. 실제 썸네일 생성 처리가 없어 요구사항을 충족하지 못한다.
 
 **핵심 개념:** S3 이벤트 -> Lambda, 이미지 처리
+
+**관련 노트:** [AWS Lambda](/section/17-serverless-overview#aws-lambda), [서버리스란?](/section/17-serverless-overview#서버리스란)

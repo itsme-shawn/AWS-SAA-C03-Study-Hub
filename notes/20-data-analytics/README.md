@@ -343,15 +343,17 @@ AWS의 데이터 분석 서비스 생태계를 다루며, 시험에서는 데이
 | C | Apache Hive를 사용한 Amazon EMR 클러스터 설정 |
 | D | Amazon RDS에 데이터를 임포트하고 쿼리 |
 
-**(A)** : Redshift는 데이터 웨어하우스로 클러스터 프로비저닝과 관리가 필요하다. 인프라 관리 없이 임시 쿼리를 실행하는 요구사항에 맞지 않는다.
+**(A)** : Redshift는 데이터 웨어하우스로 클러스터 프로비저닝과 관리가 필요하다. 인프라 관리 없이 임시 쿼리를 실행하는 요구사항에 맞지 않는다. → [📖 Amazon Redshift](/section/20-data-analytics#amazon-redshift)
 
-**(B) 정답** : Athena는 서버리스 SQL 쿼리 서비스로 S3에 저장된 데이터를 직접 분석할 수 있다. 인프라 관리가 불필요하고 스캔한 데이터에 대해서만 과금되므로 비용 효율적이다.
+**(B) 정답** : Athena는 서버리스 SQL 쿼리 서비스로 S3에 저장된 데이터를 직접 분석할 수 있다. 인프라 관리가 불필요하고 스캔한 데이터에 대해서만 과금되므로 비용 효율적이다. → [📖 Amazon Athena](/section/20-data-analytics#amazon-athena)
 
-**(C)** : EMR은 Hadoop 클러스터 설정과 관리가 필요하다. 임시 쿼리에는 과도한 솔루션이다.
+**(C)** : EMR은 Hadoop 클러스터 설정과 관리가 필요하다. 임시 쿼리에는 과도한 솔루션이다. → [📖 Amazon EMR Elastic MapReduce](/section/20-data-analytics#amazon-emr-elastic-mapreduce)
 
 **(D)** : RDS는 OLTP용 관계형 데이터베이스이다. 로그 분석 용도에 적합하지 않다.
 
 **핵심 개념:** Amazon Athena
+
+**관련 노트:** [Amazon Athena](/section/20-data-analytics#amazon-athena)
 
 ### Q2. A data engineering team uses Amazon Athena to query large datasets in S3. They want to reduce query costs significantly. What is the MOST effective approach?
 **Options:**
@@ -375,13 +377,15 @@ AWS의 데이터 분석 서비스 생태계를 다루며, 시험에서는 데이
 
 **(A)** : Athena는 서버리스이므로 EC2 인스턴스를 선택하는 개념이 아니다. 존재하지 않는 옵션이다.
 
-**(B) 정답** : Athena는 스캔된 데이터 양에 따라 과금(TB당 $5)된다. Parquet/ORC 컬럼형 형식으로 변환하면 필요한 컬럼만 스캔하여 비용을 크게 절감할 수 있다. Glue ETL을 사용하면 데이터를 Parquet으로 쉽게 변환할 수 있다.
+**(B) 정답** : Athena는 스캔된 데이터 양에 따라 과금(TB당 $5)된다. Parquet/ORC 컬럼형 형식으로 변환하면 필요한 컬럼만 스캔하여 비용을 크게 절감할 수 있다. Glue ETL을 사용하면 데이터를 Parquet으로 쉽게 변환할 수 있다. → [📖 AWS Glue](/section/20-data-analytics#aws-glue)
 
 **(C)** : S3 Transfer Acceleration은 데이터 전송 속도를 높이는 것이다. Athena 쿼리 비용과 전혀 무관하다.
 
 **(D)** : S3 Intelligent-Tiering은 스토리지 비용 최적화이다. Athena 쿼리 비용과 관련이 없다.
 
 **핵심 개념:** Athena Performance Improvement / AWS Glue
+
+**관련 노트:** [Amazon Athena](/section/20-data-analytics#amazon-athena), [AWS Glue](/section/20-data-analytics#aws-glue)
 
 ### Q3. A company needs to perform complex joins and aggregations on petabytes of structured data for their business intelligence reporting. The queries run frequently throughout the day. Which service is MOST appropriate?
 **Options:**
@@ -403,15 +407,17 @@ AWS의 데이터 분석 서비스 생태계를 다루며, 시험에서는 데이
 | C | Amazon DynamoDB |
 | D | Apache Hive를 사용한 Amazon EMR |
 
-**(A)** : Athena는 서버리스로 간헐적 S3 쿼리에 적합하다. 그러나 빈번한 복잡한 쿼리에는 Redshift보다 느리고 비용이 더 들 수 있다.
+**(A)** : Athena는 서버리스로 간헐적 S3 쿼리에 적합하다. 그러나 빈번한 복잡한 쿼리에는 Redshift보다 느리고 비용이 더 들 수 있다. → [📖 Amazon Athena](/section/20-data-analytics#amazon-athena)
 
-**(B) 정답** : Redshift는 OLAP 데이터 웨어하우스로 PB 규모의 데이터에서 복잡한 조인과 집계를 수행하는 데 최적화되어 있다. 빈번한 복잡한 쿼리에 가장 빠르고 비용 효율적이다.
+**(B) 정답** : Redshift는 OLAP 데이터 웨어하우스로 PB 규모의 데이터에서 복잡한 조인과 집계를 수행하는 데 최적화되어 있다. 빈번한 복잡한 쿼리에 가장 빠르고 비용 효율적이다. → [📖 Amazon Redshift](/section/20-data-analytics#amazon-redshift)
 
 **(C)** : DynamoDB는 NoSQL 트랜잭션 DB이다. OLAP 분석 용도가 아니다.
 
-**(D)** : EMR은 Hadoop 클러스터로 분석이 가능하지만 클러스터 관리 부담이 크다. Redshift만큼 BI 쿼리에 최적화되어 있지 않다.
+**(D)** : EMR은 Hadoop 클러스터로 분석이 가능하지만 클러스터 관리 부담이 크다. Redshift만큼 BI 쿼리에 최적화되어 있지 않다. → [📖 Amazon EMR Elastic MapReduce](/section/20-data-analytics#amazon-emr-elastic-mapreduce)
 
 **핵심 개념:** Amazon Redshift vs Athena
+
+**관련 노트:** [Amazon Redshift](/section/20-data-analytics#amazon-redshift), [Amazon Athena](/section/20-data-analytics#amazon-athena)
 
 ### Q4. A company uses DynamoDB as their primary database. They need to implement a search feature that allows users to search across multiple fields with partial text matching. Which architecture should they implement?
 **Options:**
@@ -435,13 +441,15 @@ AWS의 데이터 분석 서비스 생태계를 다루며, 시험에서는 데이
 
 **(A)** : GSI(Global Secondary Index)는 정확한 값 매칭은 가능하지만 부분 텍스트 매칭은 불가하다.
 
-**(B) 정답** : DynamoDB는 기본 키/인덱스로만 쿼리가 가능하여 부분 텍스트 매칭을 지원하지 않는다. DynamoDB Streams -> Lambda -> OpenSearch 패턴으로 데이터를 동기화하면 모든 필드에서 부분 매칭 검색이 가능해진다.
+**(B) 정답** : DynamoDB는 기본 키/인덱스로만 쿼리가 가능하여 부분 텍스트 매칭을 지원하지 않는다. DynamoDB Streams -> Lambda -> OpenSearch 패턴으로 데이터를 동기화하면 모든 필드에서 부분 매칭 검색이 가능해진다. → [📖 Amazon OpenSearch Service](/section/20-data-analytics#amazon-opensearch-service)
 
 **(C)** : RDS로 전환하면 기존 DynamoDB 기반 아키텍처를 완전히 변경해야 한다. 비효율적이고 과도한 변경이다.
 
 **(D)** : Athena는 S3 데이터 분석용 SQL 서비스이다. DynamoDB 실시간 검색에 적합하지 않다.
 
 **핵심 개념:** OpenSearch + DynamoDB 통합 패턴
+
+**관련 노트:** [Amazon OpenSearch Service](/section/20-data-analytics#amazon-opensearch-service), [Amazon DynamoDB](/section/19-databases#amazon-dynamodb)
 
 ### Q5. A company wants to build a centralized data lake on AWS. They need fine-grained access control at the row and column level for different teams accessing the data through Athena and Redshift. Which service should they use?
 **Options:**
@@ -467,11 +475,13 @@ AWS의 데이터 분석 서비스 생태계를 다루며, 시험에서는 데이
 
 **(B)** : S3 버킷 정책은 객체/버킷 수준이다. 행/열 수준 접근 제어를 지원하지 않는다.
 
-**(C) 정답** : AWS Lake Formation은 데이터 레이크 구축을 위한 관리형 서비스로 행(row)과 열(column) 수준의 세밀한 접근 제어를 중앙 집중적으로 관리한다. Athena, Redshift, EMR 등 여러 소비자에 대한 보안을 통합 관리한다.
+**(C) 정답** : AWS Lake Formation은 데이터 레이크 구축을 위한 관리형 서비스로 행(row)과 열(column) 수준의 세밀한 접근 제어를 중앙 집중적으로 관리한다. Athena, Redshift, EMR 등 여러 소비자에 대한 보안을 통합 관리한다. → [📖 AWS Lake Formation](/section/20-data-analytics#aws-lake-formation)
 
 **(D)** : Redshift 행 수준 보안은 Redshift 내에서만 작동한다. Athena 등 다른 서비스에 대한 중앙 집중식 접근 제어를 제공하지 않는다.
 
 **핵심 개념:** AWS Lake Formation
+
+**관련 노트:** [AWS Lake Formation](/section/20-data-analytics#aws-lake-formation)
 
 ### Q6. A company needs to process real-time streaming data from Apache Kafka topics using Apache Flink. They want a fully managed solution. Which service should they use?
 **Options:**
@@ -495,13 +505,15 @@ AWS의 데이터 분석 서비스 생태계를 다루며, 시험에서는 데이
 
 **(A)** : Kinesis Data Firehose는 Flink의 소스로 사용할 수 없다(중요 시험 포인트). Firehose는 배치 전송 서비스이며 Flink의 입력 소스가 되지 않는다.
 
-**(B) 정답** : Amazon Managed Service for Apache Flink는 관리형 Flink 서비스로 MSK(관리형 Kafka)와 Kinesis Data Streams를 소스로 사용할 수 있다. 완전 관리형이므로 클러스터를 직접 관리할 필요가 없다.
+**(B) 정답** : Amazon Managed Service for Apache Flink는 관리형 Flink 서비스로 MSK(관리형 Kafka)와 Kinesis Data Streams를 소스로 사용할 수 있다. 완전 관리형이므로 클러스터를 직접 관리할 필요가 없다. → [📖 Amazon Managed Service for Apache Flink](/section/20-data-analytics#amazon-managed-service-for-apache-flink)
 
 **(C)** : Glue Streaming ETL은 Apache Spark Structured Streaming 기반이며 Flink가 아니다. Kafka 토픽을 Flink로 처리하는 요구사항에 맞지 않는다.
 
 **(D)** : EMR에 Flink를 설치하면 클러스터를 직접 관리해야 하므로 완전 관리형 솔루션이 아니다.
 
 **핵심 개념:** Amazon Managed Service for Apache Flink / Amazon MSK
+
+**관련 노트:** [Amazon Managed Service for Apache Flink](/section/20-data-analytics#amazon-managed-service-for-apache-flink), [Amazon MSK Managed Streaming for Apache Kafka](/section/20-data-analytics#amazon-msk-managed-streaming-for-apache-kafka)
 
 ### Q7. A company wants to create interactive business dashboards that can be embedded in their web application. They need per-session pricing and want to leverage in-memory computation for fast performance. Which service should they use?
 **Options:**
@@ -525,13 +537,15 @@ AWS의 데이터 분석 서비스 생태계를 다루며, 시험에서는 데이
 
 **(A)** : Athena는 SQL 쿼리 엔진이지 시각화/대시보드 도구가 아니다. 웹 애플리케이션에 임베딩 가능한 대시보드를 제공하지 않는다.
 
-**(B) 정답** : Amazon QuickSight는 서버리스 BI 서비스로 임베딩이 가능하고 세션당 과금이 적용된다. SPICE 엔진은 데이터를 가져올 때 인메모리 계산을 제공하여 빠른 성능을 보장한다.
+**(B) 정답** : Amazon QuickSight는 서버리스 BI 서비스로 임베딩이 가능하고 세션당 과금이 적용된다. SPICE 엔진은 데이터를 가져올 때 인메모리 계산을 제공하여 빠른 성능을 보장한다. → [📖 Amazon QuickSight](/section/20-data-analytics#amazon-quicksight)
 
 **(C)** : Redshift는 데이터 웨어하우스로 별도의 BI 도구가 필요하다. 자체적으로 임베딩 가능한 대시보드를 제공하지 않는다.
 
 **(D)** : OpenSearch Dashboards는 검색/로그 데이터 시각화에 특화되어 있다. 세션당 과금 및 범용 BI 대시보드 임베딩에는 적합하지 않다.
 
 **핵심 개념:** Amazon QuickSight / SPICE
+
+**관련 노트:** [Amazon QuickSight](/section/20-data-analytics#amazon-quicksight)
 
 ### Q8. A data team needs to discover metadata about datasets stored across S3, RDS, and DynamoDB, and make this metadata available for querying with Athena and Redshift Spectrum. Which service provides this capability?
 **Options:**
@@ -553,12 +567,14 @@ AWS의 데이터 분석 서비스 생태계를 다루며, 시험에서는 데이
 | C | Amazon Athena Data Source Connectors |
 | D | AWS Config |
 
-**(A)** : Lake Formation은 Glue 위에 구축되지만 데이터 레이크 보안/거버넌스에 초점이 있다. 메타데이터 카탈로그 자체는 Glue Data Catalog의 역할이다.
+**(A)** : Lake Formation은 Glue 위에 구축되지만 데이터 레이크 보안/거버넌스에 초점이 있다. 메타데이터 카탈로그 자체는 Glue Data Catalog의 역할이다. → [📖 AWS Lake Formation](/section/20-data-analytics#aws-lake-formation)
 
-**(B) 정답** : AWS Glue Data Catalog은 Data Crawler를 사용하여 S3, RDS, DynamoDB 등에서 메타데이터를 자동으로 수집하고 카탈로그화한다. 이 카탈로그는 Athena, Redshift Spectrum, EMR에서 공유하여 데이터 디스커버리에 활용된다.
+**(B) 정답** : AWS Glue Data Catalog은 Data Crawler를 사용하여 S3, RDS, DynamoDB 등에서 메타데이터를 자동으로 수집하고 카탈로그화한다. 이 카탈로그는 Athena, Redshift Spectrum, EMR에서 공유하여 데이터 디스커버리에 활용된다. → [📖 AWS Glue](/section/20-data-analytics#aws-glue)
 
 **(C)** : Athena Data Source Connectors는 Athena의 페더레이티드 쿼리(S3 외 소스 쿼리)용이다. 메타데이터 카탈로그 기능이 아니다.
 
 **(D)** : AWS Config은 리소스 구성 변경 추적 서비스이다. 데이터 메타데이터 수집 및 카탈로그화와 무관하다.
 
 **핵심 개념:** AWS Glue Data Catalog
+
+**관련 노트:** [AWS Glue](/section/20-data-analytics#aws-glue)

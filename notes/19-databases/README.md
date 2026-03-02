@@ -272,11 +272,13 @@ AWS는 다양한 관리형 데이터베이스 서비스를 제공하며, SAA-C03
 
 **(B)** : DynamoDB는 NoSQL이지만 MongoDB API와 호환되지 않는다. 코드 변경이 많이 필요하다.
 
-**(C) 정답** : Amazon DocumentDB는 MongoDB 호환 관리형 데이터베이스 서비스이다. MongoDB API와 호환되므로 최소한의 코드 변경으로 마이그레이션할 수 있으며 3개 AZ에 걸친 복제로 고가용성을 제공한다.
+**(C) 정답** : Amazon DocumentDB는 MongoDB 호환 관리형 데이터베이스 서비스이다. MongoDB API와 호환되므로 최소한의 코드 변경으로 마이그레이션할 수 있으며 3개 AZ에 걸친 복제로 고가용성을 제공한다. → [📖 Amazon DocumentDB](/section/19-databases#amazon-documentdb)
 
-**(D)** : Neptune은 그래프 데이터베이스이다. JSON 문서 저장과는 용도가 다르다.
+**(D)** : Neptune은 그래프 데이터베이스이다. JSON 문서 저장과는 용도가 다르다. → [📖 Amazon Neptune](/section/19-databases#amazon-neptune)
 
 **핵심 개념:** Amazon DocumentDB
+
+**관련 노트:** [Amazon DocumentDB](/section/19-databases#amazon-documentdb)
 
 ### Q2. A startup is building a serverless application that requires a database with single-digit millisecond latency. The application traffic is unpredictable, and the team wants to avoid capacity planning. Which database configuration is MOST suitable?
 **Options:**
@@ -300,13 +302,15 @@ AWS는 다양한 관리형 데이터베이스 서비스를 제공하며, SAA-C03
 
 **(A)** : RDS Multi-AZ는 프로비저닝된 인스턴스가 필요하다. 서버리스가 아니며 용량 계획이 필요하다.
 
-**(B)** : Aurora Serverless도 서버리스이지만 RDBMS이다. 서버리스 + 밀리초 지연 + 용량 계획 불필요 조건에는 DynamoDB가 더 적합하다.
+**(B)** : Aurora Serverless도 서버리스이지만 RDBMS이다. 서버리스 + 밀리초 지연 + 용량 계획 불필요 조건에는 DynamoDB가 더 적합하다. → [📖 Amazon Aurora](/section/19-databases#amazon-aurora)
 
-**(C) 정답** : DynamoDB는 서버리스 NoSQL 데이터베이스로 밀리초 지연 시간을 제공한다. 온디맨드 용량 모드를 사용하면 용량 계획이 불필요하고 트래픽에 따라 자동 확장된다.
+**(C) 정답** : DynamoDB는 서버리스 NoSQL 데이터베이스로 밀리초 지연 시간을 제공한다. 온디맨드 용량 모드를 사용하면 용량 계획이 불필요하고 트래픽에 따라 자동 확장된다. → [📖 Amazon DynamoDB](/section/19-databases#amazon-dynamodb)
 
 **(D)** : ElastiCache는 서버리스가 아니며 클러스터를 관리해야 한다. 애플리케이션 코드 변경도 필요하다.
 
 **핵심 개념:** DynamoDB On-Demand Capacity
+
+**관련 노트:** [Amazon DynamoDB](/section/19-databases#amazon-dynamodb)
 
 ### Q3. A social media company needs to store and query user relationships, including friends, followers, and shared content. The queries involve traversing multiple levels of connections. Which database is BEST suited?
 **Options:**
@@ -328,15 +332,17 @@ AWS는 다양한 관리형 데이터베이스 서비스를 제공하며, SAA-C03
 | C | Amazon Neptune |
 | D | Amazon DocumentDB |
 
-**(A)** : DynamoDB는 키/값 NoSQL이다. 그래프 탐색 쿼리(다단계 연결 탐색)에 적합하지 않다.
+**(A)** : DynamoDB는 키/값 NoSQL이다. 그래프 탐색 쿼리(다단계 연결 탐색)에 적합하지 않다. → [📖 Amazon DynamoDB](/section/19-databases#amazon-dynamodb)
 
 **(B)** : RDS PostgreSQL은 관계형 DB이다. 다단계 관계 탐색은 기술적으로 가능하지만 매우 비효율적이다.
 
-**(C) 정답** : Amazon Neptune은 관리형 그래프 데이터베이스이다. 소셜 네트워크, 사기 탐지, 추천 엔진 등 데이터 간 관계를 저장하고 수십억 관계를 밀리초 지연으로 쿼리할 수 있다.
+**(C) 정답** : Amazon Neptune은 관리형 그래프 데이터베이스이다. 소셜 네트워크, 사기 탐지, 추천 엔진 등 데이터 간 관계를 저장하고 수십억 관계를 밀리초 지연으로 쿼리할 수 있다. → [📖 Amazon Neptune](/section/19-databases#amazon-neptune)
 
 **(D)** : DocumentDB는 JSON 문서 저장용 MongoDB 호환 데이터베이스이다. 그래프 쿼리에 최적화되어 있지 않다.
 
 **핵심 개념:** Amazon Neptune
+
+**관련 노트:** [Amazon Neptune](/section/19-databases#amazon-neptune)
 
 ### Q4. A company runs an Oracle database on-premises and needs to migrate to AWS. Their DBA requires OS-level access to customize the database configuration. Which service should they use?
 **Options:**
@@ -358,15 +364,17 @@ AWS는 다양한 관리형 데이터베이스 서비스를 제공하며, SAA-C03
 | C | Amazon Aurora |
 | D | Amazon EC2에 Oracle 설치 |
 
-**(A)** : 일반 RDS for Oracle은 관리형이지만 OS 수준 접근을 제공하지 않는다. DBA의 커스터마이징 요구사항을 충족하지 못한다.
+**(A)** : 일반 RDS for Oracle은 관리형이지만 OS 수준 접근을 제공하지 않는다. DBA의 커스터마이징 요구사항을 충족하지 못한다. → [📖 Amazon RDS](/section/19-databases#amazon-rds)
 
-**(B) 정답** : RDS Custom for Oracle은 RDS의 관리형 기능(자동 백업, 패치 등)을 유지하면서 기반 인스턴스에 대한 OS 수준 접근과 커스터마이징을 허용한다. 관리 편의성과 커스터마이징 두 가지를 모두 제공한다.
+**(B) 정답** : RDS Custom for Oracle은 RDS의 관리형 기능(자동 백업, 패치 등)을 유지하면서 기반 인스턴스에 대한 OS 수준 접근과 커스터마이징을 허용한다. 관리 편의성과 커스터마이징 두 가지를 모두 제공한다. → [📖 Amazon RDS](/section/19-databases#amazon-rds)
 
-**(C)** : Aurora는 PostgreSQL/MySQL만 호환한다. Oracle을 지원하지 않는다.
+**(C)** : Aurora는 PostgreSQL/MySQL만 호환한다. Oracle을 지원하지 않는다. → [📖 Amazon Aurora](/section/19-databases#amazon-aurora)
 
 **(D)** : EC2에 직접 설치하면 OS 접근은 가능하지만 모든 관리(백업, 패치, HA)를 직접 해야 하므로 관리 부담이 크다.
 
 **핵심 개념:** RDS Custom
+
+**관련 노트:** [Amazon RDS](/section/19-databases#amazon-rds)
 
 ### Q5. An IoT company collects sensor data from millions of devices and needs to store time-stamped readings for real-time analytics. The solution should automatically manage data lifecycle, keeping recent data in fast storage and older data in cost-optimized storage. Which service is MOST appropriate?
 **Options:**
@@ -390,13 +398,15 @@ AWS는 다양한 관리형 데이터베이스 서비스를 제공하며, SAA-C03
 
 **(A)** : DynamoDB TTL은 만료된 데이터를 삭제하는 것이지 스토리지 티어링이 아니다. 오래된 데이터를 비용 최적화 스토리지로 자동 이동하는 기능이 없다.
 
-**(B) 정답** : Amazon Timestream은 시계열 데이터베이스로 자동 스토리지 티어링(최근 데이터는 메모리, 과거 데이터는 비용 최적화 스토리지)을 제공한다. IoT 앱과 실시간 분석에 최적화되어 있고 서버리스로 자동 확장된다.
+**(B) 정답** : Amazon Timestream은 시계열 데이터베이스로 자동 스토리지 티어링(최근 데이터는 메모리, 과거 데이터는 비용 최적화 스토리지)을 제공한다. IoT 앱과 실시간 분석에 최적화되어 있고 서버리스로 자동 확장된다. → [📖 Amazon Timestream](/section/19-databases#amazon-timestream)
 
 **(C)** : Redshift는 OLAP 데이터 웨어하우스이다. 시계열 데이터 특화 기능이나 자동 스토리지 티어링이 없다.
 
 **(D)** : RDS 파티셔닝은 수동 관리가 필요하다. 자동 스토리지 티어링을 제공하지 않는다.
 
 **핵심 개념:** Amazon Timestream
+
+**관련 노트:** [Amazon Timestream](/section/19-databases#amazon-timestream)
 
 ### Q6. A company uses DynamoDB for their e-commerce application and experiences extremely high read traffic during sales events. They need to reduce read latency from milliseconds to microseconds. What should they implement?
 **Options:**
@@ -420,13 +430,15 @@ AWS는 다양한 관리형 데이터베이스 서비스를 제공하며, SAA-C03
 
 **(A)** : DynamoDB에는 Read Replicas 개념이 존재하지 않는다. 존재하지 않는 기능이다.
 
-**(B)** : ElastiCache도 캐시로 사용 가능하지만 애플리케이션 코드 변경이 더 많이 필요하다. DAX만큼 DynamoDB와 원활하게 통합되지 않는다.
+**(B)** : ElastiCache도 캐시로 사용 가능하지만 애플리케이션 코드 변경이 더 많이 필요하다. DAX만큼 DynamoDB와 원활하게 통합되지 않는다. → [📖 Amazon ElastiCache](/section/19-databases#amazon-elasticache)
 
-**(C) 정답** : DAX(DynamoDB Accelerator)는 DynamoDB 전용 인메모리 읽기 캐시로 마이크로초 수준의 읽기 지연 시간을 제공한다. DynamoDB API와 호환되어 최소한의 코드 변경으로 통합할 수 있다.
+**(C) 정답** : DAX(DynamoDB Accelerator)는 DynamoDB 전용 인메모리 읽기 캐시로 마이크로초 수준의 읽기 지연 시간을 제공한다. DynamoDB API와 호환되어 최소한의 코드 변경으로 통합할 수 있다. → [📖 Amazon DynamoDB](/section/19-databases#amazon-dynamodb)
 
 **(D)** : 온디맨드 용량 모드는 처리량 확장을 위한 것이다. 지연 시간을 줄이지 않는다.
 
 **핵심 개념:** DynamoDB DAX
+
+**관련 노트:** [Amazon DynamoDB](/section/19-databases#amazon-dynamodb), [Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb)
 
 ### Q7. A company needs a globally distributed database that allows read and write operations in multiple AWS regions simultaneously. Which solution provides active-active multi-region capability?
 **Options:**
@@ -448,12 +460,14 @@ AWS는 다양한 관리형 데이터베이스 서비스를 제공하며, SAA-C03
 | C | Amazon DynamoDB Global Tables |
 | D | Amazon ElastiCache Global Datastore |
 
-**(A)** : Aurora Global Database는 1개의 Primary 리전에서만 쓰기가 가능하다. 다른 리전은 읽기 전용이므로 active-active가 아니다.
+**(A)** : Aurora Global Database는 1개의 Primary 리전에서만 쓰기가 가능하다. 다른 리전은 읽기 전용이므로 active-active가 아니다. → [📖 Amazon Aurora](/section/19-databases#amazon-aurora)
 
 **(B)** : RDS Multi-AZ는 단일 리전 내 장애 조치(failover)용이다. 다중 리전을 지원하지 않는다.
 
-**(C) 정답** : DynamoDB Global Tables는 active-active 설정으로 여러 리전에서 동시에 읽기와 쓰기가 가능하다. 진정한 다중 리전 active-active 기능을 제공한다.
+**(C) 정답** : DynamoDB Global Tables는 active-active 설정으로 여러 리전에서 동시에 읽기와 쓰기가 가능하다. 진정한 다중 리전 active-active 기능을 제공한다. → [📖 Amazon DynamoDB](/section/19-databases#amazon-dynamodb)
 
 **(D)** : ElastiCache Global Datastore는 active-passive 방식이다. 하나의 리전에서만 쓰기가 가능하여 active-active가 아니다.
 
 **핵심 개념:** DynamoDB Global Tables
+
+**관련 노트:** [Amazon DynamoDB](/section/19-databases#amazon-dynamodb), [Amazon DynamoDB](/section/17-serverless-overview#amazon-dynamodb)

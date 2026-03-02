@@ -366,13 +366,15 @@ ASG 스케일링 전체 흐름
 
 **(A)** : CLB(Classic Load Balancer)는 구세대 로드 밸런서로 URL 경로 기반 라우팅을 지원하지 않는다. 마이크로서비스 아키텍처에는 부적합하다.
 
-**(B)** : NLB(Network Load Balancer)는 L4(TCP/UDP)에서 동작하므로 HTTP URL 경로를 기반으로 라우팅할 수 없다. 고성능 TCP/UDP 트래픽 처리에 최적화되어 있다.
+**(B)** : NLB(Network Load Balancer)는 L4(TCP/UDP)에서 동작하므로 HTTP URL 경로를 기반으로 라우팅할 수 없다. 고성능 TCP/UDP 트래픽 처리에 최적화되어 있다. → [📖 NLB Network Load Balancer 상세](/section/06-high-availability-scalability#nlb-network-load-balancer-상세)
 
-**(C) 정답** : ALB(Application Load Balancer)는 L7에서 동작하며 URL 경로, 호스트명, 쿼리 스트링 기반 라우팅을 지원한다. /api/users, /api/orders와 같은 경로 기반 라우팅에 최적이다.
+**(C) 정답** : ALB(Application Load Balancer)는 L7에서 동작하며 URL 경로, 호스트명, 쿼리 스트링 기반 라우팅을 지원한다. /api/users, /api/orders와 같은 경로 기반 라우팅에 최적이다. → [📖 ALB Application Load Balancer 상세](/section/06-high-availability-scalability#alb-application-load-balancer-상세)
 
-**(D)** : GWLB(Gateway Load Balancer)는 L3에서 동작하며 3rd party 보안 어플라이언스(Firewall, IDS/IPS)로 트래픽을 전달하는 용도이다. URL 경로 기반 라우팅과는 무관하다.
+**(D)** : GWLB(Gateway Load Balancer)는 L3에서 동작하며 3rd party 보안 어플라이언스(Firewall, IDS/IPS)로 트래픽을 전달하는 용도이다. URL 경로 기반 라우팅과는 무관하다. → [📖 GWLB Gateway Load Balancer 상세](/section/06-high-availability-scalability#gwlb-gateway-load-balancer-상세)
 
 **핵심 개념:** ALB - URL Path 기반 라우팅
+
+**관련 노트:** [ALB Application Load Balancer 상세](/section/06-high-availability-scalability#alb-application-load-balancer-상세), [ALB / NLB / GWLB 동작 구조](/section/06-high-availability-scalability#alb-nlb-gwlb-동작-구조)
 
 ### Q2. A company requires a load balancer with a static IP address per Availability Zone for whitelisting purposes. The application handles millions of requests per second. Which load balancer should they choose?
 **Options:**
@@ -398,11 +400,13 @@ ASG 스케일링 전체 흐름
 
 **(B)** : CLB도 고정 IP를 제공하지 않으며 구세대 로드 밸런서이다. 수백만 RPS 처리 성능도 NLB에 비해 부족하다.
 
-**(C) 정답** : NLB(Network Load Balancer)는 AZ당 하나의 고정 IP를 제공하며 Elastic IP 할당을 지원한다. 수백만 RPS를 초저지연으로 처리할 수 있어 고정 IP + 고성능 두 요구사항을 모두 충족한다.
+**(C) 정답** : NLB(Network Load Balancer)는 AZ당 하나의 고정 IP를 제공하며 Elastic IP 할당을 지원한다. 수백만 RPS를 초저지연으로 처리할 수 있어 고정 IP + 고성능 두 요구사항을 모두 충족한다. → [📖 NLB Network Load Balancer 상세](/section/06-high-availability-scalability#nlb-network-load-balancer-상세)
 
 **(D)** : GWLB는 보안 어플라이언스용으로 애플리케이션 로드 밸런싱 용도가 아니다. IP 화이트리스팅 및 고성능 요구사항과는 무관하다.
 
 **핵심 개념:** NLB - Static IP, Elastic IP
+
+**관련 노트:** [NLB Network Load Balancer 상세](/section/06-high-availability-scalability#nlb-network-load-balancer-상세)
 
 ### Q3. An application is deployed behind an Application Load Balancer. The application needs to get the real IP address of the client. How can it obtain this information?
 **Options:**
@@ -426,13 +430,15 @@ ASG 스케일링 전체 흐름
 
 **(A)** : 수신 요청의 소스 IP는 ALB의 Private IP이다. ALB가 클라이언트와의 연결을 종료하고 새 연결을 백엔드로 생성하므로 실제 클라이언트 IP를 확인할 수 없다.
 
-**(B) 정답** : ALB는 원본 클라이언트 IP를 X-Forwarded-For 헤더에 삽입한다. 애플리케이션은 이 헤더를 읽어 실제 클라이언트 IP를 확인할 수 있다.
+**(B) 정답** : ALB는 원본 클라이언트 IP를 X-Forwarded-For 헤더에 삽입한다. 애플리케이션은 이 헤더를 읽어 실제 클라이언트 IP를 확인할 수 있다. → [📖 ALB Application Load Balancer 상세](/section/06-high-availability-scalability#alb-application-load-balancer-상세)
 
 **(C)** : Host 헤더는 요청된 도메인명 정보를 포함하지 IP 주소가 아니다. 클라이언트 IP 확인에는 사용할 수 없다.
 
 **(D)** : ALB 접근 로그는 사후 분석용이다. 실시간 요청 처리 중에 애플리케이션이 참조하기에는 부적합하다.
 
 **핵심 개념:** ALB - X-Forwarded-For
+
+**관련 노트:** [ALB Application Load Balancer 상세](/section/06-high-availability-scalability#alb-application-load-balancer-상세)
 
 ### Q4. A company needs to inspect all network traffic entering their VPC using third-party security appliances before it reaches the application. Which AWS service should they use?
 **Options:**
@@ -458,11 +464,13 @@ ASG 스케일링 전체 흐름
 
 **(B)** : NLB + Security Group은 트래픽을 보안 어플라이언스로 전달하는 기능이 없다. Security Group은 방화벽 규칙이지 트래픽을 3rd party 어플라이언스로 라우팅하는 기능이 아니다.
 
-**(C) 정답** : GWLB(Gateway Load Balancer)는 L3에서 동작하며 Firewall, IDS/IPS, Deep Packet Inspection 등 3rd party 보안 어플라이언스로 트래픽을 전달하고 분산한다. GENEVE 프로토콜(포트 6081)을 사용하며 모든 트래픽의 단일 진입/출구점을 제공한다.
+**(C) 정답** : GWLB(Gateway Load Balancer)는 L3에서 동작하며 Firewall, IDS/IPS, Deep Packet Inspection 등 3rd party 보안 어플라이언스로 트래픽을 전달하고 분산한다. GENEVE 프로토콜(포트 6081)을 사용하며 모든 트래픽의 단일 진입/출구점을 제공한다. → [📖 GWLB Gateway Load Balancer 상세](/section/06-high-availability-scalability#gwlb-gateway-load-balancer-상세)
 
 **(D)** : AWS Network Firewall은 AWS 자체 관리형 방화벽 서비스이다. 서드파티 보안 어플라이언스를 사용하는 것이 아니므로 요구사항과 다르다.
 
 **핵심 개념:** Gateway Load Balancer
+
+**관련 노트:** [GWLB Gateway Load Balancer 상세](/section/06-high-availability-scalability#gwlb-gateway-load-balancer-상세)
 
 ### Q5. Which of the following statements about Cross-Zone Load Balancing is correct?
 **Options:**
@@ -486,13 +494,15 @@ ASG 스케일링 전체 흐름
 
 **(A)** : NLB/GWLB는 Cross-Zone Load Balancing이 기본 비활성화이며, 활성화 시 AZ 간 데이터 비용이 발생한다. 기본 활성화라는 설명은 틀렸다.
 
-**(B) 정답** : Cross-Zone Load Balancing은 ALB에서 기본 활성화되며 AZ 간 데이터 전송 비용이 없다. 올바른 설명이다.
+**(B) 정답** : Cross-Zone Load Balancing은 ALB에서 기본 활성화되며 AZ 간 데이터 전송 비용이 없다. 올바른 설명이다. → [📖 Cross-Zone Load Balancing](/section/06-high-availability-scalability#crosszone-load-balancing)
 
 **(C)** : 모든 로드 밸런서 타입에서 기본 활성화되는 것이 아니다. ALB만 기본 활성화이고, NLB/GWLB/CLB는 기본 비활성화이다.
 
 **(D)** : ALB는 실제로 기본 활성화이며 AZ 간 데이터 비용도 무료이다. 기본 비활성화에 비용 발생이라는 설명은 완전히 틀렸다.
 
 **핵심 개념:** Cross-Zone Load Balancing
+
+**관련 노트:** [Cross-Zone Load Balancing](/section/06-high-availability-scalability#crosszone-load-balancing)
 
 ### Q6. A web application needs to maintain user session state across multiple requests. The application is behind an ALB. Which feature should be enabled?
 **Options:**
@@ -518,11 +528,13 @@ ASG 스케일링 전체 흐름
 
 **(B)** : Connection Draining(Deregistration Delay)은 인스턴스 해제 시 진행 중인 요청을 완료하기 위한 기능이다. 세션 유지 기능이 아니다.
 
-**(C) 정답** : Sticky Sessions(Session Affinity)는 같은 클라이언트를 항상 같은 인스턴스로 라우팅하여 세션 데이터를 유지한다. ALB에서 쿠키 기반으로 구현되며, 단 부하 불균형이 발생할 수 있음에 주의해야 한다.
+**(C) 정답** : Sticky Sessions(Session Affinity)는 같은 클라이언트를 항상 같은 인스턴스로 라우팅하여 세션 데이터를 유지한다. ALB에서 쿠키 기반으로 구현되며, 단 부하 불균형이 발생할 수 있음에 주의해야 한다. → [📖 Sticky Sessions Session Affinity](/section/06-high-availability-scalability#sticky-sessions-session-affinity)
 
 **(D)** : Health Check는 인스턴스 정상 여부를 확인하는 기능이다. 세션 유지와는 무관하다.
 
 **핵심 개념:** Sticky Sessions
+
+**관련 노트:** [Sticky Sessions Session Affinity](/section/06-high-availability-scalability#sticky-sessions-session-affinity)
 
 ### Q7. An Auto Scaling Group needs to automatically scale out when the average CPU utilization exceeds 70% and scale in when it drops below 30%. Which scaling policy should be used?
 **Options:**
@@ -546,13 +558,15 @@ ASG 스케일링 전체 흐름
 
 **(A)** : Target Tracking은 특정 목표값(예: CPU 40%)을 유지하도록 자동 조절하는 방식이다. 상한(70%)과 하한(30%)을 별도로 지정하는 방식이 아니다.
 
-**(B) 정답** : Simple/Step Scaling은 CloudWatch 알람을 기반으로 특정 임계값 초과/미만 시 지정된 수만큼 인스턴스를 추가/제거한다. CPU > 70%와 CPU < 30%이라는 별도 임계값을 지정하는 요구사항에 적합하다.
+**(B) 정답** : Simple/Step Scaling은 CloudWatch 알람을 기반으로 특정 임계값 초과/미만 시 지정된 수만큼 인스턴스를 추가/제거한다. CPU > 70%와 CPU < 30%이라는 별도 임계값을 지정하는 요구사항에 적합하다. → [📖 Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
 **(C)** : Scheduled Scaling은 미리 정해진 시간에 용량을 조절하는 예약 기반 방식이다. CPU 임계값에 반응하는 동적 스케일링이 아니다.
 
 **(D)** : Predictive Scaling은 과거 패턴을 ML로 분석하여 미래 부하를 예측하고 사전에 스케일링을 수행한다. 실시간 메트릭 임계값에 반응하는 방식이 아니다.
 
 **핵심 개념:** ASG - Simple/Step Scaling
+
+**관련 노트:** [Auto Scaling Group ASG](/section/06-high-availability-scalability#auto-scaling-group-asg)
 
 ### Q8. A company wants to use multiple SSL certificates on a single Application Load Balancer to serve traffic for different domains. Which feature makes this possible?
 **Options:**
@@ -576,10 +590,12 @@ ASG 스케일링 전체 흐름
 
 **(A)** : SSL Termination은 로드 밸런서에서 SSL/TLS 연결을 종료하는 일반적인 기능이다. 여러 SSL 인증서를 지원하는 기능이 아니라 암호화 처리를 로드 밸런서에서 담당하는 것이다.
 
-**(B) 정답** : SNI(Server Name Indication)는 클라이언트가 SSL 핸드셰이크 시 타겟 호스트명을 지정하여 하나의 로드 밸런서에서 여러 SSL 인증서를 사용할 수 있게 한다. ALB와 NLB에서 지원되며 CLB에서는 지원되지 않는다.
+**(B) 정답** : SNI(Server Name Indication)는 클라이언트가 SSL 핸드셰이크 시 타겟 호스트명을 지정하여 하나의 로드 밸런서에서 여러 SSL 인증서를 사용할 수 있게 한다. ALB와 NLB에서 지원되며 CLB에서는 지원되지 않는다. → [📖 SSL/TLS 인증서](/section/06-high-availability-scalability#ssltls-인증서)
 
 **(C)** : Cross-Zone Load Balancing은 AZ 간 트래픽을 균등 분배하는 기능이다. SSL 인증서와는 무관하다.
 
 **(D)** : Connection Draining은 인스턴스 해제 시 진행 중인 요청 완료를 대기하는 기능이다. SSL 인증서와는 무관하다.
 
 **핵심 개념:** SNI - Server Name Indication
+
+**관련 노트:** [SSL/TLS 인증서](/section/06-high-availability-scalability#ssltls-인증서)
