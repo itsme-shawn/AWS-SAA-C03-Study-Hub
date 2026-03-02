@@ -769,27 +769,14 @@ function QuestionCard({
                 </div>
               )}
               {q.keyConcept && (
-                <span className="inline-block text-[10px] font-bold px-2 py-1 rounded-full bg-sky-500/10 text-sky-500 uppercase tracking-wider">
-                  {q.keyConcept}
-                </span>
-              )}
-              {q.noteLinks && q.noteLinks.length > 0 && (
-                <div className="flex flex-wrap items-center gap-2 pt-1">
-                  <span className="text-[10px] font-bold text-ink-400 dark:text-ink-400 uppercase tracking-wider shrink-0">관련 노트</span>
-                  {q.noteLinks.map(link => {
-                    const urlMatch = link.url.match(/^\/section\/([^#]+)#?(.*)$/)
-                    const sectionId = urlMatch?.[1] ?? ''
-                    const headingId = urlMatch?.[2] ?? ''
-                    return (
-                      <button
-                        key={link.url}
-                        onClick={(e) => notePopup?.open(sectionId, headingId, e.currentTarget.getBoundingClientRect())}
-                        className="flex items-center gap-1 text-[11px] font-medium px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500/20 transition-colors border border-amber-500/20"
-                      >
-                        <span>📖</span> {link.label}
-                      </button>
-                    )
-                  })}
+                <div className="mt-3 pt-3 border-t border-ink-100 dark:border-ink-700/50">
+                  <div className="flex items-center gap-2 py-1.5 px-3 rounded-lg bg-sky-500/8 dark:bg-sky-500/10 border border-sky-500/20">
+                    <span className="text-[9px] font-bold text-sky-400 dark:text-sky-500 uppercase tracking-widest shrink-0">핵심 개념</span>
+                    <span className="w-px h-3 bg-sky-500/30 shrink-0" />
+                    <span className="text-[12px] font-semibold text-sky-600 dark:text-sky-400 leading-tight">
+                      {q.keyConcept}
+                    </span>
+                  </div>
                 </div>
               )}
             </div>
